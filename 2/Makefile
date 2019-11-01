@@ -6,6 +6,7 @@ NVCC_FLAGS=-O2 -arch=sm_20 -std=c++11 --compiler-options "-O2 -Wall -Wextra"
 
 .PHONY: build
 build: ./bin/nullKernelAsync
+build: ./bin/wait
 
 .PHONY: clean
 clean:
@@ -15,4 +16,7 @@ clean:
 rebuild: clean build
 
 ./bin/nullKernelAsync: ./src/nullKernelAsync.cu
+	$(NVCC) $(NVCC_FLAGS) -o $@ $^ $(INC) $(LIB)
+
+./bin/wait: ./src/wait.cu
 	$(NVCC) $(NVCC_FLAGS) -o $@ $^ $(INC) $(LIB)
