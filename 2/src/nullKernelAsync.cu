@@ -55,7 +55,7 @@ __global__ void NearlyNullKernel()
     //cudaFree(mem);
 }
 
-const size_t cIterations = 1000000;
+const size_t cIterations = 100000;
 double us(chTimerTimestamp start, chTimerTimestamp stop)
 {
     double microseconds = 1e6*chTimerElapsedTime( &start, &stop );
