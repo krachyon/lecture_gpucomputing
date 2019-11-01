@@ -51,8 +51,8 @@ NullKernel()
 
 __global__ void NearlyNullKernel()
 {
-    //void* mem = cudaMalloc ( 1 * sizeof(float));
-    //cudaFree(mem);
+    int a = 0;
+    ++a;
 }
 
 const size_t cIterations = 100000;
@@ -93,7 +93,7 @@ main()
         chTimerGetTime( &start );
         for ( size_t i = 0; i < cIterations; i++ ) 
 	{
-            NullKernel<<<block,thread>>>();
+            NearlyNullKernel<<<block,thread>>>();
             cudaThreadSynchronize();
         }
         chTimerGetTime( &stop );
