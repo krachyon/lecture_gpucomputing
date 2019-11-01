@@ -1,18 +1,20 @@
-#include <cstdint>
+#include <stdint.h>
 #include <chrono>
 #include <iostream>
+#include <vector>
 using std::chrono::high_resolution_clock;
 using std::chrono::nanoseconds;
+
 
 // Quick and dirty RAII wrappers to avoid memleaks
 struct Memory
 {
-    Memory() = delete;
+    Memory() = default;
     Memory(Memory const&) = delete;
     Memory(Memory &&) = delete;
-    & operator=(Memory const&) = delete;
-    & operator=(Memory &&) = delete;
-    virtual ~Memory();
+    Memory& operator=(Memory const&) = delete;
+    Memory& operator=(Memory &&) = delete;
+    virtual ~Memory(){};
 
 
     void* _mem;
@@ -21,42 +23,39 @@ struct Memory
 
 struct DeviceMemory: public Memory
 {
-    template<typename T>
     DeviceMemory(size_t count)
     {
-        size = count*sizeof(T);
+        size = count*sizeof(uint8_t);
         cudaMalloc(&_mem, size);
     }
-    ~DeviceMemory(){cudaFree(_mem);}
+    virtual ~DeviceMemory(){cudaFree(_mem);}
 };
 
 struct HostMemory: public Memory
 {
-    template<typename T>
-    DeviceMemory(size_t count)
+    HostMemory(size_t count)
     {
-        size = count*sizeof(T);
+        size = count*sizeof(uint8_t);
         _mem = malloc(size);
     }
-    ~DeviceMemory(){free(_mem);}
+    virtual ~HostMemory(){free(_mem);}
 };
 
 struct PinnedMemory: public Memory
 {
-    template<typename T>
-    DeviceMemory(size_t count)
+    PinnedMemory(size_t count)
     {
-        size = count*sizeof(T);
+        size = count*sizeof(uint8_t);
         cudaMallocHost(&_mem, size);
     }
-    ~DeviceMemory(){cudaFreeHost(_mem);}
+    virtual ~PinnedMemory(){cudaFreeHost(_mem);}
 };
 
 template <typename HostMem>
 size_t timeDeviceToHost(size_t count)
 {
-    DeviceMemory<uint8_t>(count) dev;
-    HostMem<uint8_t>(count) host;
+    DeviceMemory dev(count);
+    HostMem host(count);
 
     auto start = high_resolution_clock::now();
     cudaMemcpy(dev._mem, host._mem, host.size, cudaMemcpyDeviceToHost);
@@ -67,8 +66,8 @@ size_t timeDeviceToHost(size_t count)
 template <typename HostMem>
 size_t timeHostToDevice(size_t count)
 {
-    DeviceMemory<uint8_t>(count) dev;
-    HostMem<uint8_t>(count) host;
+    DeviceMemory dev(count);
+    HostMem host(count);
 
     auto start = high_resolution_clock::now();
     cudaMemcpy(host._mem, dev._mem, dev.size, cudaMemcpyHostToDevice);
