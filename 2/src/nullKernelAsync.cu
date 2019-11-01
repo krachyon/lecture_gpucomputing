@@ -55,7 +55,7 @@ __global__ void NearlyNullKernel()
     ++a;
 }
 
-const size_t cIterations = 100000;
+const size_t cIterations = 50000;
 double us(chTimerTimestamp start, chTimerTimestamp stop)
 {
     double microseconds = 1e6*chTimerElapsedTime( &start, &stop );
@@ -68,7 +68,7 @@ main()
     // warmup
     for ( size_t i = 0; i < cIterations; i++ ) 
 	{
-	    NullKernel<<<block,thread>>>();
+	    NullKernel<<<1,1>>>();
 	}
 
     chTimerTimestamp start, stop;
