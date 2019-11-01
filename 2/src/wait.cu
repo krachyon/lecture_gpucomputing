@@ -6,19 +6,19 @@ using std::cout;
 using std::chrono::high_resolution_clock;
 using std::chrono::microseconds;
 using std::chrono::nanoseconds;
+using clock64_t = long long int;
 
 const size_t maxWait = 10000;
 const size_t nIter = 1000;
 
 __device__ clock_t diff;
 
-
 __global__ void SleepKernel(clock_t ticks, bool writeDiff)
 {
-    clock_t start = clock();
-    while (clock()-start < ticks){}
+    clock64_t start = clock64();
+    while ((clock64() - start) < ticks){}
     if(writeDiff)
-        diff = clock() - start;
+        diff = clock64() - start;
 }
 
 void warmup()
