@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 #SBATCH --gres=gpu
-#SBATCH -o ex2_out.txt
+#SBATCH -o nullkernel_timings_out.txt
 
-for _ in {0..20} 
+for _ in {0..1} 
 do
 	bin/nullKernelAsync
 done
