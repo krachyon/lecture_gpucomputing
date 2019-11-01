@@ -64,7 +64,13 @@ double us(chTimerTimestamp start, chTimerTimestamp stop)
 
 int
 main()
-{
+{ 
+    // warmup
+    for ( size_t i = 0; i < cIterations; i++ ) 
+	{
+	    NullKernel<<<block,thread>>>();
+	}
+
     chTimerTimestamp start, stop;
     cout << "# block_count; thread_count; async; time/usec\n";
 
