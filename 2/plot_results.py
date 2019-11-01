@@ -17,6 +17,7 @@ def plot_startup(df, is_async):
     plt.ylabel('startup time in microseconds')
     plt.title(f'startup time async={is_async}')
     plt.legend()
+    plt.savefig(f'plots/0-5_async_{is_async}.svg')
 
     plt.figure()
     for block in df.block_count.unique()[5:]:
@@ -26,6 +27,7 @@ def plot_startup(df, is_async):
     plt.ylabel('startup time in microseconds')
     plt.title(f'startup time async={is_async}')
     plt.legend()
+    plt.savefig(f'plots/5-10_async_{is_async}.svg')
 
 
 plot_startup(dat_nullkernel, False)
