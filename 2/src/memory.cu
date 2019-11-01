@@ -27,7 +27,8 @@ struct DeviceMemory: public Memory
     {
         size = count*sizeof(uint8_t);
         cudaMalloc(&_mem, size);
-        std::fill_n((uint8_t*)_mem,size,0);
+        cudaMemset(_mem, 0, count);
+	
     }
     virtual ~DeviceMemory(){cudaFree(_mem);}
 };
@@ -38,7 +39,7 @@ struct HostMemory: public Memory
     {
         size = count*sizeof(uint8_t);
         _mem = malloc(size);
-        std::fill_n((uint8_t*)_mem,size,0);
+        memset(_mem, 0, count);
     }
     virtual ~HostMemory(){free(_mem);}
 };
@@ -49,7 +50,7 @@ struct PinnedMemory: public Memory
     {
         size = count*sizeof(uint8_t);
         cudaMallocHost(&_mem, size);
-        std::fill_n((uint8_t*)_mem,size,0);
+        cudaMemset(_mem, 0, count);
     }
     virtual ~PinnedMemory(){cudaFreeHost(_mem);}
 };
