@@ -58,7 +58,18 @@ def plot_wait():
     plt.savefig(f'plots/wait.svg')
     return data
 
+def plot_memory():
+    data = pd.read_csv('result/memory.txt', sep=';', comment=None)
+    clean_header(data)
 
-plot_startup(False)
-plot_startup(True)
-dat = plot_wait()
+    plt.loglog(data.Size, data.H2DPage, label='H2DPage')
+    plt.loglog(data.Size, data.H2DPin, label='H2DPin')
+    plt.loglog(data.Size, data.D2HPage, label='D2HPage')
+    plt.loglog(data.Size, data.D2HPin, label='D2HPin')
+    plt.legend()
+
+
+#pot_startup(False)
+#plot_startup(True)
+#dat = plot_wait()
+plot_memory()

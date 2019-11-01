@@ -27,6 +27,7 @@ struct DeviceMemory: public Memory
     {
         size = count*sizeof(uint8_t);
         cudaMalloc(&_mem, size);
+        std::fill(_mem,size,0);
     }
     virtual ~DeviceMemory(){cudaFree(_mem);}
 };
@@ -37,6 +38,7 @@ struct HostMemory: public Memory
     {
         size = count*sizeof(uint8_t);
         _mem = malloc(size);
+        std::fill(_mem,size,0);
     }
     virtual ~HostMemory(){free(_mem);}
 };
@@ -47,9 +49,12 @@ struct PinnedMemory: public Memory
     {
         size = count*sizeof(uint8_t);
         cudaMallocHost(&_mem, size);
+        std::fill(_mem,size,0);
     }
     virtual ~PinnedMemory(){cudaFreeHost(_mem);}
 };
+
+const size_t nloop = 10;
 
 template <typename HostMem>
 size_t timeDeviceToHost(size_t count)
@@ -58,9 +63,10 @@ size_t timeDeviceToHost(size_t count)
     HostMem host(count);
 
     auto start = high_resolution_clock::now();
-    cudaMemcpy(dev._mem, host._mem, host.size, cudaMemcpyDeviceToHost);
+    for(size_t _=0;_!=nloop;++_)
+        cudaMemcpy(dev._mem, host._mem, host.size, cudaMemcpyDeviceToHost);
     auto end = high_resolution_clock::now();
-    return std::chrono::duration_cast<nanoseconds>(end-start).count();
+    return std::chrono::duration_cast<nanoseconds>((end-start)/nloop).count();
 }
 
 template <typename HostMem>
@@ -70,9 +76,10 @@ size_t timeHostToDevice(size_t count)
     HostMem host(count);
 
     auto start = high_resolution_clock::now();
-    cudaMemcpy(host._mem, dev._mem, dev.size, cudaMemcpyHostToDevice);
+    for(size_t _=0;_!=nloop;++_)
+        cudaMemcpy(host._mem, dev._mem, dev.size, cudaMemcpyHostToDevice);
     auto end = high_resolution_clock::now();
-    return std::chrono::duration_cast<nanoseconds>(end-start).count();
+    return std::chrono::duration_cast<nanoseconds>((end-start)/nloop).count();
 }
 
 int main()
