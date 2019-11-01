@@ -9,7 +9,7 @@ using std::chrono::nanoseconds;
 using clock64_t = long long int;
 
 const size_t maxWait = 10000;
-const size_t nIter = 1000;
+const size_t nIter = 10000;
 
 __device__ clock_t diff;
 
