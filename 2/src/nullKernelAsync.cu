@@ -37,6 +37,7 @@
  */
 
 #include <stdio.h>
+#include <vector>
 
 #include "chTimer.h"
 
@@ -46,27 +47,45 @@ NullKernel()
 {
 }
 
+__global__ void NearlyNullKernel()
+{
+    void* mem = cudaMalloc ( 1 * sizeof( float));
+    cudaFree(mem);
+}
+
+double us(chTimerTimestamp start, chTimerTimestamp stop)
+{
+    double microseconds = 1e6*chTimerElapsedTime( &start, &stop );
+    return microseconds / (float) cIterations;
+}
+
 int
 main()
 {
-    const int cIterations = 1000000;
-    printf( "Measuring asynchronous launch time... " ); fflush( stdout );
-
+    const int cIterations = 100000;
     chTimerTimestamp start, stop;
+    
+    //measure Async
+    std::vector<double> usAsync;
+    std::vector<size_t> block_counts{1,2,4,8,16,32,64,128,512,1024};
+    std::vector<size_t> thread_counts{1,2,4,8,16,32,64,128,512,1024};
 
-    chTimerGetTime( &start );
-    for ( int i = 0; i < cIterations; i++ ) {
-        NullKernel<<<1,1>>>();
-    }
-    cudaThreadSynchronize();
-    chTimerGetTime( &stop );
-
+    for(auto block: block_counts)
     {
-        double microseconds = 1e6*chTimerElapsedTime( &start, &stop );
-        double usPerLaunch = microseconds / (float) cIterations;
-
-        printf( "%.2f us\n", usPerLaunch );
+        chTimerGetTime( &start );
+        for ( int i = 0; i < cIterations; i++ ) {
+            NullKernel<<<1,1>>>();
+        }
+        cudaThreadSynchronize();
+        chTimerGetTime( &stop );
     }
+
+    double usPerLaunchAsync = us(start, stop)
+    
+    //measure synchro
+
+    
+    printf( "%.2f us\n", usPerLaunch );
 
     return 0;
 }
