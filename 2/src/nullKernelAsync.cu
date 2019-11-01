@@ -49,10 +49,11 @@ NullKernel()
 
 __global__ void NearlyNullKernel()
 {
-    void* mem = cudaMalloc ( 1 * sizeof( float));
-    cudaFree(mem);
+    //void* mem = cudaMalloc ( 1 * sizeof(float));
+    //cudaFree(mem);
 }
 
+const size_t cIterations = 100000;
 double us(chTimerTimestamp start, chTimerTimestamp stop)
 {
     double microseconds = 1e6*chTimerElapsedTime( &start, &stop );
@@ -62,7 +63,6 @@ double us(chTimerTimestamp start, chTimerTimestamp stop)
 int
 main()
 {
-    const int cIterations = 100000;
     chTimerTimestamp start, stop;
     
     //measure Async
@@ -71,21 +71,23 @@ main()
     std::vector<size_t> thread_counts{1,2,4,8,16,32,64,128,512,1024};
 
     for(auto block: block_counts)
+    for(auto thread: thread_counts)
     {
         chTimerGetTime( &start );
-        for ( int i = 0; i < cIterations; i++ ) {
-            NullKernel<<<1,1>>>();
+        for ( size_t i = 0; i < cIterations; i++ ) 
+	{
+            NullKernel<<<block,thread>>>();
         }
         cudaThreadSynchronize();
         chTimerGetTime( &stop );
     }
 
-    double usPerLaunchAsync = us(start, stop)
+    double usPerLaunchAsync = us(start, stop);
     
     //measure synchro
 
     
-    printf( "%.2f us\n", usPerLaunch );
+    printf( "%.2f us\n", usPerLaunchAsync );
 
     return 0;
 }
