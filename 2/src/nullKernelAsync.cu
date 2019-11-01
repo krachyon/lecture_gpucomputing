@@ -83,7 +83,7 @@ main()
         cudaThreadSynchronize();
         chTimerGetTime( &stop );
 	
-	cout << block << ";" << thread << ";" << us(start,stop) << std::endl;
+	cout << block << ";" << thread << ";" << 1 << ";" << us(start,stop) << std::endl;
     }
 
     //measure synchro
@@ -98,7 +98,7 @@ main()
         }
         chTimerGetTime( &stop );
 	
-	cout << block << ";" << thread << ";" << us(start,stop) << std::endl;
+	cout << block << ";" << thread << ";" << 0 << ";" << us(start,stop) << std::endl;
     }
 
     return 0;
