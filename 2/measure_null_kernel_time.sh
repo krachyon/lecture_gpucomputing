@@ -2,4 +2,7 @@
 #SBATCH --gres=gpu
 #SBATCH -o ex2_out.txt
 
-bin/nullKernelAsync
+for _ in {0..20} 
+do
+	bin/nullKernelAsync
+done
