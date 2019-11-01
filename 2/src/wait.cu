@@ -23,9 +23,9 @@ __global__ void SleepKernel(clock_t ticks, bool writeDiff)
 
 void warmup()
 {
-    for(size_t _ = 0; _ != nIter*10; ++_)
+    for(size_t _ = 0; _ != nIter*100; ++_)
     {
-        SleepKernel<<<1,1>>>(100,false);
+        SleepKernel<<<1,1>>>(1000,false);
     }
 }
 
