@@ -36,6 +36,8 @@ def plot_startup(is_async):
 
 
 def plot_wait():
+    plt.figure()
+
     data = pd.read_csv('result/wait_out.txt', sep=';', comment=None)
     clean_header(data)
 
@@ -58,7 +60,10 @@ def plot_wait():
     plt.savefig(f'plots/wait.svg')
     return data
 
+
 def plot_memory():
+    plt.figure()
+
     data = pd.read_csv('result/memory_nvidia.txt', sep=';', comment=None)
     clean_header(data)
 
@@ -68,6 +73,17 @@ def plot_memory():
     plt.loglog(data.Size, data.D2HPin, label='D2HPin')
     plt.legend()
     plt.savefig(f'plots/memory.svg')
+
+    data = pd.read_csv('result/memory.txt', sep=';', comment=None)
+    clean_header(data)
+
+    plt.figure()
+    plt.loglog(data.Size, data.H2DPage, label='H2DPage')
+    plt.loglog(data.Size, data.H2DPin, label='H2DPin')
+    plt.loglog(data.Size, data.D2HPage, label='D2HPage')
+    plt.loglog(data.Size, data.D2HPin, label='D2HPin')
+    plt.legend()
+    plt.savefig(f'plots/memory_error.svg')
 
 
 
