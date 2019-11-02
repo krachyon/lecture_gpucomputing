@@ -65,7 +65,6 @@ std::pair<float,float> profileCopies(float* h_a,
 
     float timeh2d, timed2h;
     checkCuda(cudaEventElapsedTime(&timeh2d, startEvent, stopEvent));
-    printf("  Host to Device bandwidth (GB/s): %f\n", bytes*1e-6/timeh2d);
 
     checkCuda(cudaEventRecord(startEvent, 0));
     checkCuda(cudaMemcpy(h_b, d, bytes, cudaMemcpyDeviceToHost));
@@ -73,11 +72,10 @@ std::pair<float,float> profileCopies(float* h_a,
     checkCuda(cudaEventSynchronize(stopEvent));
 
     checkCuda(cudaEventElapsedTime(&timed2h, startEvent, stopEvent));
-    printf("  Device to Host bandwidth (GB/s): %f\n", bytes*1e-6/timed2h);
 
     for (int i = 0; i<n; ++i) {
         if (h_a[i]!=h_b[i]) {
-            printf("*** %s transfers failed ***", desc);
+            printf("*** transfers failed ***");
             break;
         }
     }
@@ -85,7 +83,7 @@ std::pair<float,float> profileCopies(float* h_a,
     // clean up events
     checkCuda(cudaEventDestroy(startEvent));
     checkCuda(cudaEventDestroy(stopEvent));
-    return std::make_pair(timeh2d,time2dh);
+    return std::make_pair(timeh2d,timed2h);
 }
 
 int main()
@@ -124,11 +122,9 @@ int main()
         cudaDeviceProp prop;
         checkCuda(cudaGetDeviceProperties(&prop, 0));
 
-        printf("\nDevice: %s\n", prop.name);
-        printf("Transfer size (MB): %d\n", bytes/(1024*1024));
 
         // perform copies and report bandwidth
-        auto tPage = profileCopies(h_aPageable, h_bPageable, d_a, nElements;
+        auto tPage = profileCopies(h_aPageable, h_bPageable, d_a, nElements);
         auto tPinned = profileCopies(h_aPinned, h_bPinned, d_a, nElements);
 
         std::cout << bytes << ";"
