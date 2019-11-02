@@ -9,3 +9,7 @@ There's an interesting effect with the first few kernel startups. Even though ev
 
 As the iteration order was Async->blocks->threads the warmup hit the `async=True, blocks=1` run
 Overall for there seems to be a penalty of around $7.5 \,\rm{μs}$ for synchronous startup of kernels.
+
+## 2.3
+https://raw.githubusercontent.com/NVIDIA-developer-blog/code-samples/master/series/cuda-cpp/optimize-data-transfers/bandwidthtest.cu
+

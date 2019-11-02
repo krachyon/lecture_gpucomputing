@@ -59,7 +59,7 @@ def plot_wait():
     return data
 
 def plot_memory():
-    data = pd.read_csv('result/memory.txt', sep=';', comment=None)
+    data = pd.read_csv('result/memory_nvidia.txt', sep=';', comment=None)
     clean_header(data)
 
     plt.loglog(data.Size, data.H2DPage, label='H2DPage')
@@ -67,9 +67,11 @@ def plot_memory():
     plt.loglog(data.Size, data.D2HPage, label='D2HPage')
     plt.loglog(data.Size, data.D2HPin, label='D2HPin')
     plt.legend()
+    plt.savefig(f'plots/memory.svg')
 
 
-#pot_startup(False)
-#plot_startup(True)
-#dat = plot_wait()
+
+plot_startup(False)
+plot_startup(True)
+dat = plot_wait()
 plot_memory()
