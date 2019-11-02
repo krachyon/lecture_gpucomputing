@@ -8,6 +8,7 @@ NVCC_FLAGS=-O2 -arch=sm_20 -std=c++11 --compiler-options "-O2 -Wall -Wextra"
 build: ./bin/nullKernelAsync
 build: ./bin/wait
 build: ./bin/memory
+build: ./bin/memory_nvidia
 
 .PHONY: clean
 clean:
@@ -23,4 +24,6 @@ rebuild: clean build
 	$(NVCC) $(NVCC_FLAGS) -o $@ $^ $(INC) $(LIB)
 
 ./bin/memory: ./src/memory.cu
+	$(NVCC) $(NVCC_FLAGS) -o $@ $^ $(INC) $(LIB)
+./bin/memory_nvidia: ./src/memory_modnvidia.cu
 	$(NVCC) $(NVCC_FLAGS) -o $@ $^ $(INC) $(LIB)

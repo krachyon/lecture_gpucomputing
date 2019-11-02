@@ -62,7 +62,8 @@ std::pair<float,float> profileCopies(float* h_a,
     checkCuda(cudaMemcpy(d, h_a, bytes, cudaMemcpyHostToDevice));
     checkCuda(cudaEventRecord(stopEvent, 0));
     checkCuda(cudaEventSynchronize(stopEvent));
-
+	
+    //times are in miliseconds
     float timeh2d, timed2h;
     checkCuda(cudaEventElapsedTime(&timeh2d, startEvent, stopEvent));
 
