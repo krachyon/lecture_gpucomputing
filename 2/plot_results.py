@@ -66,9 +66,9 @@ def plot_memory():
 
     data = pd.read_csv('result/memory_nvidia.txt', sep=';', comment=None)
     clean_header(data)
-    # PCIE 3.0 x16: 15.75 GB/s
+    # PCIE 2.0 x16: 8 GB/s
     # data is bytes per milisecond
-    theoretical_maximum = data.Size/(1024*1024*1024*15.75/1e3)
+    theoretical_maximum = data.Size/(1024*1024*1024*8/1e3)
 
     plt.loglog(data.Size, data.H2DPage, label='H2DPage')
     plt.loglog(data.Size, data.H2DPin, label='H2DPin')
@@ -85,7 +85,7 @@ def plot_memory():
     data = pd.read_csv('result/memory.txt', sep=';', comment=None)
     clean_header(data)
     # data is bytes per nanosecond
-    theoretical_maximum = data.Size/(1024*1024*1024*15.75/1e9)
+    theoretical_maximum = data.Size/(1024*1024*1024*8/1e9)
 
     plt.figure()
     plt.loglog(data.Size, data.H2DPage, label='H2DPage')
