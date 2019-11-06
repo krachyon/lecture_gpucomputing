@@ -27,11 +27,11 @@ Another interesting feature of the clocks to runtime dependency seems to be that
 
 ## 2.3
 
-![memory throughput with flawed measurement](./plots/memory_error.svg){width=80%}
+![memory throughput with flawed measurement](./plots/memory_error.svg){width=110%}
 
 Initially a measurement of allocating 
 two blocks of memory on the host/device, zeroing them, performing a single `cudaMemcpy()` and measuring with `std::chrono::high_resolution_clock` was attempted, however for the paged memory this yielded unrealistic speeds where the copy time from/to paged host memory was not only faster than pinned memory, but also went faster than the theoretical maximum throughput of PCIe 2.0 (8GB/s).
 
-![memory throughput](./plots/memory.svg){width=80%}
+![memory throughput](./plots/memory.svg){width=110%}
 
 A second attempt was made to modify [this example by nvidia](https://raw.githubusercontent.com/NVIDIA-developer-blog/code-samples/master/series/cuda-cpp/optimize-data-transfers/bandwidthtest.cu) which allocates two blocks of host memory, writes ascending number into the first, copies it to the device, copies back from device to the second block and compares the host blocks. This seems to get around whatever optimization caused the copy with paged memory to be deferred/omitted. The result is along expectations, with copy operations with pinned memory being about 5 times quicker than paged memory operations after a constant overhead was no longer relevant at about 0.5 MB
