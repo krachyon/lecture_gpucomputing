@@ -3,7 +3,7 @@ project(ex3 LANGUAGES CXX CUDA)
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -Wall -Wextra")
-set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -O2 -arch=sm_20")
+set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -O2 -arch=sm_35")
 set(CMAKE_CUDA)
 
 add_library(util STATIC
