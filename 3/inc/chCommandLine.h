@@ -38,18 +38,7 @@
 
 #include <string.h>
 #include <stdlib.h>
-
-static void
-chCommandLinePassback(int* p, char* s)
-{
-    *p = atoi(s);
-}
-
-static void
-chCommandLinePassback(char** p, char* s)
-{
-    *p = s;
-}
+#include <boost/lexical_cast.hpp>
 
 //
 // Passes back an integer or string
@@ -67,7 +56,7 @@ static bool chCommandLineGet(T* p, const char* keyword, int argc, char* argv[])
             }
             if (!strcmp(s, keyword)) {
                 if (++i<=argc) {
-                    chCommandLinePassback(p, argv[i]);
+                    *p = boost::lexical_cast<T>(argv[i]);
                     ret = true;
                 }
             }

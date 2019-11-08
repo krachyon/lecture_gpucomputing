@@ -1,11 +1,13 @@
 /*CPP Class for chTimer.h*/
-
+#pragma once
 #include <chTimer.h>
 
 class ChTimer {
 
 public:
-    ChTimer(){};
+    ChTimer()
+        :m_start{-1,-1}, m_end{-1,-1}
+    {};
     ~ChTimer(){};
 
     //

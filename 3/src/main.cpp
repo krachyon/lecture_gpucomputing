@@ -18,6 +18,7 @@
 #include <stdio.h>
 #include <assert.h>
 #include <cuda_runtime.h>
+#include "memcopy_benchmark.h"
 
 const static int DEFAULT_MEM_SIZE = 10*1024*1024; // 10 MB
 const static int DEFAULT_NUM_ITERATIONS = 1000;
@@ -58,38 +59,37 @@ int main(int argc, char* argv[])
               << "*** Starting ..." << std::endl
               << "***" << std::endl;
 
-    ChTimer memCpyH2DTimer, memCpyD2HTimer, memCpyD2DTimer;
     ChTimer kernelTimer;
 
     //
     // Get kernel launch parameters and configuration
     //
-    int optNumIterations = 0,
+    size_t optNumIterations = 0,
             optBlockSize = 0,
             optGridSize = 0;
 
     // Number of Iterations
-    chCommandLineGet<int>(&optNumIterations, "i", argc, argv);
-    chCommandLineGet<int>(&optNumIterations, "iterations", argc, argv);
+    chCommandLineGet<size_t>(&optNumIterations, "i", argc, argv);
+    chCommandLineGet<size_t>(&optNumIterations, "iterations", argc, argv);
     optNumIterations = (optNumIterations!=0) ? optNumIterations : DEFAULT_NUM_ITERATIONS;
 
     // Block Dimension / Threads per Block
-    chCommandLineGet<int>(&optBlockSize, "t", argc, argv);
-    chCommandLineGet<int>(&optBlockSize, "threads-per-block", argc, argv);
+    chCommandLineGet<size_t>(&optBlockSize, "t", argc, argv);
+    chCommandLineGet<size_t>(&optBlockSize, "threads-per-block", argc, argv);
     optBlockSize = optBlockSize!=0 ? optBlockSize : DEFAULT_BLOCK_DIM;
 
     if (optBlockSize>1024) {
         std::cout << "***" << std::endl
                   << "*** Error - The number of threads per block is too big"
                   << std::endl
-                  << "***[0m" << std::endl;
+                  << "***" << std::endl;
 
         exit(-1);
     }
 
     // Grid Dimension
-    chCommandLineGet<int>(&optGridSize, "g", argc, argv);
-    chCommandLineGet<int>(&optGridSize, "grid-dim", argc, argv);
+    chCommandLineGet<size_t>(&optGridSize, "g", argc, argv);
+    chCommandLineGet<size_t>(&optGridSize, "grid-dim", argc, argv);
     optGridSize = optGridSize!=0 ? optGridSize : DEFAULT_GRID_DIM;
 
     // Sync after each Kernel Launch
@@ -107,7 +107,7 @@ int main(int argc, char* argv[])
     chCommandLineGet<int>(&optOffset, "offset", argc, argv);
 
     // Allocate Memory (take optStride resp. optOffset into account)
-    int optMemorySize = 0;
+    size_t optMemorySize = 0;
 
     if (chCommandLineGetBool("global-stride", argc, argv)) {
         // determine memory size from kernel launch parameters and stride
@@ -123,96 +123,35 @@ int main(int argc, char* argv[])
     }
     else {
         // determine memory size from parameters
-        chCommandLineGet<int>(&optMemorySize, "s", argc, argv);
-        chCommandLineGet<int>(&optMemorySize, "size", argc, argv);
+        chCommandLineGet<size_t>(&optMemorySize, "s", argc, argv);
+        chCommandLineGet<size_t>(&optMemorySize, "size", argc, argv);
         optMemorySize = optMemorySize!=0 ? optMemorySize : DEFAULT_MEM_SIZE;
     }
 
-    //
-    // Host Memory
-    //
-    int* h_memoryA = NULL;
-    int* h_memoryB = NULL;
     bool optUsePinnedMemory = chCommandLineGetBool("p", argc, argv);
     if (!optUsePinnedMemory)
         optUsePinnedMemory = chCommandLineGetBool("pinned-memory", argc, argv);
 
-    if (!optUsePinnedMemory) { // Pageable
-        std::cout << "***" << " Using pageable memory" << std::endl;
-        h_memoryA = static_cast <int*> ( malloc(static_cast <size_t> ( optMemorySize )));
-        h_memoryB = static_cast <int*> ( malloc(static_cast <size_t> ( optMemorySize )));
-    }
-    else { // Pinned
-        std::cout << "***" << " Using pinned memory" << std::endl;
-        cudaMallocHost(&h_memoryA, optMemorySize);
-        cudaMallocHost(&h_memoryB, optMemorySize);
-    }
-
-    //
-    // Device Memory
-    //
-    int* d_memoryA = NULL;
-    int* d_memoryB = NULL;
-    cudaMalloc(&d_memoryA, optMemorySize);
-    cudaMalloc(&d_memoryB, optMemorySize);
-
-
-    if (!h_memoryA || !h_memoryB || !d_memoryA || !d_memoryB) {
-        std::cout << "\033[31m***" << std::endl
-                  << "*** Error - Memory allocation failed" << std::endl
-                  << "***\033[0m" << std::endl;
-
-        exit(-1);
-    }
-
-    //
-    // Copy
-    //
     int optMemCpyIterations = 0;
     chCommandLineGet<int>(&optMemCpyIterations, "im", argc, argv);
     chCommandLineGet<int>(&optMemCpyIterations, "memory-copy-iterations", argc, argv);
     optMemCpyIterations = optMemCpyIterations!=0 ? optMemCpyIterations : 1;
 
-    // Host To Device
-    memCpyH2DTimer.start();
-    for (int i = 0; i<optMemCpyIterations; i++) {
-        cudaMemcpy(h_memoryA, d_memoryA, optMemorySize, cudaMemcpyHostToDevice);
-    }
-    memCpyH2DTimer.stop();
 
-    // Device To Device
-    memCpyD2DTimer.start();
-    for (int i = 0; i<optMemCpyIterations; i++) {
-        cudaMemcpy(d_memoryA, d_memoryB, optMemorySize, cudaMemcpyDeviceToDevice);
+    // Parameter gathering done, let's do something useful
 
-    }
-    memCpyD2DTimer.stop();
-
-    // Device To Host
-    memCpyD2HTimer.start();
-    for (int i = 0; i<optMemCpyIterations; i++) {
-        cudaMemcpy(d_memoryB, h_memoryB, optMemorySize, cudaMemcpyDeviceToHost);
-    }
-    memCpyD2HTimer.stop();
-
-    //
-    // Check for Errors
-    //
-    cudaError_t cudaError = cudaGetLastError();
-    if (cudaError!=cudaSuccess) {
-        std::cout << "***" << std::endl
-                  << "***ERROR*** " << cudaError << " - " << cudaGetErrorString(cudaError)
-                  << std::endl
-                  << "***" << std::endl;
-
-        return -1;
+    //Memcopy test here
+    Timers memcopy_timers{ChTimer(), ChTimer(), ChTimer()};
+    bool optMemcopy = chCommandLineGetBool("memcpy", argc, argv);
+    if (optMemcopy) {
+        memcopy_timers = memcpy_benchmark(optUsePinnedMemory, optMemorySize, optMemCpyIterations);
     }
 
     //
     // Global Memory Tests
     //
     kernelTimer.start();
-    for (int i = 0; i<optNumIterations; i++) {
+    for (size_t i = 0; i<optNumIterations; i++) {
         //
         // Launch Kernel
         //
@@ -238,10 +177,10 @@ int main(int argc, char* argv[])
             //
             cudaError_t cudaError = cudaGetLastError();
             if (cudaError!=cudaSuccess) {
-                std::cout << "\033[31m***" << std::endl
+                std::cout << "***" << std::endl
                           << "***ERROR*** " << cudaError << " - " << cudaGetErrorString(cudaError)
                           << std::endl
-                          << "***\033[0m" << std::endl;
+                          << "***" << std::endl;
 
                 return -1;
             }
@@ -255,7 +194,7 @@ int main(int argc, char* argv[])
     //
     // Check for Errors
     //
-    cudaError = cudaGetLastError();
+    cudaError_t cudaError = cudaGetLastError();
     if (cudaError!=cudaSuccess) {
         std::cout << "***" << std::endl
                   << "***ERROR*** " << cudaError << " - " << cudaGetErrorString(cudaError)
@@ -268,18 +207,18 @@ int main(int argc, char* argv[])
     // Print Measurement Results
     std::cout << "Results for cudaMemcpy:" << std::endl
               << "Size: " << std::setw(10) << optMemorySize << "B"
-              << "***     Time to Copy (H2D): " << 1e6 * memCpyH2DTimer.getTime() << " µs" << std::endl;
+              << "***     Time to Copy (H2D): " << 1e6*memcopy_timers.H2D.getTime() << " µs" << std::endl;
     std::cout.precision(2);
     std::cout << ", H2D: " << std::fixed << std::setw(6)
-              << 1e-9*memCpyH2DTimer.getBandwidth(optMemorySize, optMemCpyIterations) << " GB/s"
-              << "***     Time to Copy (D2H): " << 1e6 * memCpyD2HTimer.getTime() << " µs" << std::endl
+              << 1e-9*memcopy_timers.H2D.getBandwidth(optMemorySize, optMemCpyIterations) << " GB/s"
+              << "***     Time to Copy (D2H): " << 1e6*memcopy_timers.D2H.getTime() << " µs" << std::endl
               << ", D2H: " << std::fixed << std::setw(6)
-              << 1e-9*memCpyD2HTimer.getBandwidth(optMemorySize, optMemCpyIterations) << " GB/s"
-              << "***     Time to Copy (D2D): " << 1e6 * memCpyD2DTimer.getTime() << " µs" << std::endl
+              << 1e-9*memcopy_timers.D2H.getBandwidth(optMemorySize, optMemCpyIterations) << " GB/s"
+              << "***     Time to Copy (D2D): " << 1e6*memcopy_timers.D2D.getTime() << " µs" << std::endl
               << ", D2D: " << std::fixed << std::setw(6)
-              << 1e-9*memCpyD2DTimer.getBandwidth(optMemorySize, optMemCpyIterations) << " GB/s"
+              << 1e-9*memcopy_timers.D2D.getBandwidth(optMemorySize, optMemCpyIterations) << " GB/s"
               << "***     Kernel (Start-Up) Time: "
-              << 1e6 * kernelTimer.getTime(optNumIterations)
+              << 1e6*kernelTimer.getTime(optNumIterations)
               << " µs" << std::endl
               << std::endl;
 
@@ -325,6 +264,8 @@ printHelp(char* programName)
             << "  " << programName << " [-p] [-s <memory_size>] [-i <num_iterations>]" << std::endl
             << "                [-t <threads_per_block>] [-g <blocks_per_grid]" << std::endl
             << "                [-m <memory-copy-iterations>] [-y] [-stride <stride>] [-offset <offset>]" << std::endl
+            << "  --memcpy" << std::endl
+            << "    Run memcopy benchmark" << std::endl
             << "  --global-{coalesced|stride|offset}" << std::endl
             << "    Run kernel analyzing global memory performance" << std::endl
             << "  -p|--pinned-memory" << std::endl
