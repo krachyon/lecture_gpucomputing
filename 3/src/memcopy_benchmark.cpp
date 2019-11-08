@@ -72,6 +72,8 @@ Timers memcpy_benchmark(bool optUsePinnedMemory, size_t optMemorySize, size_t op
     }
     memCpyD2HTimer.stop();
 
+    cudaFree(d_memoryA);
+    cudaFree(d_memoryB);
 //
 // Check for Errors
 //

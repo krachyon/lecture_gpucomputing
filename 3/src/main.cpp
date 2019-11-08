@@ -35,9 +35,9 @@ void printHelp(char*);
 //
 
 
-extern void globalMemCoalescedKernel_Wrapper(dim3 gridDim, dim3 blockDim /*TODO Parameters*/);
-extern void globalMemStrideKernel_Wrapper(dim3 gridDim, dim3 blockDim /*TODO Parameters*/);
-extern void globalMemOffsetKernel_Wrapper(dim3 gridDim, dim3 blockDim /*TODO Parameters*/);
+extern void  globalMemCoalescedKernel_Wrapper(dim3 gridDim, dim3 blockDim, float* in, float* out, size_t n_elements);
+extern void globalMemStrideKernel_Wrapper(dim3 gridDim, dim3 blockDim, float* in, float* out, size_t stride);
+extern void globalMemOffsetKernel_Wrapper(dim3 gridDim, dim3 blockDim, float* in, float* out, size_t offset);
 
 //
 // Main
@@ -106,27 +106,16 @@ int main(int argc, char* argv[])
     int optOffset = 0; //default offset for global-stride test
     chCommandLineGet<int>(&optOffset, "offset", argc, argv);
 
-    // Allocate Memory (take optStride resp. optOffset into account)
+    // Allocate Memory
+    // optStride resp. optOffset are NOT taken into account. Just make sure to allocate enough for these ops.
     size_t optMemorySize = 0;
 
-    if (chCommandLineGetBool("global-stride", argc, argv)) {
-        // determine memory size from kernel launch parameters and stride
-        optMemorySize = optGridSize*optBlockSize*optStride*sizeof optMemorySize;
-        std::cout << "*** Ignoring size parameter; using kernel launch parameters and stride, size=" << optMemorySize
-                  << std::endl;
-    }
-    else if (chCommandLineGetBool("global-offset", argc, argv)) {
-        // determine memory size from kernel launch parameters and stride
-        optMemorySize = optGridSize*optBlockSize+optOffset*sizeof optMemorySize;
-        std::cout << "*** Ignoring size parameter; using kernel launch parameters and offset, size=" << optMemorySize
-                  << std::endl;
-    }
-    else {
-        // determine memory size from parameters
-        chCommandLineGet<size_t>(&optMemorySize, "s", argc, argv);
+    // determine memory size from parameters
+    chCommandLineGet<size_t>(&optMemorySize, "s", argc, argv);
+    if(optMemorySize == 0)
         chCommandLineGet<size_t>(&optMemorySize, "size", argc, argv);
-        optMemorySize = optMemorySize!=0 ? optMemorySize : DEFAULT_MEM_SIZE;
-    }
+    optMemorySize = optMemorySize!=0 ? optMemorySize : DEFAULT_MEM_SIZE;
+    size_t n_elements = optMemorySize * sizeof(float);
 
     bool optUsePinnedMemory = chCommandLineGetBool("p", argc, argv);
     if (!optUsePinnedMemory)
@@ -150,20 +139,25 @@ int main(int argc, char* argv[])
     //
     // Global Memory Tests
     //
+
+    float* d_memoryA;
+    float* d_memoryB;
+    cudaMalloc(&d_memoryA, optMemorySize);
+    cudaMalloc(&d_memoryB, optMemorySize);
+
     kernelTimer.start();
     for (size_t i = 0; i<optNumIterations; i++) {
         //
         // Launch Kernel
         //
         if (chCommandLineGetBool("global-coalesced", argc, argv)) {
-
-            globalMemCoalescedKernel_Wrapper(grid_dim, block_dim /*TODO Parameters*/);
+            globalMemCoalescedKernel_Wrapper(grid_dim, block_dim, d_memoryA, d_memoryB, n_elements);
         }
         else if (chCommandLineGetBool("global-stride", argc, argv)) {
-            globalMemStrideKernel_Wrapper(grid_dim, block_dim /*TODO Parameters*/);
+            globalMemStrideKernel_Wrapper(grid_dim, block_dim, d_memoryA, d_memoryB, optStride);
         }
         else if (chCommandLineGetBool("global-offset", argc, argv)) {
-            globalMemOffsetKernel_Wrapper(grid_dim, block_dim /*TODO Parameters*/);
+            globalMemOffsetKernel_Wrapper(grid_dim, block_dim, d_memoryA, d_memoryB, optOffset);
         }
         else {
             break;
@@ -273,7 +267,8 @@ printHelp(char* programName)
             << "  -y|--synchronize-kernel" << std::endl
             << "    Synchronize device after each kernel launch" << std::endl
             << "  -s <memory_size>|--size <memory_size>" << std::endl
-            << "    The amount of memory to allocate" << std::endl
+            << "    The amount of memory to allocate. Make sure that you make it divisible by 't' and to"
+            << "    Allocate enough t*stride and t + offset for the respective operation" << std::endl
             << "  -t <threads_per_block>|--threads-per-block <threads_per_block>" << std::endl
             << "    The number of threads per block" << std::endl
             << "  -g <blocks_per_grid>|--grid-dim <blocks_per_grid>" << std::endl
