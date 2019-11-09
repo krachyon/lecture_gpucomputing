@@ -211,9 +211,9 @@ int main(int argc, char* argv[])
         
         size_t stride_offset = 0;
         if(optStride != 1) 
-            stride_offset == optStride;
+            stride_offset = optStride;
         else if(optOffset != 0)
-            stride_offset == optOffset
+            stride_offset = optOffset;
 
         std::cout << "#type, size, stride_offset, gDim, bDim, time(μs), bandwidth(GB/s)" << std::endl;        
 
