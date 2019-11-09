@@ -1,18 +1,29 @@
 #include "memcopy_benchmark.h"
 #include <iostream>
 
+inline cudaError_t checkCuda(cudaError_t result)
+{
+#if defined(DEBUG) || defined(_DEBUG)
+    if (result != cudaSuccess) {
+      fprintf(stderr, "CUDA Runtime Error: %s\n", cudaGetErrorString(result));
+      assert(result == cudaSuccess);
+    }
+#endif
+    return result;
+}
+
 Timers memcpy_benchmark(bool optUsePinnedMemory, size_t optMemorySize, size_t optMemCpyIterations)
 {
     ChTimer memCpyH2DTimer, memCpyD2HTimer, memCpyD2DTimer;
 
-    int* h_memoryA = nullptr;
-    int* h_memoryB = nullptr;
+    float* h_memoryA = nullptr;
+    float* h_memoryB = nullptr;
 
 
     if (!optUsePinnedMemory) { // Pageable
         std::cout << "***" << " Using pageable memory" << std::endl;
-        h_memoryA = static_cast <int*> ( malloc(static_cast <size_t> ( optMemorySize )));
-        h_memoryB = static_cast <int*> ( malloc(static_cast <size_t> ( optMemorySize )));
+        h_memoryA = (float*)malloc( optMemorySize );
+        h_memoryB = (float*)malloc( optMemorySize );
     }
     else { // Pinned
         std::cout << "***" << " Using pinned memory" << std::endl;
@@ -23,12 +34,13 @@ Timers memcpy_benchmark(bool optUsePinnedMemory, size_t optMemorySize, size_t op
 //
 // Device Memory
 //
-    int* d_memoryA = nullptr;
-    int* d_memoryB = nullptr;
+    float* d_memoryA = nullptr;
+    float* d_memoryB = nullptr;
     cudaMalloc(&d_memoryA, optMemorySize);
     cudaMalloc(&d_memoryB, optMemorySize);
 
     cudaError_t cudaError = cudaGetLastError();
+
     if (!h_memoryA || !h_memoryB || !d_memoryA || !d_memoryB || cudaError!=cudaSuccess) {
         std::cout << "**" << std::endl
                   << "*** Error - Memory allocation failed" << std::endl
@@ -52,15 +64,16 @@ Timers memcpy_benchmark(bool optUsePinnedMemory, size_t optMemorySize, size_t op
 
 // Host To Device
     memCpyH2DTimer.start();
+
     for (size_t i = 0; i<optMemCpyIterations; i++) {
-        cudaMemcpy(h_memoryA, d_memoryA, optMemorySize, cudaMemcpyHostToDevice);
+        cudaMemcpy(d_memoryA, h_memoryA, optMemorySize, cudaMemcpyHostToDevice);
     }
     memCpyH2DTimer.stop();
 
 // Device To Device
     memCpyD2DTimer.start();
     for (size_t i = 0; i<optMemCpyIterations; i++) {
-        cudaMemcpy(d_memoryA, d_memoryB, optMemorySize, cudaMemcpyDeviceToDevice);
+        cudaMemcpy(d_memoryB, d_memoryA, optMemorySize, cudaMemcpyDeviceToDevice);
 
     }
     memCpyD2DTimer.stop();
@@ -68,7 +81,7 @@ Timers memcpy_benchmark(bool optUsePinnedMemory, size_t optMemorySize, size_t op
 // Device To Host
     memCpyD2HTimer.start();
     for (size_t i = 0; i<optMemCpyIterations; i++) {
-        cudaMemcpy(d_memoryB, h_memoryB, optMemorySize, cudaMemcpyDeviceToHost);
+        cudaMemcpy(h_memoryB, d_memoryB, optMemorySize, cudaMemcpyDeviceToHost);
     }
     memCpyD2HTimer.stop();
 
@@ -77,6 +90,7 @@ Timers memcpy_benchmark(bool optUsePinnedMemory, size_t optMemorySize, size_t op
 //
 // Check for Errors
 //
+
     cudaError = cudaGetLastError();
     if (cudaError!=cudaSuccess) {
         std::cout << "***" << std::endl

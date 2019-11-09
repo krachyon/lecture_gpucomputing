@@ -15,10 +15,10 @@
 #include <cstdlib>
 #include "chCommandLine.h"
 #include "chTimer.hpp"
-#include <stdio.h>
-#include <assert.h>
-#include <cuda_runtime.h>
+#include <cstdio>
+#include <cassert>
 #include "memcopy_benchmark.h"
+
 
 const static int DEFAULT_MEM_SIZE = 10*1024*1024; // 10 MB
 const static int DEFAULT_NUM_ITERATIONS = 1000;
@@ -54,10 +54,6 @@ int main(int argc, char* argv[])
         printHelp(argv[0]);
         exit(0);
     }
-
-    std::cout << "***" << std::endl
-              << "*** Starting ..." << std::endl
-              << "***" << std::endl;
 
     ChTimer kernelTimer;
 
@@ -199,54 +195,31 @@ int main(int argc, char* argv[])
     }
 
     // Print Measurement Results
-    std::cout << "Results for cudaMemcpy:" << std::endl
-              << "Size: " << std::setw(10) << optMemorySize << "B"
-              << "***     Time to Copy (H2D): " << 1e6*memcopy_timers.H2D.getTime() << " µs" << std::endl;
-    std::cout.precision(2);
-    std::cout << ", H2D: " << std::fixed << std::setw(6)
-              << 1e-9*memcopy_timers.H2D.getBandwidth(optMemorySize, optMemCpyIterations) << " GB/s"
-              << "***     Time to Copy (D2H): " << 1e6*memcopy_timers.D2H.getTime() << " µs" << std::endl
-              << ", D2H: " << std::fixed << std::setw(6)
-              << 1e-9*memcopy_timers.D2H.getBandwidth(optMemorySize, optMemCpyIterations) << " GB/s"
-              << "***     Time to Copy (D2D): " << 1e6*memcopy_timers.D2D.getTime() << " µs" << std::endl
-              << ", D2D: " << std::fixed << std::setw(6)
-              << 1e-9*memcopy_timers.D2D.getBandwidth(optMemorySize, optMemCpyIterations) << " GB/s"
-              << "***     Kernel (Start-Up) Time: "
-              << 1e6*kernelTimer.getTime(optNumIterations)
-              << " µs" << std::endl
-              << std::endl;
-
-    if (chCommandLineGetBool("global-coalesced", argc, argv)) {
-        std::cout << "Coalesced copy of global memory, size=" << std::setw(10) << optMemorySize << ", gDim="
-                  << std::setw(5) << grid_dim.x << ", bDim=" << std::setw(5) << block_dim.x;
-        std::cout << ", time=" << kernelTimer.getTime(optNumIterations);
-        std::cout.precision(2);
-        std::cout << ", bw=" << std::fixed << std::setw(6) << optMemorySize/kernelTimer.getTime(optNumIterations)/(1E09)
-                  << "GB/s" << std::endl;
-    }
-
-    if (chCommandLineGetBool("global-stride", argc, argv)) {
-        std::cout << "Strided(" << std::setw(3) << optStride << ") copy of global memory, size=" << std::setw(10)
-                  << optMemorySize << ", gDim=" << std::setw(5) << grid_dim.x << ", bDim=" << std::setw(5)
-                  << block_dim.x;
-        std::cout << ", time=" << kernelTimer.getTime(optNumIterations);
-        std::cout.precision(2);
-        std::cout << ", bw=" << std::fixed << std::setw(6)
-                  << (grid_dim.x*block_dim.x)*sizeof(int)/kernelTimer.getTime(optNumIterations)/(1E09) << "GB/s"
+    if(optMemcopy) {
+        std::cout << "#size, H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)" << std::endl
+                  << optMemorySize << ","
+                  << 1e6*memcopy_timers.H2D.getTime() << 1e-9*memcopy_timers.H2D.getBandwidth(optMemorySize, optMemCpyIterations) << ","
+                  << 1e6*memcopy_timers.D2H.getTime() << 1e-9*memcopy_timers.D2H.getBandwidth(optMemorySize, optMemCpyIterations) << ","
+                  << 1e6*memcopy_timers.D2D.getTime() << 1e-9*memcopy_timers.D2D.getBandwidth(optMemorySize, optMemCpyIterations) << ","
                   << std::endl;
     }
+    else {
+        std::string type = "invalid";
+        if(chCommandLineGetBool("global-coalesced", argc, argv)) type = "global-coalesced";
+        if(chCommandLineGetBool("global-stride", argc, argv)) type = "global-stride";
+        if(chCommandLineGetBool("global-offset", argc, argv)) type = "global-offset";
 
-    if (chCommandLineGetBool("global-offset", argc, argv)) {
-        std::cout << "Offset(" << std::setw(3) << optOffset << ") copy of global memory, size=" << std::setw(10)
-                  << optMemorySize << ", gDim=" << std::setw(5) << grid_dim.x << ", bDim=" << std::setw(5)
-                  << block_dim.x;
-        std::cout << ", time=" << kernelTimer.getTime(optNumIterations);
-        std::cout.precision(2);
-        std::cout << ", bw=" << std::fixed << std::setw(6)
-                  << (grid_dim.x*block_dim.x)*sizeof(int)/kernelTimer.getTime(optNumIterations)/(1E09) << "GB/s"
-                  << std::endl;
+        std::cout << "#type, size, gDim, bDim, time(μs), bandwidth(GB/s)" << std::endl;
+
+        std::cout << type <<", "
+        << optMemorySize  <<", "
+        << grid_dim.x <<", "
+        << block_dim.x <<", "
+        << kernelTimer.getTime(optNumIterations) <<", "
+        << optMemorySize/kernelTimer.getTime(optNumIterations)/(1E09)
+        << std::endl;
+
     }
-
     return 0;
 }
 
