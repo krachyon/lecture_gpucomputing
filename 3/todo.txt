@@ -1,0 +1,2 @@
+ - get rid of extra non-error output
+ - figure out why the coalesced/stride/offset parts complain
