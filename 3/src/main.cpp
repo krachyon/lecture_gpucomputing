@@ -208,11 +208,18 @@ int main(int argc, char* argv[])
         if(chCommandLineGetBool("global-coalesced", argc, argv)) type = "global-coalesced";
         if(chCommandLineGetBool("global-stride", argc, argv)) type = "global-stride";
         if(chCommandLineGetBool("global-offset", argc, argv)) type = "global-offset";
+        
+        size_t stride_offset = 0;
+        if(optStride != 1) 
+            stride_offset == optStride;
+        else if(optOffset != 0)
+            stride_offset == optOffset
 
-        std::cout << "#type, size, gDim, bDim, time(μs), bandwidth(GB/s)" << std::endl;
+        std::cout << "#type, size, stride_offset, gDim, bDim, time(μs), bandwidth(GB/s)" << std::endl;        
 
         std::cout << type <<", "
         << optMemorySize  <<", "
+        << stride_offset <<", "
         << grid_dim.x <<", "
         << block_dim.x <<", "
         << kernelTimer.getTime(optNumIterations) <<", "
