@@ -21,12 +21,12 @@ Timers memcpy_benchmark(bool optUsePinnedMemory, size_t optMemorySize, size_t op
 
 
     if (!optUsePinnedMemory) { // Pageable
-        std::cout << "***" << " Using pageable memory" << std::endl;
+
         h_memoryA = (float*)malloc( optMemorySize );
         h_memoryB = (float*)malloc( optMemorySize );
     }
     else { // Pinned
-        std::cout << "***" << " Using pinned memory" << std::endl;
+
         cudaMallocHost(&h_memoryA, optMemorySize);
         cudaMallocHost(&h_memoryB, optMemorySize);
     }
