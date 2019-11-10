@@ -24,6 +24,7 @@ const static int DEFAULT_MEM_SIZE = 10*1024*1024; // 10 MB
 const static int DEFAULT_NUM_ITERATIONS = 1000;
 const static int DEFAULT_BLOCK_DIM = 128;
 const static int DEFAULT_GRID_DIM = 16;
+double const gigabyte = 1e9; // not Gibibyte!
 
 //
 // Function Prototypes
@@ -42,6 +43,7 @@ extern void globalMemOffsetKernel_Wrapper(dim3 gridDim, dim3 blockDim, float* in
 //
 // Main
 //
+
 
 int main(int argc, char* argv[])
 {
@@ -196,12 +198,13 @@ int main(int argc, char* argv[])
 
     // Print Measurement Results
     if(optMemcopy) {
-        std::cout << "#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)" << std::endl
+
+        std::cout << "#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(μs), D2D(GBs)" << std::endl
                   << optMemorySize << ", "
                   << optUsePinnedMemory << ", "
-                  << 1e6*memcopy_timers.H2D.getTime() << 1e-9*memcopy_timers.H2D.getBandwidth(optMemorySize, optMemCpyIterations) << ", "
-                  << 1e6*memcopy_timers.D2H.getTime() << 1e-9*memcopy_timers.D2H.getBandwidth(optMemorySize, optMemCpyIterations) << ", "
-                  << 1e6*memcopy_timers.D2D.getTime() << 1e-9*memcopy_timers.D2D.getBandwidth(optMemorySize, optMemCpyIterations) << ", "
+                  << 1e6*memcopy_timers.H2D.getTime() <<", "<< memcopy_timers.H2D.getBandwidth(optMemorySize/8, optMemCpyIterations)/gigabyte << ", "
+                  << 1e6*memcopy_timers.D2H.getTime() <<", "<< memcopy_timers.D2H.getBandwidth(optMemorySize/8, optMemCpyIterations)/gigabyte << ", "
+                  << 1e6*memcopy_timers.D2D.getTime() <<", "<< memcopy_timers.D2D.getBandwidth(optMemorySize/8, optMemCpyIterations)/gigabyte << ", "
                   << std::endl;
     }
     else {
@@ -217,20 +220,19 @@ int main(int argc, char* argv[])
         else if(optOffset != 0)
             stride_offset = optOffset;
 
-        size_t us_per_second = 1000 * 1000;
-        double bandwidth = 0;
+        double bandwidth = 0; // in GB/s
         if(coalesced) {
-            size_t bytes = optMemorySize * 8;
-            bandwidth = bytes/(kernelTimer.getTime(optNumIterations) / us_per_second);
+            size_t bytes = optMemorySize / 8;
+            bandwidth = bytes/gigabyte/kernelTimer.getTime(optNumIterations);
         }
         else
         {
             // every thread in each block only copies one float element
-            size_t bytes_total = optBlockSize * optGridSize * sizeof(float);
-            bandwidth = bytes_total /( kernelTimer.getTime(optNumIterations) / us_per_second);
+            size_t bytes_total = optBlockSize * optGridSize * sizeof(float) / 8;
+            bandwidth = bytes_total/gigabyte/kernelTimer.getTime(optNumIterations);
         }
 
-        std::cout << "#type, size, stride_offset, gDim, bDim, time(μs), bandwidth(GB/s)" << std::endl;        
+        std::cout << "#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)" << std::endl;
 
         std::cout << type <<", "
         << optMemorySize  <<", "

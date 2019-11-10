@@ -23,7 +23,7 @@ public:
     stop()  { chTimerGetTime( &m_end ); return 0; };
 
     //
-    // Get elapsed Time
+    // Get elapsed Time in seconds
     //
     double 
     getTime() { return chTimerElapsedTime( &m_start, &m_end ); };
