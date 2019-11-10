@@ -111,7 +111,7 @@ int main(int argc, char* argv[])
     if(optMemorySize == 0)
         chCommandLineGet<size_t>(&optMemorySize, "size", argc, argv);
     optMemorySize = optMemorySize!=0 ? optMemorySize : DEFAULT_MEM_SIZE;
-    size_t n_elements = optMemorySize * sizeof(float);
+    size_t n_elements = optMemorySize / sizeof(float);
 
     bool optUsePinnedMemory = chCommandLineGetBool("p", argc, argv);
     if (!optUsePinnedMemory)
@@ -196,11 +196,12 @@ int main(int argc, char* argv[])
 
     // Print Measurement Results
     if(optMemcopy) {
-        std::cout << "#size, H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)" << std::endl
-                  << optMemorySize << ","
-                  << 1e6*memcopy_timers.H2D.getTime() << 1e-9*memcopy_timers.H2D.getBandwidth(optMemorySize, optMemCpyIterations) << ","
-                  << 1e6*memcopy_timers.D2H.getTime() << 1e-9*memcopy_timers.D2H.getBandwidth(optMemorySize, optMemCpyIterations) << ","
-                  << 1e6*memcopy_timers.D2D.getTime() << 1e-9*memcopy_timers.D2D.getBandwidth(optMemorySize, optMemCpyIterations) << ","
+        std::cout << "#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)" << std::endl
+                  << optMemorySize << ", "
+                  << optUsePinnedMemory << ", "
+                  << 1e6*memcopy_timers.H2D.getTime() << 1e-9*memcopy_timers.H2D.getBandwidth(optMemorySize, optMemCpyIterations) << ", "
+                  << 1e6*memcopy_timers.D2H.getTime() << 1e-9*memcopy_timers.D2H.getBandwidth(optMemorySize, optMemCpyIterations) << ", "
+                  << 1e6*memcopy_timers.D2D.getTime() << 1e-9*memcopy_timers.D2D.getBandwidth(optMemorySize, optMemCpyIterations) << ", "
                   << std::endl;
     }
     else {
