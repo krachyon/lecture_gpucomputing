@@ -25,8 +25,8 @@ __device__ __host__ size_t flat(dim3 v)
 __global__ void globalMemCoalescedKernel(float* in, float* out, size_t n_elements)
 {
     //attention: n_elements needs to be cleanly divisible by n_threads
-    size_t n_threads = flat(blockDim);
-    size_t id = flat(threadIdx);
+    size_t n_threads = flat(blockDim)*flat(gridDim);
+    size_t id = flat(blockIdx) * flat(blockDim) + flat(threadIdx);
     size_t chunk = n_elements/n_threads;
 
     for (size_t i = chunk*id; i!=chunk*id+chunk; ++i) {
