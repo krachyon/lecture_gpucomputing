@@ -1,0 +1,102 @@
+
+
+# memcopy, paged
+
+
+#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)
+8192,0, 146.180.560405,198.840.41199,95.8930.854286,
+#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)
+16384,0, 175.6530.932748,241.5150.678384,95.7541.71105,
+#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)
+32768,0, 260.931.25582,322.6011.01574,101.3413.23344,
+#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)
+65536,0, 411.721.59176,489.2441.33954,95.5446.85925,
+#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)
+131072,0, 620.6882.11172,844.0431.55291,99.87513.1236,
+#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)
+262144,0, 969.8982.7028,1347.191.94586,84.0231.2002,
+#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)
+524288,0, 1910.182.7447,2757.791.90112,93.58856.0209,
+#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)
+1048576,0, 3648.342.87412,5403.341.94061,93.239112.461,
+#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)
+2097152,0, 6428.353.26235,9051.342.31695,96.662216.957,
+#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)
+4194304,0, 12760.23.28701,14148.52.96449,94.287444.844,
+#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)
+8388608,0, 25514.43.28779,24476.63.4272,90.096931.074,
+#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)
+16777216,0, 49261.83.40573,40270.94.16609,86.8841930.99,
+#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)
+33554432,0, 96244.73.48636,675294.96889,76.8964363.61,
+#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)
+67108864,0, 1776843.77686,1222705.48857,60.48311095.5,
+#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)
+134217728,0, 3413863.93156,2420875.54419,63.13721258.2,
+#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)
+268435456,0, 6494614.13321,4794345.59901,61.25243824.8,
+#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)
+536870912,0, 1.30727e+064.10682,9563875.61353,81.50665868.9,
+**
+*** Error - Memory allocation failed
+***
+***
+***ERROR*** 2 - out of memory
+***
+**
+*** Error - Memory allocation failed
+***
+***
+***ERROR*** 2 - out of memory
+***
+
+
+# memcopy, pinned
+
+
+#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)
+8192,1, 201.0750.40741,153.0940.535096,97.5690.839611,
+#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)
+16384,1, 195.3490.838704,163.641.00122,92.4711.7718,
+#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)
+32768,1, 220.0031.48943,185.851.76314,90.7953.60901,
+#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)
+65536,1, 292.8492.23788,273.5022.39618,102.046.42258,
+#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)
+131072,1, 401.5223.26438,343.4843.81596,98.26713.3384,
+#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)
+262144,1, 596.6624.39351,540.5094.84995,91.49328.6518,
+#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)
+524288,1, 1023.125.12441,942.1715.56468,91.42357.3475,
+#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)
+1048576,1, 1891.45.54392,1801.585.82031,92.262113.652,
+#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)
+2097152,1, 3689.075.68478,3525.285.94889,122.922170.608,
+#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)
+4194304,1, 7050.565.94889,6932.886.04987,68.445612.799,
+#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)
+8388608,1, 13935.16.01976,13789.46.08339,88.769944.993,
+#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)
+16777216,1, 275906.0809,27466.46.10826,86.5351938.78,
+#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)
+33554432,1, 55048.16.09548,54851.86.11729,83.8814000.24,
+#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)
+67108864,1, 1102156.0889,1095066.12835,62.92810664.4,
+#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)
+134217728,1, 2194106.1172,2188936.13165,66.83920080.8,
+#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)
+268435456,1, 4386236.11996,4379116.12991,58.66745755.8,
+#size,pinned , H2D(μs),H2D(GBs), D2H(μs),D2H(GBs), D2D(), D2D(GBs)
+536870912,1, 8773796.11903,8863786.0569,71.65874921.3,
+**
+*** Error - Memory allocation failed
+***
+***
+***ERROR*** 2 - out of memory
+***
+**
+*** Error - Memory allocation failed
+***
+***
+***ERROR*** 2 - out of memory
+***
