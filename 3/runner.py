@@ -47,6 +47,6 @@ def offset():
 
 if __name__ == '__main__':
     memcpy()
-    #coalesced()
-    #stride()
-    #offset()
+    coalesced()
+    stride()
+    offset()
