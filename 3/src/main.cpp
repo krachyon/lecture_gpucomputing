@@ -206,7 +206,8 @@ int main(int argc, char* argv[])
     }
     else {
         std::string type = "invalid";
-        if(chCommandLineGetBool("global-coalesced", argc, argv)) type = "global-coalesced";
+        bool coalesced = chCommandLineGetBool("global-coalesced", argc, argv);
+        if(coalesced) type = "global-coalesced";
         if(chCommandLineGetBool("global-stride", argc, argv)) type = "global-stride";
         if(chCommandLineGetBool("global-offset", argc, argv)) type = "global-offset";
         
@@ -216,6 +217,19 @@ int main(int argc, char* argv[])
         else if(optOffset != 0)
             stride_offset = optOffset;
 
+        size_t us_per_second = 1000 * 1000;
+        double bandwidth = 0;
+        if(coalesced) {
+            size_t bytes = optMemorySize * 8;
+            bandwidth = bytes/(kernelTimer.getTime(optNumIterations) / us_per_second);
+        }
+        else
+        {
+            // every thread in each block only copies one float element
+            size_t bytes_total = optBlockSize * optGridSize * sizeof(float);
+            bandwidth = bytes_total /( kernelTimer.getTime(optNumIterations) / us_per_second);
+        }
+
         std::cout << "#type, size, stride_offset, gDim, bDim, time(μs), bandwidth(GB/s)" << std::endl;        
 
         std::cout << type <<", "
@@ -224,7 +238,7 @@ int main(int argc, char* argv[])
         << grid_dim.x <<", "
         << block_dim.x <<", "
         << kernelTimer.getTime(optNumIterations) <<", "
-        << optMemorySize/kernelTimer.getTime(optNumIterations)/(1E09)
+        << bandwidth<<", "
         << std::endl;
 
     }
