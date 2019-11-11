@@ -35,7 +35,7 @@ cudaError_t checkCuda(cudaError_t result)
 int main()
 {
 
-    const int N = 1000000;
+    const int N = 1024*1024*400;
 
     double* h_test = (double*) malloc(N*sizeof(double));
 
@@ -51,14 +51,14 @@ int main()
     auto start = high_resolution_clock::now();
     checkCuda(cudaMemcpy(d_out, d_in, N*sizeof(double), cudaMemcpyDeviceToDevice));
     auto end = high_resolution_clock::now();
-    printf("cudaMemcpy timing = %f [ns]\n", std::chrono::duration_cast<nanoseconds>((end-start)).count());
+    printf("cudaMemcpy timing = %i [ns]\n", std::chrono::duration_cast<nanoseconds>((end-start)).count());
 
     start = high_resolution_clock::now();
     copyKernel <<<N/ BLOCKSIZE, BLOCKSIZE >>>(d_in, d_out, N);
     end = high_resolution_clock::now();
     checkCuda(cudaPeekAtLastError());
     checkCuda(cudaDeviceSynchronize());
-    printf("Copy kernel timing = %f [ns]\n", std::chrono::duration_cast<nanoseconds>((end-start)).count());
+    printf("Copy kernel timing = %i [ns]\n", std::chrono::duration_cast<nanoseconds>((end-start)).count());
 
     return 0;
 }
