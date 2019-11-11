@@ -36,17 +36,17 @@ def stride():
     for thread in threads:
         for block in blocks:
             for stride in [2, 3, 4, 5, 6, 7, 8, 9, 10]:
-                os.system(f'./main --global-stride -s {16 * MB * stride} -i 10 -g {block} -t {thread} --stride{stride}')
+                os.system(f'./main --global-stride -i 10 -g {block} -t {thread} --stride {stride}')
 
 def offset():
     print('\n\n# offset\n\n', flush=True)
     for thread in threads:
         for block in blocks:
             for offset in [2, 3, 4, 5, 6, 7, 8, 9, 10]:
-                os.system(f'./main --global-ofset -s {16 * MB + offset} -i 10 -g {block} -t {thread} --offset{offset}')
+                os.system(f'./main --global-ofset -i 10 -g {block} -t {thread} --offset {offset}')
 
 if __name__ == '__main__':
-    memcpy()
-    coalesced()
+    #memcpy()
+    #coalesced()
     stride()
     offset()

@@ -98,11 +98,11 @@ int main(int argc, char* argv[])
     dim3 grid_dim = dim3(optGridSize);
     dim3 block_dim = dim3(optBlockSize);
 
-    int optStride = 1; //default stride for global-stride test
-    chCommandLineGet<int>(&optStride, "stride", argc, argv);
+    size_t optStride = 1; //default stride for global-stride test
+    chCommandLineGet<size_t>(&optStride, "stride", argc, argv);
 
-    int optOffset = 0; //default offset for global-stride test
-    chCommandLineGet<int>(&optOffset, "offset", argc, argv);
+    size_t optOffset = 0; //default offset for global-stride test
+    chCommandLineGet<size_t>(&optOffset, "offset", argc, argv);
 
     // Allocate Memory
     // optStride resp. optOffset are NOT taken into account. Just make sure to allocate enough for these ops.
@@ -137,6 +137,15 @@ int main(int argc, char* argv[])
     //
     // Global Memory Tests
     //
+
+    bool coalesced = chCommandLineGetBool("global-coalesced", argc, argv);
+    bool stride = chCommandLineGetBool("global-stride", argc, argv);
+    bool offset = chCommandLineGetBool("global-offset", argc, argv);
+
+    if (stride)
+        optMemorySize = stride * optBlockSize * optGridSize * sizeof(float);
+    else if(offset)
+        optMemorySize = offset + optBlockSize * optGridSize * sizeof(float);
 
     float* d_memoryA;
     float* d_memoryB;
@@ -209,16 +218,19 @@ int main(int argc, char* argv[])
     }
     else {
         std::string type = "invalid";
-        bool coalesced = chCommandLineGetBool("global-coalesced", argc, argv);
+
         if(coalesced) type = "global-coalesced";
-        if(chCommandLineGetBool("global-stride", argc, argv)) type = "global-stride";
-        if(chCommandLineGetBool("global-offset", argc, argv)) type = "global-offset";
+        if(stride) type = "global-stride";
+        if(offset) type = "global-offset";
         
         size_t stride_offset = 0;
-        if(optStride != 1) 
+
+        if(stride) {
             stride_offset = optStride;
-        else if(optOffset != 0)
+        }
+        else if(offset) {
             stride_offset = optOffset;
+        }
 
         double bandwidth = 0; // in GB/s
         if(coalesced) {
