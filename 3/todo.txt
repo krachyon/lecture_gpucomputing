@@ -1,2 +1,2 @@
- - get rid of extra non-error output
- - figure out why the coalesced/stride/offset parts complain
+- Figure out why d2d copy is nearly instant. Need to copy initialized host mem first?
+- Stride explodes and offset prints wrong data
