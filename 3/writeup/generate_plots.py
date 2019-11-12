@@ -47,15 +47,16 @@ def plotcoalesced(df):
 
 def plotstride_offset(df):
     fig = plt.figure()
-    current_type = df.type[0]
+    typename = str(df.type[0])
+
     for i in df.stride_offset.unique():
         current_type = df[df.stride_offset == i]
-        plt.semilogx(sorted(stride['size']), sorted(current_type['bandwidth(GB/s)']), label=f'{current_type}={i}')
+        plt.loglog(sorted(current_type['size']), sorted(current_type['bandwidth(GB/s)']), label=f'{typename}={i}')
 
     plt.xlabel('data size == gridDim * blockDim')
     plt.ylabel('Bandwidth in GB/s')
     plt.legend()
-    plt.savefig(f'{df.type[0]}.svg')
+    plt.savefig(f'{typename}.svg')
 
 if __name__=='__main__':
     mem, coalesced, stride, offset = readData()

@@ -1,1733 +1,865 @@
-
-
-# offset
-
-
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 5, 2, 1, 1, 1.22014e-05, 0, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 5, 3, 1, 1, 1.11189e-05, 0, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 5, 4, 1, 1, 1.1063e-05, 0, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 5, 5, 1, 1, 1.01131e-05, 0, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 5, 6, 1, 1, 1.35075e-05, 0, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 5, 7, 1, 1, 1.11399e-05, 0, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 5, 8, 1, 1, 1.11259e-05, 0, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 5, 9, 1, 1, 1.12167e-05, 0, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 5, 10, 1, 1, 1.25018e-05, 0, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 9, 2, 2, 1, 1.11748e-05, 8.94871e-05, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 9, 3, 2, 1, 1.15659e-05, 8.64611e-05, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 9, 4, 2, 1, 8.3042e-06, 0.000120421, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 9, 5, 2, 1, 1.09792e-05, 9.10813e-05, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 9, 6, 2, 1, 1.13005e-05, 8.84917e-05, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 9, 7, 2, 1, 1.15729e-05, 8.64088e-05, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 9, 8, 2, 1, 1.0616e-05, 9.41974e-05, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 9, 9, 2, 1, 1.10142e-05, 9.07919e-05, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 9, 10, 2, 1, 1.09933e-05, 9.09645e-05, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 13, 2, 3, 1, 1.09862e-05, 9.10233e-05, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 13, 3, 3, 1, 1.1105e-05, 9.00495e-05, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 13, 4, 3, 1, 1.13005e-05, 8.84917e-05, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 13, 5, 3, 1, 1.09303e-05, 9.14888e-05, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 13, 6, 3, 1, 1.11888e-05, 8.93751e-05, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 13, 7, 3, 1, 1.11189e-05, 8.9937e-05, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 13, 8, 3, 1, 1.08954e-05, 9.17819e-05, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 13, 9, 3, 1, 1.04763e-05, 9.54535e-05, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 13, 10, 3, 1, 1.06928e-05, 9.35209e-05, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 17, 2, 4, 1, 1.28929e-05, 0.000155124, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 17, 3, 4, 1, 1.16706e-05, 0.000171371, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 17, 4, 4, 1, 1.43875e-05, 0.00013901, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 17, 5, 4, 1, 1.14891e-05, 0.000174078, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 17, 6, 4, 1, 1.15101e-05, 0.00017376, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 17, 7, 4, 1, 1.07627e-05, 0.000185827, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 17, 8, 4, 1, 7.7315e-06, 0.000258682, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 17, 9, 4, 1, 1.11398e-05, 0.000179536, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 17, 10, 4, 1, 7.564e-06, 0.00026441, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 21, 2, 5, 1, 1.13005e-05, 0.000176983, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 21, 3, 5, 1, 1.27532e-05, 0.000156823, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 21, 4, 5, 1, 1.14192e-05, 0.000175144, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 21, 5, 5, 1, 6.6071e-06, 0.000302705, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 21, 6, 5, 1, 1.30326e-05, 0.000153461, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 21, 7, 5, 1, 1.04135e-05, 0.000192058, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 21, 8, 5, 1, 1.10072e-05, 0.000181699, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 21, 9, 5, 1, 1.11958e-05, 0.000178638, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 21, 10, 5, 1, 7.9131e-06, 0.000252745, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 2, 10, 1, 1.12795e-05, 0.000443282, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 3, 10, 1, 1.1496e-05, 0.000434934, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 4, 10, 1, 1.00294e-05, 0.000498534, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 5, 10, 1, 1.23412e-05, 0.000405147, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 6, 10, 1, 7.2846e-06, 0.000686379, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 7, 10, 1, 1.10001e-05, 0.000454541, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 8, 10, 1, 1.14891e-05, 0.000435195, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 9, 10, 1, 1.25368e-05, 0.000398826, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 10, 10, 1, 1.13284e-05, 0.000441369, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 2, 20, 1, 1.05393e-05, 0.00094883, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 3, 20, 1, 1.10839e-05, 0.00090221, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 4, 20, 1, 1.29767e-05, 0.000770612, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 5, 20, 1, 8.2554e-06, 0.00121133, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 6, 20, 1, 1.13634e-05, 0.000880018, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 7, 20, 1, 1.07278e-05, 0.000932158, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 8, 20, 1, 1.14192e-05, 0.000875718, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 9, 20, 1, 1.12237e-05, 0.000890972, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 10, 20, 1, 1.08256e-05, 0.000923736, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 129, 2, 32, 1, 6.6071e-06, 0.00242164, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 129, 3, 32, 1, 1.11958e-05, 0.00142911, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 129, 4, 32, 1, 1.11818e-05, 0.0014309, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 129, 5, 32, 1, 9.8059e-06, 0.00163167, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 129, 6, 32, 1, 1.03018e-05, 0.00155313, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 129, 7, 32, 1, 9.2401e-06, 0.00173158, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 129, 8, 32, 1, 9.5754e-06, 0.00167095, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 129, 9, 32, 1, 9.3938e-06, 0.00170325, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 129, 10, 32, 1, 1.11678e-05, 0.00143269, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 9, 2, 1, 2, 1.1063e-05, 9.03914e-05, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 9, 3, 1, 2, 1.12236e-05, 8.9098e-05, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 9, 4, 1, 2, 1.46809e-05, 6.81157e-05, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 9, 5, 1, 2, 9.7849e-06, 0.000102198, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 9, 6, 1, 2, 1.08674e-05, 9.20183e-05, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 9, 7, 1, 2, 1.29418e-05, 7.7269e-05, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 9, 8, 1, 2, 1.22714e-05, 8.14903e-05, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 9, 9, 1, 2, 1.07697e-05, 9.28531e-05, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 9, 10, 1, 2, 8.87e-06, 0.00011274, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 17, 2, 2, 2, 1.14541e-05, 0.00017461, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 17, 3, 2, 2, 1.12307e-05, 0.000178083, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 17, 4, 2, 2, 1.16078e-05, 0.000172298, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 17, 5, 2, 2, 6.6699e-06, 0.000299855, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 17, 6, 2, 2, 1.04485e-05, 0.000191415, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 17, 7, 2, 2, 1.22574e-05, 0.000163167, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 17, 8, 2, 2, 1.18732e-05, 0.000168447, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 17, 9, 2, 2, 1.10351e-05, 0.00018124, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 17, 10, 2, 2, 8.4439e-06, 0.000236857, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 25, 2, 3, 2, 1.09373e-05, 0.000274291, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 25, 3, 3, 2, 1.00015e-05, 0.000299955, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 25, 4, 3, 2, 1.11398e-05, 0.000269305, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 25, 5, 3, 2, 1.12866e-05, 0.000265802, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 25, 6, 3, 2, 1.11119e-05, 0.000269981, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 25, 7, 3, 2, 1.08256e-05, 0.000277121, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 25, 8, 3, 2, 8.2554e-06, 0.000363399, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 25, 9, 3, 2, 1.15659e-05, 0.000259383, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 25, 10, 3, 2, 1.11468e-05, 0.000269136, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 33, 2, 4, 2, 1.13145e-05, 0.000353529, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 33, 3, 4, 2, 1.09862e-05, 0.000364093, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 33, 4, 4, 2, 1.11887e-05, 0.000357504, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 33, 5, 4, 2, 1.10002e-05, 0.00036363, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 33, 6, 4, 2, 1.09304e-05, 0.000365952, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 33, 7, 4, 2, 1.24179e-05, 0.000322116, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 33, 8, 4, 2, 1.1531e-05, 0.000346891, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 33, 9, 4, 2, 1.13215e-05, 0.00035331, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 33, 10, 4, 2, 1.11818e-05, 0.000357724, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 2, 5, 2, 7.8573e-06, 0.000636351, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 3, 5, 2, 1.17684e-05, 0.000424867, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 4, 5, 2, 1.12795e-05, 0.000443282, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 5, 5, 2, 1.20199e-05, 0.000415977, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 6, 5, 2, 1.11958e-05, 0.000446596, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 7, 5, 2, 1.14542e-05, 0.000436521, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 8, 5, 2, 1.13075e-05, 0.000442184, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 9, 5, 2, 1.07208e-05, 0.000466383, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 10, 5, 2, 8.5138e-06, 0.000587282, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 2, 10, 2, 1.07068e-05, 0.000933986, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 3, 10, 2, 6.5303e-06, 0.00153132, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 4, 10, 2, 1.00015e-05, 0.00099985, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 5, 10, 2, 1.1503e-05, 0.000869338, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 6, 10, 2, 8.6884e-06, 0.00115096, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 7, 10, 2, 7.7665e-06, 0.00128758, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 8, 10, 2, 1.019e-05, 0.000981354, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 9, 10, 2, 1.05182e-05, 0.000950733, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 10, 10, 2, 1.16357e-05, 0.000859424, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 161, 2, 20, 2, 1.14472e-05, 0.00174715, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 161, 3, 20, 2, 1.08605e-05, 0.00184154, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 161, 4, 20, 2, 1.13354e-05, 0.00176438, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 161, 5, 20, 2, 1.37519e-05, 0.00145434, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 161, 6, 20, 2, 1.11678e-05, 0.00179086, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 161, 7, 20, 2, 1.03367e-05, 0.00193485, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 161, 8, 20, 2, 1.15589e-05, 0.00173027, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 161, 9, 20, 2, 7.4033e-06, 0.0027015, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 161, 10, 20, 2, 1.12795e-05, 0.00177313, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 257, 2, 32, 2, 1.11957e-05, 0.00285824, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 257, 3, 32, 2, 1.14122e-05, 0.00280402, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 257, 4, 32, 2, 1.07069e-05, 0.00298873, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 257, 5, 32, 2, 1.21177e-05, 0.00264077, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 257, 6, 32, 2, 8.4649e-06, 0.00378032, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 257, 7, 32, 2, 1.1524e-05, 0.00277681, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 257, 8, 32, 2, 1.08536e-05, 0.00294833, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 257, 9, 32, 2, 1.10561e-05, 0.00289433, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 257, 10, 32, 2, 9.324e-06, 0.003432, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 13, 2, 1, 3, 1.29487e-05, 7.72278e-05, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 13, 3, 1, 3, 1.49882e-05, 6.67192e-05, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 13, 4, 1, 3, 7.3824e-06, 0.000135457, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 13, 5, 1, 3, 1.01062e-05, 9.89492e-05, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 13, 6, 1, 3, 1.14053e-05, 8.76785e-05, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 13, 7, 1, 3, 1.14472e-05, 8.73576e-05, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 13, 8, 1, 3, 1.13005e-05, 8.84917e-05, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 13, 9, 1, 3, 1.13564e-05, 8.80561e-05, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 13, 10, 1, 3, 1.09793e-05, 9.10805e-05, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 25, 2, 2, 3, 6.5024e-06, 0.000461368, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 25, 3, 2, 3, 1.05113e-05, 0.000285407, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 25, 4, 2, 3, 1.29767e-05, 0.000231184, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 25, 5, 2, 3, 1.13145e-05, 0.000265146, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 25, 6, 2, 3, 1.39126e-05, 0.000215632, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 25, 7, 2, 3, 9.2053e-06, 0.000325899, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 25, 8, 2, 3, 8.7722e-06, 0.000341989, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 25, 9, 2, 3, 7.6757e-06, 0.000390844, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 25, 10, 2, 3, 1.18522e-05, 0.000253118, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 37, 2, 3, 3, 8.2484e-06, 0.000484943, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 37, 3, 3, 3, 1.13564e-05, 0.000352224, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 37, 4, 3, 3, 1.10282e-05, 0.000362707, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 37, 5, 3, 3, 1.14961e-05, 0.000347944, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 37, 6, 3, 3, 7.5849e-06, 0.000527364, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 37, 7, 3, 3, 1.01201e-05, 0.000395253, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 37, 8, 3, 3, 1.12447e-05, 0.000355723, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 37, 9, 3, 3, 1.14053e-05, 0.000350714, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 37, 10, 3, 3, 6.8096e-06, 0.000587406, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 49, 2, 4, 3, 1.0672e-05, 0.000562219, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 49, 3, 4, 3, 1.1091e-05, 0.000540979, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 49, 4, 4, 3, 1.09932e-05, 0.000545792, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 49, 5, 4, 3, 1.07347e-05, 0.000558935, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 49, 6, 4, 3, 1.11957e-05, 0.00053592, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 49, 7, 4, 3, 1.14053e-05, 0.000526071, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 49, 8, 4, 3, 1.16567e-05, 0.000514725, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 49, 9, 4, 3, 1.13494e-05, 0.000528662, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 49, 10, 4, 3, 1.43945e-05, 0.000416826, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 61, 2, 5, 3, 1.1971e-05, 0.000584746, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 61, 3, 5, 3, 1.12795e-05, 0.000620595, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 61, 4, 5, 3, 1.12027e-05, 0.000624849, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 61, 5, 5, 3, 1.12726e-05, 0.000620975, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 61, 6, 5, 3, 1.12097e-05, 0.000624459, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 61, 7, 5, 3, 1.63361e-05, 0.000428499, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 61, 8, 5, 3, 9.8896e-06, 0.000707814, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 61, 9, 5, 3, 9.7081e-06, 0.000721047, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 61, 10, 5, 3, 1.14192e-05, 0.000613003, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 121, 2, 10, 3, 9.6173e-06, 0.00155969, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 121, 3, 10, 3, 1.22783e-05, 0.00122167, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 121, 4, 10, 3, 1.0616e-05, 0.00141296, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 121, 5, 10, 3, 6.8586e-06, 0.00218704, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 121, 6, 10, 3, 1.05322e-05, 0.0014242, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 121, 7, 10, 3, 1.13285e-05, 0.00132409, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 121, 8, 10, 3, 1.20199e-05, 0.00124793, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 121, 9, 10, 3, 9.7989e-06, 0.00153078, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 121, 10, 10, 3, 1.13145e-05, 0.00132573, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 241, 2, 20, 3, 1.27672e-05, 0.00234977, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 241, 3, 20, 3, 1.05113e-05, 0.00285407, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 241, 4, 20, 3, 1.16567e-05, 0.00257363, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 241, 5, 20, 3, 1.13703e-05, 0.00263845, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 241, 6, 20, 3, 6.6281e-06, 0.00452618, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 241, 7, 20, 3, 9.6872e-06, 0.00309687, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 241, 8, 20, 3, 8.4788e-06, 0.00353824, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 241, 9, 20, 3, 1.14891e-05, 0.00261117, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 241, 10, 20, 3, 1.14472e-05, 0.00262073, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 385, 2, 32, 3, 1.08745e-05, 0.004414, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 385, 3, 32, 3, 1.13634e-05, 0.00422409, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 385, 4, 32, 3, 1.15449e-05, 0.00415768, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 385, 5, 32, 3, 1.1559e-05, 0.00415261, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 385, 6, 32, 3, 1.09374e-05, 0.00438861, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 385, 7, 32, 3, 1.14751e-05, 0.00418297, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 385, 8, 32, 3, 1.31583e-05, 0.00364789, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 385, 9, 32, 3, 1.12167e-05, 0.00427933, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 385, 10, 32, 3, 1.08745e-05, 0.004414, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 21, 2, 1, 5, 9.4078e-06, 0.00021259, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 21, 3, 1, 5, 1.52536e-05, 0.000131117, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 21, 4, 1, 5, 1.14052e-05, 0.000175359, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 21, 5, 1, 5, 1.1063e-05, 0.000180783, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 21, 6, 1, 5, 8.5557e-06, 0.000233762, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 21, 7, 1, 5, 1.07418e-05, 0.000186189, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 21, 8, 1, 5, 1.14053e-05, 0.000175357, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 21, 9, 1, 5, 1.05671e-05, 0.000189267, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 21, 10, 1, 5, 1.17615e-05, 0.000170046, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 2, 2, 5, 1.05672e-05, 0.000473162, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 3, 2, 5, 7.6618e-06, 0.000652588, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 4, 2, 5, 7.4522e-06, 0.000670943, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 5, 2, 5, 1.10072e-05, 0.000454248, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 6, 2, 5, 1.107e-05, 0.000451671, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 7, 2, 5, 1.39406e-05, 0.000358665, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 8, 2, 5, 1.09373e-05, 0.000457151, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 9, 2, 5, 1.09792e-05, 0.000455407, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 10, 2, 5, 7.8992e-06, 0.000632975, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 61, 2, 3, 5, 1.14052e-05, 0.000613755, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 61, 3, 3, 5, 1.11399e-05, 0.000628372, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 61, 4, 3, 5, 1.07837e-05, 0.000649128, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 61, 5, 3, 5, 9.9526e-06, 0.000703334, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 61, 6, 3, 5, 1.11818e-05, 0.000626017, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 61, 7, 3, 5, 1.09653e-05, 0.000638377, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 61, 8, 3, 5, 8.2205e-06, 0.00085153, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 61, 9, 3, 5, 1.13354e-05, 0.000617534, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 61, 10, 3, 5, 1.11189e-05, 0.000629559, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 2, 4, 5, 8.3252e-06, 0.00120117, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 3, 4, 5, 6.7817e-06, 0.00147456, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 4, 4, 5, 1.09234e-05, 0.000915466, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 5, 4, 5, 1.12237e-05, 0.000890972, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 6, 4, 5, 1.00364e-05, 0.000996373, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 7, 4, 5, 1.13564e-05, 0.000880561, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 8, 4, 5, 8.3671e-06, 0.00119516, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 9, 4, 5, 1.05951e-05, 0.000943833, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 10, 4, 5, 9.8338e-06, 0.0010169, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 101, 2, 5, 5, 1.07627e-05, 0.00111496, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 101, 3, 5, 5, 1.39825e-05, 0.000858216, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 101, 4, 5, 5, 1.08186e-05, 0.0011092, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 101, 5, 5, 5, 8.3182e-06, 0.00144262, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 101, 6, 5, 5, 1.01202e-05, 0.00118575, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 101, 7, 5, 5, 8.458e-06, 0.00141878, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 101, 8, 5, 5, 1.12307e-05, 0.0010685, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 101, 9, 5, 5, 8.856e-06, 0.00135501, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 101, 10, 5, 5, 1.03437e-05, 0.00116013, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 201, 2, 10, 5, 6.5303e-06, 0.00382831, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 201, 3, 10, 5, 1.11538e-05, 0.00224139, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 201, 4, 10, 5, 1.47926e-05, 0.00169003, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 201, 5, 10, 5, 6.5722e-06, 0.0038039, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 201, 6, 10, 5, 1.15729e-05, 0.00216022, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 201, 7, 10, 5, 1.05113e-05, 0.00237839, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 201, 8, 10, 5, 9.2611e-06, 0.00269946, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 201, 9, 10, 5, 1.0644e-05, 0.00234874, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 201, 10, 10, 5, 1.12097e-05, 0.00223021, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 2, 20, 5, 1.12097e-05, 0.00446042, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 3, 20, 5, 1.12726e-05, 0.00443553, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 4, 20, 5, 1.09722e-05, 0.00455697, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 5, 20, 5, 1.0672e-05, 0.00468516, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 6, 20, 5, 7.8573e-06, 0.00636351, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 7, 20, 5, 1.17196e-05, 0.00426636, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 8, 20, 5, 1.13424e-05, 0.00440824, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 9, 20, 5, 1.14542e-05, 0.00436521, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 10, 20, 5, 7.6547e-06, 0.00653193, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 641, 2, 32, 5, 1.0183e-05, 0.00785623, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 641, 3, 32, 5, 1.08535e-05, 0.00737089, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 641, 4, 32, 5, 1.1077e-05, 0.00722217, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 641, 5, 32, 5, 1.5512e-05, 0.0051573, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 641, 6, 32, 5, 1.21246e-05, 0.00659816, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 641, 7, 32, 5, 1.12796e-05, 0.00709245, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 641, 8, 32, 5, 1.09862e-05, 0.00728186, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 641, 9, 32, 5, 1.18104e-05, 0.00677369, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 641, 10, 32, 5, 1.14821e-05, 0.00696737, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 2, 1, 10, 1.13564e-05, 0.00044028, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 3, 1, 10, 1.07557e-05, 0.00046487, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 4, 1, 10, 1.16567e-05, 0.000428938, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 5, 1, 10, 1.13844e-05, 0.000439197, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 6, 1, 10, 1.12027e-05, 0.000446321, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 7, 1, 10, 8.6605e-06, 0.000577334, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 8, 1, 10, 1.19919e-05, 0.000416948, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 9, 1, 10, 1.17964e-05, 0.000423858, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 41, 10, 1, 10, 1.13005e-05, 0.000442458, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 2, 2, 10, 1.18033e-05, 0.000847221, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 3, 2, 10, 1.27183e-05, 0.000786269, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 4, 2, 10, 1.16987e-05, 0.000854796, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 5, 2, 10, 1.12097e-05, 0.000892085, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 6, 2, 10, 1.19011e-05, 0.000840258, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 7, 2, 10, 9.9037e-06, 0.00100972, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 8, 2, 10, 8.6535e-06, 0.0011556, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 9, 2, 10, 1.13564e-05, 0.000880561, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 10, 2, 10, 1.23901e-05, 0.000807096, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 121, 2, 3, 10, 1.12097e-05, 0.00133813, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 121, 3, 3, 10, 1.12167e-05, 0.00133729, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 121, 4, 3, 10, 1.16078e-05, 0.00129223, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 121, 5, 3, 10, 6.677e-06, 0.00224652, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 121, 6, 3, 10, 6.5932e-06, 0.00227507, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 121, 7, 3, 10, 1.107e-05, 0.00135501, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 121, 8, 3, 10, 1.10281e-05, 0.00136016, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 121, 9, 3, 10, 1.26833e-05, 0.00118266, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 121, 10, 3, 10, 1.17824e-05, 0.00127309, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 161, 2, 4, 10, 1.30675e-05, 0.00153051, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 161, 3, 4, 10, 1.06789e-05, 0.00187285, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 161, 4, 4, 10, 1.13354e-05, 0.00176438, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 161, 5, 4, 10, 1.15031e-05, 0.00173866, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 161, 6, 4, 10, 1.25297e-05, 0.00159621, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 161, 7, 4, 10, 1.28091e-05, 0.00156139, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 161, 8, 4, 10, 1.1063e-05, 0.00180783, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 161, 9, 4, 10, 1.12516e-05, 0.00177752, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 161, 10, 4, 10, 7.9131e-06, 0.00252745, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 201, 2, 5, 10, 1.11189e-05, 0.00224842, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 201, 3, 5, 10, 8.3322e-06, 0.00300041, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 201, 4, 5, 10, 9.8478e-06, 0.00253864, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 201, 5, 5, 10, 1.14821e-05, 0.0021773, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 201, 6, 5, 10, 1.14681e-05, 0.00217996, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 201, 7, 5, 10, 1.13634e-05, 0.00220005, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 201, 8, 5, 10, 1.12167e-05, 0.00222882, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 201, 9, 5, 10, 1.14751e-05, 0.00217863, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 201, 10, 5, 10, 1.01341e-05, 0.00246692, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 2, 10, 10, 1.1112e-05, 0.00449964, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 3, 10, 10, 1.18313e-05, 0.00422608, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 4, 10, 10, 1.09862e-05, 0.00455116, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 5, 10, 10, 1.10491e-05, 0.00452526, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 6, 10, 10, 1.45551e-05, 0.00343522, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 7, 10, 10, 1.13703e-05, 0.00439742, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 8, 10, 10, 9.3659e-06, 0.00533852, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 9, 10, 10, 1.12306e-05, 0.00445212, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 10, 10, 10, 1.31933e-05, 0.0037898, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 2, 20, 10, 1.12935e-05, 0.00885465, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 3, 20, 10, 1.51768e-05, 0.006589, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 4, 20, 10, 1.14681e-05, 0.00871984, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 5, 20, 10, 1.53304e-05, 0.00652299, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 6, 20, 10, 7.4871e-06, 0.0133563, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 7, 20, 10, 1.15031e-05, 0.00869331, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 8, 20, 10, 1.12446e-05, 0.00889316, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 9, 20, 10, 1.12236e-05, 0.0089098, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 10, 20, 10, 1.2446e-05, 0.00803471, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1281, 2, 32, 10, 9.9735e-06, 0.0160425, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1281, 3, 32, 10, 8.8421e-06, 0.0180952, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1281, 4, 32, 10, 1.11189e-05, 0.0143899, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1281, 5, 32, 10, 1.47927e-05, 0.0108161, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1281, 6, 32, 10, 1.07348e-05, 0.0149048, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1281, 7, 32, 10, 1.31374e-05, 0.012179, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1281, 8, 32, 10, 1.11958e-05, 0.0142911, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1281, 9, 32, 10, 1.10281e-05, 0.0145084, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1281, 10, 32, 10, 1.14402e-05, 0.0139858, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 2, 1, 20, 1.52257e-05, 0.000656784, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 3, 1, 20, 1.10351e-05, 0.000906199, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 4, 1, 20, 1.15659e-05, 0.000864611, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 5, 1, 20, 7.529e-06, 0.0013282, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 6, 1, 20, 1.14402e-05, 0.000874111, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 7, 1, 20, 9.5125e-06, 0.00105125, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 8, 1, 20, 1.31583e-05, 0.000759977, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 9, 1, 20, 1.23831e-05, 0.000807552, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 81, 10, 1, 20, 1.09582e-05, 0.000912559, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 161, 2, 2, 20, 1.13354e-05, 0.00176438, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 161, 3, 2, 20, 1.11468e-05, 0.00179424, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 161, 4, 2, 20, 1.16288e-05, 0.00171987, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 161, 5, 2, 20, 1.29907e-05, 0.00153956, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 161, 6, 2, 20, 1.13424e-05, 0.0017633, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 161, 7, 2, 20, 1.01062e-05, 0.00197898, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 161, 8, 2, 20, 1.13494e-05, 0.00176221, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 161, 9, 2, 20, 1.1084e-05, 0.0018044, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 161, 10, 2, 20, 1.14192e-05, 0.00175144, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 241, 2, 3, 20, 1.11398e-05, 0.00269305, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 241, 3, 3, 20, 1.03227e-05, 0.00290622, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 241, 4, 3, 20, 1.16497e-05, 0.00257517, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 241, 5, 3, 20, 1.03157e-05, 0.00290819, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 241, 6, 3, 20, 1.12237e-05, 0.00267292, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 241, 7, 3, 20, 1.12865e-05, 0.00265804, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 241, 8, 3, 20, 1.25507e-05, 0.0023903, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 241, 9, 3, 20, 1.1503e-05, 0.00260802, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 241, 10, 3, 20, 1.5058e-05, 0.0019923, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 321, 2, 4, 20, 1.28789e-05, 0.00310586, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 321, 3, 4, 20, 1.11259e-05, 0.00359521, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 321, 4, 4, 20, 1.16008e-05, 0.00344804, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 321, 5, 4, 20, 1.09793e-05, 0.00364322, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 321, 6, 4, 20, 1.28441e-05, 0.00311427, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 321, 7, 4, 20, 1.05462e-05, 0.00379284, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 321, 8, 4, 20, 9.0585e-06, 0.00441574, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 321, 9, 4, 20, 1.13494e-05, 0.00352442, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 321, 10, 4, 20, 1.12167e-05, 0.00356611, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 2, 5, 20, 1.16287e-05, 0.00429971, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 3, 5, 20, 1.12586e-05, 0.00444105, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 4, 5, 20, 7.99e-06, 0.00625782, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 5, 5, 20, 1.61127e-05, 0.00310314, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 6, 5, 20, 9.7639e-06, 0.0051209, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 7, 5, 20, 7.7735e-06, 0.00643211, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 8, 5, 20, 6.677e-06, 0.00748839, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 9, 5, 20, 8.1297e-06, 0.00615029, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 10, 5, 20, 1.30815e-05, 0.00382219, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 2, 10, 20, 1.11678e-05, 0.00895432, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 3, 10, 20, 1.14193e-05, 0.0087571, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 4, 10, 20, 9.317e-06, 0.0107331, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 5, 10, 20, 1.51628e-05, 0.00659509, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 6, 10, 20, 1.10561e-05, 0.00904478, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 7, 10, 20, 6.7678e-06, 0.0147759, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 8, 10, 20, 8.6186e-06, 0.0116028, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 9, 10, 20, 1.01481e-05, 0.00985406, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 10, 10, 20, 1.14472e-05, 0.00873576, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1601, 2, 20, 20, 1.09024e-05, 0.0183446, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1601, 3, 20, 20, 1.13983e-05, 0.0175465, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1601, 4, 20, 20, 1.32072e-05, 0.0151433, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1601, 5, 20, 20, 1.13913e-05, 0.0175573, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1601, 6, 20, 20, 1.01411e-05, 0.0197217, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1601, 7, 20, 20, 1.27183e-05, 0.0157254, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1601, 8, 20, 20, 6.8586e-06, 0.0291605, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1601, 9, 20, 20, 1.09932e-05, 0.0181931, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1601, 10, 20, 20, 1.16916e-05, 0.0171063, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2561, 2, 32, 20, 1.11469e-05, 0.0287075, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2561, 3, 32, 20, 1.17265e-05, 0.0272886, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2561, 4, 32, 20, 7.6966e-06, 0.0415768, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2561, 5, 32, 20, 1.24389e-05, 0.0257257, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2561, 6, 32, 20, 1.32561e-05, 0.0241398, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2561, 7, 32, 20, 1.07977e-05, 0.0296359, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2561, 8, 32, 20, 1.10561e-05, 0.0289433, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2561, 9, 32, 20, 1.14052e-05, 0.0280574, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2561, 10, 32, 20, 1.50301e-05, 0.0212906, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 121, 2, 1, 30, 1.12865e-05, 0.00132902, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 121, 3, 1, 30, 1.0616e-05, 0.00141296, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 121, 4, 1, 30, 1.07558e-05, 0.0013946, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 121, 5, 1, 30, 1.14821e-05, 0.00130638, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 121, 6, 1, 30, 1.44923e-05, 0.00103503, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 121, 7, 1, 30, 1.0651e-05, 0.00140832, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 121, 8, 1, 30, 1.107e-05, 0.00135501, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 121, 9, 1, 30, 7.8014e-06, 0.00192273, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 121, 10, 1, 30, 1.00713e-05, 0.00148938, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 241, 2, 2, 30, 1.14332e-05, 0.00262394, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 241, 3, 2, 30, 1.07558e-05, 0.00278919, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 241, 4, 2, 30, 1.09304e-05, 0.00274464, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 241, 5, 2, 30, 1.151e-05, 0.00260643, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 241, 6, 2, 30, 7.4382e-06, 0.00403323, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 241, 7, 2, 30, 1.0637e-05, 0.00282034, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 241, 8, 2, 30, 1.14402e-05, 0.00262233, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 241, 9, 2, 30, 1.09792e-05, 0.00273244, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 241, 10, 2, 30, 1.14192e-05, 0.00262715, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 361, 2, 3, 30, 1.15869e-05, 0.0038837, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 361, 3, 3, 30, 1.11398e-05, 0.00403957, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 361, 4, 3, 30, 1.04554e-05, 0.004304, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 361, 5, 3, 30, 1.09932e-05, 0.00409344, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 361, 6, 3, 30, 1.12655e-05, 0.0039945, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 361, 7, 3, 30, 1.08885e-05, 0.0041328, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 361, 8, 3, 30, 1.09862e-05, 0.00409605, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 361, 9, 3, 30, 1.05392e-05, 0.00426977, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 361, 10, 3, 30, 1.02389e-05, 0.004395, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 481, 2, 4, 30, 1.13913e-05, 0.00526718, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 481, 3, 4, 30, 1.12586e-05, 0.00532926, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 481, 4, 4, 30, 1.30745e-05, 0.00458909, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 481, 5, 4, 30, 1.16078e-05, 0.00516894, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 481, 6, 4, 30, 1.11119e-05, 0.00539962, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 481, 7, 4, 30, 1.24878e-05, 0.00480469, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 481, 8, 4, 30, 1.07697e-05, 0.00557119, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 481, 9, 4, 30, 1.05531e-05, 0.00568553, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 481, 10, 4, 30, 1.12097e-05, 0.00535251, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 601, 2, 5, 30, 1.10072e-05, 0.00681372, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 601, 3, 5, 30, 1.42548e-05, 0.00526139, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 601, 4, 5, 30, 1.03157e-05, 0.00727047, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 601, 5, 5, 30, 1.33818e-05, 0.00560463, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 601, 6, 5, 30, 1.13006e-05, 0.00663682, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 601, 7, 5, 30, 1.14541e-05, 0.00654787, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 601, 8, 5, 30, 1.13983e-05, 0.00657993, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 601, 9, 5, 30, 7.6897e-06, 0.00975331, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 601, 10, 5, 30, 1.33748e-05, 0.00560756, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1201, 2, 10, 30, 6.5722e-06, 0.0228234, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1201, 3, 10, 30, 1.13284e-05, 0.0132411, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1201, 4, 10, 30, 1.14961e-05, 0.0130479, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1201, 5, 10, 30, 1.13145e-05, 0.0132573, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1201, 6, 10, 30, 8.3741e-06, 0.0179124, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1201, 7, 10, 30, 1.09513e-05, 0.013697, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1201, 8, 10, 30, 1.12236e-05, 0.0133647, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1201, 9, 10, 30, 1.14332e-05, 0.0131197, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1201, 10, 10, 30, 1.11119e-05, 0.013499, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2401, 2, 20, 30, 1.10211e-05, 0.0272205, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2401, 3, 20, 30, 6.5722e-06, 0.0456468, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2401, 4, 20, 30, 1.13493e-05, 0.0264333, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2401, 5, 20, 30, 1.2879e-05, 0.0232937, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2401, 6, 20, 30, 1.11468e-05, 0.0269136, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2401, 7, 20, 30, 1.12796e-05, 0.0265967, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2401, 8, 20, 30, 8.2134e-06, 0.0365257, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2401, 9, 20, 30, 1.08395e-05, 0.0276766, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2401, 10, 20, 30, 1.09932e-05, 0.0272896, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 3841, 2, 32, 30, 8.2972e-06, 0.0578508, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 3841, 3, 32, 30, 1.09024e-05, 0.044027, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 3841, 4, 32, 30, 1.26973e-05, 0.0378033, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 3841, 5, 32, 30, 1.14891e-05, 0.0417787, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 3841, 6, 32, 30, 1.0658e-05, 0.0450366, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 3841, 7, 32, 30, 1.11957e-05, 0.0428736, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 3841, 8, 32, 30, 7.1309e-06, 0.0673127, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 3841, 9, 32, 30, 1.15799e-05, 0.0414511, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 3841, 10, 32, 30, 1.03437e-05, 0.0464051, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 201, 2, 1, 50, 1.30605e-05, 0.00191417, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 201, 3, 1, 50, 1.22714e-05, 0.00203726, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 201, 4, 1, 50, 1.26066e-05, 0.00198309, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 201, 5, 1, 50, 6.6629e-06, 0.00375212, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 201, 6, 1, 50, 1.13983e-05, 0.00219331, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 201, 7, 1, 50, 1.13145e-05, 0.00220955, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 201, 8, 1, 50, 1.13355e-05, 0.00220546, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 201, 9, 1, 50, 1.1098e-05, 0.00225266, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 201, 10, 1, 50, 1.09932e-05, 0.00227413, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 2, 2, 50, 1.09792e-05, 0.00455407, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 3, 2, 50, 1.09164e-05, 0.00458026, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 4, 2, 50, 9.4706e-06, 0.0052795, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 5, 2, 50, 7.983e-06, 0.00626331, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 6, 2, 50, 1.05951e-05, 0.00471916, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 7, 2, 50, 1.5505e-05, 0.00322477, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 8, 2, 50, 1.18592e-05, 0.00421614, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 9, 2, 50, 1.17685e-05, 0.00424863, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 10, 2, 50, 1.13913e-05, 0.00438931, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 601, 2, 3, 50, 1.36682e-05, 0.00548719, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 601, 3, 3, 50, 1.12237e-05, 0.00668229, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 601, 4, 3, 50, 1.53584e-05, 0.00488332, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 601, 5, 3, 50, 1.55609e-05, 0.00481977, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 601, 6, 3, 50, 1.14541e-05, 0.00654787, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 601, 7, 3, 50, 8.9678e-06, 0.00836326, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 601, 8, 3, 50, 1.39056e-05, 0.00539351, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 601, 9, 3, 50, 1.19361e-05, 0.00628346, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 601, 10, 3, 50, 1.11957e-05, 0.006699, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 2, 4, 50, 1.05113e-05, 0.00951357, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 3, 4, 50, 9.5335e-06, 0.0104893, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 4, 4, 50, 1.1517e-05, 0.00868282, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 5, 4, 50, 1.57635e-05, 0.00634377, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 6, 4, 50, 1.27602e-05, 0.00783687, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 7, 4, 50, 1.19012e-05, 0.00840251, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 8, 4, 50, 1.11468e-05, 0.00897118, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 9, 4, 50, 1.06509e-05, 0.00938888, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 10, 4, 50, 1.12935e-05, 0.00885465, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1001, 2, 5, 50, 1.1091e-05, 0.0112704, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1001, 3, 5, 50, 1.5072e-05, 0.00829352, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1001, 4, 5, 50, 1.17126e-05, 0.0106723, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1001, 5, 5, 50, 9.6452e-06, 0.0129598, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1001, 6, 5, 50, 1.53793e-05, 0.00812781, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1001, 7, 5, 50, 1.12935e-05, 0.0110683, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1001, 8, 5, 50, 6.4884e-06, 0.0192652, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1001, 9, 5, 50, 1.14402e-05, 0.0109264, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1001, 10, 5, 50, 1.16288e-05, 0.0107492, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2001, 2, 10, 50, 1.11329e-05, 0.022456, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2001, 3, 10, 50, 1.15101e-05, 0.0217201, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2001, 4, 10, 50, 8.3392e-06, 0.0299789, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2001, 5, 10, 50, 1.20129e-05, 0.020811, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2001, 6, 10, 50, 1.12447e-05, 0.0222327, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2001, 7, 10, 50, 1.21805e-05, 0.0205246, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2001, 8, 10, 50, 1.15101e-05, 0.0217201, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2001, 9, 10, 50, 7.962e-06, 0.0313991, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2001, 10, 10, 50, 1.2411e-05, 0.0201434, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 2, 20, 50, 1.00852e-05, 0.0495776, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 3, 20, 50, 9.9176e-06, 0.0504154, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 4, 20, 50, 1.107e-05, 0.0451671, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 5, 20, 50, 1.27043e-05, 0.0393568, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 6, 20, 50, 1.13844e-05, 0.0439197, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 7, 20, 50, 1.14751e-05, 0.0435726, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 8, 20, 50, 1.1978e-05, 0.0417432, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 9, 20, 50, 1.14263e-05, 0.0437587, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 10, 20, 50, 1.27952e-05, 0.0390772, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 6401, 2, 32, 50, 1.14542e-05, 0.0698434, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 6401, 3, 32, 50, 1.07557e-05, 0.0743792, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 6401, 4, 32, 50, 1.09443e-05, 0.0730974, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 6401, 5, 32, 50, 1.3752e-05, 0.0581734, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 6401, 6, 32, 50, 1.05113e-05, 0.0761086, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 6401, 7, 32, 50, 8.4928e-06, 0.0941974, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 6401, 8, 32, 50, 1.72232e-05, 0.046449, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 6401, 9, 32, 50, 1.02669e-05, 0.0779203, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 6401, 10, 32, 50, 6.635e-06, 0.120573, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 2, 1, 100, 9.9805e-06, 0.00500977, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 3, 1, 100, 1.09303e-05, 0.00457444, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 4, 1, 100, 1.22294e-05, 0.00408851, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 5, 1, 100, 1.11468e-05, 0.00448559, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 6, 1, 100, 1.25786e-05, 0.00397501, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 7, 1, 100, 1.2851e-05, 0.00389075, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 8, 1, 100, 1.27113e-05, 0.00393351, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 9, 1, 100, 1.15729e-05, 0.00432044, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 401, 10, 1, 100, 7.5988e-06, 0.00657999, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 2, 2, 100, 1.12865e-05, 0.00886014, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 3, 2, 100, 1.07837e-05, 0.00927326, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 4, 2, 100, 1.26484e-05, 0.00790614, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 5, 2, 100, 1.05043e-05, 0.00951991, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 6, 2, 100, 8.4719e-06, 0.0118037, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 7, 2, 100, 9.5195e-06, 0.0105048, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 8, 2, 100, 1.15589e-05, 0.00865134, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 9, 2, 100, 8.5487e-06, 0.0116977, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 10, 2, 100, 1.12656e-05, 0.00887658, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1201, 2, 3, 100, 1.08815e-05, 0.0137849, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1201, 3, 3, 100, 1.1084e-05, 0.013533, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1201, 4, 3, 100, 1.13983e-05, 0.0131599, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1201, 5, 3, 100, 1.20757e-05, 0.0124216, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1201, 6, 3, 100, 1.13564e-05, 0.0132084, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1201, 7, 3, 100, 1.37799e-05, 0.0108854, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1201, 8, 3, 100, 1.30955e-05, 0.0114543, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1201, 9, 3, 100, 8.6675e-06, 0.017306, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1201, 10, 3, 100, 1.06929e-05, 0.014028, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1601, 2, 4, 100, 1.13913e-05, 0.0175573, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1601, 3, 4, 100, 1.11329e-05, 0.0179648, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1601, 4, 4, 100, 1.11469e-05, 0.0179422, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1601, 5, 4, 100, 1.14751e-05, 0.017429, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1601, 6, 4, 100, 1.44015e-05, 0.0138874, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1601, 7, 4, 100, 1.08535e-05, 0.0184272, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1601, 8, 4, 100, 1.12586e-05, 0.0177642, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1601, 9, 4, 100, 1.53095e-05, 0.0130638, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1601, 10, 4, 100, 1.1077e-05, 0.0180554, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2001, 2, 5, 100, 6.7258e-06, 0.0371703, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2001, 3, 5, 100, 7.571e-06, 0.0330207, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2001, 4, 5, 100, 1.15101e-05, 0.0217201, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2001, 5, 5, 100, 1.19011e-05, 0.0210065, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2001, 6, 5, 100, 1.12167e-05, 0.0222882, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2001, 7, 5, 100, 1.14262e-05, 0.0218795, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2001, 8, 5, 100, 1.26136e-05, 0.0198199, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2001, 9, 5, 100, 1.09932e-05, 0.0227413, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2001, 10, 5, 100, 1.17545e-05, 0.0212685, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 2, 10, 100, 1.1552e-05, 0.0432825, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 3, 10, 100, 1.5044e-05, 0.0332358, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 4, 10, 100, 1.10421e-05, 0.0452812, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 5, 10, 100, 9.0306e-06, 0.0553673, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 6, 10, 100, 1.27462e-05, 0.0392274, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 7, 10, 100, 1.51209e-05, 0.0330668, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 8, 10, 100, 1.13704e-05, 0.0439738, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 9, 10, 100, 1.10491e-05, 0.0452526, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 10, 10, 100, 1.05392e-05, 0.0474419, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 8001, 2, 20, 100, 1.08814e-05, 0.0918999, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 8001, 3, 20, 100, 1.27393e-05, 0.0784972, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 8001, 4, 20, 100, 1.16218e-05, 0.0860452, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 8001, 5, 20, 100, 1.29977e-05, 0.0769367, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 8001, 6, 20, 100, 1.05113e-05, 0.0951357, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 8001, 7, 20, 100, 1.07278e-05, 0.0932158, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 8001, 8, 20, 100, 1.25996e-05, 0.0793676, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 8001, 9, 20, 100, 1.05252e-05, 0.0950101, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 8001, 10, 20, 100, 1.22364e-05, 0.0817234, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 12801, 2, 32, 100, 1.09793e-05, 0.145729, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 12801, 3, 32, 100, 1.27323e-05, 0.125665, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 12801, 4, 32, 100, 1.11469e-05, 0.143538, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 12801, 5, 32, 100, 7.8573e-06, 0.203632, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 12801, 6, 32, 100, 1.151e-05, 0.13901, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 12801, 7, 32, 100, 1.03297e-05, 0.154893, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 12801, 8, 32, 100, 1.01202e-05, 0.1581, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 12801, 9, 32, 100, 1.11817e-05, 0.143091, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 12801, 10, 32, 100, 1.11957e-05, 0.142912, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 2, 1, 200, 8.3322e-06, 0.0120016, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 3, 1, 200, 1.05183e-05, 0.00950724, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 4, 1, 200, 7.7525e-06, 0.0128991, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 5, 1, 200, 1.1098e-05, 0.00901063, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 6, 1, 200, 1.03716e-05, 0.00964171, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 7, 1, 200, 1.15729e-05, 0.00864088, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 8, 1, 200, 1.00992e-05, 0.00990177, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 9, 1, 200, 8.2344e-06, 0.0121442, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 801, 10, 1, 200, 1.02669e-05, 0.00974004, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1601, 2, 2, 200, 8.4021e-06, 0.0238036, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1601, 3, 2, 200, 7.8712e-06, 0.0254091, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1601, 4, 2, 200, 1.14192e-05, 0.0175144, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1601, 5, 2, 200, 1.12306e-05, 0.0178085, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1601, 6, 2, 200, 1.14332e-05, 0.0174929, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1601, 7, 2, 200, 1.09303e-05, 0.0182978, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1601, 8, 2, 200, 1.03856e-05, 0.0192574, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1601, 9, 2, 200, 1.20059e-05, 0.0166585, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 1601, 10, 2, 200, 9.9875e-06, 0.020025, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2401, 2, 3, 200, 1.12027e-05, 0.0267793, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2401, 3, 3, 200, 9.9246e-06, 0.0302279, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2401, 4, 3, 200, 1.12237e-05, 0.0267292, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2401, 5, 3, 200, 7.983e-06, 0.0375799, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2401, 6, 3, 200, 1.07278e-05, 0.0279647, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2401, 7, 3, 200, 1.51977e-05, 0.0197398, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2401, 8, 3, 200, 1.78308e-05, 0.0168248, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2401, 9, 3, 200, 1.21735e-05, 0.0246437, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2401, 10, 3, 200, 9.6173e-06, 0.0311938, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 3201, 2, 4, 200, 1.43526e-05, 0.0278695, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 3201, 3, 4, 200, 1.05601e-05, 0.0378784, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 3201, 4, 4, 200, 1.0672e-05, 0.0374813, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 3201, 5, 4, 200, 1.30954e-05, 0.0305451, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 3201, 6, 4, 200, 1.01062e-05, 0.0395797, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 3201, 7, 4, 200, 1.15799e-05, 0.0345426, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 3201, 8, 4, 200, 1.1063e-05, 0.0361566, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 3201, 9, 4, 200, 1.29279e-05, 0.0309408, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 3201, 10, 4, 200, 1.05951e-05, 0.0377533, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 2, 5, 200, 8.1087e-06, 0.0616622, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 3, 5, 200, 1.05951e-05, 0.0471916, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 4, 5, 200, 1.09094e-05, 0.045832, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 5, 5, 200, 1.27532e-05, 0.0392058, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 6, 5, 200, 1.13285e-05, 0.0441365, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 7, 5, 200, 1.1559e-05, 0.0432563, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 8, 5, 200, 1.1503e-05, 0.0434669, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 9, 5, 200, 1.14542e-05, 0.0436521, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 10, 5, 200, 1.1105e-05, 0.0450248, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 8001, 2, 10, 200, 1.17196e-05, 0.0853271, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 8001, 3, 10, 200, 1.11679e-05, 0.0895423, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 8001, 4, 10, 200, 1.12027e-05, 0.0892642, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 8001, 5, 10, 200, 1.01621e-05, 0.0984049, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 8001, 6, 10, 200, 1.21875e-05, 0.0820513, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 8001, 7, 10, 200, 8.5696e-06, 0.116692, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 8001, 8, 10, 200, 1.16567e-05, 0.0857876, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 8001, 9, 10, 200, 8.4649e-06, 0.118135, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 8001, 10, 10, 200, 1.1056e-05, 0.0904486, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 16001, 2, 20, 200, 1.09094e-05, 0.183328, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 16001, 3, 20, 200, 1.17406e-05, 0.170349, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 16001, 4, 20, 200, 1.0176e-05, 0.196541, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 16001, 5, 20, 200, 8.884e-06, 0.225124, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 16001, 6, 20, 200, 1.08605e-05, 0.184154, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 16001, 7, 20, 200, 1.29837e-05, 0.154039, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 16001, 8, 20, 200, 1.16637e-05, 0.171472, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 16001, 9, 20, 200, 1.32352e-05, 0.151112, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 16001, 10, 20, 200, 1.06928e-05, 0.187042, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 25601, 2, 32, 200, 1.13773e-05, 0.281262, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 25601, 3, 32, 200, 8.6534e-06, 0.369797, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 25601, 4, 32, 200, 7.9061e-06, 0.404751, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 25601, 5, 32, 200, 1.05672e-05, 0.302824, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 25601, 6, 32, 200, 1.10211e-05, 0.290352, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 25601, 7, 32, 200, 1.10002e-05, 0.290904, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 25601, 8, 32, 200, 1.1552e-05, 0.277008, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 25601, 9, 32, 200, 8.9608e-06, 0.357111, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 25601, 10, 32, 200, 9.6732e-06, 0.330811, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2001, 2, 1, 500, 1.16357e-05, 0.0214856, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2001, 3, 1, 500, 1.1552e-05, 0.0216413, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2001, 4, 1, 500, 1.18453e-05, 0.0211054, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2001, 5, 1, 500, 1.12796e-05, 0.0221639, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2001, 6, 1, 500, 1.09093e-05, 0.0229162, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2001, 7, 1, 500, 1.22294e-05, 0.0204425, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2001, 8, 1, 500, 1.10909e-05, 0.022541, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2001, 9, 1, 500, 1.10072e-05, 0.0227124, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 2001, 10, 1, 500, 1.13354e-05, 0.0220548, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 2, 2, 500, 1.49812e-05, 0.0333752, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 3, 2, 500, 1.12377e-05, 0.0444931, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 4, 2, 500, 1.07627e-05, 0.0464567, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 5, 2, 500, 1.20059e-05, 0.0416462, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 6, 2, 500, 6.5792e-06, 0.0759971, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 7, 2, 500, 1.05811e-05, 0.0472541, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 8, 2, 500, 1.1552e-05, 0.0432825, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 9, 2, 500, 1.09513e-05, 0.0456567, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 4001, 10, 2, 500, 1.14681e-05, 0.0435992, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 6001, 2, 3, 500, 1.14053e-05, 0.0657589, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 6001, 3, 3, 500, 1.29278e-05, 0.0580145, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 6001, 4, 3, 500, 1.14053e-05, 0.0657589, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 6001, 5, 3, 500, 1.1084e-05, 0.0676651, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 6001, 6, 3, 500, 9.9595e-06, 0.075305, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 6001, 7, 3, 500, 1.09932e-05, 0.068224, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 6001, 8, 3, 500, 1.38148e-05, 0.0542896, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 6001, 9, 3, 500, 1.1545e-05, 0.0649632, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 6001, 10, 3, 500, 1.1531e-05, 0.0650421, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 8001, 2, 4, 500, 1.12796e-05, 0.0886556, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 8001, 3, 4, 500, 1.3284e-05, 0.0752785, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 8001, 4, 4, 500, 1.07069e-05, 0.0933977, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 8001, 5, 4, 500, 1.15589e-05, 0.0865134, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 8001, 6, 4, 500, 1.06999e-05, 0.0934588, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 8001, 7, 4, 500, 8.5068e-06, 0.117553, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 8001, 8, 4, 500, 1.17964e-05, 0.0847716, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 8001, 9, 4, 500, 8.0877e-06, 0.123645, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 8001, 10, 4, 500, 1.26485e-05, 0.0790608, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 10001, 2, 5, 500, 1.07208e-05, 0.116596, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 10001, 3, 5, 500, 6.9913e-06, 0.178794, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 10001, 4, 5, 500, 9.75e-06, 0.128205, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 10001, 5, 5, 500, 1.12027e-05, 0.11158, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 10001, 6, 5, 500, 1.11539e-05, 0.112068, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 10001, 7, 5, 500, 8.6325e-06, 0.144802, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 10001, 8, 5, 500, 1.12097e-05, 0.111511, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 10001, 9, 5, 500, 7.9551e-06, 0.157132, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 10001, 10, 5, 500, 1.33958e-05, 0.0933128, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 20001, 2, 10, 500, 1.14611e-05, 0.218129, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 20001, 3, 10, 500, 1.10421e-05, 0.226406, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 20001, 4, 10, 500, 1.11818e-05, 0.223578, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 20001, 5, 10, 500, 1.23272e-05, 0.202804, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 20001, 6, 10, 500, 1.14402e-05, 0.218528, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 20001, 7, 10, 500, 1.05951e-05, 0.235958, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 20001, 8, 10, 500, 1.09373e-05, 0.228576, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 20001, 9, 10, 500, 1.0637e-05, 0.235029, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 20001, 10, 10, 500, 1.12307e-05, 0.222604, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 40001, 2, 20, 500, 1.06789e-05, 0.468213, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 40001, 3, 20, 500, 1.0197e-05, 0.49034, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 40001, 4, 20, 500, 1.09652e-05, 0.455988, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 40001, 5, 20, 500, 1.03437e-05, 0.483386, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 40001, 6, 20, 500, 1.14123e-05, 0.438124, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 40001, 7, 20, 500, 1.12167e-05, 0.445764, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 40001, 8, 20, 500, 1.0169e-05, 0.49169, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 40001, 9, 20, 500, 1.40523e-05, 0.355814, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 40001, 10, 20, 500, 1.13424e-05, 0.440824, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 64001, 2, 32, 500, 1.18103e-05, 0.677375, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 64001, 3, 32, 500, 1.16357e-05, 0.687539, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 64001, 4, 32, 500, 1.14123e-05, 0.700998, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 64001, 5, 32, 500, 1.03087e-05, 0.776044, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 64001, 6, 32, 500, 1.10561e-05, 0.723582, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 64001, 7, 32, 500, 9.8827e-06, 0.809495, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 64001, 8, 32, 500, 1.05183e-05, 0.760579, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 64001, 9, 32, 500, 9.5545e-06, 0.837302, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 64001, 10, 32, 500, 1.1063e-05, 0.723131, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 3001, 2, 1, 750, 1.12237e-05, 0.0334114, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 3001, 3, 1, 750, 1.00363e-05, 0.0373644, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 3001, 4, 1, 750, 1.11818e-05, 0.0335366, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 3001, 5, 1, 750, 1.16706e-05, 0.032132, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 3001, 6, 1, 750, 1.07068e-05, 0.0350245, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 3001, 7, 1, 750, 1.09652e-05, 0.0341991, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 3001, 8, 1, 750, 1.11748e-05, 0.0335576, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 3001, 9, 1, 750, 1.151e-05, 0.0325804, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 3001, 10, 1, 750, 1.13354e-05, 0.0330822, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 6001, 2, 2, 750, 1.31303e-05, 0.0571198, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 6001, 3, 2, 750, 1.15449e-05, 0.0649638, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 6001, 4, 2, 750, 8.0039e-06, 0.0937043, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 6001, 5, 2, 750, 1.15031e-05, 0.0651998, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 6001, 6, 2, 750, 7.5988e-06, 0.0986998, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 6001, 7, 2, 750, 1.06579e-05, 0.0703703, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 6001, 8, 2, 750, 1.13424e-05, 0.0661236, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 6001, 9, 2, 750, 1.32281e-05, 0.0566975, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 6001, 10, 2, 750, 1.03506e-05, 0.0724596, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 9001, 2, 3, 750, 1.1091e-05, 0.101434, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 9001, 3, 3, 750, 1.12237e-05, 0.100234, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 9001, 4, 3, 750, 1.08884e-05, 0.103321, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 9001, 5, 3, 750, 1.16427e-05, 0.0966271, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 9001, 6, 3, 750, 1.2844e-05, 0.0875895, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 9001, 7, 3, 750, 1.29278e-05, 0.0870218, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 9001, 8, 3, 750, 1.11329e-05, 0.101052, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 9001, 9, 3, 750, 1.15031e-05, 0.0977997, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 9001, 10, 3, 750, 1.09583e-05, 0.102662, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 12001, 2, 4, 750, 1.14611e-05, 0.130877, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 12001, 3, 4, 750, 1.1077e-05, 0.135416, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 12001, 4, 4, 750, 1.15938e-05, 0.129379, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 12001, 5, 4, 750, 1.08884e-05, 0.137761, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 12001, 6, 4, 750, 1.13704e-05, 0.131921, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 12001, 7, 4, 750, 8.3182e-06, 0.180327, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 12001, 8, 4, 750, 1.13145e-05, 0.132573, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 12001, 9, 4, 750, 8.1576e-06, 0.183878, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 12001, 10, 4, 750, 1.15589e-05, 0.12977, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 15001, 2, 5, 750, 1.13703e-05, 0.164903, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 15001, 3, 5, 750, 1.0155e-05, 0.184638, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 15001, 4, 5, 750, 1.08256e-05, 0.173201, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 15001, 5, 5, 750, 1.21666e-05, 0.15411, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 15001, 6, 5, 750, 1.05741e-05, 0.17732, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 15001, 7, 5, 750, 1.11538e-05, 0.168104, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 15001, 8, 5, 750, 1.12098e-05, 0.167264, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 15001, 9, 5, 750, 1.10491e-05, 0.169697, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 15001, 10, 5, 750, 1.11748e-05, 0.167788, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 30001, 2, 10, 750, 1.13075e-05, 0.331638, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 30001, 3, 10, 750, 1.41292e-05, 0.265408, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 30001, 4, 10, 750, 9.6662e-06, 0.38795, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 30001, 5, 10, 750, 1.26484e-05, 0.29648, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 30001, 6, 10, 750, 1.14053e-05, 0.328795, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 30001, 7, 10, 750, 1.14123e-05, 0.328593, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 30001, 8, 10, 750, 1.10281e-05, 0.34004, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 30001, 9, 10, 750, 1.10281e-05, 0.34004, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 30001, 10, 10, 750, 1.28091e-05, 0.292761, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 60001, 2, 20, 750, 1.04485e-05, 0.717806, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 60001, 3, 20, 750, 1.13774e-05, 0.659202, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 60001, 4, 20, 750, 1.10631e-05, 0.677929, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 60001, 5, 20, 750, 1.11049e-05, 0.675378, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 60001, 6, 20, 750, 1.10072e-05, 0.681372, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 60001, 7, 20, 750, 1.26136e-05, 0.594596, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 60001, 8, 20, 750, 1.14332e-05, 0.655984, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 60001, 9, 20, 750, 1.26694e-05, 0.591978, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 60001, 10, 20, 750, 1.14332e-05, 0.655984, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 96001, 2, 32, 750, 1.50231e-05, 0.79877, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 96001, 3, 32, 750, 1.05043e-05, 1.14239, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 96001, 4, 32, 750, 6.5372e-06, 1.83565, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 96001, 5, 32, 750, 1.05741e-05, 1.13485, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 96001, 6, 32, 750, 1.12516e-05, 1.06651, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 96001, 7, 32, 750, 1.14751e-05, 1.04574, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 96001, 8, 32, 750, 1.14891e-05, 1.04447, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 96001, 9, 32, 750, 1.107e-05, 1.08401, 
-#type, size, stride_offset, gDim, bDim, time(s), bandwidth(GB/s)
-global-offset, 96001, 10, 32, 750, 1.10001e-05, 1.0909, 
+#type        ,size ,stride_offset,gDim,bDim,time(s)    ,bandwidth(GB/s)
+global-offset,5    ,2            ,1   ,1   ,1.22014e-05,0
+global-offset,5    ,3            ,1   ,1   ,1.11189e-05,0
+global-offset,5    ,4            ,1   ,1   ,1.1063e-05 ,0
+global-offset,5    ,5            ,1   ,1   ,1.01131e-05,0
+global-offset,5    ,6            ,1   ,1   ,1.35075e-05,0
+global-offset,5    ,7            ,1   ,1   ,1.11399e-05,0
+global-offset,5    ,8            ,1   ,1   ,1.11259e-05,0
+global-offset,5    ,9            ,1   ,1   ,1.12167e-05,0
+global-offset,5    ,10           ,1   ,1   ,1.25018e-05,0
+global-offset,9    ,2            ,2   ,1   ,1.11748e-05,8.94871e-05
+global-offset,9    ,3            ,2   ,1   ,1.15659e-05,8.64611e-05
+global-offset,9    ,4            ,2   ,1   ,8.3042e-06 ,0.000120421
+global-offset,9    ,5            ,2   ,1   ,1.09792e-05,9.10813e-05
+global-offset,9    ,6            ,2   ,1   ,1.13005e-05,8.84917e-05
+global-offset,9    ,7            ,2   ,1   ,1.15729e-05,8.64088e-05
+global-offset,9    ,8            ,2   ,1   ,1.0616e-05 ,9.41974e-05
+global-offset,9    ,9            ,2   ,1   ,1.10142e-05,9.07919e-05
+global-offset,9    ,10           ,2   ,1   ,1.09933e-05,9.09645e-05
+global-offset,13   ,2            ,3   ,1   ,1.09862e-05,9.10233e-05
+global-offset,13   ,3            ,3   ,1   ,1.1105e-05 ,9.00495e-05
+global-offset,13   ,4            ,3   ,1   ,1.13005e-05,8.84917e-05
+global-offset,13   ,5            ,3   ,1   ,1.09303e-05,9.14888e-05
+global-offset,13   ,6            ,3   ,1   ,1.11888e-05,8.93751e-05
+global-offset,13   ,7            ,3   ,1   ,1.11189e-05,8.9937e-05
+global-offset,13   ,8            ,3   ,1   ,1.08954e-05,9.17819e-05
+global-offset,13   ,9            ,3   ,1   ,1.04763e-05,9.54535e-05
+global-offset,13   ,10           ,3   ,1   ,1.06928e-05,9.35209e-05
+global-offset,17   ,2            ,4   ,1   ,1.28929e-05,0.000155124
+global-offset,17   ,3            ,4   ,1   ,1.16706e-05,0.000171371
+global-offset,17   ,4            ,4   ,1   ,1.43875e-05,0.00013901
+global-offset,17   ,5            ,4   ,1   ,1.14891e-05,0.000174078
+global-offset,17   ,6            ,4   ,1   ,1.15101e-05,0.00017376
+global-offset,17   ,7            ,4   ,1   ,1.07627e-05,0.000185827
+global-offset,17   ,8            ,4   ,1   ,7.7315e-06 ,0.000258682
+global-offset,17   ,9            ,4   ,1   ,1.11398e-05,0.000179536
+global-offset,17   ,10           ,4   ,1   ,7.564e-06  ,0.00026441
+global-offset,21   ,2            ,5   ,1   ,1.13005e-05,0.000176983
+global-offset,21   ,3            ,5   ,1   ,1.27532e-05,0.000156823
+global-offset,21   ,4            ,5   ,1   ,1.14192e-05,0.000175144
+global-offset,21   ,5            ,5   ,1   ,6.6071e-06 ,0.000302705
+global-offset,21   ,6            ,5   ,1   ,1.30326e-05,0.000153461
+global-offset,21   ,7            ,5   ,1   ,1.04135e-05,0.000192058
+global-offset,21   ,8            ,5   ,1   ,1.10072e-05,0.000181699
+global-offset,21   ,9            ,5   ,1   ,1.11958e-05,0.000178638
+global-offset,21   ,10           ,5   ,1   ,7.9131e-06 ,0.000252745
+global-offset,41   ,2            ,10  ,1   ,1.12795e-05,0.000443282
+global-offset,41   ,3            ,10  ,1   ,1.1496e-05 ,0.000434934
+global-offset,41   ,4            ,10  ,1   ,1.00294e-05,0.000498534
+global-offset,41   ,5            ,10  ,1   ,1.23412e-05,0.000405147
+global-offset,41   ,6            ,10  ,1   ,7.2846e-06 ,0.000686379
+global-offset,41   ,7            ,10  ,1   ,1.10001e-05,0.000454541
+global-offset,41   ,8            ,10  ,1   ,1.14891e-05,0.000435195
+global-offset,41   ,9            ,10  ,1   ,1.25368e-05,0.000398826
+global-offset,41   ,10           ,10  ,1   ,1.13284e-05,0.000441369
+global-offset,81   ,2            ,20  ,1   ,1.05393e-05,0.00094883
+global-offset,81   ,3            ,20  ,1   ,1.10839e-05,0.00090221
+global-offset,81   ,4            ,20  ,1   ,1.29767e-05,0.000770612
+global-offset,81   ,5            ,20  ,1   ,8.2554e-06 ,0.00121133
+global-offset,81   ,6            ,20  ,1   ,1.13634e-05,0.000880018
+global-offset,81   ,7            ,20  ,1   ,1.07278e-05,0.000932158
+global-offset,81   ,8            ,20  ,1   ,1.14192e-05,0.000875718
+global-offset,81   ,9            ,20  ,1   ,1.12237e-05,0.000890972
+global-offset,81   ,10           ,20  ,1   ,1.08256e-05,0.000923736
+global-offset,129  ,2            ,32  ,1   ,6.6071e-06 ,0.00242164
+global-offset,129  ,3            ,32  ,1   ,1.11958e-05,0.00142911
+global-offset,129  ,4            ,32  ,1   ,1.11818e-05,0.0014309
+global-offset,129  ,5            ,32  ,1   ,9.8059e-06 ,0.00163167
+global-offset,129  ,6            ,32  ,1   ,1.03018e-05,0.00155313
+global-offset,129  ,7            ,32  ,1   ,9.2401e-06 ,0.00173158
+global-offset,129  ,8            ,32  ,1   ,9.5754e-06 ,0.00167095
+global-offset,129  ,9            ,32  ,1   ,9.3938e-06 ,0.00170325
+global-offset,129  ,10           ,32  ,1   ,1.11678e-05,0.00143269
+global-offset,9    ,2            ,1   ,2   ,1.1063e-05 ,9.03914e-05
+global-offset,9    ,3            ,1   ,2   ,1.12236e-05,8.9098e-05
+global-offset,9    ,4            ,1   ,2   ,1.46809e-05,6.81157e-05
+global-offset,9    ,5            ,1   ,2   ,9.7849e-06 ,0.000102198
+global-offset,9    ,6            ,1   ,2   ,1.08674e-05,9.20183e-05
+global-offset,9    ,7            ,1   ,2   ,1.29418e-05,7.7269e-05
+global-offset,9    ,8            ,1   ,2   ,1.22714e-05,8.14903e-05
+global-offset,9    ,9            ,1   ,2   ,1.07697e-05,9.28531e-05
+global-offset,9    ,10           ,1   ,2   ,8.87e-06   ,0.00011274
+global-offset,17   ,2            ,2   ,2   ,1.14541e-05,0.00017461
+global-offset,17   ,3            ,2   ,2   ,1.12307e-05,0.000178083
+global-offset,17   ,4            ,2   ,2   ,1.16078e-05,0.000172298
+global-offset,17   ,5            ,2   ,2   ,6.6699e-06 ,0.000299855
+global-offset,17   ,6            ,2   ,2   ,1.04485e-05,0.000191415
+global-offset,17   ,7            ,2   ,2   ,1.22574e-05,0.000163167
+global-offset,17   ,8            ,2   ,2   ,1.18732e-05,0.000168447
+global-offset,17   ,9            ,2   ,2   ,1.10351e-05,0.00018124
+global-offset,17   ,10           ,2   ,2   ,8.4439e-06 ,0.000236857
+global-offset,25   ,2            ,3   ,2   ,1.09373e-05,0.000274291
+global-offset,25   ,3            ,3   ,2   ,1.00015e-05,0.000299955
+global-offset,25   ,4            ,3   ,2   ,1.11398e-05,0.000269305
+global-offset,25   ,5            ,3   ,2   ,1.12866e-05,0.000265802
+global-offset,25   ,6            ,3   ,2   ,1.11119e-05,0.000269981
+global-offset,25   ,7            ,3   ,2   ,1.08256e-05,0.000277121
+global-offset,25   ,8            ,3   ,2   ,8.2554e-06 ,0.000363399
+global-offset,25   ,9            ,3   ,2   ,1.15659e-05,0.000259383
+global-offset,25   ,10           ,3   ,2   ,1.11468e-05,0.000269136
+global-offset,33   ,2            ,4   ,2   ,1.13145e-05,0.000353529
+global-offset,33   ,3            ,4   ,2   ,1.09862e-05,0.000364093
+global-offset,33   ,4            ,4   ,2   ,1.11887e-05,0.000357504
+global-offset,33   ,5            ,4   ,2   ,1.10002e-05,0.00036363
+global-offset,33   ,6            ,4   ,2   ,1.09304e-05,0.000365952
+global-offset,33   ,7            ,4   ,2   ,1.24179e-05,0.000322116
+global-offset,33   ,8            ,4   ,2   ,1.1531e-05 ,0.000346891
+global-offset,33   ,9            ,4   ,2   ,1.13215e-05,0.00035331
+global-offset,33   ,10           ,4   ,2   ,1.11818e-05,0.000357724
+global-offset,41   ,2            ,5   ,2   ,7.8573e-06 ,0.000636351
+global-offset,41   ,3            ,5   ,2   ,1.17684e-05,0.000424867
+global-offset,41   ,4            ,5   ,2   ,1.12795e-05,0.000443282
+global-offset,41   ,5            ,5   ,2   ,1.20199e-05,0.000415977
+global-offset,41   ,6            ,5   ,2   ,1.11958e-05,0.000446596
+global-offset,41   ,7            ,5   ,2   ,1.14542e-05,0.000436521
+global-offset,41   ,8            ,5   ,2   ,1.13075e-05,0.000442184
+global-offset,41   ,9            ,5   ,2   ,1.07208e-05,0.000466383
+global-offset,41   ,10           ,5   ,2   ,8.5138e-06 ,0.000587282
+global-offset,81   ,2            ,10  ,2   ,1.07068e-05,0.000933986
+global-offset,81   ,3            ,10  ,2   ,6.5303e-06 ,0.00153132
+global-offset,81   ,4            ,10  ,2   ,1.00015e-05,0.00099985
+global-offset,81   ,5            ,10  ,2   ,1.1503e-05 ,0.000869338
+global-offset,81   ,6            ,10  ,2   ,8.6884e-06 ,0.00115096
+global-offset,81   ,7            ,10  ,2   ,7.7665e-06 ,0.00128758
+global-offset,81   ,8            ,10  ,2   ,1.019e-05  ,0.000981354
+global-offset,81   ,9            ,10  ,2   ,1.05182e-05,0.000950733
+global-offset,81   ,10           ,10  ,2   ,1.16357e-05,0.000859424
+global-offset,161  ,2            ,20  ,2   ,1.14472e-05,0.00174715
+global-offset,161  ,3            ,20  ,2   ,1.08605e-05,0.00184154
+global-offset,161  ,4            ,20  ,2   ,1.13354e-05,0.00176438
+global-offset,161  ,5            ,20  ,2   ,1.37519e-05,0.00145434
+global-offset,161  ,6            ,20  ,2   ,1.11678e-05,0.00179086
+global-offset,161  ,7            ,20  ,2   ,1.03367e-05,0.00193485
+global-offset,161  ,8            ,20  ,2   ,1.15589e-05,0.00173027
+global-offset,161  ,9            ,20  ,2   ,7.4033e-06 ,0.0027015
+global-offset,161  ,10           ,20  ,2   ,1.12795e-05,0.00177313
+global-offset,257  ,2            ,32  ,2   ,1.11957e-05,0.00285824
+global-offset,257  ,3            ,32  ,2   ,1.14122e-05,0.00280402
+global-offset,257  ,4            ,32  ,2   ,1.07069e-05,0.00298873
+global-offset,257  ,5            ,32  ,2   ,1.21177e-05,0.00264077
+global-offset,257  ,6            ,32  ,2   ,8.4649e-06 ,0.00378032
+global-offset,257  ,7            ,32  ,2   ,1.1524e-05 ,0.00277681
+global-offset,257  ,8            ,32  ,2   ,1.08536e-05,0.00294833
+global-offset,257  ,9            ,32  ,2   ,1.10561e-05,0.00289433
+global-offset,257  ,10           ,32  ,2   ,9.324e-06  ,0.003432
+global-offset,13   ,2            ,1   ,3   ,1.29487e-05,7.72278e-05
+global-offset,13   ,3            ,1   ,3   ,1.49882e-05,6.67192e-05
+global-offset,13   ,4            ,1   ,3   ,7.3824e-06 ,0.000135457
+global-offset,13   ,5            ,1   ,3   ,1.01062e-05,9.89492e-05
+global-offset,13   ,6            ,1   ,3   ,1.14053e-05,8.76785e-05
+global-offset,13   ,7            ,1   ,3   ,1.14472e-05,8.73576e-05
+global-offset,13   ,8            ,1   ,3   ,1.13005e-05,8.84917e-05
+global-offset,13   ,9            ,1   ,3   ,1.13564e-05,8.80561e-05
+global-offset,13   ,10           ,1   ,3   ,1.09793e-05,9.10805e-05
+global-offset,25   ,2            ,2   ,3   ,6.5024e-06 ,0.000461368
+global-offset,25   ,3            ,2   ,3   ,1.05113e-05,0.000285407
+global-offset,25   ,4            ,2   ,3   ,1.29767e-05,0.000231184
+global-offset,25   ,5            ,2   ,3   ,1.13145e-05,0.000265146
+global-offset,25   ,6            ,2   ,3   ,1.39126e-05,0.000215632
+global-offset,25   ,7            ,2   ,3   ,9.2053e-06 ,0.000325899
+global-offset,25   ,8            ,2   ,3   ,8.7722e-06 ,0.000341989
+global-offset,25   ,9            ,2   ,3   ,7.6757e-06 ,0.000390844
+global-offset,25   ,10           ,2   ,3   ,1.18522e-05,0.000253118
+global-offset,37   ,2            ,3   ,3   ,8.2484e-06 ,0.000484943
+global-offset,37   ,3            ,3   ,3   ,1.13564e-05,0.000352224
+global-offset,37   ,4            ,3   ,3   ,1.10282e-05,0.000362707
+global-offset,37   ,5            ,3   ,3   ,1.14961e-05,0.000347944
+global-offset,37   ,6            ,3   ,3   ,7.5849e-06 ,0.000527364
+global-offset,37   ,7            ,3   ,3   ,1.01201e-05,0.000395253
+global-offset,37   ,8            ,3   ,3   ,1.12447e-05,0.000355723
+global-offset,37   ,9            ,3   ,3   ,1.14053e-05,0.000350714
+global-offset,37   ,10           ,3   ,3   ,6.8096e-06 ,0.000587406
+global-offset,49   ,2            ,4   ,3   ,1.0672e-05 ,0.000562219
+global-offset,49   ,3            ,4   ,3   ,1.1091e-05 ,0.000540979
+global-offset,49   ,4            ,4   ,3   ,1.09932e-05,0.000545792
+global-offset,49   ,5            ,4   ,3   ,1.07347e-05,0.000558935
+global-offset,49   ,6            ,4   ,3   ,1.11957e-05,0.00053592
+global-offset,49   ,7            ,4   ,3   ,1.14053e-05,0.000526071
+global-offset,49   ,8            ,4   ,3   ,1.16567e-05,0.000514725
+global-offset,49   ,9            ,4   ,3   ,1.13494e-05,0.000528662
+global-offset,49   ,10           ,4   ,3   ,1.43945e-05,0.000416826
+global-offset,61   ,2            ,5   ,3   ,1.1971e-05 ,0.000584746
+global-offset,61   ,3            ,5   ,3   ,1.12795e-05,0.000620595
+global-offset,61   ,4            ,5   ,3   ,1.12027e-05,0.000624849
+global-offset,61   ,5            ,5   ,3   ,1.12726e-05,0.000620975
+global-offset,61   ,6            ,5   ,3   ,1.12097e-05,0.000624459
+global-offset,61   ,7            ,5   ,3   ,1.63361e-05,0.000428499
+global-offset,61   ,8            ,5   ,3   ,9.8896e-06 ,0.000707814
+global-offset,61   ,9            ,5   ,3   ,9.7081e-06 ,0.000721047
+global-offset,61   ,10           ,5   ,3   ,1.14192e-05,0.000613003
+global-offset,121  ,2            ,10  ,3   ,9.6173e-06 ,0.00155969
+global-offset,121  ,3            ,10  ,3   ,1.22783e-05,0.00122167
+global-offset,121  ,4            ,10  ,3   ,1.0616e-05 ,0.00141296
+global-offset,121  ,5            ,10  ,3   ,6.8586e-06 ,0.00218704
+global-offset,121  ,6            ,10  ,3   ,1.05322e-05,0.0014242
+global-offset,121  ,7            ,10  ,3   ,1.13285e-05,0.00132409
+global-offset,121  ,8            ,10  ,3   ,1.20199e-05,0.00124793
+global-offset,121  ,9            ,10  ,3   ,9.7989e-06 ,0.00153078
+global-offset,121  ,10           ,10  ,3   ,1.13145e-05,0.00132573
+global-offset,241  ,2            ,20  ,3   ,1.27672e-05,0.00234977
+global-offset,241  ,3            ,20  ,3   ,1.05113e-05,0.00285407
+global-offset,241  ,4            ,20  ,3   ,1.16567e-05,0.00257363
+global-offset,241  ,5            ,20  ,3   ,1.13703e-05,0.00263845
+global-offset,241  ,6            ,20  ,3   ,6.6281e-06 ,0.00452618
+global-offset,241  ,7            ,20  ,3   ,9.6872e-06 ,0.00309687
+global-offset,241  ,8            ,20  ,3   ,8.4788e-06 ,0.00353824
+global-offset,241  ,9            ,20  ,3   ,1.14891e-05,0.00261117
+global-offset,241  ,10           ,20  ,3   ,1.14472e-05,0.00262073
+global-offset,385  ,2            ,32  ,3   ,1.08745e-05,0.004414
+global-offset,385  ,3            ,32  ,3   ,1.13634e-05,0.00422409
+global-offset,385  ,4            ,32  ,3   ,1.15449e-05,0.00415768
+global-offset,385  ,5            ,32  ,3   ,1.1559e-05 ,0.00415261
+global-offset,385  ,6            ,32  ,3   ,1.09374e-05,0.00438861
+global-offset,385  ,7            ,32  ,3   ,1.14751e-05,0.00418297
+global-offset,385  ,8            ,32  ,3   ,1.31583e-05,0.00364789
+global-offset,385  ,9            ,32  ,3   ,1.12167e-05,0.00427933
+global-offset,385  ,10           ,32  ,3   ,1.08745e-05,0.004414
+global-offset,21   ,2            ,1   ,5   ,9.4078e-06 ,0.00021259
+global-offset,21   ,3            ,1   ,5   ,1.52536e-05,0.000131117
+global-offset,21   ,4            ,1   ,5   ,1.14052e-05,0.000175359
+global-offset,21   ,5            ,1   ,5   ,1.1063e-05 ,0.000180783
+global-offset,21   ,6            ,1   ,5   ,8.5557e-06 ,0.000233762
+global-offset,21   ,7            ,1   ,5   ,1.07418e-05,0.000186189
+global-offset,21   ,8            ,1   ,5   ,1.14053e-05,0.000175357
+global-offset,21   ,9            ,1   ,5   ,1.05671e-05,0.000189267
+global-offset,21   ,10           ,1   ,5   ,1.17615e-05,0.000170046
+global-offset,41   ,2            ,2   ,5   ,1.05672e-05,0.000473162
+global-offset,41   ,3            ,2   ,5   ,7.6618e-06 ,0.000652588
+global-offset,41   ,4            ,2   ,5   ,7.4522e-06 ,0.000670943
+global-offset,41   ,5            ,2   ,5   ,1.10072e-05,0.000454248
+global-offset,41   ,6            ,2   ,5   ,1.107e-05  ,0.000451671
+global-offset,41   ,7            ,2   ,5   ,1.39406e-05,0.000358665
+global-offset,41   ,8            ,2   ,5   ,1.09373e-05,0.000457151
+global-offset,41   ,9            ,2   ,5   ,1.09792e-05,0.000455407
+global-offset,41   ,10           ,2   ,5   ,7.8992e-06 ,0.000632975
+global-offset,61   ,2            ,3   ,5   ,1.14052e-05,0.000613755
+global-offset,61   ,3            ,3   ,5   ,1.11399e-05,0.000628372
+global-offset,61   ,4            ,3   ,5   ,1.07837e-05,0.000649128
+global-offset,61   ,5            ,3   ,5   ,9.9526e-06 ,0.000703334
+global-offset,61   ,6            ,3   ,5   ,1.11818e-05,0.000626017
+global-offset,61   ,7            ,3   ,5   ,1.09653e-05,0.000638377
+global-offset,61   ,8            ,3   ,5   ,8.2205e-06 ,0.00085153
+global-offset,61   ,9            ,3   ,5   ,1.13354e-05,0.000617534
+global-offset,61   ,10           ,3   ,5   ,1.11189e-05,0.000629559
+global-offset,81   ,2            ,4   ,5   ,8.3252e-06 ,0.00120117
+global-offset,81   ,3            ,4   ,5   ,6.7817e-06 ,0.00147456
+global-offset,81   ,4            ,4   ,5   ,1.09234e-05,0.000915466
+global-offset,81   ,5            ,4   ,5   ,1.12237e-05,0.000890972
+global-offset,81   ,6            ,4   ,5   ,1.00364e-05,0.000996373
+global-offset,81   ,7            ,4   ,5   ,1.13564e-05,0.000880561
+global-offset,81   ,8            ,4   ,5   ,8.3671e-06 ,0.00119516
+global-offset,81   ,9            ,4   ,5   ,1.05951e-05,0.000943833
+global-offset,81   ,10           ,4   ,5   ,9.8338e-06 ,0.0010169
+global-offset,101  ,2            ,5   ,5   ,1.07627e-05,0.00111496
+global-offset,101  ,3            ,5   ,5   ,1.39825e-05,0.000858216
+global-offset,101  ,4            ,5   ,5   ,1.08186e-05,0.0011092
+global-offset,101  ,5            ,5   ,5   ,8.3182e-06 ,0.00144262
+global-offset,101  ,6            ,5   ,5   ,1.01202e-05,0.00118575
+global-offset,101  ,7            ,5   ,5   ,8.458e-06  ,0.00141878
+global-offset,101  ,8            ,5   ,5   ,1.12307e-05,0.0010685
+global-offset,101  ,9            ,5   ,5   ,8.856e-06  ,0.00135501
+global-offset,101  ,10           ,5   ,5   ,1.03437e-05,0.00116013
+global-offset,201  ,2            ,10  ,5   ,6.5303e-06 ,0.00382831
+global-offset,201  ,3            ,10  ,5   ,1.11538e-05,0.00224139
+global-offset,201  ,4            ,10  ,5   ,1.47926e-05,0.00169003
+global-offset,201  ,5            ,10  ,5   ,6.5722e-06 ,0.0038039
+global-offset,201  ,6            ,10  ,5   ,1.15729e-05,0.00216022
+global-offset,201  ,7            ,10  ,5   ,1.05113e-05,0.00237839
+global-offset,201  ,8            ,10  ,5   ,9.2611e-06 ,0.00269946
+global-offset,201  ,9            ,10  ,5   ,1.0644e-05 ,0.00234874
+global-offset,201  ,10           ,10  ,5   ,1.12097e-05,0.00223021
+global-offset,401  ,2            ,20  ,5   ,1.12097e-05,0.00446042
+global-offset,401  ,3            ,20  ,5   ,1.12726e-05,0.00443553
+global-offset,401  ,4            ,20  ,5   ,1.09722e-05,0.00455697
+global-offset,401  ,5            ,20  ,5   ,1.0672e-05 ,0.00468516
+global-offset,401  ,6            ,20  ,5   ,7.8573e-06 ,0.00636351
+global-offset,401  ,7            ,20  ,5   ,1.17196e-05,0.00426636
+global-offset,401  ,8            ,20  ,5   ,1.13424e-05,0.00440824
+global-offset,401  ,9            ,20  ,5   ,1.14542e-05,0.00436521
+global-offset,401  ,10           ,20  ,5   ,7.6547e-06 ,0.00653193
+global-offset,641  ,2            ,32  ,5   ,1.0183e-05 ,0.00785623
+global-offset,641  ,3            ,32  ,5   ,1.08535e-05,0.00737089
+global-offset,641  ,4            ,32  ,5   ,1.1077e-05 ,0.00722217
+global-offset,641  ,5            ,32  ,5   ,1.5512e-05 ,0.0051573
+global-offset,641  ,6            ,32  ,5   ,1.21246e-05,0.00659816
+global-offset,641  ,7            ,32  ,5   ,1.12796e-05,0.00709245
+global-offset,641  ,8            ,32  ,5   ,1.09862e-05,0.00728186
+global-offset,641  ,9            ,32  ,5   ,1.18104e-05,0.00677369
+global-offset,641  ,10           ,32  ,5   ,1.14821e-05,0.00696737
+global-offset,41   ,2            ,1   ,10  ,1.13564e-05,0.00044028
+global-offset,41   ,3            ,1   ,10  ,1.07557e-05,0.00046487
+global-offset,41   ,4            ,1   ,10  ,1.16567e-05,0.000428938
+global-offset,41   ,5            ,1   ,10  ,1.13844e-05,0.000439197
+global-offset,41   ,6            ,1   ,10  ,1.12027e-05,0.000446321
+global-offset,41   ,7            ,1   ,10  ,8.6605e-06 ,0.000577334
+global-offset,41   ,8            ,1   ,10  ,1.19919e-05,0.000416948
+global-offset,41   ,9            ,1   ,10  ,1.17964e-05,0.000423858
+global-offset,41   ,10           ,1   ,10  ,1.13005e-05,0.000442458
+global-offset,81   ,2            ,2   ,10  ,1.18033e-05,0.000847221
+global-offset,81   ,3            ,2   ,10  ,1.27183e-05,0.000786269
+global-offset,81   ,4            ,2   ,10  ,1.16987e-05,0.000854796
+global-offset,81   ,5            ,2   ,10  ,1.12097e-05,0.000892085
+global-offset,81   ,6            ,2   ,10  ,1.19011e-05,0.000840258
+global-offset,81   ,7            ,2   ,10  ,9.9037e-06 ,0.00100972
+global-offset,81   ,8            ,2   ,10  ,8.6535e-06 ,0.0011556
+global-offset,81   ,9            ,2   ,10  ,1.13564e-05,0.000880561
+global-offset,81   ,10           ,2   ,10  ,1.23901e-05,0.000807096
+global-offset,121  ,2            ,3   ,10  ,1.12097e-05,0.00133813
+global-offset,121  ,3            ,3   ,10  ,1.12167e-05,0.00133729
+global-offset,121  ,4            ,3   ,10  ,1.16078e-05,0.00129223
+global-offset,121  ,5            ,3   ,10  ,6.677e-06  ,0.00224652
+global-offset,121  ,6            ,3   ,10  ,6.5932e-06 ,0.00227507
+global-offset,121  ,7            ,3   ,10  ,1.107e-05  ,0.00135501
+global-offset,121  ,8            ,3   ,10  ,1.10281e-05,0.00136016
+global-offset,121  ,9            ,3   ,10  ,1.26833e-05,0.00118266
+global-offset,121  ,10           ,3   ,10  ,1.17824e-05,0.00127309
+global-offset,161  ,2            ,4   ,10  ,1.30675e-05,0.00153051
+global-offset,161  ,3            ,4   ,10  ,1.06789e-05,0.00187285
+global-offset,161  ,4            ,4   ,10  ,1.13354e-05,0.00176438
+global-offset,161  ,5            ,4   ,10  ,1.15031e-05,0.00173866
+global-offset,161  ,6            ,4   ,10  ,1.25297e-05,0.00159621
+global-offset,161  ,7            ,4   ,10  ,1.28091e-05,0.00156139
+global-offset,161  ,8            ,4   ,10  ,1.1063e-05 ,0.00180783
+global-offset,161  ,9            ,4   ,10  ,1.12516e-05,0.00177752
+global-offset,161  ,10           ,4   ,10  ,7.9131e-06 ,0.00252745
+global-offset,201  ,2            ,5   ,10  ,1.11189e-05,0.00224842
+global-offset,201  ,3            ,5   ,10  ,8.3322e-06 ,0.00300041
+global-offset,201  ,4            ,5   ,10  ,9.8478e-06 ,0.00253864
+global-offset,201  ,5            ,5   ,10  ,1.14821e-05,0.0021773
+global-offset,201  ,6            ,5   ,10  ,1.14681e-05,0.00217996
+global-offset,201  ,7            ,5   ,10  ,1.13634e-05,0.00220005
+global-offset,201  ,8            ,5   ,10  ,1.12167e-05,0.00222882
+global-offset,201  ,9            ,5   ,10  ,1.14751e-05,0.00217863
+global-offset,201  ,10           ,5   ,10  ,1.01341e-05,0.00246692
+global-offset,401  ,2            ,10  ,10  ,1.1112e-05 ,0.00449964
+global-offset,401  ,3            ,10  ,10  ,1.18313e-05,0.00422608
+global-offset,401  ,4            ,10  ,10  ,1.09862e-05,0.00455116
+global-offset,401  ,5            ,10  ,10  ,1.10491e-05,0.00452526
+global-offset,401  ,6            ,10  ,10  ,1.45551e-05,0.00343522
+global-offset,401  ,7            ,10  ,10  ,1.13703e-05,0.00439742
+global-offset,401  ,8            ,10  ,10  ,9.3659e-06 ,0.00533852
+global-offset,401  ,9            ,10  ,10  ,1.12306e-05,0.00445212
+global-offset,401  ,10           ,10  ,10  ,1.31933e-05,0.0037898
+global-offset,801  ,2            ,20  ,10  ,1.12935e-05,0.00885465
+global-offset,801  ,3            ,20  ,10  ,1.51768e-05,0.006589
+global-offset,801  ,4            ,20  ,10  ,1.14681e-05,0.00871984
+global-offset,801  ,5            ,20  ,10  ,1.53304e-05,0.00652299
+global-offset,801  ,6            ,20  ,10  ,7.4871e-06 ,0.0133563
+global-offset,801  ,7            ,20  ,10  ,1.15031e-05,0.00869331
+global-offset,801  ,8            ,20  ,10  ,1.12446e-05,0.00889316
+global-offset,801  ,9            ,20  ,10  ,1.12236e-05,0.0089098
+global-offset,801  ,10           ,20  ,10  ,1.2446e-05 ,0.00803471
+global-offset,1281 ,2            ,32  ,10  ,9.9735e-06 ,0.0160425
+global-offset,1281 ,3            ,32  ,10  ,8.8421e-06 ,0.0180952
+global-offset,1281 ,4            ,32  ,10  ,1.11189e-05,0.0143899
+global-offset,1281 ,5            ,32  ,10  ,1.47927e-05,0.0108161
+global-offset,1281 ,6            ,32  ,10  ,1.07348e-05,0.0149048
+global-offset,1281 ,7            ,32  ,10  ,1.31374e-05,0.012179
+global-offset,1281 ,8            ,32  ,10  ,1.11958e-05,0.0142911
+global-offset,1281 ,9            ,32  ,10  ,1.10281e-05,0.0145084
+global-offset,1281 ,10           ,32  ,10  ,1.14402e-05,0.0139858
+global-offset,81   ,2            ,1   ,20  ,1.52257e-05,0.000656784
+global-offset,81   ,3            ,1   ,20  ,1.10351e-05,0.000906199
+global-offset,81   ,4            ,1   ,20  ,1.15659e-05,0.000864611
+global-offset,81   ,5            ,1   ,20  ,7.529e-06  ,0.0013282
+global-offset,81   ,6            ,1   ,20  ,1.14402e-05,0.000874111
+global-offset,81   ,7            ,1   ,20  ,9.5125e-06 ,0.00105125
+global-offset,81   ,8            ,1   ,20  ,1.31583e-05,0.000759977
+global-offset,81   ,9            ,1   ,20  ,1.23831e-05,0.000807552
+global-offset,81   ,10           ,1   ,20  ,1.09582e-05,0.000912559
+global-offset,161  ,2            ,2   ,20  ,1.13354e-05,0.00176438
+global-offset,161  ,3            ,2   ,20  ,1.11468e-05,0.00179424
+global-offset,161  ,4            ,2   ,20  ,1.16288e-05,0.00171987
+global-offset,161  ,5            ,2   ,20  ,1.29907e-05,0.00153956
+global-offset,161  ,6            ,2   ,20  ,1.13424e-05,0.0017633
+global-offset,161  ,7            ,2   ,20  ,1.01062e-05,0.00197898
+global-offset,161  ,8            ,2   ,20  ,1.13494e-05,0.00176221
+global-offset,161  ,9            ,2   ,20  ,1.1084e-05 ,0.0018044
+global-offset,161  ,10           ,2   ,20  ,1.14192e-05,0.00175144
+global-offset,241  ,2            ,3   ,20  ,1.11398e-05,0.00269305
+global-offset,241  ,3            ,3   ,20  ,1.03227e-05,0.00290622
+global-offset,241  ,4            ,3   ,20  ,1.16497e-05,0.00257517
+global-offset,241  ,5            ,3   ,20  ,1.03157e-05,0.00290819
+global-offset,241  ,6            ,3   ,20  ,1.12237e-05,0.00267292
+global-offset,241  ,7            ,3   ,20  ,1.12865e-05,0.00265804
+global-offset,241  ,8            ,3   ,20  ,1.25507e-05,0.0023903
+global-offset,241  ,9            ,3   ,20  ,1.1503e-05 ,0.00260802
+global-offset,241  ,10           ,3   ,20  ,1.5058e-05 ,0.0019923
+global-offset,321  ,2            ,4   ,20  ,1.28789e-05,0.00310586
+global-offset,321  ,3            ,4   ,20  ,1.11259e-05,0.00359521
+global-offset,321  ,4            ,4   ,20  ,1.16008e-05,0.00344804
+global-offset,321  ,5            ,4   ,20  ,1.09793e-05,0.00364322
+global-offset,321  ,6            ,4   ,20  ,1.28441e-05,0.00311427
+global-offset,321  ,7            ,4   ,20  ,1.05462e-05,0.00379284
+global-offset,321  ,8            ,4   ,20  ,9.0585e-06 ,0.00441574
+global-offset,321  ,9            ,4   ,20  ,1.13494e-05,0.00352442
+global-offset,321  ,10           ,4   ,20  ,1.12167e-05,0.00356611
+global-offset,401  ,2            ,5   ,20  ,1.16287e-05,0.00429971
+global-offset,401  ,3            ,5   ,20  ,1.12586e-05,0.00444105
+global-offset,401  ,4            ,5   ,20  ,7.99e-06   ,0.00625782
+global-offset,401  ,5            ,5   ,20  ,1.61127e-05,0.00310314
+global-offset,401  ,6            ,5   ,20  ,9.7639e-06 ,0.0051209
+global-offset,401  ,7            ,5   ,20  ,7.7735e-06 ,0.00643211
+global-offset,401  ,8            ,5   ,20  ,6.677e-06  ,0.00748839
+global-offset,401  ,9            ,5   ,20  ,8.1297e-06 ,0.00615029
+global-offset,401  ,10           ,5   ,20  ,1.30815e-05,0.00382219
+global-offset,801  ,2            ,10  ,20  ,1.11678e-05,0.00895432
+global-offset,801  ,3            ,10  ,20  ,1.14193e-05,0.0087571
+global-offset,801  ,4            ,10  ,20  ,9.317e-06  ,0.0107331
+global-offset,801  ,5            ,10  ,20  ,1.51628e-05,0.00659509
+global-offset,801  ,6            ,10  ,20  ,1.10561e-05,0.00904478
+global-offset,801  ,7            ,10  ,20  ,6.7678e-06 ,0.0147759
+global-offset,801  ,8            ,10  ,20  ,8.6186e-06 ,0.0116028
+global-offset,801  ,9            ,10  ,20  ,1.01481e-05,0.00985406
+global-offset,801  ,10           ,10  ,20  ,1.14472e-05,0.00873576
+global-offset,1601 ,2            ,20  ,20  ,1.09024e-05,0.0183446
+global-offset,1601 ,3            ,20  ,20  ,1.13983e-05,0.0175465
+global-offset,1601 ,4            ,20  ,20  ,1.32072e-05,0.0151433
+global-offset,1601 ,5            ,20  ,20  ,1.13913e-05,0.0175573
+global-offset,1601 ,6            ,20  ,20  ,1.01411e-05,0.0197217
+global-offset,1601 ,7            ,20  ,20  ,1.27183e-05,0.0157254
+global-offset,1601 ,8            ,20  ,20  ,6.8586e-06 ,0.0291605
+global-offset,1601 ,9            ,20  ,20  ,1.09932e-05,0.0181931
+global-offset,1601 ,10           ,20  ,20  ,1.16916e-05,0.0171063
+global-offset,2561 ,2            ,32  ,20  ,1.11469e-05,0.0287075
+global-offset,2561 ,3            ,32  ,20  ,1.17265e-05,0.0272886
+global-offset,2561 ,4            ,32  ,20  ,7.6966e-06 ,0.0415768
+global-offset,2561 ,5            ,32  ,20  ,1.24389e-05,0.0257257
+global-offset,2561 ,6            ,32  ,20  ,1.32561e-05,0.0241398
+global-offset,2561 ,7            ,32  ,20  ,1.07977e-05,0.0296359
+global-offset,2561 ,8            ,32  ,20  ,1.10561e-05,0.0289433
+global-offset,2561 ,9            ,32  ,20  ,1.14052e-05,0.0280574
+global-offset,2561 ,10           ,32  ,20  ,1.50301e-05,0.0212906
+global-offset,121  ,2            ,1   ,30  ,1.12865e-05,0.00132902
+global-offset,121  ,3            ,1   ,30  ,1.0616e-05 ,0.00141296
+global-offset,121  ,4            ,1   ,30  ,1.07558e-05,0.0013946
+global-offset,121  ,5            ,1   ,30  ,1.14821e-05,0.00130638
+global-offset,121  ,6            ,1   ,30  ,1.44923e-05,0.00103503
+global-offset,121  ,7            ,1   ,30  ,1.0651e-05 ,0.00140832
+global-offset,121  ,8            ,1   ,30  ,1.107e-05  ,0.00135501
+global-offset,121  ,9            ,1   ,30  ,7.8014e-06 ,0.00192273
+global-offset,121  ,10           ,1   ,30  ,1.00713e-05,0.00148938
+global-offset,241  ,2            ,2   ,30  ,1.14332e-05,0.00262394
+global-offset,241  ,3            ,2   ,30  ,1.07558e-05,0.00278919
+global-offset,241  ,4            ,2   ,30  ,1.09304e-05,0.00274464
+global-offset,241  ,5            ,2   ,30  ,1.151e-05  ,0.00260643
+global-offset,241  ,6            ,2   ,30  ,7.4382e-06 ,0.00403323
+global-offset,241  ,7            ,2   ,30  ,1.0637e-05 ,0.00282034
+global-offset,241  ,8            ,2   ,30  ,1.14402e-05,0.00262233
+global-offset,241  ,9            ,2   ,30  ,1.09792e-05,0.00273244
+global-offset,241  ,10           ,2   ,30  ,1.14192e-05,0.00262715
+global-offset,361  ,2            ,3   ,30  ,1.15869e-05,0.0038837
+global-offset,361  ,3            ,3   ,30  ,1.11398e-05,0.00403957
+global-offset,361  ,4            ,3   ,30  ,1.04554e-05,0.004304
+global-offset,361  ,5            ,3   ,30  ,1.09932e-05,0.00409344
+global-offset,361  ,6            ,3   ,30  ,1.12655e-05,0.0039945
+global-offset,361  ,7            ,3   ,30  ,1.08885e-05,0.0041328
+global-offset,361  ,8            ,3   ,30  ,1.09862e-05,0.00409605
+global-offset,361  ,9            ,3   ,30  ,1.05392e-05,0.00426977
+global-offset,361  ,10           ,3   ,30  ,1.02389e-05,0.004395
+global-offset,481  ,2            ,4   ,30  ,1.13913e-05,0.00526718
+global-offset,481  ,3            ,4   ,30  ,1.12586e-05,0.00532926
+global-offset,481  ,4            ,4   ,30  ,1.30745e-05,0.00458909
+global-offset,481  ,5            ,4   ,30  ,1.16078e-05,0.00516894
+global-offset,481  ,6            ,4   ,30  ,1.11119e-05,0.00539962
+global-offset,481  ,7            ,4   ,30  ,1.24878e-05,0.00480469
+global-offset,481  ,8            ,4   ,30  ,1.07697e-05,0.00557119
+global-offset,481  ,9            ,4   ,30  ,1.05531e-05,0.00568553
+global-offset,481  ,10           ,4   ,30  ,1.12097e-05,0.00535251
+global-offset,601  ,2            ,5   ,30  ,1.10072e-05,0.00681372
+global-offset,601  ,3            ,5   ,30  ,1.42548e-05,0.00526139
+global-offset,601  ,4            ,5   ,30  ,1.03157e-05,0.00727047
+global-offset,601  ,5            ,5   ,30  ,1.33818e-05,0.00560463
+global-offset,601  ,6            ,5   ,30  ,1.13006e-05,0.00663682
+global-offset,601  ,7            ,5   ,30  ,1.14541e-05,0.00654787
+global-offset,601  ,8            ,5   ,30  ,1.13983e-05,0.00657993
+global-offset,601  ,9            ,5   ,30  ,7.6897e-06 ,0.00975331
+global-offset,601  ,10           ,5   ,30  ,1.33748e-05,0.00560756
+global-offset,1201 ,2            ,10  ,30  ,6.5722e-06 ,0.0228234
+global-offset,1201 ,3            ,10  ,30  ,1.13284e-05,0.0132411
+global-offset,1201 ,4            ,10  ,30  ,1.14961e-05,0.0130479
+global-offset,1201 ,5            ,10  ,30  ,1.13145e-05,0.0132573
+global-offset,1201 ,6            ,10  ,30  ,8.3741e-06 ,0.0179124
+global-offset,1201 ,7            ,10  ,30  ,1.09513e-05,0.013697
+global-offset,1201 ,8            ,10  ,30  ,1.12236e-05,0.0133647
+global-offset,1201 ,9            ,10  ,30  ,1.14332e-05,0.0131197
+global-offset,1201 ,10           ,10  ,30  ,1.11119e-05,0.013499
+global-offset,2401 ,2            ,20  ,30  ,1.10211e-05,0.0272205
+global-offset,2401 ,3            ,20  ,30  ,6.5722e-06 ,0.0456468
+global-offset,2401 ,4            ,20  ,30  ,1.13493e-05,0.0264333
+global-offset,2401 ,5            ,20  ,30  ,1.2879e-05 ,0.0232937
+global-offset,2401 ,6            ,20  ,30  ,1.11468e-05,0.0269136
+global-offset,2401 ,7            ,20  ,30  ,1.12796e-05,0.0265967
+global-offset,2401 ,8            ,20  ,30  ,8.2134e-06 ,0.0365257
+global-offset,2401 ,9            ,20  ,30  ,1.08395e-05,0.0276766
+global-offset,2401 ,10           ,20  ,30  ,1.09932e-05,0.0272896
+global-offset,3841 ,2            ,32  ,30  ,8.2972e-06 ,0.0578508
+global-offset,3841 ,3            ,32  ,30  ,1.09024e-05,0.044027
+global-offset,3841 ,4            ,32  ,30  ,1.26973e-05,0.0378033
+global-offset,3841 ,5            ,32  ,30  ,1.14891e-05,0.0417787
+global-offset,3841 ,6            ,32  ,30  ,1.0658e-05 ,0.0450366
+global-offset,3841 ,7            ,32  ,30  ,1.11957e-05,0.0428736
+global-offset,3841 ,8            ,32  ,30  ,7.1309e-06 ,0.0673127
+global-offset,3841 ,9            ,32  ,30  ,1.15799e-05,0.0414511
+global-offset,3841 ,10           ,32  ,30  ,1.03437e-05,0.0464051
+global-offset,201  ,2            ,1   ,50  ,1.30605e-05,0.00191417
+global-offset,201  ,3            ,1   ,50  ,1.22714e-05,0.00203726
+global-offset,201  ,4            ,1   ,50  ,1.26066e-05,0.00198309
+global-offset,201  ,5            ,1   ,50  ,6.6629e-06 ,0.00375212
+global-offset,201  ,6            ,1   ,50  ,1.13983e-05,0.00219331
+global-offset,201  ,7            ,1   ,50  ,1.13145e-05,0.00220955
+global-offset,201  ,8            ,1   ,50  ,1.13355e-05,0.00220546
+global-offset,201  ,9            ,1   ,50  ,1.1098e-05 ,0.00225266
+global-offset,201  ,10           ,1   ,50  ,1.09932e-05,0.00227413
+global-offset,401  ,2            ,2   ,50  ,1.09792e-05,0.00455407
+global-offset,401  ,3            ,2   ,50  ,1.09164e-05,0.00458026
+global-offset,401  ,4            ,2   ,50  ,9.4706e-06 ,0.0052795
+global-offset,401  ,5            ,2   ,50  ,7.983e-06  ,0.00626331
+global-offset,401  ,6            ,2   ,50  ,1.05951e-05,0.00471916
+global-offset,401  ,7            ,2   ,50  ,1.5505e-05 ,0.00322477
+global-offset,401  ,8            ,2   ,50  ,1.18592e-05,0.00421614
+global-offset,401  ,9            ,2   ,50  ,1.17685e-05,0.00424863
+global-offset,401  ,10           ,2   ,50  ,1.13913e-05,0.00438931
+global-offset,601  ,2            ,3   ,50  ,1.36682e-05,0.00548719
+global-offset,601  ,3            ,3   ,50  ,1.12237e-05,0.00668229
+global-offset,601  ,4            ,3   ,50  ,1.53584e-05,0.00488332
+global-offset,601  ,5            ,3   ,50  ,1.55609e-05,0.00481977
+global-offset,601  ,6            ,3   ,50  ,1.14541e-05,0.00654787
+global-offset,601  ,7            ,3   ,50  ,8.9678e-06 ,0.00836326
+global-offset,601  ,8            ,3   ,50  ,1.39056e-05,0.00539351
+global-offset,601  ,9            ,3   ,50  ,1.19361e-05,0.00628346
+global-offset,601  ,10           ,3   ,50  ,1.11957e-05,0.006699
+global-offset,801  ,2            ,4   ,50  ,1.05113e-05,0.00951357
+global-offset,801  ,3            ,4   ,50  ,9.5335e-06 ,0.0104893
+global-offset,801  ,4            ,4   ,50  ,1.1517e-05 ,0.00868282
+global-offset,801  ,5            ,4   ,50  ,1.57635e-05,0.00634377
+global-offset,801  ,6            ,4   ,50  ,1.27602e-05,0.00783687
+global-offset,801  ,7            ,4   ,50  ,1.19012e-05,0.00840251
+global-offset,801  ,8            ,4   ,50  ,1.11468e-05,0.00897118
+global-offset,801  ,9            ,4   ,50  ,1.06509e-05,0.00938888
+global-offset,801  ,10           ,4   ,50  ,1.12935e-05,0.00885465
+global-offset,1001 ,2            ,5   ,50  ,1.1091e-05 ,0.0112704
+global-offset,1001 ,3            ,5   ,50  ,1.5072e-05 ,0.00829352
+global-offset,1001 ,4            ,5   ,50  ,1.17126e-05,0.0106723
+global-offset,1001 ,5            ,5   ,50  ,9.6452e-06 ,0.0129598
+global-offset,1001 ,6            ,5   ,50  ,1.53793e-05,0.00812781
+global-offset,1001 ,7            ,5   ,50  ,1.12935e-05,0.0110683
+global-offset,1001 ,8            ,5   ,50  ,6.4884e-06 ,0.0192652
+global-offset,1001 ,9            ,5   ,50  ,1.14402e-05,0.0109264
+global-offset,1001 ,10           ,5   ,50  ,1.16288e-05,0.0107492
+global-offset,2001 ,2            ,10  ,50  ,1.11329e-05,0.022456
+global-offset,2001 ,3            ,10  ,50  ,1.15101e-05,0.0217201
+global-offset,2001 ,4            ,10  ,50  ,8.3392e-06 ,0.0299789
+global-offset,2001 ,5            ,10  ,50  ,1.20129e-05,0.020811
+global-offset,2001 ,6            ,10  ,50  ,1.12447e-05,0.0222327
+global-offset,2001 ,7            ,10  ,50  ,1.21805e-05,0.0205246
+global-offset,2001 ,8            ,10  ,50  ,1.15101e-05,0.0217201
+global-offset,2001 ,9            ,10  ,50  ,7.962e-06  ,0.0313991
+global-offset,2001 ,10           ,10  ,50  ,1.2411e-05 ,0.0201434
+global-offset,4001 ,2            ,20  ,50  ,1.00852e-05,0.0495776
+global-offset,4001 ,3            ,20  ,50  ,9.9176e-06 ,0.0504154
+global-offset,4001 ,4            ,20  ,50  ,1.107e-05  ,0.0451671
+global-offset,4001 ,5            ,20  ,50  ,1.27043e-05,0.0393568
+global-offset,4001 ,6            ,20  ,50  ,1.13844e-05,0.0439197
+global-offset,4001 ,7            ,20  ,50  ,1.14751e-05,0.0435726
+global-offset,4001 ,8            ,20  ,50  ,1.1978e-05 ,0.0417432
+global-offset,4001 ,9            ,20  ,50  ,1.14263e-05,0.0437587
+global-offset,4001 ,10           ,20  ,50  ,1.27952e-05,0.0390772
+global-offset,6401 ,2            ,32  ,50  ,1.14542e-05,0.0698434
+global-offset,6401 ,3            ,32  ,50  ,1.07557e-05,0.0743792
+global-offset,6401 ,4            ,32  ,50  ,1.09443e-05,0.0730974
+global-offset,6401 ,5            ,32  ,50  ,1.3752e-05 ,0.0581734
+global-offset,6401 ,6            ,32  ,50  ,1.05113e-05,0.0761086
+global-offset,6401 ,7            ,32  ,50  ,8.4928e-06 ,0.0941974
+global-offset,6401 ,8            ,32  ,50  ,1.72232e-05,0.046449
+global-offset,6401 ,9            ,32  ,50  ,1.02669e-05,0.0779203
+global-offset,6401 ,10           ,32  ,50  ,6.635e-06  ,0.120573
+global-offset,401  ,2            ,1   ,100 ,9.9805e-06 ,0.00500977
+global-offset,401  ,3            ,1   ,100 ,1.09303e-05,0.00457444
+global-offset,401  ,4            ,1   ,100 ,1.22294e-05,0.00408851
+global-offset,401  ,5            ,1   ,100 ,1.11468e-05,0.00448559
+global-offset,401  ,6            ,1   ,100 ,1.25786e-05,0.00397501
+global-offset,401  ,7            ,1   ,100 ,1.2851e-05 ,0.00389075
+global-offset,401  ,8            ,1   ,100 ,1.27113e-05,0.00393351
+global-offset,401  ,9            ,1   ,100 ,1.15729e-05,0.00432044
+global-offset,401  ,10           ,1   ,100 ,7.5988e-06 ,0.00657999
+global-offset,801  ,2            ,2   ,100 ,1.12865e-05,0.00886014
+global-offset,801  ,3            ,2   ,100 ,1.07837e-05,0.00927326
+global-offset,801  ,4            ,2   ,100 ,1.26484e-05,0.00790614
+global-offset,801  ,5            ,2   ,100 ,1.05043e-05,0.00951991
+global-offset,801  ,6            ,2   ,100 ,8.4719e-06 ,0.0118037
+global-offset,801  ,7            ,2   ,100 ,9.5195e-06 ,0.0105048
+global-offset,801  ,8            ,2   ,100 ,1.15589e-05,0.00865134
+global-offset,801  ,9            ,2   ,100 ,8.5487e-06 ,0.0116977
+global-offset,801  ,10           ,2   ,100 ,1.12656e-05,0.00887658
+global-offset,1201 ,2            ,3   ,100 ,1.08815e-05,0.0137849
+global-offset,1201 ,3            ,3   ,100 ,1.1084e-05 ,0.013533
+global-offset,1201 ,4            ,3   ,100 ,1.13983e-05,0.0131599
+global-offset,1201 ,5            ,3   ,100 ,1.20757e-05,0.0124216
+global-offset,1201 ,6            ,3   ,100 ,1.13564e-05,0.0132084
+global-offset,1201 ,7            ,3   ,100 ,1.37799e-05,0.0108854
+global-offset,1201 ,8            ,3   ,100 ,1.30955e-05,0.0114543
+global-offset,1201 ,9            ,3   ,100 ,8.6675e-06 ,0.017306
+global-offset,1201 ,10           ,3   ,100 ,1.06929e-05,0.014028
+global-offset,1601 ,2            ,4   ,100 ,1.13913e-05,0.0175573
+global-offset,1601 ,3            ,4   ,100 ,1.11329e-05,0.0179648
+global-offset,1601 ,4            ,4   ,100 ,1.11469e-05,0.0179422
+global-offset,1601 ,5            ,4   ,100 ,1.14751e-05,0.017429
+global-offset,1601 ,6            ,4   ,100 ,1.44015e-05,0.0138874
+global-offset,1601 ,7            ,4   ,100 ,1.08535e-05,0.0184272
+global-offset,1601 ,8            ,4   ,100 ,1.12586e-05,0.0177642
+global-offset,1601 ,9            ,4   ,100 ,1.53095e-05,0.0130638
+global-offset,1601 ,10           ,4   ,100 ,1.1077e-05 ,0.0180554
+global-offset,2001 ,2            ,5   ,100 ,6.7258e-06 ,0.0371703
+global-offset,2001 ,3            ,5   ,100 ,7.571e-06  ,0.0330207
+global-offset,2001 ,4            ,5   ,100 ,1.15101e-05,0.0217201
+global-offset,2001 ,5            ,5   ,100 ,1.19011e-05,0.0210065
+global-offset,2001 ,6            ,5   ,100 ,1.12167e-05,0.0222882
+global-offset,2001 ,7            ,5   ,100 ,1.14262e-05,0.0218795
+global-offset,2001 ,8            ,5   ,100 ,1.26136e-05,0.0198199
+global-offset,2001 ,9            ,5   ,100 ,1.09932e-05,0.0227413
+global-offset,2001 ,10           ,5   ,100 ,1.17545e-05,0.0212685
+global-offset,4001 ,2            ,10  ,100 ,1.1552e-05 ,0.0432825
+global-offset,4001 ,3            ,10  ,100 ,1.5044e-05 ,0.0332358
+global-offset,4001 ,4            ,10  ,100 ,1.10421e-05,0.0452812
+global-offset,4001 ,5            ,10  ,100 ,9.0306e-06 ,0.0553673
+global-offset,4001 ,6            ,10  ,100 ,1.27462e-05,0.0392274
+global-offset,4001 ,7            ,10  ,100 ,1.51209e-05,0.0330668
+global-offset,4001 ,8            ,10  ,100 ,1.13704e-05,0.0439738
+global-offset,4001 ,9            ,10  ,100 ,1.10491e-05,0.0452526
+global-offset,4001 ,10           ,10  ,100 ,1.05392e-05,0.0474419
+global-offset,8001 ,2            ,20  ,100 ,1.08814e-05,0.0918999
+global-offset,8001 ,3            ,20  ,100 ,1.27393e-05,0.0784972
+global-offset,8001 ,4            ,20  ,100 ,1.16218e-05,0.0860452
+global-offset,8001 ,5            ,20  ,100 ,1.29977e-05,0.0769367
+global-offset,8001 ,6            ,20  ,100 ,1.05113e-05,0.0951357
+global-offset,8001 ,7            ,20  ,100 ,1.07278e-05,0.0932158
+global-offset,8001 ,8            ,20  ,100 ,1.25996e-05,0.0793676
+global-offset,8001 ,9            ,20  ,100 ,1.05252e-05,0.0950101
+global-offset,8001 ,10           ,20  ,100 ,1.22364e-05,0.0817234
+global-offset,12801,2            ,32  ,100 ,1.09793e-05,0.145729
+global-offset,12801,3            ,32  ,100 ,1.27323e-05,0.125665
+global-offset,12801,4            ,32  ,100 ,1.11469e-05,0.143538
+global-offset,12801,5            ,32  ,100 ,7.8573e-06 ,0.203632
+global-offset,12801,6            ,32  ,100 ,1.151e-05  ,0.13901
+global-offset,12801,7            ,32  ,100 ,1.03297e-05,0.154893
+global-offset,12801,8            ,32  ,100 ,1.01202e-05,0.1581
+global-offset,12801,9            ,32  ,100 ,1.11817e-05,0.143091
+global-offset,12801,10           ,32  ,100 ,1.11957e-05,0.142912
+global-offset,801  ,2            ,1   ,200 ,8.3322e-06 ,0.0120016
+global-offset,801  ,3            ,1   ,200 ,1.05183e-05,0.00950724
+global-offset,801  ,4            ,1   ,200 ,7.7525e-06 ,0.0128991
+global-offset,801  ,5            ,1   ,200 ,1.1098e-05 ,0.00901063
+global-offset,801  ,6            ,1   ,200 ,1.03716e-05,0.00964171
+global-offset,801  ,7            ,1   ,200 ,1.15729e-05,0.00864088
+global-offset,801  ,8            ,1   ,200 ,1.00992e-05,0.00990177
+global-offset,801  ,9            ,1   ,200 ,8.2344e-06 ,0.0121442
+global-offset,801  ,10           ,1   ,200 ,1.02669e-05,0.00974004
+global-offset,1601 ,2            ,2   ,200 ,8.4021e-06 ,0.0238036
+global-offset,1601 ,3            ,2   ,200 ,7.8712e-06 ,0.0254091
+global-offset,1601 ,4            ,2   ,200 ,1.14192e-05,0.0175144
+global-offset,1601 ,5            ,2   ,200 ,1.12306e-05,0.0178085
+global-offset,1601 ,6            ,2   ,200 ,1.14332e-05,0.0174929
+global-offset,1601 ,7            ,2   ,200 ,1.09303e-05,0.0182978
+global-offset,1601 ,8            ,2   ,200 ,1.03856e-05,0.0192574
+global-offset,1601 ,9            ,2   ,200 ,1.20059e-05,0.0166585
+global-offset,1601 ,10           ,2   ,200 ,9.9875e-06 ,0.020025
+global-offset,2401 ,2            ,3   ,200 ,1.12027e-05,0.0267793
+global-offset,2401 ,3            ,3   ,200 ,9.9246e-06 ,0.0302279
+global-offset,2401 ,4            ,3   ,200 ,1.12237e-05,0.0267292
+global-offset,2401 ,5            ,3   ,200 ,7.983e-06  ,0.0375799
+global-offset,2401 ,6            ,3   ,200 ,1.07278e-05,0.0279647
+global-offset,2401 ,7            ,3   ,200 ,1.51977e-05,0.0197398
+global-offset,2401 ,8            ,3   ,200 ,1.78308e-05,0.0168248
+global-offset,2401 ,9            ,3   ,200 ,1.21735e-05,0.0246437
+global-offset,2401 ,10           ,3   ,200 ,9.6173e-06 ,0.0311938
+global-offset,3201 ,2            ,4   ,200 ,1.43526e-05,0.0278695
+global-offset,3201 ,3            ,4   ,200 ,1.05601e-05,0.0378784
+global-offset,3201 ,4            ,4   ,200 ,1.0672e-05 ,0.0374813
+global-offset,3201 ,5            ,4   ,200 ,1.30954e-05,0.0305451
+global-offset,3201 ,6            ,4   ,200 ,1.01062e-05,0.0395797
+global-offset,3201 ,7            ,4   ,200 ,1.15799e-05,0.0345426
+global-offset,3201 ,8            ,4   ,200 ,1.1063e-05 ,0.0361566
+global-offset,3201 ,9            ,4   ,200 ,1.29279e-05,0.0309408
+global-offset,3201 ,10           ,4   ,200 ,1.05951e-05,0.0377533
+global-offset,4001 ,2            ,5   ,200 ,8.1087e-06 ,0.0616622
+global-offset,4001 ,3            ,5   ,200 ,1.05951e-05,0.0471916
+global-offset,4001 ,4            ,5   ,200 ,1.09094e-05,0.045832
+global-offset,4001 ,5            ,5   ,200 ,1.27532e-05,0.0392058
+global-offset,4001 ,6            ,5   ,200 ,1.13285e-05,0.0441365
+global-offset,4001 ,7            ,5   ,200 ,1.1559e-05 ,0.0432563
+global-offset,4001 ,8            ,5   ,200 ,1.1503e-05 ,0.0434669
+global-offset,4001 ,9            ,5   ,200 ,1.14542e-05,0.0436521
+global-offset,4001 ,10           ,5   ,200 ,1.1105e-05 ,0.0450248
+global-offset,8001 ,2            ,10  ,200 ,1.17196e-05,0.0853271
+global-offset,8001 ,3            ,10  ,200 ,1.11679e-05,0.0895423
+global-offset,8001 ,4            ,10  ,200 ,1.12027e-05,0.0892642
+global-offset,8001 ,5            ,10  ,200 ,1.01621e-05,0.0984049
+global-offset,8001 ,6            ,10  ,200 ,1.21875e-05,0.0820513
+global-offset,8001 ,7            ,10  ,200 ,8.5696e-06 ,0.116692
+global-offset,8001 ,8            ,10  ,200 ,1.16567e-05,0.0857876
+global-offset,8001 ,9            ,10  ,200 ,8.4649e-06 ,0.118135
+global-offset,8001 ,10           ,10  ,200 ,1.1056e-05 ,0.0904486
+global-offset,16001,2            ,20  ,200 ,1.09094e-05,0.183328
+global-offset,16001,3            ,20  ,200 ,1.17406e-05,0.170349
+global-offset,16001,4            ,20  ,200 ,1.0176e-05 ,0.196541
+global-offset,16001,5            ,20  ,200 ,8.884e-06  ,0.225124
+global-offset,16001,6            ,20  ,200 ,1.08605e-05,0.184154
+global-offset,16001,7            ,20  ,200 ,1.29837e-05,0.154039
+global-offset,16001,8            ,20  ,200 ,1.16637e-05,0.171472
+global-offset,16001,9            ,20  ,200 ,1.32352e-05,0.151112
+global-offset,16001,10           ,20  ,200 ,1.06928e-05,0.187042
+global-offset,25601,2            ,32  ,200 ,1.13773e-05,0.281262
+global-offset,25601,3            ,32  ,200 ,8.6534e-06 ,0.369797
+global-offset,25601,4            ,32  ,200 ,7.9061e-06 ,0.404751
+global-offset,25601,5            ,32  ,200 ,1.05672e-05,0.302824
+global-offset,25601,6            ,32  ,200 ,1.10211e-05,0.290352
+global-offset,25601,7            ,32  ,200 ,1.10002e-05,0.290904
+global-offset,25601,8            ,32  ,200 ,1.1552e-05 ,0.277008
+global-offset,25601,9            ,32  ,200 ,8.9608e-06 ,0.357111
+global-offset,25601,10           ,32  ,200 ,9.6732e-06 ,0.330811
+global-offset,2001 ,2            ,1   ,500 ,1.16357e-05,0.0214856
+global-offset,2001 ,3            ,1   ,500 ,1.1552e-05 ,0.0216413
+global-offset,2001 ,4            ,1   ,500 ,1.18453e-05,0.0211054
+global-offset,2001 ,5            ,1   ,500 ,1.12796e-05,0.0221639
+global-offset,2001 ,6            ,1   ,500 ,1.09093e-05,0.0229162
+global-offset,2001 ,7            ,1   ,500 ,1.22294e-05,0.0204425
+global-offset,2001 ,8            ,1   ,500 ,1.10909e-05,0.022541
+global-offset,2001 ,9            ,1   ,500 ,1.10072e-05,0.0227124
+global-offset,2001 ,10           ,1   ,500 ,1.13354e-05,0.0220548
+global-offset,4001 ,2            ,2   ,500 ,1.49812e-05,0.0333752
+global-offset,4001 ,3            ,2   ,500 ,1.12377e-05,0.0444931
+global-offset,4001 ,4            ,2   ,500 ,1.07627e-05,0.0464567
+global-offset,4001 ,5            ,2   ,500 ,1.20059e-05,0.0416462
+global-offset,4001 ,6            ,2   ,500 ,6.5792e-06 ,0.0759971
+global-offset,4001 ,7            ,2   ,500 ,1.05811e-05,0.0472541
+global-offset,4001 ,8            ,2   ,500 ,1.1552e-05 ,0.0432825
+global-offset,4001 ,9            ,2   ,500 ,1.09513e-05,0.0456567
+global-offset,4001 ,10           ,2   ,500 ,1.14681e-05,0.0435992
+global-offset,6001 ,2            ,3   ,500 ,1.14053e-05,0.0657589
+global-offset,6001 ,3            ,3   ,500 ,1.29278e-05,0.0580145
+global-offset,6001 ,4            ,3   ,500 ,1.14053e-05,0.0657589
+global-offset,6001 ,5            ,3   ,500 ,1.1084e-05 ,0.0676651
+global-offset,6001 ,6            ,3   ,500 ,9.9595e-06 ,0.075305
+global-offset,6001 ,7            ,3   ,500 ,1.09932e-05,0.068224
+global-offset,6001 ,8            ,3   ,500 ,1.38148e-05,0.0542896
+global-offset,6001 ,9            ,3   ,500 ,1.1545e-05 ,0.0649632
+global-offset,6001 ,10           ,3   ,500 ,1.1531e-05 ,0.0650421
+global-offset,8001 ,2            ,4   ,500 ,1.12796e-05,0.0886556
+global-offset,8001 ,3            ,4   ,500 ,1.3284e-05 ,0.0752785
+global-offset,8001 ,4            ,4   ,500 ,1.07069e-05,0.0933977
+global-offset,8001 ,5            ,4   ,500 ,1.15589e-05,0.0865134
+global-offset,8001 ,6            ,4   ,500 ,1.06999e-05,0.0934588
+global-offset,8001 ,7            ,4   ,500 ,8.5068e-06 ,0.117553
+global-offset,8001 ,8            ,4   ,500 ,1.17964e-05,0.0847716
+global-offset,8001 ,9            ,4   ,500 ,8.0877e-06 ,0.123645
+global-offset,8001 ,10           ,4   ,500 ,1.26485e-05,0.0790608
+global-offset,10001,2            ,5   ,500 ,1.07208e-05,0.116596
+global-offset,10001,3            ,5   ,500 ,6.9913e-06 ,0.178794
+global-offset,10001,4            ,5   ,500 ,9.75e-06   ,0.128205
+global-offset,10001,5            ,5   ,500 ,1.12027e-05,0.11158
+global-offset,10001,6            ,5   ,500 ,1.11539e-05,0.112068
+global-offset,10001,7            ,5   ,500 ,8.6325e-06 ,0.144802
+global-offset,10001,8            ,5   ,500 ,1.12097e-05,0.111511
+global-offset,10001,9            ,5   ,500 ,7.9551e-06 ,0.157132
+global-offset,10001,10           ,5   ,500 ,1.33958e-05,0.0933128
+global-offset,20001,2            ,10  ,500 ,1.14611e-05,0.218129
+global-offset,20001,3            ,10  ,500 ,1.10421e-05,0.226406
+global-offset,20001,4            ,10  ,500 ,1.11818e-05,0.223578
+global-offset,20001,5            ,10  ,500 ,1.23272e-05,0.202804
+global-offset,20001,6            ,10  ,500 ,1.14402e-05,0.218528
+global-offset,20001,7            ,10  ,500 ,1.05951e-05,0.235958
+global-offset,20001,8            ,10  ,500 ,1.09373e-05,0.228576
+global-offset,20001,9            ,10  ,500 ,1.0637e-05 ,0.235029
+global-offset,20001,10           ,10  ,500 ,1.12307e-05,0.222604
+global-offset,40001,2            ,20  ,500 ,1.06789e-05,0.468213
+global-offset,40001,3            ,20  ,500 ,1.0197e-05 ,0.49034
+global-offset,40001,4            ,20  ,500 ,1.09652e-05,0.455988
+global-offset,40001,5            ,20  ,500 ,1.03437e-05,0.483386
+global-offset,40001,6            ,20  ,500 ,1.14123e-05,0.438124
+global-offset,40001,7            ,20  ,500 ,1.12167e-05,0.445764
+global-offset,40001,8            ,20  ,500 ,1.0169e-05 ,0.49169
+global-offset,40001,9            ,20  ,500 ,1.40523e-05,0.355814
+global-offset,40001,10           ,20  ,500 ,1.13424e-05,0.440824
+global-offset,64001,2            ,32  ,500 ,1.18103e-05,0.677375
+global-offset,64001,3            ,32  ,500 ,1.16357e-05,0.687539
+global-offset,64001,4            ,32  ,500 ,1.14123e-05,0.700998
+global-offset,64001,5            ,32  ,500 ,1.03087e-05,0.776044
+global-offset,64001,6            ,32  ,500 ,1.10561e-05,0.723582
+global-offset,64001,7            ,32  ,500 ,9.8827e-06 ,0.809495
+global-offset,64001,8            ,32  ,500 ,1.05183e-05,0.760579
+global-offset,64001,9            ,32  ,500 ,9.5545e-06 ,0.837302
+global-offset,64001,10           ,32  ,500 ,1.1063e-05 ,0.723131
+global-offset,3001 ,2            ,1   ,750 ,1.12237e-05,0.0334114
+global-offset,3001 ,3            ,1   ,750 ,1.00363e-05,0.0373644
+global-offset,3001 ,4            ,1   ,750 ,1.11818e-05,0.0335366
+global-offset,3001 ,5            ,1   ,750 ,1.16706e-05,0.032132
+global-offset,3001 ,6            ,1   ,750 ,1.07068e-05,0.0350245
+global-offset,3001 ,7            ,1   ,750 ,1.09652e-05,0.0341991
+global-offset,3001 ,8            ,1   ,750 ,1.11748e-05,0.0335576
+global-offset,3001 ,9            ,1   ,750 ,1.151e-05  ,0.0325804
+global-offset,3001 ,10           ,1   ,750 ,1.13354e-05,0.0330822
+global-offset,6001 ,2            ,2   ,750 ,1.31303e-05,0.0571198
+global-offset,6001 ,3            ,2   ,750 ,1.15449e-05,0.0649638
+global-offset,6001 ,4            ,2   ,750 ,8.0039e-06 ,0.0937043
+global-offset,6001 ,5            ,2   ,750 ,1.15031e-05,0.0651998
+global-offset,6001 ,6            ,2   ,750 ,7.5988e-06 ,0.0986998
+global-offset,6001 ,7            ,2   ,750 ,1.06579e-05,0.0703703
+global-offset,6001 ,8            ,2   ,750 ,1.13424e-05,0.0661236
+global-offset,6001 ,9            ,2   ,750 ,1.32281e-05,0.0566975
+global-offset,6001 ,10           ,2   ,750 ,1.03506e-05,0.0724596
+global-offset,9001 ,2            ,3   ,750 ,1.1091e-05 ,0.101434
+global-offset,9001 ,3            ,3   ,750 ,1.12237e-05,0.100234
+global-offset,9001 ,4            ,3   ,750 ,1.08884e-05,0.103321
+global-offset,9001 ,5            ,3   ,750 ,1.16427e-05,0.0966271
+global-offset,9001 ,6            ,3   ,750 ,1.2844e-05 ,0.0875895
+global-offset,9001 ,7            ,3   ,750 ,1.29278e-05,0.0870218
+global-offset,9001 ,8            ,3   ,750 ,1.11329e-05,0.101052
+global-offset,9001 ,9            ,3   ,750 ,1.15031e-05,0.0977997
+global-offset,9001 ,10           ,3   ,750 ,1.09583e-05,0.102662
+global-offset,12001,2            ,4   ,750 ,1.14611e-05,0.130877
+global-offset,12001,3            ,4   ,750 ,1.1077e-05 ,0.135416
+global-offset,12001,4            ,4   ,750 ,1.15938e-05,0.129379
+global-offset,12001,5            ,4   ,750 ,1.08884e-05,0.137761
+global-offset,12001,6            ,4   ,750 ,1.13704e-05,0.131921
+global-offset,12001,7            ,4   ,750 ,8.3182e-06 ,0.180327
+global-offset,12001,8            ,4   ,750 ,1.13145e-05,0.132573
+global-offset,12001,9            ,4   ,750 ,8.1576e-06 ,0.183878
+global-offset,12001,10           ,4   ,750 ,1.15589e-05,0.12977
+global-offset,15001,2            ,5   ,750 ,1.13703e-05,0.164903
+global-offset,15001,3            ,5   ,750 ,1.0155e-05 ,0.184638
+global-offset,15001,4            ,5   ,750 ,1.08256e-05,0.173201
+global-offset,15001,5            ,5   ,750 ,1.21666e-05,0.15411
+global-offset,15001,6            ,5   ,750 ,1.05741e-05,0.17732
+global-offset,15001,7            ,5   ,750 ,1.11538e-05,0.168104
+global-offset,15001,8            ,5   ,750 ,1.12098e-05,0.167264
+global-offset,15001,9            ,5   ,750 ,1.10491e-05,0.169697
+global-offset,15001,10           ,5   ,750 ,1.11748e-05,0.167788
+global-offset,30001,2            ,10  ,750 ,1.13075e-05,0.331638
+global-offset,30001,3            ,10  ,750 ,1.41292e-05,0.265408
+global-offset,30001,4            ,10  ,750 ,9.6662e-06 ,0.38795
+global-offset,30001,5            ,10  ,750 ,1.26484e-05,0.29648
+global-offset,30001,6            ,10  ,750 ,1.14053e-05,0.328795
+global-offset,30001,7            ,10  ,750 ,1.14123e-05,0.328593
+global-offset,30001,8            ,10  ,750 ,1.10281e-05,0.34004
+global-offset,30001,9            ,10  ,750 ,1.10281e-05,0.34004
+global-offset,30001,10           ,10  ,750 ,1.28091e-05,0.292761
+global-offset,60001,2            ,20  ,750 ,1.04485e-05,0.717806
+global-offset,60001,3            ,20  ,750 ,1.13774e-05,0.659202
+global-offset,60001,4            ,20  ,750 ,1.10631e-05,0.677929
+global-offset,60001,5            ,20  ,750 ,1.11049e-05,0.675378
+global-offset,60001,6            ,20  ,750 ,1.10072e-05,0.681372
+global-offset,60001,7            ,20  ,750 ,1.26136e-05,0.594596
+global-offset,60001,8            ,20  ,750 ,1.14332e-05,0.655984
+global-offset,60001,9            ,20  ,750 ,1.26694e-05,0.591978
+global-offset,60001,10           ,20  ,750 ,1.14332e-05,0.655984
+global-offset,96001,2            ,32  ,750 ,1.50231e-05,0.79877
+global-offset,96001,3            ,32  ,750 ,1.05043e-05,1.14239
+global-offset,96001,4            ,32  ,750 ,6.5372e-06 ,1.83565
+global-offset,96001,5            ,32  ,750 ,1.05741e-05,1.13485
+global-offset,96001,6            ,32  ,750 ,1.12516e-05,1.06651
+global-offset,96001,7            ,32  ,750 ,1.14751e-05,1.04574
+global-offset,96001,8            ,32  ,750 ,1.14891e-05,1.04447
+global-offset,96001,9            ,32  ,750 ,1.107e-05  ,1.08401
+global-offset,96001,10           ,32  ,750 ,1.10001e-05,1.0909
