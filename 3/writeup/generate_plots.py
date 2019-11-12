@@ -60,8 +60,8 @@ def plotstride_offset(df):
 
 if __name__=='__main__':
     mem, coalesced, stride, offset = readData()
-    #plotmemcopy(mem)
-    #plotcoalesced(coalesced)
+    plotmemcopy(mem)
+    plotcoalesced(coalesced)
     plotstride_offset(stride)
     plotstride_offset(offset)
     plt.show()

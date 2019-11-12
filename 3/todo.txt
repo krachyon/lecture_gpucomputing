@@ -1,2 +1,0 @@
-- Figure out why d2d copy is nearly instant. Need to copy initialized host mem first?
-- Stride explodes and offset prints wrong data
