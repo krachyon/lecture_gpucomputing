@@ -252,9 +252,7 @@ int main(int argc, char* argv[])
         << grid_dim.x <<", "
         << block_dim.x <<", "
         << kernelTimer.getTime(optNumIterations) <<", "
-        << bandwidth<<", "
-        << std::endl;
-
+        << bandwidth << std::endl;
     }
     return 0;
 }

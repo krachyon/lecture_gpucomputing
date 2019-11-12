@@ -12,7 +12,8 @@ def readData():
     return (
         clean_header(pd.read_csv('../results/memcopy.csv')),
         clean_header(pd.read_csv('../results/coalesced.csv')),
-        clean_header(pd.read_csv('../results/stride_offset.csv'))
+        clean_header(pd.read_csv('../results/stride.csv')),
+        clean_header(pd.read_csv('../results/offset.csv'))
     )
 
 
@@ -46,9 +47,10 @@ def plotcoalesced(df):
 
 def plotstride_offset(df):
     fig = plt.figure()
+    current_type = df.type[0]
     for i in df.stride_offset.unique():
-        stride = df[df.stride_offset == i]
-        plt.semilogx(sorted(stride['size']), sorted(stride['bandwidth(GB/s)']), label=f'stride {i}')
+        current_type = df[df.stride_offset == i]
+        plt.semilogx(sorted(stride['size']), sorted(current_type['bandwidth(GB/s)']), label=f'{current_type}={i}')
 
     plt.xlabel('data size == gridDim * blockDim')
     plt.ylabel('Bandwidth in GB/s')
@@ -56,8 +58,9 @@ def plotstride_offset(df):
     plt.savefig(f'{df.type[0]}.svg')
 
 if __name__=='__main__':
-    mem, coalesced, so = readData()
+    mem, coalesced, stride, offset = readData()
     #plotmemcopy(mem)
     #plotcoalesced(coalesced)
-    plotstride_offset(so[so.type == 'global-stride'])
+    plotstride_offset(stride)
+    plotstride_offset(offset)
     plt.show()
