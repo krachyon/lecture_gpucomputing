@@ -3,16 +3,30 @@
 #include <iostream>
 #include <vector>
 #include <boost/range/irange.hpp>
+#include <boost/lexical_cast.hpp>
 
-int main ()
+int main (int argc, char** argv)
 {
+
     size_t iters = 1;
     std::vector<size_t> N;
-    auto r = boost::irange(1, 100,1);
-    std::copy(r.begin(),r.end(),std::back_inserter(N));
-    r = boost::irange(100,1000,10);
-    std::copy(r.begin(),r.end(),std::back_inserter(N));
+    if(argc == 1) {
+        auto r = boost::irange(1, 4000, 1);
+        std::copy(r.begin(), r.end(), std::back_inserter(N));
+        //r = boost::irange(1000, 2000, 10);
+        //std::copy(r.begin(), r.end(), std::back_inserter(N));
+    }
 
+    else if(argc == 3)
+    {
+        N = {boost::lexical_cast<size_t>(argv[1])};
+        iters = {boost::lexical_cast<size_t>(argv[2])};
+    }
+    else
+    {
+        std::cout << "no arguments: sweep; else ./<name> matrixSize iterations" << std::endl;
+        exit(0);
+    }
 
     std::cout << "# iters, size, time(ns)" << std::endl;
     for(auto n: N) {
