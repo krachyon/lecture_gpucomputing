@@ -82,7 +82,7 @@ def plot_memory():
     plt.legend()
     plt.savefig(f'plots/memory.svg')
 
-    data = pd.read_csv('result/memory.txt', sep=';', comment=None)
+    data = pd.read_csv('result/memory_with_sync.csv', sep=';', comment=None)
     clean_header(data)
     # data is bytes per nanosecond
     theoretical_maximum = data.Size/(1024*1024*1024*8/1e9)
@@ -92,6 +92,7 @@ def plot_memory():
     plt.loglog(data.Size, data.H2DPin, label='H2DPin')
     plt.loglog(data.Size, data.D2HPage, label='D2HPage')
     plt.loglog(data.Size, data.D2HPin, label='D2HPin')
+    plt.loglog(data.Size, data.D2D, label='D2D')
     plt.loglog(data.Size, theoretical_maximum, label='maximum throughput')
     plt.xlabel('data size in bytes')
     plt.ylabel('time to copy in ns')
@@ -100,7 +101,8 @@ def plot_memory():
     plt.savefig(f'plots/memory_error.svg')
 
 
-plot_startup(False)
-plot_startup(True)
-dat = plot_wait()
+#plot_startup(False)
+#plot_startup(True)
+#dat = plot_wait()
 plot_memory()
+plt.show()
