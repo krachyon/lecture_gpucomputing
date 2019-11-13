@@ -19,6 +19,7 @@ size_t timeMemcpy(size_t bytes, size_t nloop)
     auto start = high_resolution_clock::now();
     for(size_t _=0;_!=nloop;++_)
         cudaMemcpy(dst, src);
+        cudaDeviceSynchronize();
     auto end = high_resolution_clock::now();
     return std::chrono::duration_cast<nanoseconds>((end-start)/nloop).count();
 }
