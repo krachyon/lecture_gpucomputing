@@ -16,12 +16,12 @@ It would be feasible to implement some sort of copy-on-write optimization to avo
 ![memory access coalesced](./coalesced.svg "abc"){width=80%}
 
 Both the thread per block and block count have been varied between 1 32 and 1024 respectively.
-There seems to be slightly diminishing returns for high block sizes but the result is that more threads and more blocks increase throughput.
+There seems to be slightly diminishing returns for high block sizes but the result is that more threads and more blocks increase throughput, as expected. It is therefore paramount to bundle memory access through thread blocks and the block grid.
 
 ## 3.3 and 3.4 global stride and offset  
 ![memory access coalesced](./global-stride.svg "abc"){width=70%}
 
 ![memory access coalesced](./global-offset.svg "abc"){width=70%}
 
-The plot contains the aggregated results of varying blocks and threads in the same interval als in 3.2. As a single thread only copies a single element, there seems to be no penalty to either access with offset or stride.
+The plot contains the aggregated results of varying blocks and threads in the same interval als in 3.2. As a single thread only copies a single element, there seems to be no penalty to either access with offset or stride. This is unexpected behaviour, as stride/offset would increase the number of cache lines that have to be fetched, but no such phenomenon is visible in the data. One possible explaination could be the additional overhead caused by each thread copying a single element.
 
