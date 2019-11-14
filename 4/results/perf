@@ -1,0 +1,90 @@
+Performance counter stats for './matrix_benchmark 2048 10':
+
+         53.141,49 msec task-clock:u              #    1,000 CPUs utilized          
+                 0      context-switches:u        #    0,000 K/sec                  
+                 0      cpu-migrations:u          #    0,000 K/sec                  
+            13.111      page-faults:u             #    0,247 K/sec                  
+   216.293.929.161      cycles:u                  #    4,070 GHz                      (33,33%)
+       542.258.846      stalled-cycles-frontend:u #    0,25% frontend cycles idle     (33,33%)
+   203.216.406.101      stalled-cycles-backend:u  #   93,95% backend cycles idle      (33,33%)
+    70.542.057.987      instructions:u            #    0,33  insn per cycle         
+                                                  #    2,88  stalled cycles per insn  (33,33%)
+    10.091.186.609      branches:u                #  189,893 M/sec                    (33,33%)
+         5.006.224      branch-misses:u           #    0,05% of all branches          (33,33%)
+    30.253.897.215      L1-dcache-loads:u         #  569,308 M/sec                    (33,33%)
+    10.661.698.450      L1-dcache-load-misses:u   #   35,24% of all L1-dcache hits    (33,33%)
+   <not supported>      LLC-loads:u                                                 
+   <not supported>      LLC-load-misses:u                                           
+       123.535.465      L1-icache-loads:u         #    2,325 M/sec                    (33,33%)
+           211.878      L1-icache-load-misses:u   #    0,17% of all L1-icache hits    (33,33%)
+    10.079.823.984      dTLB-loads:u              #  189,679 M/sec                    (33,33%)
+     9.977.993.557      dTLB-load-misses:u        #   98,99% of all dTLB cache hits   (33,33%)
+               116      iTLB-loads:u              #    0,002 K/sec                    (33,33%)
+                26      iTLB-load-misses:u        #   22,41% of all iTLB cache hits   (33,33%)
+       537.679.400      L1-dcache-prefetches:u    #   10,118 M/sec                    (33,33%)
+   <not supported>      L1-dcache-prefetch-misses:u                                   
+
+ Performance counter stats for './matrix_benchmark 512 30':
+
+          8.784,42 msec task-clock:u              #    1,000 CPUs utilized          
+                 0      context-switches:u        #    0,000 K/sec                  
+                 0      cpu-migrations:u          #    0,000 K/sec                  
+             1.151      page-faults:u             #    0,131 K/sec                  
+    35.889.244.396      cycles:u                  #    4,086 GHz                      (33,30%)
+        21.415.084      stalled-cycles-frontend:u #    0,06% frontend cycles idle     (33,33%)
+    31.318.569.373      stalled-cycles-backend:u  #   87,26% backend cycles idle      (33,37%)
+    28.246.057.397      instructions:u            #    0,79  insn per cycle         
+                                                  #    1,11  stalled cycles per insn  (33,40%)
+     4.034.811.121      branches:u                #  459,315 M/sec                    (33,42%)
+         7.929.015      branch-misses:u           #    0,20% of all branches          (33,41%)
+     8.139.731.090      L1-dcache-loads:u         #  926,610 M/sec                    (33,38%)
+     4.082.804.124      L1-dcache-load-misses:u   #   50,16% of all L1-dcache hits    (33,34%)
+   <not supported>      LLC-loads:u                                                 
+   <not supported>      LLC-load-misses:u                                           
+        60.472.434      L1-icache-loads:u         #    6,884 M/sec                    (33,31%)
+           476.507      L1-icache-load-misses:u   #    0,79% of all L1-icache hits    (33,29%)
+     2.028.100.227      dTLB-loads:u              #  230,875 M/sec                    (33,29%)
+            31.898      dTLB-load-misses:u        #    0,00% of all dTLB cache hits   (33,29%)
+               231      iTLB-loads:u              #    0,026 K/sec                    (33,29%)
+                69      iTLB-load-misses:u        #   29,87% of all iTLB cache hits   (33,29%)
+       396.789.030      L1-dcache-prefetches:u    #   45,170 M/sec                    (33,29%)
+   <not supported>      L1-dcache-prefetch-misses:u                                   
+
+       8,786599730 seconds time elapsed
+
+       8,755930000 seconds user
+       0,006632000 seconds sys
+
+
+      53,143850971 seconds time elapsed
+
+ Performance counter stats for './matrix_benchmark 300 100':
+
+          1.936,20 msec task-clock:u              #    1,000 CPUs utilized          
+                 0      context-switches:u        #    0,000 K/sec                  
+                 0      cpu-migrations:u          #    0,000 K/sec                  
+               475      page-faults:u             #    0,245 K/sec                  
+     7.781.101.448      cycles:u                  #    4,019 GHz                      (33,38%)
+        10.758.250      stalled-cycles-frontend:u #    0,14% frontend cycles idle     (33,38%)
+     4.696.991.011      stalled-cycles-backend:u  #   60,36% backend cycles idle      (33,38%)
+    18.945.473.945      instructions:u            #    2,43  insn per cycle         
+                                                  #    0,25  stalled cycles per insn  (33,38%)
+     2.696.967.820      branches:u                # 1392,918 M/sec                    (33,38%)
+         9.015.729      branch-misses:u           #    0,33% of all branches          (33,31%)
+     5.401.863.764      L1-dcache-loads:u         # 2789,931 M/sec                    (33,31%)
+       237.338.520      L1-dcache-load-misses:u   #    4,39% of all L1-dcache hits    (33,31%)
+   <not supported>      LLC-loads:u                                                 
+   <not supported>      LLC-load-misses:u                                           
+        33.422.759      L1-icache-loads:u         #   17,262 M/sec                    (33,31%)
+            31.926      L1-icache-load-misses:u   #    0,10% of all L1-icache hits    (33,31%)
+       802.699.850      dTLB-loads:u              #  414,575 M/sec                    (33,31%)
+             3.557      dTLB-load-misses:u        #    0,00% of all dTLB cache hits   (33,31%)
+               300      iTLB-loads:u              #    0,155 K/sec                    (33,31%)
+                96      iTLB-load-misses:u        #   32,00% of all iTLB cache hits   (33,31%)
+        10.501.404      L1-dcache-prefetches:u    #    5,424 M/sec                    (33,31%)
+   <not supported>      L1-dcache-prefetch-misses:u                                   
+
+       1,936553937 seconds time elapsed
+
+       1,931446000 seconds user
+       0,000000000 seconds sys
