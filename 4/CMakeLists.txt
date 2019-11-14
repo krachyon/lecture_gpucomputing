@@ -35,8 +35,8 @@ add_executable(matrix_benchmark
         src/matrix/benchmark.cpp)
 
 
-target_include_directories(matrix_test PUBLIC ${EIGEN3_INCLUDE_DIR})
-target_link_libraries(matrix_test PUBLIC gtest)
+target_include_directories(matrix_test PUBLIC ${EIGEN_INCLUDE_DIR})
+target_link_libraries(matrix_test PUBLIC gtest pthread)
 
 target_link_libraries(matrix_benchmark)
 
