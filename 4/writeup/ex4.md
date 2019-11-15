@@ -1,7 +1,6 @@
 ## Matrix multiplication on CPU
-![Time per element](./matrix_time.svg "abc"){width=100%}
 
-![Flops depending on problem size](./matrix_flops.svg "abc"){width=100%}
+![Flops depending on problem size](./Ryzen 3600_matrix_flops.svg "abc"){width=100%}
 
 As can clearly be seen the performance tends to drop with increasing problem size and shows large dips especially around $N~2^x$, e.g. $N=256$ and $N=1024$.
 The noise in the regime $N <~ 200$ can probably be explained by a warmup taken for the branch predictor and differences in scheduling between the runs.
@@ -19,3 +18,7 @@ $C(5)=A(5)B(5)$:
 |0|50|100|150|200|
 |0|60|120|180|240|
 |0|70|140|210|280|
+
+On the cluster a strange effect was seen, where in contiguous runs with increasing matrix size the performance would decay in an exponential looking way. This could be due to thermal issues where the CPU would step down the clock until a steady-state temperature can be maintained. Whatever the cause, the data is noisy enough, that it's dubious if the effect of any small optimization could even be measured accurately.
+
+![Flops depending on problem size](./Xeon E5-1620_matrix_flops.svg "abc"){width=100%}
