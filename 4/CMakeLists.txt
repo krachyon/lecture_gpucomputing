@@ -45,11 +45,16 @@ add_library(util
         inc/chCommandLine.h
         inc/chTimer.h
         inc/chTimer.hpp
+        src/kernel.cuh
         src/kernel.cu
         )
 
 add_executable(main
         src/main.cpp)
+
+add_executable(shared_mem_basic
+        src/shared_mem_basic.cpp
+        )
 
 target_include_directories(util PUBLIC inc /opt/cuda/include)
 target_link_directories(util PUBLIC /opt/cuda/lib64)
@@ -59,3 +64,4 @@ target_compile_features(main PUBLIC cxx_std_11)
 
 # static linking only needed if you want to build binaries on a different machine (with different libc/libstdc++)
 target_link_libraries(main PUBLIC util)# -static-libgcc -static-libstdc++
+target_link_libraries(shared_mem_basic PUBLIC util)

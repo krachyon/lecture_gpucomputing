@@ -25,7 +25,7 @@ The dips in performance can be attributed to cache misses, running the binary un
 
 For $N=5000$ the cache can be assumed to be fully ineffective, as the problem size exceeds the L3 cache and the sustained Flops/s are $0.54$ Gflop/s. As the measurements beyond $N=1500$ are increasingly noisy, most likely due to the fact that the L3 cache is shared between cores (and fully reserving a multi-core CPU with a single threaded workload seems unrealistic), this should only be seen as a rough estimate, but is a far cry from the $~5$ Gflops/s achieved at peak.
 
-$C(5)=A(5)B(5)$:
+$C_5=A_5B_5$:
 
 |||||
 |:----:|:----:|:----:|:---:|
@@ -34,7 +34,11 @@ $C(5)=A(5)B(5)$:
 |0|50|100|150|200|
 |0|60|120|180|240|
 |0|70|140|210|280|
+Matrix used for benchmark, see CMake target `matrix_test`
+
+![Flops depending on problem size](./Xeon E5-1620_matrix_flops.svg "abc"){width=100%}
 
 On the cluster a strange effect was seen, where in contiguous runs with increasing matrix size the performance would decay in an exponential looking way. This could be due to thermal issues where the CPU would step down the clock until a steady-state temperature can be maintained. Whatever the cause, the data is noisy enough, that it's dubious if the effect of any small optimization could even be measured accurately.
 
-![Flops depending on problem size](./Xeon E5-1620_matrix_flops.svg "abc"){width=100%}
+
+
