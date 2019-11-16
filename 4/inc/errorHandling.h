@@ -11,3 +11,11 @@ inline void checkCuda(cudaError_t result)
     }
     //todo just throw exception here?
 }
+inline void quitOnCudaError() {
+    cudaError_t cudaError = cudaGetLastError();
+    if (cudaError != cudaSuccess)
+    {
+        fprintf(stderr, "CUDA Runtime Error: %s\n", cudaGetErrorString(cudaError));
+        exit(-1);
+    }
+}
