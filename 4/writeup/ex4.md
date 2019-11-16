@@ -1,3 +1,19 @@
+\author{Sebastian Meßlinger, Niklas Euler}
+\date{\today}
+\title{GPU computing, Exercise 3}
+\maketitle
+
+## Paper review
+
+### Debunking the 100X GPU vs. CPU Myth, Lee et. al. 
+
+The researchers, all employees of Intel, benchmark a selection of commonly used algorithms on both a state of the art CPU and a GPU. In their analysis they go into detail how a given problem can or cannot make use of all the resources of both platforms. They lay out the algorithm's bottlenecks and offer some pointers as to how one can tune their code to maximum performance. 
+
+This paper highlights that benchmarking and performance evaluation offer many pitfalls, among them badly chosen baselines that can skew results quite dramatically. The ratio of floating point operations the devices can perform as well as the ratio of their memory bandwidth and memory/cache sizes place an envelope on the achievable performance difference that was found to hold well, unless further hardware implemented functionality could be leveraged. Therefore any reported speedup beyond an order of magnitude appears implausible 
+
+Especially when commercial interests are at play one should take a lot of care to ensure reproducibility and to clearly outline the area in which the results are supposed to be valid. It's a little baffling that previous research neglected to compare their results against established and vetted code that is readily available for problems like linear algebra but it also feels like it would have helped transparency along quite a bit to release the source-code underlying the results. If the performance figures rely heavily on hand tuning assembly for a single CPU model, it seems like a stretch to draw conclusions about CPUs in general. When solving a scientific or commercial problem, be it large and very computationally demanding, few can afford for engineers with an intimate architectural familiarity with the target platform to tease out the last iota of performance.
+
+
 ## Matrix multiplication on CPU
 
 ![Flops depending on problem size](./Ryzen 3600_matrix_flops.svg "abc"){width=100%}
