@@ -45,6 +45,7 @@ add_library(util
         inc/chCommandLine.h
         inc/chTimer.h
         inc/chTimer.hpp
+        inc/errorHandling.h
         src/kernel.cuh
         src/kernel.cu
         )

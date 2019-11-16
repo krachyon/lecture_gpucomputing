@@ -17,7 +17,7 @@ void measure_throughput()//(int argv, char** argc)
         for(auto n_thread: n_threads) {
 
             size_t n_elements = size/sizeof(float);
-            if(n_elements%n_thread == 0) {
+            if(n_elements%n_thread == 0) { //only try computations where the addressing scheme works cleanly
                 std::cout << size << ", "
                           << n_thread << ", "
                           << "g2s" << ", "
@@ -35,9 +35,9 @@ void measure_throughput()//(int argv, char** argc)
 
 void measure_block()
 {
-    size_t const size = 16*kb;
+    size_t const size = 16*kb; // arbitrarily chosen
     auto n_blocks = boost::irange(1,101,1);
-    
+
     std::cout <<"# blocks, direction, time(ns)" << std::endl;
     std::cout <<"# size: " << size;
     for(auto n_block: n_blocks) {
@@ -54,8 +54,24 @@ void measure_block()
 }
 
 
+void measure_register()
+{
+    // I'm assuming that copying to/from registers is completely thread local it doesn't really make sense
+    // to launch a kernel with a bunch of threads unless we want to observe the effect of register spilling but
+    // that seems where the question is headed?
+    // TODO Probably should treat the shared memory as a working set and we could let one thread do everything or split
+    // it up among threads
+
+    auto n_elements = boost::irange(1,64,1);
+    std::cout << "# bytes,, time(ns)";
+    for (auto n: n_elements)
+        sharedMem2Registers_Wrapper(1,1,n,n_iter);
+
+}
+
 int main(int argv, char** argc)
 {
+    //todo look at command line to see what tests to launch
     measure_block();
     //measure_throughput();
 }
