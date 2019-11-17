@@ -149,7 +149,7 @@ nanoseconds sharedMem2Registers_Wrapper(size_t gridSize, size_t blockSize, size_
     return time;
 }
 
-__global__ void Registers2SharedMem(size_t chunk_size, float* dummy)
+__global__ void Registers2SharedMem(size_t chunk_size, float volatile* volatile dummy)
 {
     extern __shared__ float shared_mem[];
     // ideally need static size<63 to ensure these are registers, but then this would have to be a template

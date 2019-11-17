@@ -61,8 +61,6 @@ void measure_register()
     // I'm assuming that copying to/from registers is completely thread local it doesn't really make sense
     // to launch a kernel with a bunch of threads unless we want to observe the effect of register spilling but
     // that seems where the question is headed?
-    // TODO Probably should treat the shared memory as a working set and we could let one thread do everything or split
-    // it up among threads
 
     auto bytes = boost::irange(kb,65*kb,kb);
     auto grids = boost::join(boost::irange(1,7,1), boost::irange(6,32,4));
@@ -91,8 +89,18 @@ void measure_register()
 
 int main(int argv, char** argc)
 {
-    //todo look at command line to see what tests to launch
-    //measure_block();
-    //measure_throughput();
-    measure_register();
+    if(argv != 2)
+    {
+        std::cout << "Shared Memory benchmark; Usage: ./<name> {b,r,t}" << std::endl
+            << "(block, registers, throughput)" << std::endl;
+    }
+    else {
+        auto arg = boost::lexical_cast<std::string>(argc[1]);
+        if (arg == "b")
+            measure_block();
+        else if (arg == "t")
+            measure_throughput();
+        else if (arg == "r")
+            measure_register();
+    }
 }
