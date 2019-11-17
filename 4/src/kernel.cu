@@ -15,6 +15,7 @@
 #include <cassert>
 #include <chrono>
 #include "errorHandling.h"
+#include <iostream>
 
 using std::chrono::nanoseconds;
 using std::chrono::high_resolution_clock;
@@ -98,53 +99,95 @@ nanoseconds sharedMem2globalMem_Wrapper(size_t gridSize, size_t blockSize, size_
     return (stop - start) / n_iter;
 }
 
-//according to the cuda documentation we're guaranteed that ammount of registers per thread.
-constexpr size_t n_registers = 63;
 
-__global__ void SharedMem2Registers(size_t n_elements, size_t chunk_size, float& dummy)
+
+__global__ void SharedMem2Registers(size_t chunk_size, float volatile* volatile dummy)
 {
     extern __shared__ float shared_mem[];
-    // need static size to guarantee compiler puts this into registers
+    // ideally need static size<63 to ensure these are registers, but then this would have to be a template
+    // and then the we'd have to summon the TMP Cuthulhu to iterate...
+    float registers[n_registers];
+
+    size_t offset = threadIdx.x * chunk_size;
+
+    __syncthreads();
+    for(size_t i = 0; i!= chunk_size; ++i) {
+        registers[i] = shared_mem[offset + i];
+    }
+    __syncthreads();
+    // does not do anything but is supposed to confuse the compiler enough to not optimize away access to registers
+    // We'll never have that many threads...
+    // This is quite the challenge to get right, according to compilerExplorer the code does not vanish but I'm not sure
+    // Why all the kernels take the same time then
+    if(threadIdx.x == 1025) {
+        printf("We should never have hit this");
+        *dummy = registers[chunk_size/2];
+    }
+};
+
+nanoseconds sharedMem2Registers_Wrapper(size_t gridSize, size_t blockSize, size_t bytes, size_t n_iters)
+{
+    size_t n_elements =  bytes / sizeof(float);
+    size_t chunk_size = n_elements / blockSize;
+    assert(chunk_size < n_registers); // writing outside of the statically allocated register would be no bueno
+
+    //Wow so you can't pass a float& as an output variable to the kernel because it converts it to a device pointer
+    //which you then can't dereference. That's some next level bullshit that it let's you do it but creates
+    //wrong code...
+    float* dummy = nullptr;
+    cudaMalloc(&dummy, sizeof(float));
+
+    // create a lambda function to pass to the timer; capture everything by value except the dummy parameter,
+    // it needs to be a reference
+    auto time = dt([=, &dummy]() {
+        SharedMem2Registers <<< gridSize, blockSize, bytes >>> (chunk_size, dummy);
+        cudaDeviceSynchronize();
+    },n_iters);
+    quitOnCudaError();
+
+    cudaFree(dummy);
+    return time;
+}
+
+__global__ void Registers2SharedMem(size_t chunk_size, float* dummy)
+{
+    extern __shared__ float shared_mem[];
+    // ideally need static size<63 to ensure these are registers, but then this would have to be a template
+    // and then the we'd have to summon the TMP Cuthulhu to iterate...
     float registers[n_registers];
 
     size_t offset = threadIdx.x * chunk_size;
 
     __syncthreads();
     for(size_t i = 0; i!= chunk_size; ++i)
-        registers[i] = shared_mem[offset+i];
+        shared_mem[offset+i] = registers[i];
     __syncthreads();
-    // does not do anything but is supposed to confuse the compiler enough to not optimize away access to registers
-    // We'll never have that many threads...
-    if(threadIdx.x == 3000) {
-        dummy = registers[threadIdx.y];
-    }
-};
 
-nanoseconds sharedMem2Registers_Wrapper(size_t gridSize, size_t blockSize, size_t n_elements, size_t n_iters)
+    if(threadIdx.x == 1025) {
+        printf("We should never have hit this");
+        *dummy = shared_mem[chunk_size/2];
+    }
+}
+
+nanoseconds Registers2SharedMem_Wrapper(size_t gridSize, size_t blockSize, size_t bytes, size_t n_iters)
 {
-    size_t bytes = n_elements * sizeof(float);
+    size_t n_elements =  bytes / sizeof(float);
     size_t chunk_size = n_elements / blockSize;
     assert(chunk_size < n_registers); // writing outside of the statically allocated register would be no bueno
 
-    float dummy;
-    // create a lambda function to pass to the timer; capture everything by value except the dummy parameter
+    float* dummy = nullptr;
+    cudaMalloc(&dummy, sizeof(float));
+    
+    // create a lambda function to pass to the timer; capture everything by value except the dummy parameter,
     // it needs to be a reference
     auto time = dt([=, &dummy]() {
-        SharedMem2Registers <<< gridSize, blockSize, bytes >>> (n_elements, chunk_size, dummy);
+        Registers2SharedMem <<< gridSize, blockSize, bytes >>> (chunk_size, dummy);
+        cudaDeviceSynchronize();
     },n_iters);
+    quitOnCudaError();
 
+    cudaFree(dummy);
     return time;
-}
-
-__global__ void
-Registers2SharedMem
-//(/*TODO Parameters*/)
-        () {
-    /*TODO Kernel Code*/
-}
-
-void Registers2SharedMem_Wrapper(dim3 gridSize, dim3 blockSize, int shmSize /* TODO Parameters*/) {
-//	globalMem2SharedMem<<< gridSize, blockSize, shmSize >>>( /* TODO Parameters */);
 }
 
 __global__ void

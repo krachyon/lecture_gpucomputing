@@ -2,6 +2,8 @@
 
 #include <boost/lexical_cast.hpp>
 #include <boost/range/irange.hpp>
+#include <boost/range/join.hpp>
+
 #include <iostream>
 
 size_t const kb = 1024;
@@ -62,16 +64,35 @@ void measure_register()
     // TODO Probably should treat the shared memory as a working set and we could let one thread do everything or split
     // it up among threads
 
-    auto n_elements = boost::irange(1,64,1);
-    std::cout << "# bytes,, time(ns)";
-    for (auto n: n_elements)
-        sharedMem2Registers_Wrapper(1,1,n,n_iter);
+    auto bytes = boost::irange(kb,65*kb,kb);
+    auto grids = boost::join(boost::irange(1,7,1), boost::irange(6,32,4));
+    auto threads = std::vector<size_t>{1,2,3,4,5,6,7,8,16,32,64,128,256,512,1024};
+    std::cout << "#direction, bytes, n_blocks, n_threads, time(ns)" << std::endl;
+    for(auto grid: grids)
+        for(auto thread: threads)
+            for (auto byte: bytes) {
+                if ((byte % thread) != 0 || (byte/thread) > n_registers)
+                    continue;
+                std::cout << "s2r, " << byte << ", " << grid << ", " << thread << ", "
+                          << sharedMem2Registers_Wrapper(grid, thread, byte/thread, n_iter).count() << std::endl;
+            }
+
+    for(auto grid: grids)
+        for(auto thread: threads)
+            for (auto byte: bytes) {
+                if ((byte % thread) != 0 || (byte/thread) >= n_registers)
+                    continue;
+                std::cout << "r2s, " << byte << ", " << grid << ", " << thread << ", "
+                          << Registers2SharedMem_Wrapper(grid, thread, byte/thread, n_iter).count() << std::endl;
+            }
+
 
 }
 
 int main(int argv, char** argc)
 {
     //todo look at command line to see what tests to launch
-    measure_block();
+    //measure_block();
     //measure_throughput();
+    measure_register();
 }
