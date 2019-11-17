@@ -7,7 +7,7 @@
 #include <iostream>
 
 size_t const kb = 1024;
-size_t const n_iter = 100;
+size_t const n_iter = 500;
 
 void measure_throughput()//(int argv, char** argc)
 {
@@ -38,7 +38,7 @@ void measure_throughput()//(int argv, char** argc)
 void measure_block()
 {
     size_t const size = 16*kb; // arbitrarily chosen
-    auto n_blocks = boost::irange(1,101,1);
+    auto n_blocks = boost::irange(1,65,1);
 
     std::cout <<"# blocks, direction, time(ns)" << std::endl;
     std::cout <<"# size: " << size;
