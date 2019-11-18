@@ -12,8 +12,8 @@ __global__ void SharedMem2Registers(size_t n_elements, size_t chunk_size, float 
 std::chrono::nanoseconds sharedMem2Registers_Wrapper(size_t gridSize, size_t blockSize, size_t bytes, size_t n_iters);
 __global__ void Registers2SharedMem(size_t chunk_size, float volatile* volatile dummy);
 std::chrono::nanoseconds Registers2SharedMem_Wrapper(size_t gridSize, size_t blockSize, size_t bytes, size_t n_iters);
-__global__ void bankConflictsRead(size_t n_iters, size_t stride, c64_t* results);
-std::vector<c64_t> bankConflictsRead_Wrapper(size_t gridSize, size_t blockSize, size_t stride);
+__global__ void bankConflictsRead(size_t n_iters, size_t stride, double* results);
+std::vector<double> bankConflictsRead_Wrapper(size_t gridSize, size_t blockSize, size_t stride);
 
 
 // No way this fits into registers if we actually use it.

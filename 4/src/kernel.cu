@@ -195,7 +195,7 @@ nanoseconds Registers2SharedMem_Wrapper(size_t gridSize, size_t blockSize, size_
 
 constexpr c64_t max_clock = std::numeric_limits<c64_t>::max();
 
-__global__ void bankConflictsRead(size_t n_iters, size_t stride, c64_t* results)
+__global__ void bankConflictsRead(size_t n_iters, size_t stride, double* results)
 {
     extern __shared__ float shared_mem[];
     size_t const chunk_size = 64;
@@ -224,25 +224,25 @@ __global__ void bankConflictsRead(size_t n_iters, size_t stride, c64_t* results)
         result = stop-start;
     }
 
-    results[blockIdx.x*blockDim.x+threadIdx.x] = result;
+    results[blockIdx.x*blockDim.x+threadIdx.x] = double(result)/n_iters;
 }
 
-std::vector<c64_t> bankConflictsRead_Wrapper(size_t gridSize, size_t blockSize, size_t stride)
+std::vector<double> bankConflictsRead_Wrapper(size_t gridSize, size_t blockSize, size_t stride)
 {
     size_t const n_iters = 1000;
-    size_t const bytes = 64*1024*sizeof(float);
+    size_t const bytes = 12*1024*sizeof(float);
 
-    assert(gridSize*blockSize <= 1024); //if every thread reads 64 elements, that's all we can do;
+    assert(gridSize*blockSize <= bytes/sizeof(float)/64/stride ); //if every thread reads 64 elements, that's all we can do;
 
-    c64_t* results_d = nullptr;
-    size_t result_bytes = gridSize*blockSize * sizeof(c64_t);
+    double* results_d = nullptr;
+    size_t result_bytes = gridSize*blockSize * sizeof(double);
     cudaMalloc(&results_d, result_bytes);
 
     bankConflictsRead<<< gridSize, blockSize, bytes>>>(n_iters, stride,results_d);
     cudaDeviceSynchronize();
     quitOnCudaError();
 
-    std::vector<c64_t> ret(result_bytes/sizeof(c64_t));
+    std::vector<double> ret(result_bytes/sizeof(double));
 
     cudaMemcpy(ret.data(),results_d,result_bytes, cudaMemcpyDeviceToHost);
     cudaFree(results_d);
