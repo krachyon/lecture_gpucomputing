@@ -16,9 +16,12 @@
 #include <chrono>
 #include "errorHandling.h"
 #include <iostream>
+#include <device_launch_parameters.h>
+
 
 using std::chrono::nanoseconds;
 using std::chrono::high_resolution_clock;
+
 
 //
 // Test Kernel
@@ -190,13 +193,59 @@ nanoseconds Registers2SharedMem_Wrapper(size_t gridSize, size_t blockSize, size_
     return time;
 }
 
-__global__ void
-bankConflictsRead
-//(/*TODO Parameters*/)
-        () {
-    /*TODO Kernel Code*/
+constexpr c64_t max_clock = std::numeric_limits<c64_t>::max();
+
+__global__ void bankConflictsRead(size_t n_iters, size_t stride, c64_t* results)
+{
+    extern __shared__ float shared_mem[];
+    size_t const chunk_size = 64;
+    float volatile registers[chunk_size];
+
+    size_t offset = threadIdx.x * chunk_size;
+
+    auto start = clock64();
+    for(size_t _=0; _!=n_iters; ++_)
+    {
+        __syncthreads();
+        for(size_t idx = offset; idx!= chunk_size; ++idx)
+        {
+            registers[idx] = shared_mem[offset+idx*stride];
+        }
+    }
+    auto stop = clock64();
+    c64_t result = 0;
+    if(start>stop)
+    {
+        printf("I really don't think this should ever happen...");
+        result = max_clock-start+stop;
+    }
+    else
+    {
+        result = stop-start;
+    }
+
+    results[blockIdx.x*blockDim.x+threadIdx.x] = result;
 }
 
-void bankConflictsRead_Wrapper(dim3 gridSize, dim3 blockSize, int shmSize /* TODO Parameters*/) {
-//	globalMem2SharedMem<<< gridSize, blockSize, shmSize >>>( /* TODO Parameters */);
+std::vector<c64_t> bankConflictsRead_Wrapper(size_t gridSize, size_t blockSize, size_t stride)
+{
+    size_t const n_iters = 1000;
+    size_t const bytes = 64*1024*sizeof(float);
+
+    assert(gridSize*blockSize <= 1024); //if every thread reads 64 elements, that's all we can do;
+
+    c64_t* results_d = nullptr;
+    size_t result_bytes = gridSize*blockSize * sizeof(c64_t);
+    cudaMalloc(&results_d, result_bytes);
+
+    bankConflictsRead<<< gridSize, blockSize, bytes>>>(n_iters, stride,results_d);
+    cudaDeviceSynchronize();
+    quitOnCudaError();
+
+    std::vector<c64_t> ret(result_bytes/sizeof(c64_t));
+
+    cudaMemcpy(ret.data(),results_d,result_bytes, cudaMemcpyDeviceToHost);
+    cudaFree(results_d);
+
+    return ret;
 }
