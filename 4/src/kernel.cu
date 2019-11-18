@@ -213,6 +213,12 @@ __global__ void bankConflictsRead(size_t n_iters, size_t stride, double* results
         }
     }
     auto stop = clock64();
+    if(threadIdx.x == 3000)
+    {
+        printf("not supposed to happen, just to force compiler to write to registers");
+        results[0] = registers[0]+registers[63];
+    }
+
     c64_t result = 0;
     if(start>stop)
     {
@@ -227,10 +233,9 @@ __global__ void bankConflictsRead(size_t n_iters, size_t stride, double* results
     results[blockIdx.x*blockDim.x+threadIdx.x] = double(result)/n_iters;
 }
 
-std::vector<double> bankConflictsRead_Wrapper(size_t gridSize, size_t blockSize, size_t stride)
+std::vector<double> bankConflictsRead_Wrapper(size_t gridSize, size_t blockSize, size_t stride, size_t bytes)
 {
     size_t const n_iters = 1000;
-    size_t const bytes = 12*1024*sizeof(float);
 
     assert(gridSize*blockSize <= bytes/sizeof(float)/64/stride ); //if every thread reads 64 elements, that's all we can do;
 
