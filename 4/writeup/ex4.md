@@ -47,16 +47,8 @@ When copying between registers and shared memory, the same ceiling of ~10Gb/s pe
 
 ## Shared memory, conflicts
 
-In this experiment a set of threads access the same value repeatedly. The shared memory access has been wrapped so that access that would be out of bounds starts hitting the start of the memory block again. As subsequent 4 Byte values in memory are assigned and we operated on an array of `float`, one expects a stride of 2 (skipping every other element) to only make use of half the memory banks.
+In this experiment a set of threads access the same value repeatedly. The shared memory access has been wrapped so that access that would be out of bounds starts hitting the start of the memory block again. Subsequent 4 Byte Float values map to subsequent memory banks. As long as there are more banks than Float values, an optimal bank usage is possible. With the introduction of a Stride, this optimal solution should degrade since the indices map begin to map to the same banks. Up until 32 threads, no such behaviour is visible. Several possible explanations are available, including compiler optimizations (mapping to free banks anyway), or advanced multicast/broadcast techniques are employed. The latter are only possible within warps of size 32. For higher thread counts, the computation time varies with the stride. For example, there are frequent decreases in computation time to the prior level for 64 threads for stride values of multiples of 4 (excluding 4 itself). This is explained by the index loopin around, begining at a stride of 8. The threads then access the same values in one bank, causing a cheaper multicast.
 
-The dips at stride 20, 25, 40, 50 and 60 indicate an access pattern that can leverage an optimal amount of memory banks. 
-TODO: Or it's multicast? https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#compute-capability-3-0 says it should be 32. but then we'd expect terrible throughput at 16 and 32 strides:
-```
-a=np.arrange(0,1000);
-for i in range(64):
-    print(len(unique((i*a)%32)
-```    
-Not sure when the multicast thing would occur...
 
 ![shared Memory conflicts](./s2r_c.svg ){width=100%}
 

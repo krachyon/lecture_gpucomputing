@@ -10,7 +10,7 @@ ITERATIONS = 1000
 mems = [kB]
 
 threads = [1, 2, 3, 5, 10, 20, 30, 50, 100, 200, 500, 750]
-bank_threads = [100, 200, 300, 400, 500]
+bank_threads = [2,4,8,16,32,64,128]
 blocks = [1, 2, 3, 4, 5, 10, 20, 30 ,40 ,50, 60]
 sizes = [1, 8, 16, 24, 32, 40, 48]
 strides = [i for i in range(1,65)]
@@ -72,7 +72,7 @@ def shared2register_conf():
 	    print('#type,size,gDim,bDim,stride,modulo,clock', file=f)
     for thread in bank_threads:
         for stride in strides: 
-                os.system(f'./bin/memCpy --shared2register_conflict -s {20*kB} -i {ITERATIONS} -g 1 -t {thread} -stride {stride} >> results/s2r_c.csv')
+                os.system(f'./bin/memCpy --shared2register_conflict -s {512} -i {ITERATIONS} -g 1 -t {thread} -stride {stride} >> results/s2r_c.csv')
 
 
 
