@@ -71,7 +71,7 @@ SharedMem2Registers
 	int incr = gridDim.x * blockDim.x;
 	int ind = threadIdx.x +blockIdx.x * blockDim.x;
 	int index_size=shared_size/sizeof(float);
-	const int reg_size=64;	
+	const int reg_size=256;	
 	float reg[reg_size];
 
 	reg[0]=1;
@@ -99,7 +99,7 @@ Registers2SharedMem
 	int incr = gridDim.x * blockDim.x;
 	int ind = threadIdx.x +blockIdx.x * blockDim.x;
 	int index_size=shared_size/sizeof(float);
-	const int reg_size=64;	
+	const int reg_size=256;	
 	float reg[reg_size];
 	
 	reg[0]=1;
@@ -118,15 +118,32 @@ Registers2SharedMem
 void Registers2SharedMem_Wrapper(dim3 gridSize, dim3 blockSize, int shmSize, float* outFloat) {
 	Registers2SharedMem<<< gridSize, blockSize, shmSize >>>(outFloat,shmSize);
 }
-/*
+
 __global__ void 
 bankConflictsRead
-( float* outFloat)
+(float* outFloat, int shared_size, int stride, int rep, long* clock)
 {
-
+	extern __shared__ float shMem[];
+	int ind = threadIdx.x * stride;
+	int index_size=shared_size/sizeof(float);
+	while(ind>=index_size) ind-=index_size;
+	float reg;
+	if(ind==0){
+		reg=0;
+		*outFloat=reg;
+	}
+    long init=clock64();
+	for(int i=0;i<rep;i++){
+		reg=shMem[ind];
+	}
+	__syncthreads();
+    long final=clock64();
+	if(ind==0){
+        *clock=final-init;
+	}
 }
 
-void bankConflictsRead_Wrapper(dim3 gridSize, dim3 blockSize, int shmSize, float* outFloat) {
-	bankConflictsRead<<< gridSize, blockSize, shmSize >>>(outFloat);
+void bankConflictsRead_Wrapper(dim3 gridSize, dim3 blockSize, int shmSize, float* outFloat, int stride, int rep, long* clock) {
+	bankConflictsRead<<< gridSize, blockSize, shmSize >>>(outFloat, shmSize, stride, rep, clock);
 }
-*/
+
