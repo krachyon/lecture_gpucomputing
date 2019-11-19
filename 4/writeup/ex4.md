@@ -15,9 +15,11 @@ Especially when commercial interests are at play one should take a lot of care t
 
 ### NVIDIA Tesla: A Unified Graphics and Computing Architecture, Lindholm et. al.
 
-The paper "NVIDIA Tesla: A Unified Graphics and Computing Architecture" by Erik Lindholm, John Nickolls, Stuart Oberman and John Montrym" from 2006 introduces the novelties of the GPU architecture Tesla. The primary design objective was to introduce a unified architecture, which combines the formerly sperate vertex and pixel processors, enabling the parallel computing capabilites of the GPU. Furthermore, the then new programming language CUDA was developed along the new hardware design.
-On the hardware side, the architecture is ordered into texture/processor clusters, which each contain streaming multiprocessors, the new unified vertex/geometry/pixel processing units. In addition to this, there is the new single-instruction, multiple-threadv operation mode, in which a single instruction is fetched and broadcasted to a group of 32 threads called a warp and consequently computed independently by every thread. These threads are bundeld into thread blocks and distributed among the streaming multiprocessors; the architecture was concieved to be flexible in the number of SMs in order to remove any hurdles of parallelism.
-Many of the concepts introduced in this paper still have heavy impact on GPU computing today. The unified approach to processing units is hugely successfull and has been further implemented in all following architectures of NVIDIA. The C/C++  extension CUDA also is still in use in current day GPU computing, with no change in popularity in the near furture to be expected.   
+The paper "NVIDIA Tesla: A Unified Graphics and Computing Architecture" by Erik Lindholm, John Nickolls, Stuart Oberman and John Montrym" from 2006 introduces the novelties of the GPU architecture Tesla. The primary design objective was to introduce a unified architecture, which combines the formerly separate vertex and pixel processors, enabling the parallel computing capabilities of the GPU. Furthermore, the then new programming language CUDA was developed along the new hardware design.
+
+On the hardware side, the architecture is ordered into texture/processor clusters, which each contain streaming multiprocessors, the new unified vertex/geometry/pixel processing units. In addition to this, there is the new single-instruction, multiple-thread operation mode, in which a single instruction is fetched and broadcasted to a group of 32 threads called a warp and consequently computed independently by every thread. These threads are bundled into thread blocks and distributed among the streaming multiprocessors; the architecture was conceived to be flexible in the number of SMs in order to remove any hurdles of parallelism.
+
+Many of the concepts introduced in this paper still have heavy impact on GPU computing today. The unified approach to processing units is hugely successful and has been further implemented in all following architectures of NVIDIA. The C/C++ extension CUDA also is still in use in current day GPU computing, with no change in popularity in the near future to be expected.
 
 ## Shared memory, basic
 
@@ -41,9 +43,20 @@ When using more blocks and therefore more SMs, we see that multiple thread block
 |![shared Memory Bandwidth](./r2s40000.svg ){width=50%}|![shared Memory Bandwidth](./s2r40000.svg){width=50%}|
 |![shared Memory Bandwidth](./r2s48000.svg ){width=50%}|![shared Memory Bandwidth](./s2r48000.svg){width=50%}|
 
+When copying between registers and shared memory, the same ceiling of ~10Gb/s per thread block is reached. For increasing size of the data block more and more threads are required to be able to efficiently transfer the memory. While for small data sizes one can increase the overall throughput by adding more threadblocks, for larger sizes the returns diminish and the bandwidth per block even decreases as more and more blocks content for a limited amount of physical memory.
+
 ## Shared memory, conflicts
 
-The shared memory access has been wrapped so that access that would be out of bounds starts hitting the start of the memory block again.
+In this experiment a set of threads access the same value repeatedly. The shared memory access has been wrapped so that access that would be out of bounds starts hitting the start of the memory block again. As subsequent 4 Byte values in memory are assigned and we operated on an array of `float`, one expects a stride of 2 (skipping every other element) to only make use of half the memory banks.
+
+The dips at stride 20, 25, 40, 50 and 60 indicate an access pattern that can leverage an optimal amount of memory banks. 
+TODO: Or it's multicast? https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#compute-capability-3-0 says it should be 32. but then we'd expect terrible throughput at 16 and 32 strides:
+```
+a=np.arrange(0,1000);
+for i in range(64):
+    print(len(unique((i*a)%32)
+```    
+Not sure when the multicast thing would occur...
 
 ![shared Memory conflicts](./s2r_c.svg ){width=100%}
 

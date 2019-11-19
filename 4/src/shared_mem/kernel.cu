@@ -21,17 +21,15 @@ globalMem2SharedMem
 {
 
 	extern __shared__ float shMem[];
-	int incr = gridDim.x * blockDim.x;
-	int ind = threadIdx.x + blockIdx.x * blockDim.x;
-	int index_size=device_size/sizeof(float);
-	//printf("%f %d\n",index_size, incr);
+	int incr = gridDim.x * blockDim.x;//increment of the shared/global memory index
+	int ind = threadIdx.x + blockIdx.x * blockDim.x;//initial index of every thread in the shared/global memory
+	int index_size=device_size/sizeof(float);//number of floats that fit into the shared memory
 	
 	if(ind==0){
-		*outFloat=shMem[0];
+		*outFloat=shMem[0];//assign shared memory value to output variable to prohibit compiler optimizations 
 	}
 	for(int i=ind;i<index_size;i+=incr){
-		//printf("%d %d \n",ind, incr);
-		shMem[i]=device[i];
+		shMem[i]=device[i];//copy global -> shared
 	}
 }
 
@@ -40,7 +38,7 @@ void globalMem2SharedMem_Wrapper(dim3 gridSize, dim3 blockSize, int shmSize, flo
 }
 
 __global__ void 
-SharedMem2globalMem
+SharedMem2globalMem//analogous to global2shared
 (float* device, float* outFloat, int device_size)
 {
 
@@ -48,13 +46,11 @@ SharedMem2globalMem
 	int incr = gridDim.x * blockDim.x;
 	int ind = threadIdx.x + blockIdx.x * blockDim.x;
 	int index_size=device_size/sizeof(float);
-	//printf("%f %d\n",index_size, incr);
 	
 	if(ind==0){
 		*outFloat=shMem[0];
 	}
 	for(int i=ind;i<index_size;i+=incr){
-		//printf("%d %d \n",ind, incr);
 		device[i]=shMem[i];
 	}
 }
@@ -68,23 +64,22 @@ SharedMem2Registers
 (float* outFloat, int shared_size)
 {
 	extern __shared__ float shMem[];
-	int incr = gridDim.x * blockDim.x;
-	int ind = threadIdx.x +blockIdx.x * blockDim.x;
-	int index_size=shared_size/sizeof(float);
-	const int reg_size=256;	
+	int incr = gridDim.x * blockDim.x;//increment of the shared memory index
+	int ind = threadIdx.x +blockIdx.x * blockDim.x;//initial index of every thread in the shared memory
+	int index_size=shared_size/sizeof(float);//number of floats that fit into the shared memory
+	const int reg_size=256;//constant register size to make sure it really is saved into a thread-local register 
 	float reg[reg_size];
 
 	reg[0]=1;
 
-	int k=0;
-	for(int i=ind;i<index_size && k<reg_size;i+=incr){
-		reg[k]=shMem[i];
-		//printf("i %d k %d threadID %d blockID %d\n",i,k,threadIdx.x,blockIdx.x);
-		k++;
+	int k=0;//index within the register
+	for(int i=ind;i<index_size && k<reg_size;i+=incr){//make sure that both the register/shared mem index stay within bounds
+		reg[k]=shMem[i];//copy shared->register
+		k++;//increment register index
 	}
 
 	if(ind==0){
-		*outFloat=reg[0];
+		*outFloat=reg[0];//assign register memory value to output variable to prohibit compiler optimizations 
 	}
 }
 void SharedMem2Registers_Wrapper(dim3 gridSize, dim3 blockSize, int shmSize, float* outFloat) {
@@ -92,7 +87,7 @@ void SharedMem2Registers_Wrapper(dim3 gridSize, dim3 blockSize, int shmSize, flo
 }
 
 __global__ void 
-Registers2SharedMem
+Registers2SharedMem//analogous to shared2register
 ( float* outFloat, int shared_size)
 {
 	extern __shared__ float shMem[];
@@ -107,7 +102,6 @@ Registers2SharedMem
 	int k=0;
 	for(int i=ind;i<index_size && k<reg_size;i+=incr){
 		shMem[i]=reg[k];
-		//printf("i %d k %d threadID %d blockID %d\n",i,k,threadIdx.x,blockIdx.x);
 		k++;
 	}
 
@@ -124,22 +118,22 @@ bankConflictsRead
 (float* outFloat, int shared_size, int stride, int rep, long* clock)
 {
 	extern __shared__ float shMem[];
-	int ind = threadIdx.x * stride;
-	int index_size=shared_size/sizeof(float);
-	while(ind>=index_size) ind-=index_size;
-	float reg;
+	int ind = threadIdx.x * stride;//determine index as thread index times stride
+	int index_size=shared_size/sizeof(float);//number of floats in shared
+	while(ind>=index_size) ind-=index_size;//make sure only valid addresses are probed
+	float reg;//single float register
 	if(ind==0){
 		reg=0;
-		*outFloat=reg;
+		*outFloat=reg;//assign register memory value to output variable to prohibit compiler optimizations 
 	}
-    long init=clock64();
-	for(int i=0;i<rep;i++){
-		reg=shMem[ind];
+    long init=clock64();//take initial time
+	for(int i=0;i<rep;i++){//repeat rep times for stability
+		reg=shMem[ind];//load the same element into reg repeatedly
 	}
-	__syncthreads();
-    long final=clock64();
+	__syncthreads();//wait for all threads to finish reading
+    long final=clock64();//take final time
 	if(ind==0){
-        *clock=final-init;
+        *clock=final-init;//save time differnce to global memory
 	}
 }
 

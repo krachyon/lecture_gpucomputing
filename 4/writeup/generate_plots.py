@@ -58,14 +58,14 @@ def readData():
 
 def global2shared_1b(df):
     plt.figure(figsize=(10,10))
-    plt.title("Bandwitdh for global2shared for 1 thread block")
+    plt.title("Bandwidth for global2shared for 1 thread block")
     sizes = sorted(pd.unique(df['size']))
     threads = sorted(pd.unique(df['bDim']))
     for thread in threads:
         data=df.loc[df['bDim'] == thread]
         plt.loglog([x / 1000 for x in sizes], data['bw in GB/s'], label='%d threads' % thread)
 
-    plt.ylabel("Bandwith in GB/s")
+    plt.ylabel("Bandwidth in GB/s")
     plt.xlabel("size in kB")
 
     plt.legend(loc=2)
@@ -73,14 +73,14 @@ def global2shared_1b(df):
 
 def shared2global_1b(df):
     plt.figure(figsize=(10,10))
-    plt.title("Bandwitdh for shared2global for 1 thread block")
+    plt.title("Bandwidth for shared2global for 1 thread block")
     sizes = sorted(pd.unique(df['size']))
     threads = sorted(pd.unique(df['bDim']))
     for thread in threads:
         data=df.loc[df['bDim'] == thread]
         plt.loglog([x / 1000 for x in sizes], data['bw in GB/s'], label='%d threads' % thread)
 
-    plt.ylabel("Bandwith in GB/s")
+    plt.ylabel("Bandwidth in GB/s")
     plt.xlabel("size in kB")
 
     plt.legend(loc=2)
@@ -95,7 +95,7 @@ def global2shared(df):
         data=df.loc[df['bDim'] == thread]
         plt.plot(blocks,  [x/y for x, y in zip(data['bw in GB/s'],blocks)], label='%d threads' % thread)
 
-    plt.ylabel("Bandwith in GB/s / block count")
+    plt.ylabel("Bandwidth in GB/s / block count")
     plt.xlabel("block count")
 
     plt.legend(loc=4)
@@ -104,14 +104,14 @@ def global2shared(df):
 
 def shared2global(df):
     plt.figure(figsize=(10,10))
-    plt.title("Bandwitdh for shared2global for 10 kB data size")
+    plt.title("Bandwidth for shared2global for 10 kB data size")
     blocks = sorted(pd.unique(df['gDim']))
     threads = sorted(pd.unique(df['bDim']))
     for thread in threads:
         data=df.loc[df['bDim'] == thread]
         plt.plot(blocks, [x/y for x, y in zip(data['bw in GB/s'],blocks)], label='%d threads' % thread)
 
-    plt.ylabel("Bandwith in GB/s / block count")
+    plt.ylabel("Bandwidth in GB/s / block count")
     plt.xlabel("block count")
 
     plt.legend(loc=4)
@@ -124,13 +124,13 @@ def shared2register(df):
     sizes = sorted(pd.unique(df['size']))
     for size in sizes:
         plt.figure(figsize=(10,10))
-        plt.title("Bandwitdh for shared2register for %d kB" % size)
+        plt.title("Bandwidth for shared2register for %d kB" % size)
         data=df.loc[df['size'] == size]
         for thread in threads:
             data1=data.loc[data['bDim'] == thread]
             plt.plot(blocks, [x/y for x, y in zip(data1['bw in GB/s'],blocks)], label='%d threads' % thread)
 
-        plt.ylabel("Bandwith in GB/s / block count")
+        plt.ylabel("Bandwidth in GB/s / block count")
         plt.xlabel("block count")
 
         plt.legend(loc=4)
@@ -143,13 +143,13 @@ def register2shared(df):
     sizes = sorted(pd.unique(df['size']))
     for size in sizes:
         plt.figure(figsize=(10,10))
-        plt.title("Bandwitdh for register2shared for %d kB" % size)
+        plt.title("Bandwidth for register2shared for %d kB" % size)
         data=df.loc[df['size'] == size]
         for thread in threads:
             data1=data.loc[data['bDim'] == thread]
             plt.plot(blocks, [x/y for x, y in zip(data1['bw in GB/s'],blocks)], label='%d threads' % thread)
 
-        plt.ylabel("Bandwith in GB/s / block count")
+        plt.ylabel("Bandwidth in GB/s / block count")
         plt.xlabel("block count")
 
         plt.legend(loc=4)
