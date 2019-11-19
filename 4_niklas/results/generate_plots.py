@@ -1,9 +1,10 @@
+#! /usr/bin/python
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import cm
-
+plt.ioff()
 def clean_header(df):
     df.columns = [i.replace('#', '').strip() for i in df.columns]
     return df
@@ -146,4 +147,4 @@ if __name__=='__main__':
     register2shared(r2s)
     shared2register_conf(s2r_c)	
 
-    plt.show()
+   # plt.show()

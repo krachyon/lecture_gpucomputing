@@ -19,6 +19,8 @@
 #include <assert.h>
 #include <cuda_runtime.h>
 
+#define REPETITIONS 100000
+
 const static int DEFAULT_MEM_SIZE       = 10*1024*1024; // 10 MB
 const static int DEFAULT_NUM_ITERATIONS =         1000;
 const static int DEFAULT_BLOCK_DIM      =          128;
@@ -32,11 +34,11 @@ void printHelp(char *);
 //
 // Kernel Wrappers
 //
-extern void globalMem2SharedMem_Wrapper(dim3 gridSize, dim3 blockSize, int shmSize /* TODO Parameters*/);
-extern void SharedMem2globalMem_Wrapper(dim3 gridSize, dim3 blockSize, int shmSize /* TODO Parameters*/);
-extern void SharedMem2Registers_Wrapper(dim3 gridSize, dim3 blockSize, int shmSize /* TODO Parameters*/);
-extern void Registers2SharedMem_Wrapper(dim3 gridSize, dim3 blockSize, int shmSize /* TODO Parameters*/);
-extern void bankConflictsRead_Wrapper(dim3 gridSize, dim3 blockSize, int shmSize /* TODO Parameters*/);
+extern void globalMem2SharedMem_Wrapper(dim3 gridSize, dim3 blockSize, int shmSize, float* device, float* outFloat);
+extern void SharedMem2globalMem_Wrapper(dim3 gridSize, dim3 blockSize, int shmSize, float* device, float* outFloat);
+extern void SharedMem2Registers_Wrapper(dim3 gridSize, dim3 blockSize, int shmSize ,float* outFloat);
+extern void Registers2SharedMem_Wrapper(dim3 gridSize, dim3 blockSize, int shmSize ,float* outFloat);
+extern void bankConflictsRead_Wrapper(dim3 gridSize, dim3 blockSize, int shmSize, float* outFloat, int stride, int rep, long* clock);
 
 
 //
@@ -55,9 +57,9 @@ main ( int argc, char * argv[] )
 		exit (0);
 	}
 
-	std::cout << "***" << std::endl
-	          << "*** Starting ..." << std::endl
-			  << "***" << std::endl;
+	//std::cout << "***" << std::endl
+	//          << "*** Starting ..." << std::endl
+	//		  << "***" << std::endl;
 
 	ChTimer kernelTimer;
 
@@ -79,9 +81,8 @@ main ( int argc, char * argv[] )
 	optBlockSize = optBlockSize != 0 ? optBlockSize : DEFAULT_BLOCK_DIM;
 
 	if ( optBlockSize > 1024 ) {
-		std::cout << "\033[31m***" << std::cout
-		          << "*** Error - The number of threads per block is too big" 
-				  	<< std::endl
+		std::cout << "\033[31m***" << std::endl
+		          << "*** Error - The number of threads per block is too big" << std::endl
 		          << "***\033[0m" << std::endl;
 
 		exit(-1);
@@ -123,7 +124,7 @@ main ( int argc, char * argv[] )
 	long *dClocks = NULL;
 	cudaMalloc ( &dClocks, sizeof ( long ) );
 	
-	if ( d_memoryA == NULL || dClocks == NULL )
+	if ( d_memoryA == NULL || dClocks == NULL || outFloat==NULL)
 	{
 		std::cout << "\033[31m***" << std::endl
 		          << "*** Error - Memory allocation failed" << std::endl
@@ -136,37 +137,33 @@ main ( int argc, char * argv[] )
 	// Tests
 	//
 	kernelTimer.start();
-	//for ( int i = 0; i < optNumIterations; i++ )
+	for ( int i = 0; i < optNumIterations; i++ )
 	{
 		//
 		// Launch Kernel
 		//
-		std::cout << "Starting kernel: " << grid_dim.x << "x" << block_dim.x << " threads, " << optMemorySize << "B shared memory" << ", " << optNumIterations << " iterations" << std::endl;
+		//std::cout << "Starting kernel: " << grid_dim.x << "x" << block_dim.x << " threads, " << optMemorySize << "B shared memory" << ", " << optNumIterations << " iterations" << std::endl;
 		if ( chCommandLineGetBool ( "global2shared", argc, argv ) )
 		{
-			globalMem2SharedMem_Wrapper( grid_dim, block_dim, 0 /*Shared Memory Size*/
-					/*TODO Parameters*/);
+			globalMem2SharedMem_Wrapper( grid_dim, block_dim, optMemorySize, d_memoryA, outFloat);
 		}
 		else if ( chCommandLineGetBool ( "shared2global", argc, argv ) )
 		{
-			SharedMem2globalMem_Wrapper( grid_dim, block_dim, 0 /*Shared Memory Size*/
-					/*TODO Parameters*/);
+			SharedMem2globalMem_Wrapper( grid_dim, block_dim, optMemorySize, d_memoryA, outFloat);
 		}
 		else if ( chCommandLineGetBool ( "shared2register", argc, argv ) )
 		{
-			SharedMem2Registers_Wrapper( grid_dim, block_dim, 0 /*Shared Memory Size*/
-					/*TODO Parameters*/);
+			SharedMem2Registers_Wrapper( grid_dim, block_dim, optMemorySize, outFloat);
 		}
 		else if ( chCommandLineGetBool ( "register2shared", argc, argv ) )
 		{
-			Registers2SharedMem_Wrapper( grid_dim, block_dim, 0 /*Shared Memory Size*/
-					/*TODO Parameters*/);
+			Registers2SharedMem_Wrapper( grid_dim, block_dim, optMemorySize, outFloat);
 		}
 		else if ( chCommandLineGetBool ( "shared2register_conflict", argc, argv ) )
 		{
-			bankConflictsRead_Wrapper( grid_dim, block_dim, 0 /*Shared Memory Size*/
-					/*TODO Parameters*/);
+			bankConflictsRead_Wrapper( grid_dim, block_dim, optMemorySize, outFloat, optStride, REPETITIONS, dClocks );
 		}
+		
 	}
 
 	// Mandatory synchronize after all kernel launches
@@ -187,46 +184,83 @@ main ( int argc, char * argv[] )
 	// Print Measurement Results
 
 	if ( chCommandLineGetBool ( "global2shared", argc, argv ) ) {
-		std::cout << "Copy global->shared, size=" << std::setw(10) << optMemorySize << ", gDim=" << std::setw(5) << grid_dim.x << ", bDim=" << std::setw(5) << block_dim.x;
-		//std::cout << ", time=" << kernelTimer.getTime(optNumIterations) << 
-		std::cout.precision ( 2 );
-		std::cout << ", bw=" << std::fixed << std::setw(6) << ( optMemorySize * grid_dim.x ) / kernelTimer.getTime(optNumIterations) / (1E09) << "GB/s" << std::endl;
-	}
+		std::cout << "Copy_global->shared," << std::setw(4) << optMemorySize << "," << std::setw(4)<< grid_dim.x << "," << std::setw(4) << block_dim.x;
+		std::cout << "," << std::setw(4) << kernelTimer.getTime(optNumIterations) << 
+		std::cout.precision ( 4 );
+		std::cout << "," << std::setw(4) << ( optMemorySize * grid_dim.x ) / kernelTimer.getTime(optNumIterations) / (1E09) << std::endl;
+		}
 	
 	if ( chCommandLineGetBool ( "shared2global", argc, argv ) ) {
-		std::cout << "Copy shared->global, size=" << std::setw(10) << optMemorySize << ", gDim=" << std::setw(5) << grid_dim.x << ", bDim=" << std::setw(5) << block_dim.x;
-		//std::cout << ", time=" << kernelTimer.getTime(optNumIterations) << 
+		std::cout << "Copy_shared->global," << std::setw(4) << optMemorySize << "," << std::setw(4)<< grid_dim.x << "," << std::setw(4) << block_dim.x;
+		std::cout << "," << std::setw(4) << kernelTimer.getTime(optNumIterations) << 
+		std::cout.precision ( 4 );
+		std::cout << "," << std::setw(4) << ( optMemorySize * grid_dim.x ) / kernelTimer.getTime(optNumIterations) / (1E09) << std::endl;
+	}
+
+	if ( chCommandLineGetBool ( "shared2register", argc, argv ) ) {
+		std::cout << "Copy_shared->register," << std::setw(4) << optMemorySize << "," << std::setw(4)<< grid_dim.x << "," << std::setw(4) << block_dim.x;
+		std::cout << "," << std::setw(4) << kernelTimer.getTime(optNumIterations) << 
+		std::cout.precision ( 4 );
+		std::cout << "," << std::setw(4) << ( optMemorySize * grid_dim.x ) / kernelTimer.getTime(optNumIterations) / (1E09) << std::endl;
+	}
+	
+	if ( chCommandLineGetBool ( "register2shared", argc, argv ) ) {
+		std::cout << "Copy_register->shared," << std::setw(4) << optMemorySize << "," << std::setw(4)<< grid_dim.x << "," << std::setw(4) << block_dim.x;
+		std::cout << "," << std::setw(4) << kernelTimer.getTime(optNumIterations) << 
+		std::cout.precision ( 4 );
+		std::cout << "," << std::setw(4) << ( optMemorySize * grid_dim.x ) / kernelTimer.getTime(optNumIterations) / (1E09) << std::endl;
+	}
+	if ( chCommandLineGetBool ( "shared2register_conflict", argc, argv ) ) {
+			cudaError_t error = cudaMemcpy ( &hClocks, dClocks, sizeof ( long ), cudaMemcpyDeviceToHost );
+			if ( error != cudaSuccess) {
+				fprintf ( stderr, "cudaMemcpy failed: %s\n", cudaGetErrorString ( error ) );
+				return 1;
+			}	
+
+		std::cout << "Shared_memory_bank_conflict_test," << std::setw(4) << optMemorySize << "," << std::setw(4) << grid_dim.x << "," << std::setw(4) << block_dim.x;
+		std::cout << "," << std::setw(4) << optStride << "," << std::setw(4) << optModulo;
+		std::cout << "," << std::setw(4) << hClocks << std::endl;
+    }
+		
+	/*if ( chCommandLineGetBool ( "global2shared", argc, argv ) ) {
+		std::cout << "Copy global->shared, size=" << std::setw(10) << optMemorySize << ", gDim=" << std::setw(5) << grid_dim.x << ", bDim=" << std::setw(5) << block_dim.x;
+		std::cout << ", time=" << kernelTimer.getTime(optNumIterations) << 
+		std::cout.precision ( 2 );
+		std::cout << ", bw=" << std::fixed << std::setw(6) << ( optMemorySize * grid_dim.x ) / kernelTimer.getTime(optNumIterations) / (1E09) << "GB/s" << std::endl;
+		}
+	
+	if ( chCommandLineGetBool ( "shared2global", argc, argv ) ) {
+		std::cout << "Copy shared->global, size=" << std::setw(10) << optMemorySize << ", gDim=" << std::setw(2) << grid_dim.x << ", bDim=" << std::setw(5) << block_dim.x;
+		std::cout << ", time=" << kernelTimer.getTime(optNumIterations) << 
 		std::cout.precision ( 2 );
 		std::cout << ", bw=" << std::fixed << std::setw(6) << ( optMemorySize * grid_dim.x ) / kernelTimer.getTime(optNumIterations) / (1E09) << "GB/s" << std::endl;
 	}
 
 	if ( chCommandLineGetBool ( "shared2register", argc, argv ) ) {
 		std::cout << "Copy shared->register, size=" << std::setw(10) << optMemorySize << ", gDim=" << std::setw(5) << grid_dim.x << ", bDim=" << std::setw(5) << block_dim.x;
-		//std::cout << ", time=" << kernelTimer.getTime(optNumIterations) << 
+		std::cout << ", time=" << kernelTimer.getTime(optNumIterations) << 
 		std::cout.precision ( 2 );
 		std::cout << ", bw=" << std::fixed << std::setw(6) << ( optMemorySize * grid_dim.x ) / kernelTimer.getTime(optNumIterations) / (1E09) << "GB/s" << std::endl;
 	}
 	
 	if ( chCommandLineGetBool ( "register2shared", argc, argv ) ) {
 		std::cout << "Copy register->shared, size=" << std::setw(10) << optMemorySize << ", gDim=" << std::setw(5) << grid_dim.x << ", bDim=" << std::setw(5) << block_dim.x;
-		//std::cout << ", time=" << kernelTimer.getTime(optNumIterations) << 
+		std::cout << ", time=" << kernelTimer.getTime(optNumIterations) << 
 		std::cout.precision ( 2 );
 		std::cout << ", bw=" << std::fixed << std::setw(6) << ( optMemorySize * grid_dim.x ) / kernelTimer.getTime(optNumIterations) / (1E09) << "GB/s" << std::endl;
-	}	
-
+	}
+	
 	if ( chCommandLineGetBool ( "shared2register_conflict", argc, argv ) ) {
-		if ( chCommandLineGetBool ( "shared2register_conflict", argc, argv ) ) {
 			cudaError_t error = cudaMemcpy ( &hClocks, dClocks, sizeof ( long ), cudaMemcpyDeviceToHost );
 			if ( error != cudaSuccess) {
 				fprintf ( stderr, "cudaMemcpy failed: %s\n", cudaGetErrorString ( error ) );
 				return 1;
-			}
-		}	
+			}	
 
 		std::cout << "Shared memory bank conflict test, size=" << std::setw(10) << optMemorySize << ", gDim=" << std::setw(5) << grid_dim.x << ", bDim=" << std::setw(5) << block_dim.x;
 		std::cout << ", stride=" << std::setw(6) << optStride << ", modulo=" << std::setw(6) << optModulo;
 		std::cout << ", clocks=" << std::setw(10) << hClocks << std::endl;
-	}
+    }*/	
 	
 	return 0;
 }
