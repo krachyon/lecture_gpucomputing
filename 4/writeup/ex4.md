@@ -76,6 +76,6 @@ $C_5=A_5B_5$:
 |0|70|140|210|280|
 Matrix used for benchmark, see CMake target `matrix_test`
 
-![Flops depending on problem size](./Xeon E5-1620_matrix_flops.svg "abc"){width=100%}
-
 On the cluster a strange effect was seen, where in contiguous runs with increasing matrix size the performance would decay in an exponential looking way. This could be due to thermal issues where the CPU would step down the clock until a steady-state temperature can be maintained. Whatever the cause, the data is noisy enough, that it's dubious if the effect of any small optimization could even be measured accurately.
+
+![Flops on xeon](./Xeon E5-1620_matrix_flops.svg){width=99%}
