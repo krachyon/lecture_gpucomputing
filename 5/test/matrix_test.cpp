@@ -74,17 +74,65 @@ TEST(mmul, generators)
     std::cout <<std::endl << mmul(A,B) << std::endl;
 }
 
-TEST(mmul_cuda, smoke)
+TEST(mmul_cuda, simple_equality)
 {
     auto A = make_ij_sum(5);
     auto B = make_ij_product(5);
 
-    auto C = mmul_cuda_naive_float(A,B);
+    auto C = mmul_cuda_naive(A,B);
     auto C_ref = mmul(A,B);
 
-    EXPECT_FLOAT_EQ(C(1,1),C_ref(1,1));
-    EXPECT_FLOAT_EQ(C(3,3),C_ref(3,3));
+    for(auto it = C.begin(), rit = C_ref.begin(); it != C.end(); ++it,++rit)
+    {
+        EXPECT_FLOAT_EQ(*it,*rit);
+    }
 }
+
+TEST(mmul_cuda, large_equality)
+{
+    auto A = make_ij_sum(50);
+    auto B = make_ij_product(50);
+
+    auto C = mmul_cuda_naive(A,B);
+    auto C_ref = mmul(A,B);
+
+    for(auto it = C.begin(), rit = C_ref.begin(); it != C.end(); ++it,++rit)
+    {
+        EXPECT_FLOAT_EQ(*it,*rit);
+    }
+}
+
+TEST(mmul_cuda, non_square)
+{
+}
+TEST(mmul_cuda, tiny)
+{
+}
+
+//template <class T>
+//class MatrixSuite: public ::testing::Test
+//{};
+//
+//using testing::Types;
+//using MatrixTypes = Types<float,double,int16_t> ;
+//
+//TYPED_TEST_SUITE(PrimeTableTest, MatrixTypes);
+
+
+TEST(mmul_cuda, types)
+{
+    Matrix<double> A64 = Matrix<double>::zeros(20,20);
+    Matrix<double> B64 = Matrix<double>::zeros(20,20);
+
+    auto C64 = mmul_cuda_naive(A64,B64);
+
+    Matrix<int16_t> A16 = Matrix<int16_t>::zeros(20,20);
+    Matrix<int16_t> B16 = Matrix<int16_t>::zeros(20,20);
+
+    auto C16 = mmul_cuda_naive(A16,B16);
+}
+
+
 
 int main(int argc, char **argv)
 {
