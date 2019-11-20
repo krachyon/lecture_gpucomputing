@@ -4,7 +4,7 @@
 #include <cassert>
 #include <iostream>
 #include "matrix_cuda.cuh"
-#include "memoryWrapper.h"
+#include "memoryWrapper.cuh"
 
 template<typename T>
 class Matrix
@@ -31,6 +31,10 @@ public:
             }
         }
     }
+    // No copies, only moves allowed. Also Matrix without size makes no sense
+    Matrix() = delete;
+    Matrix(Matrix<T> const& ) = delete;
+    Matrix& operator=(Matrix<T>const&) = delete;
     Matrix(Matrix<T> &&) noexcept = default;
     Matrix& operator=(Matrix<T>&&) noexcept = default;
 
@@ -52,29 +56,46 @@ public:
         return T(_mem[N*row+col]);
     }
 
+    // what you'd expect from an stl-container
     T* begin(){return &_mem[0];}
     T* end(){return &_mem[M*N];}
 
-    // make an initialized matrix
+    // make aa zero-initialized matrix
     static Matrix<T> zeros(size_t m, size_t n){
         Matrix<T> ret(m,n);
         std::fill(ret.begin(),ret.end(),0);
         return ret;
     }
 
-    size_t memsize()
+    //not naminng it size() to avoid confusion
+    size_t memsize() const
     {
         return M*N*sizeof(_mem);
     }
+    size_t size() const
+    {
+        return M*N;
+    }
 
-    //members
+    // similar to std::vector::data(). Be aware that you have to ensure that the matrix still exists when using this.
+    // so treat it like a bomb
+    T* data()
+    {
+        return _mem.get();
+    }
+
+    T* data() const
+    {
+        return _mem.get();
+    }
+
+    //members. These should be getters/setters by the book, but a civilised language should have properties...
     size_t M;
     size_t N;
 
     //storage
-    std::unique_ptr<T[]> _mem;
 private:
-
+    std::unique_ptr<T[]> _mem;
 };
 
 template<typename T>
@@ -91,6 +112,7 @@ Matrix<T> mmul(Matrix<T> const& left, Matrix<T> const& right)
 
     for (size_t row=0; row<m; ++row)
         for(size_t col=0; col<n; ++col) {
+            // do scalar product
             T elem = 0;
             for (size_t i=0; i<product_size; ++i) {
                 elem += left(row, i)*right(i, col);
@@ -110,18 +132,22 @@ Matrix<T> mmul_cuda_naive (Matrix<T> const& left, Matrix<T> const& right)
     size_t rcols = right.N;
     Matrix<T> ret(rrows,rcols);
 
-    DeviceMemory left_mem(left.memsize());
-    DeviceMemory right_mem(right.memsize());
-    DeviceMemory out_mem(ret.memsize());
+    //initialize and copy
+    DeviceMemory<T> left_mem(left.data(), left.size());
+    DeviceMemory<T> right_mem(right.data(), right.size());
+    //just initialize
+    DeviceMemory<T> out_mem(ret.memsize());
 
-    mmul_cuda_naive(left_mem._mem, right_mem._mem, out_mem._mem);
+    dim3 blocks;
+    dim3 threads;
+    mmul_naive_wrapper<T>(left_mem.mem(), right_mem.mem(), out_mem.mem(), blocks, threads);
 
-
+    cudaMemcpy(ret.data(), out_mem);
     return ret;
 }
 
 //template <typename T>
-//Matrix<T> mmul_cuda_naive_shared (Matrix<T> const& left, Matrix<T> const& right)
+//Matrix<T> mmul_cuda_shared (Matrix<T> const& left, Matrix<T> const& right)
 //{
 //    //call kernel
 //}

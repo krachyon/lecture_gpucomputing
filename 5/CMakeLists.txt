@@ -10,10 +10,10 @@ include_directories(${Boost_INCLUDE_DIRS})
 
 ### define flags, compile options
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CUDA_STANDARD 11)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")# -fsanitize=address ")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra ")# -fsanitize=address ")
 if( ${CMAKE_CUDA_COMPILER_VERSION} GREATER_EQUAL "8.0.0")
     set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -arch=sm_30")
 else()
@@ -26,14 +26,16 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 ### Targets and how they link
 
-# Putting
-add_library(matrix SHARED
+# TODO linking this against gtest is a problem. Debug complains about undefined refs to `std::__cxx11::basic_stringstream`
+# Trying to compile it as a shared lib break cuda functionality
+# Maybe the whole
+add_library(matrix STATIC
         matrix/matrix_cuda.cu
         matrix/matrix_cuda.cuh
         matrix/matrix.h
         matrix/matrix.cpp
-        matrix/memoryWrapper.h
-        matrix/memoryWrapper.cpp
+        matrix/memoryWrapper.cuh
+        matrix/memoryWrapper.cu
         )
 
 target_include_directories(matrix PUBLIC matrix)
@@ -44,7 +46,7 @@ add_executable(matrix_test
         test/matrix_test.cpp
         )
 target_include_directories(matrix_test PUBLIC ${EIGEN_INCLUDE_DIR})
-target_link_libraries(matrix_test PUBLIC matrix gtest)
+target_link_libraries(matrix_test PUBLIC matrix gtest_main)
 
 add_executable(matrix_benchmark
         runner/benchmark.cpp)
@@ -53,7 +55,9 @@ target_link_libraries(matrix_benchmark PUBLIC matrix)
 
 # todo adapt this for every machine if it needs to be specified by hand
 target_include_directories(matrix PUBLIC inc /opt/cuda/include)
-#target_link_directories(matrix PUBLIC /opt/cuda/lib64)
+target_link_directories(matrix PUBLIC /opt/cuda/lib64)
+target_compile_features(matrix PUBLIC cxx_std_11)
+set_target_properties(matrix PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
 #${CMAKE_CUDA_COMPILER}
 
 

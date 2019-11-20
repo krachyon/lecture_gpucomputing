@@ -1,7 +1,6 @@
-#include "memoryWrapper.h"
+#include "memoryWrapper.cuh"
 #include <cassert>
-#include <stdexcept>
-#include <sstream>
+
 
 void cudaMemcpy(Memory const& dest, Memory const& src)
 {
@@ -25,12 +24,6 @@ void cudaMemcpy(Memory const& dest, Memory const& src)
         else
             throw (std::logic_error{"unknown memory type encountered"});
     }
-
-    cudaError_t err = cudaMemcpy(dest._mem, src._mem, dest.size, kind);
-
-    if (err!=cudaSuccess) {
-        std::stringstream message{""};
-        message << "cuda Error: " << err << ": " << cudaGetErrorString(err);
-        throw (std::runtime_error(message.str()));
-    }
+    checkCuda(cudaMemcpy(dest._mem, src._mem, dest.size, kind));
 }
+

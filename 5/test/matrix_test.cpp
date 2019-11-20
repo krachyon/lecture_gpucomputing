@@ -1,6 +1,8 @@
 #include "matrix.h"
+#include <sstream>
 #include <gtest/gtest.h>
 #include <eigen3/Eigen/Dense>
+
 
 TEST(mmul,identity_square)
 {
@@ -67,6 +69,14 @@ TEST(mmul, generators)
     std::cout <<std::endl << A << std::endl;
     std::cout <<std::endl << A << std::endl;
     std::cout <<std::endl << mmul(A,B) << std::endl;
+}
+
+TEST(mmul_cuda, smoke)
+{
+    auto A = make_ij_sum(5);
+    auto B = make_ij_product(5);
+
+    auto C = mmul_cuda_naive(A,B);
 }
 
 int main(int argc, char **argv)
