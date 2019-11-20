@@ -3,7 +3,8 @@
 #include <memory>
 #include <cassert>
 #include <iostream>
-
+#include "matrix_cuda.cuh"
+#include "memoryWrapper.h"
 
 template<typename T>
 class Matrix
@@ -61,12 +62,19 @@ public:
         return ret;
     }
 
+    size_t memsize()
+    {
+        return M*N*sizeof(_mem);
+    }
+
     //members
     size_t M;
     size_t N;
-private:
+
     //storage
     std::unique_ptr<T[]> _mem;
+private:
+
 };
 
 template<typename T>
@@ -94,6 +102,31 @@ Matrix<T> mmul(Matrix<T> const& left, Matrix<T> const& right)
         }
     return ret;
 }
+
+template <typename T>
+Matrix<T> mmul_cuda_naive (Matrix<T> const& left, Matrix<T> const& right)
+{
+    size_t rrows = left.M;
+    size_t rcols = right.N;
+    Matrix<T> ret(rrows,rcols);
+
+    DeviceMemory left_mem(left.memsize());
+    DeviceMemory right_mem(right.memsize());
+    DeviceMemory out_mem(ret.memsize());
+
+    mmul_cuda_naive(left_mem._mem, right_mem._mem, out_mem._mem);
+
+
+    return ret;
+}
+
+//template <typename T>
+//Matrix<T> mmul_cuda_naive_shared (Matrix<T> const& left, Matrix<T> const& right)
+//{
+//    //call kernel
+//}
+
+
 
 template<typename T>
 std::ostream& operator<< (std::ostream& stream, const Matrix<T>& matrix)

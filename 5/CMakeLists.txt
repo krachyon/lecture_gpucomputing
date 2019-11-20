@@ -27,17 +27,17 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 ### Targets and how they link
 
 # Putting
-add_library(matrix_cuda SHARED
+add_library(matrix SHARED
         matrix/matrix_cuda.cu
         matrix/matrix_cuda.cuh
-        )
-
-add_library(matrix
         matrix/matrix.h
         matrix/matrix.cpp
-)
-target_include_directories(matrix PUBLIC matrix matrix_cuda)
-target_link_libraries(matrix matrix_cuda)
+        matrix/memoryWrapper.h
+        matrix/memoryWrapper.cpp
+        )
+
+target_include_directories(matrix PUBLIC matrix)
+
 
 
 add_executable(matrix_test
@@ -52,7 +52,7 @@ target_link_libraries(matrix_benchmark PUBLIC matrix)
 
 
 # todo adapt this for every machine if it needs to be specified by hand
-#target_include_directories(matrix PUBLIC inc /opt/cuda/include)
+target_include_directories(matrix PUBLIC inc /opt/cuda/include)
 #target_link_directories(matrix PUBLIC /opt/cuda/lib64)
 #${CMAKE_CUDA_COMPILER}
 
