@@ -53,11 +53,12 @@ struct DeviceMemory: public Memory
         checkCuda(cudaMalloc(&_mem, size));
         checkCuda(cudaMemset(_mem, 0, count));
     }
-    DeviceMemory(T const* data, size_t n_bits)
+    DeviceMemory(T const* data, size_t elem_count)
     {
         kind = memKind::device;
-        checkCuda(cudaMalloc(&_mem, n_bits));
-        checkCuda(cudaMemcpy(const_cast<T*>(data), _mem, n_bits, cudaMemcpyHostToDevice));
+        size = elem_count*sizeof(T);
+        checkCuda(cudaMalloc(&_mem, size));
+        checkCuda(cudaMemcpy(_mem, const_cast<T*>(data), size, cudaMemcpyHostToDevice));
     }
     T* mem()
     {

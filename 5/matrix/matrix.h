@@ -68,7 +68,7 @@ public:
     //not naminng it size() to avoid confusion
     size_t memsize() const
     {
-        return M*N*sizeof(_mem);
+        return M*N*sizeof(T);
     }
     size_t size() const
     {

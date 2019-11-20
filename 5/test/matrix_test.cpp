@@ -80,6 +80,10 @@ TEST(mmul_cuda, smoke)
     auto B = make_ij_product(5);
 
     auto C = mmul_cuda_naive_float(A,B);
+    auto C_ref = mmul(A,B);
+
+    EXPECT_FLOAT_EQ(C(1,1),C_ref(1,1));
+    EXPECT_FLOAT_EQ(C(3,3),C_ref(3,3));
 }
 
 int main(int argc, char **argv)

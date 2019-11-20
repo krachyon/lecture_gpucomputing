@@ -50,7 +50,9 @@ add_executable(matrix_test
         test/matrix_test.cpp
         )
 target_include_directories(matrix_test PUBLIC ${EIGEN_INCLUDE_DIR})
-target_link_libraries(matrix_test PUBLIC matrix matrix_cuda gtest_main)
+
+# we need pthread because of the cluster gtest_main does not work and pthread is not added automatically with gtest
+target_link_libraries(matrix_test PUBLIC matrix matrix_cuda gtest pthread)
 
 add_executable(matrix_benchmark
         runner/benchmark.cpp)
