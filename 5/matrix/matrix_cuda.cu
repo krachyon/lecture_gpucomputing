@@ -16,6 +16,10 @@ inline uint32_t ceildiv (uint32_t x, uint32_t y)
 }
 
 
+//TODO this is not working fully see tests. There are sporadic failures with some cases apparently double above
+//15 is a problem right now but it seems chancy. Maybe some issue with elements not getting written? Memory contains
+//largish numbers when not equal. Check DeviceMemory, maybe not zeroed correcty.
+//
 template<typename T>
 __global__ void mmul_naive_kernel(T* mem_left, T* mem_right, T* mem_out, dim3 sizes)
 {
@@ -65,12 +69,12 @@ Matrix<T> mmul_cuda_naive (Matrix<T> const& left, Matrix<T> const& right)
     dim3 blocks{ceildiv(rrows, 8),ceildiv(rcols,8),1};
     dim3 threads{8,8,1};
 
-    assert(blocks.x*blocks.y*threads.x*threads.y > ret.size());
+    assert(blocks.x*blocks.y*threads.x*threads.y >= ret.size());
     // there should be at most one nearly empty set of blocks
     assert(blocks.x*blocks.y*threads.x*threads.y < (blocks.x+1)*(blocks.y+1)*threads.x*threads.y);
 
     mmul_naive_kernel<T><<<blocks,threads,0>>>(left_mem.mem(), right_mem.mem(), out_mem.mem(), sizes);
-    cudaDeviceSynchronize();
+    //cudaDeviceSynchronize(); // todo needed?
     quitOnCudaError();
 
     cudaMemcpy(ret.data(), out_mem);

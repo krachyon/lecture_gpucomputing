@@ -6,6 +6,16 @@
 #include "matrix.h"
 #include "matrix_cuda.h"
 
+TEST(matrix, zeros)
+{
+    Matrix<double> A = Matrix<double>::zeros(20,20);
+    for(auto it = A.begin(); it!=A.end();++it)
+        EXPECT_EQ(0,*it);
+
+    Matrix<float> B = Matrix<float>::zeros(3,12);
+    for(auto it = B.begin(); it!=B.end();++it)
+        EXPECT_EQ(0,*it);
+}
 
 TEST(mmul,identity_square)
 {
@@ -74,6 +84,28 @@ TEST(mmul, generators)
     std::cout <<std::endl << mmul(A,B) << std::endl;
 }
 
+TEST(mmul, types)
+{
+    Matrix<double> A64 = Matrix<double>::zeros(20,20);
+    Matrix<double> B64 = Matrix<double>::zeros(20,20);
+
+    auto C64 = mmul(A64,B64);
+    for(auto it = C64.begin(); it!=C64.end();++it)
+    {
+        EXPECT_DOUBLE_EQ(0,*it);
+    }
+
+    Matrix<int16_t> A16 = Matrix<int16_t>::zeros(20,20);
+    Matrix<int16_t> B16 = Matrix<int16_t>::zeros(20,20);
+
+    auto C16 = mmul(A16,B16);
+    for(auto it = C16.begin(); it!=C16.end();++it)
+    {
+    EXPECT_EQ(0,*it);
+    }
+}
+
+
 TEST(mmul_cuda, simple_equality)
 {
     auto A = make_ij_sum(5);
@@ -119,17 +151,103 @@ TEST(mmul_cuda, tiny)
 //TYPED_TEST_SUITE(PrimeTableTest, MatrixTypes);
 
 
-TEST(mmul_cuda, types)
+TEST(mmul_cuda, double_exact_tiling)
 {
-    Matrix<double> A64 = Matrix<double>::zeros(20,20);
-    Matrix<double> B64 = Matrix<double>::zeros(20,20);
+    Matrix<double> A64 = Matrix<double>::zeros(16,16);
+    Matrix<double> B64 = Matrix<double>::zeros(16,16);
 
     auto C64 = mmul_cuda_naive(A64,B64);
+    for(double* it = C64.begin(); it!=C64.end();++it)
+    {
+        EXPECT_DOUBLE_EQ(0,*it);
+    }
+    std::cout <<std::endl<< C64 << std::endl;
+}
 
+TEST(mmul_cuda, double_crooked_tiling)
+{
+    Matrix<double> A64 = Matrix<double>::zeros(15,15);
+    Matrix<double> B64 = Matrix<double>::zeros(15,15);
+
+    auto C64 = mmul_cuda_naive(A64,B64);
+    for(double* it = C64.begin(); it!=C64.end();++it)
+    {
+        EXPECT_DOUBLE_EQ(0,*it);
+    }
+    std::cout <<std::endl<< C64 << std::endl;
+}
+
+TEST(mmul_cuda, double_single_tile)
+{
+    Matrix<double> A64 = Matrix<double>::zeros(8,8);
+    Matrix<double> B64 = Matrix<double>::zeros(8,8);
+
+    auto C64 = mmul_cuda_naive(A64,B64);
+    for(double* it = C64.begin(); it!=C64.end();++it)
+    {
+        EXPECT_DOUBLE_EQ(0,*it);
+    }
+}
+
+TEST(mmul_cuda, double_less_than_single_tile)
+{
+    Matrix<double> A64 = Matrix<double>::zeros(6,6);
+    Matrix<double> B64 = Matrix<double>::zeros(6,6);
+
+    auto C64 = mmul_cuda_naive(A64,B64);
+    for(double* it = C64.begin(); it!=C64.end();++it)
+    {
+        EXPECT_DOUBLE_EQ(0,*it);
+    }
+}
+
+TEST(mmul_cuda, float_large)
+{
+    Matrix<float> A64 = Matrix<float>::zeros(50,50);
+    Matrix<float> B64 = Matrix<float>::zeros(50,50);
+
+    auto C64 = mmul_cuda_naive(A64,B64);
+    for(auto it = C64.begin(); it!=C64.end();++it)
+    {
+        EXPECT_DOUBLE_EQ(0,*it);
+    }
+}
+
+TEST(mmul_cuda, float_single_tile)
+{
+    Matrix<float> A64 = Matrix<float>::zeros(8,8);
+    Matrix<float> B64 = Matrix<float>::zeros(8,8);
+
+    auto C64 = mmul_cuda_naive(A64,B64);
+    for(auto it = C64.begin(); it!=C64.end();++it)
+    {
+        EXPECT_DOUBLE_EQ(0,*it);
+    }
+}
+
+TEST(mmul_cuda, float_two_tiles)
+{
+    Matrix<float> A64 = Matrix<float>::zeros(16,16);
+    Matrix<float> B64 = Matrix<float>::zeros(16,16);
+
+    auto C64 = mmul_cuda_naive(A64,B64);
+    for(auto it = C64.begin(); it!=C64.end();++it)
+    {
+        EXPECT_DOUBLE_EQ(0,*it);
+    }
+}
+
+
+TEST(mmul_cuda, int16_t)
+{
     Matrix<int16_t> A16 = Matrix<int16_t>::zeros(20,20);
     Matrix<int16_t> B16 = Matrix<int16_t>::zeros(20,20);
 
     auto C16 = mmul_cuda_naive(A16,B16);
+    for(int16_t* it = C16.begin(); it!=C16.end();++it)
+    {
+        EXPECT_EQ(0,*it);
+    }
 }
 
 
