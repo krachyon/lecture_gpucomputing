@@ -26,27 +26,31 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 ### Targets and how they link
 
-# TODO linking this against gtest is a problem. Debug complains about undefined refs to `std::__cxx11::basic_stringstream`
-# Trying to compile it as a shared lib break cuda functionality
-# Maybe the whole
+# pure c++
 add_library(matrix STATIC
+        matrix/matrix.h
+        matrix/matrix.cpp
+        )
+target_include_directories(matrix PUBLIC matrix)
+
+# cuda contaminated part
+add_library(matrix_cuda SHARED
         matrix/matrix_cuda.cu
-        matrix/matrix_cuda.cuh
+        matrix/matrix_cuda.h
         matrix/matrix.h
         matrix/matrix.cpp
         matrix/memoryWrapper.cuh
         matrix/memoryWrapper.cu
         )
-
-target_include_directories(matrix PUBLIC matrix)
-
+target_link_libraries(matrix_cuda
+        PUBLIC matrix)
 
 
 add_executable(matrix_test
         test/matrix_test.cpp
         )
 target_include_directories(matrix_test PUBLIC ${EIGEN_INCLUDE_DIR})
-target_link_libraries(matrix_test PUBLIC matrix gtest_main)
+target_link_libraries(matrix_test PUBLIC matrix matrix_cuda gtest_main)
 
 add_executable(matrix_benchmark
         runner/benchmark.cpp)

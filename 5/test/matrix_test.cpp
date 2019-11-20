@@ -1,7 +1,10 @@
-#include "matrix.h"
+
 #include <sstream>
 #include <gtest/gtest.h>
 #include <eigen3/Eigen/Dense>
+
+#include "matrix.h"
+#include "matrix_cuda.h"
 
 
 TEST(mmul,identity_square)
@@ -76,7 +79,7 @@ TEST(mmul_cuda, smoke)
     auto A = make_ij_sum(5);
     auto B = make_ij_product(5);
 
-    auto C = mmul_cuda_naive(A,B);
+    auto C = mmul_cuda_naive_float(A,B);
 }
 
 int main(int argc, char **argv)

@@ -3,8 +3,6 @@
 #include <memory>
 #include <cassert>
 #include <iostream>
-#include "matrix_cuda.cuh"
-#include "memoryWrapper.cuh"
 
 template<typename T>
 class Matrix
@@ -125,32 +123,7 @@ Matrix<T> mmul(Matrix<T> const& left, Matrix<T> const& right)
     return ret;
 }
 
-template <typename T>
-Matrix<T> mmul_cuda_naive (Matrix<T> const& left, Matrix<T> const& right)
-{
-    size_t rrows = left.M;
-    size_t rcols = right.N;
-    Matrix<T> ret(rrows,rcols);
 
-    //initialize and copy
-    DeviceMemory<T> left_mem(left.data(), left.size());
-    DeviceMemory<T> right_mem(right.data(), right.size());
-    //just initialize
-    DeviceMemory<T> out_mem(ret.memsize());
-
-    dim3 blocks;
-    dim3 threads;
-    mmul_naive_wrapper<T>(left_mem.mem(), right_mem.mem(), out_mem.mem(), blocks, threads);
-
-    cudaMemcpy(ret.data(), out_mem);
-    return ret;
-}
-
-//template <typename T>
-//Matrix<T> mmul_cuda_shared (Matrix<T> const& left, Matrix<T> const& right)
-//{
-//    //call kernel
-//}
 
 
 

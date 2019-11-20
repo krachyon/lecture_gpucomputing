@@ -4,7 +4,7 @@
 #include <cuda_runtime_api.h>
 #include <cstdlib>
 #include <cstring>
-#include "errorHandling.h"
+#include "errorHandling.cuh"
 
 enum class memKind
 {
