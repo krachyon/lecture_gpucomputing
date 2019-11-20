@@ -22,55 +22,24 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 include_directories(inc)
 
 add_library(matrix
-        src/matrix/matrix.h
-        src/matrix/matrix.cpp
+        matrix/matrix.h
+        matrix/matrix.cpp
 )
 
 add_executable(matrix_test
-        src/matrix/matrix.h
-        src/matrix/matrix_test.cpp
+        test/matrix_test.cpp
         )
-add_executable(matrix_benchmark
-        src/matrix/benchmark.cpp
-        src/matrix/benchmark.cpp)
 
+add_executable(matrix_benchmark
+        runner/benchmark.cpp)
+
+
+# todo adapt this for every machine
+target_include_directories(matrix PUBLIC inc /opt/cuda/include)
+target_link_directories(matrix PUBLIC /opt/cuda/lib64)
 
 target_include_directories(matrix_test PUBLIC ${EIGEN_INCLUDE_DIR})
-target_link_libraries(matrix_test PUBLIC gtest pthread)
+target_link_libraries(matrix_test PUBLIC matrix gtest pthread)
 
-target_link_libraries(matrix_benchmark)
+target_link_libraries(matrix_benchmark PUBLIC matrix)
 
-
-add_library(util
-        inc/chCommandLine.h
-        inc/chTimer.h
-        inc/chTimer.hpp
-        inc/errorHandling.h
-        inc/dummy.cpp)
-
-add_executable(shared_mem
-        src/shared_mem/main.cpp
-        src/shared_mem/kernel.cu
-        )
-
-add_executable(shared_mem_basic
-        src/shared_mem_alt/shared_mem_basic.cpp
-        src/shared_mem_alt/kernel.cu
-        src/shared_mem_alt/kernel.cuh
-        )
-add_executable(shared_mem_conflicts
-        src/shared_mem_alt/shared_mem_conflicts.cpp
-        src/shared_mem_alt/kernel.cu
-        src/shared_mem_alt/kernel.cuh
-        )
-
-target_include_directories(util PUBLIC inc /opt/cuda/include)
-target_link_directories(util PUBLIC /opt/cuda/lib64)
-
-target_compile_features(util PUBLIC cxx_std_11)
-
-# static linking only needed if you want to build binaries on a different machine (with different libc/libstdc++)
-#target_link_libraries(main PUBLIC util)# -static-libgcc -static-libstdc++
-target_link_libraries(shared_mem_basic PUBLIC util)
-target_link_libraries(shared_mem_conflicts PUBLIC util)
-target_link_libraries(shared_mem PUBLIC util)
