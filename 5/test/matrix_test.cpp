@@ -12,6 +12,10 @@ TEST(matrix, zeros)
     for(auto it = A.begin(); it!=A.end();++it)
         EXPECT_EQ(0,*it);
 
+    Matrix<double> C = Matrix<double>::zeros(15,15);
+    for(auto it = C.begin(); it!=C.end();++it)
+        EXPECT_EQ(0,*it);
+
     Matrix<float> B = Matrix<float>::zeros(3,12);
     for(auto it = B.begin(); it!=B.end();++it)
         EXPECT_EQ(0,*it);
@@ -39,7 +43,7 @@ TEST(mmul,identity_square)
     EXPECT_EQ(c(1,1), 4.f);
 }
 
-
+//TODO all of these should be parametrized both by type and multiply operation
 
 TEST(mmul, square_compare_with_Eigen)
 {
@@ -134,6 +138,24 @@ TEST(mmul_cuda, large_equality)
     }
 }
 
+TEST(mmul_cuda, square_compare_with_Eigen)
+{
+    //create a random 10*10 matrix in eigen and corresponding own matrix
+    size_t m=40, n=40;
+    Eigen::MatrixXd mat_eigen = Eigen::MatrixXd::Random(m,n);
+    Matrix<double> mat(m,n);
+    for (size_t i = 0; i!=m;++i)
+        for(size_t j = 0;j!=n;++j)
+            mat(i,j)=mat_eigen(i,j);
+
+    //multiply both and check if they're the same
+    auto m2 = mmul_cuda_naive(mat,mat);
+    auto m2_eigen = mat_eigen*mat_eigen;
+    for (size_t i = 0; i!=m;++i)
+        for(size_t j = 0;j!=n;++j)
+            EXPECT_FLOAT_EQ(m2(i,j), m2_eigen(i,j));
+}
+
 TEST(mmul_cuda, non_square)
 {
 }
@@ -161,7 +183,6 @@ TEST(mmul_cuda, double_exact_tiling)
     {
         EXPECT_DOUBLE_EQ(0,*it);
     }
-    std::cout <<std::endl<< C64 << std::endl;
 }
 
 TEST(mmul_cuda, double_crooked_tiling)
@@ -174,7 +195,6 @@ TEST(mmul_cuda, double_crooked_tiling)
     {
         EXPECT_DOUBLE_EQ(0,*it);
     }
-    std::cout <<std::endl<< C64 << std::endl;
 }
 
 TEST(mmul_cuda, double_single_tile)

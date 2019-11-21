@@ -9,50 +9,47 @@
 //    return x / y + (x % y != 0);
 //}
 
-inline uint32_t ceildiv (uint32_t x, uint32_t y)
-{
+inline uint32_t ceildiv(uint32_t x, uint32_t y) {
     // division instruction gives you a free modulo. So add one if not cleanly divisible. not that should matter...
-    return x/y + (x%y != 0);
+    return x / y + (x % y != 0);
 }
 
 
-//TODO this is not working fully see tests. There are sporadic failures with some cases apparently double above
-//15 is a problem right now but it seems chancy. Maybe some issue with elements not getting written? Memory contains
-//largish numbers when not equal. Check DeviceMemory, maybe not zeroed correcty.
-//
 template<typename T>
-__global__ void mmul_naive_kernel(T* mem_left, T* mem_right, T* mem_out, dim3 sizes)
-{
-    uint32_t row = threadIdx.x + blockIdx.x * gridDim.x;
-    uint32_t col = threadIdx.y + blockIdx.y * gridDim.y;
+__global__ void mmul_naive_kernel(T * mem_left, T * mem_right, T * mem_out, dim3 sizes) {
+    //I put gridDim here instead of blockDim and that was a really weird bug, cause most of the tests still passed.
+    //TODO Maybe see if e.g.  TEST(mmul_cuda, simple_equality) is just garbage because it still worked...
+    uint32_t row = threadIdx.x + blockIdx.x * blockDim.x;
+    uint32_t col = threadIdx.y + blockIdx.y * blockDim.y;
     //product_size is the size of the scalar product, the amount of columns in left and the amount of rows in right
     uint32_t stride_left = sizes.x;
     uint32_t product_size = sizes.y;
     uint32_t stride_right = sizes.z;
 
     //If the matrix size is not divisible, just ignore too large indices
-    if(row>=stride_left || col>=stride_right)
+    if (row >= stride_left || col >= stride_right) {
+        //printf("skipped %i %i\n", row,col);
         return;
+    }
 
     T elem = 0;
 
     //Todo what about splitting this loop over many threads with either atomic write or some sort of aggregation step?
-    for (size_t i=0; i<product_size; ++i) {
+    for (size_t i = 0; i < product_size; ++i) {
         //elem += left(row, i)*right(i, col) -> _mem[N*row+col];
-        elem += mem_left[stride_left*row+i] * mem_right[stride_right*i+col];
+        elem += mem_left[stride_left * row + i] * mem_right[stride_right * i + col];
     }
 
     // result has the same amount of rows == stride as left and columns as right
-    mem_out[stride_left*row+col] = elem;
+    mem_out[stride_left * row + col] = elem;
 }
 
 // generic implementation
-template <typename T>
-Matrix<T> mmul_cuda_naive (Matrix<T> const& left, Matrix<T> const& right)
-{
+template<typename T>
+Matrix<T> mmul_cuda_naive(Matrix<T> const& left, Matrix<T> const& right) {
     uint32_t rrows = left.M;
     uint32_t rcols = right.N;
-    Matrix<T> ret(rrows,rcols);
+    Matrix<T> ret(rrows, rcols);
 
     //initialize and copy
     DeviceMemory<T> left_mem(left.data(), left.size());
@@ -66,14 +63,14 @@ Matrix<T> mmul_cuda_naive (Matrix<T> const& left, Matrix<T> const& right)
     //ATTENTION putting 0 in any dimension is invalid and does not signify "nonexistent"
     //let's try using thread blocks of 8x8=2 warps. This sucks a bit for very small matrices but then wtf use cuda...
 
-    dim3 blocks{ceildiv(rrows, 8),ceildiv(rcols,8),1};
-    dim3 threads{8,8,1};
+    dim3 blocks{ceildiv(rrows, 8), ceildiv(rcols, 8), 1};
+    dim3 threads{8, 8, 1};
 
-    assert(blocks.x*blocks.y*threads.x*threads.y >= ret.size());
+    assert(blocks.x * blocks.y * threads.x * threads.y >= ret.size());
     // there should be at most one nearly empty set of blocks
-    assert(blocks.x*blocks.y*threads.x*threads.y < (blocks.x+1)*(blocks.y+1)*threads.x*threads.y);
+    assert(blocks.x * blocks.y * threads.x * threads.y < (blocks.x + 1) * (blocks.y + 1) * threads.x * threads.y);
 
-    mmul_naive_kernel<T><<<blocks,threads,0>>>(left_mem.mem(), right_mem.mem(), out_mem.mem(), sizes);
+    mmul_naive_kernel<T> << < blocks, threads, 0 >> > (left_mem.mem(), right_mem.mem(), out_mem.mem(), sizes);
     //cudaDeviceSynchronize(); // todo needed?
     quitOnCudaError();
 
@@ -82,12 +79,17 @@ Matrix<T> mmul_cuda_naive (Matrix<T> const& left, Matrix<T> const& right)
 }
 
 // fill out overloads
-Matrix<float> mmul_cuda_naive (Matrix<float> const& left, Matrix<float> const& right)
-{return mmul_cuda_naive<float>(left,right);}
-Matrix<double> mmul_cuda_naive (Matrix<double> const& left, Matrix<double> const& right)
-{return mmul_cuda_naive<double>(left,right);}
-Matrix<int16_t> mmul_cuda_naive (Matrix<int16_t> const& left, Matrix<int16_t> const& right)
-{return mmul_cuda_naive<int16_t>(left,right);}
+Matrix<float> mmul_cuda_naive(Matrix<float> const& left, Matrix<float> const& right) {
+    return mmul_cuda_naive<float>(left, right);
+}
+
+Matrix<double> mmul_cuda_naive(Matrix<double> const& left, Matrix<double> const& right) {
+    return mmul_cuda_naive<double>(left, right);
+}
+
+Matrix<int16_t> mmul_cuda_naive(Matrix<int16_t> const& left, Matrix<int16_t> const& right) {
+    return mmul_cuda_naive<int16_t>(left, right);
+}
 
 
 
