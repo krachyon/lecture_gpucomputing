@@ -89,7 +89,7 @@ int main(int argc, char** argv)
         usage();
     }
     std::cout << "#method, iters, size, time(ns)" << std::endl;
-    std::cout << "#Threads for eigen: " << Eigen::nbThreads( );
+    std::cout << "#Threads for eigen: " << Eigen::nbThreads( ) << std::endl;
     for (auto n: N) {
         auto a = make_ij_sum(n);
         auto b = make_ij_product(n);
