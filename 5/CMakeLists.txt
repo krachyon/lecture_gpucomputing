@@ -6,6 +6,8 @@ project(ex5 LANGUAGES CXX CUDA)
 find_package(Boost REQUIRED)
 find_package(Eigen3)
 find_package(GTest)
+find_package(OpenMP)
+
 include_directories(${Boost_INCLUDE_DIRS})
 
 ### define flags, compile options
@@ -56,7 +58,7 @@ target_link_libraries(matrix_test PUBLIC matrix matrix_cuda gtest pthread)
 
 add_executable(matrix_benchmark
         runner/benchmark.cpp)
-target_link_libraries(matrix_benchmark PUBLIC matrix)
+target_link_libraries(matrix_benchmark PUBLIC matrix matrix_cuda OpenMP::OpenMP_CXX)
 
 
 # todo adapt this for every machine if it needs to be specified by hand

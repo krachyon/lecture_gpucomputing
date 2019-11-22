@@ -12,5 +12,5 @@ Matrix<float> mmul_cuda_naive (Matrix<float> const& left, Matrix<float> const& r
 Matrix<double> mmul_cuda_naive (Matrix<double> const& left, Matrix<double> const& right);
 Matrix<int16_t> mmul_cuda_naive (Matrix<int16_t> const& left, Matrix<int16_t> const& right);
 
-Matrix<float> mmul_cuda_shared_float (Matrix<float> const& left, Matrix<float> const& right);
-Matrix<double> mmul_cuda_shared_double (Matrix<double> const& left, Matrix<double> const& right);
+Matrix<float> mmul_cuda_shared(Matrix<float> const& left, Matrix<float> const& right);
+Matrix<double> mmul_cuda_shared (Matrix<double> const& left, Matrix<double> const& right);
