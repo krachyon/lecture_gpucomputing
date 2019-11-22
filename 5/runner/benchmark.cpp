@@ -90,12 +90,18 @@ int main(int argc, char** argv)
     }
     std::cout << "#method, iters, size, time(ns)" << std::endl;
     std::cout << "#Threads for eigen: " << Eigen::nbThreads( ) << std::endl;
+    Eigen::setNbThreads(6);
     for (auto n: N) {
         auto a = make_ij_sum(n);
         auto b = make_ij_product(n);
         auto start = std::chrono::high_resolution_clock::now();
+        auto A = Eigen::MatrixXf::Random(n,n);
+        auto B = Eigen::MatrixXf::Random(n,n);
+        Eigen::MatrixXf C;
         for (size_t _ = 0; _!=iters; ++_) {
-            selected_mmul(a, b);
+            //selected_mmul(a, b);
+            C = A*B;
+            if (C(1,1));
         }
         auto stop = std::chrono::high_resolution_clock::now();
         std::cout << method << ", "
