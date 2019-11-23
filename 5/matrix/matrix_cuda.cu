@@ -80,6 +80,9 @@ Matrix<T> mmul_cuda_naive(Matrix<T> const& left, Matrix<T> const& right) {
 
 
 
+// TODO this turned out to be much more of a problem than if it where just square matrices.
+// Not sure how efficient all the index mess is, but this should be started with as many threads as possible so that
+// a block uses the maximum possible amount of shared memory as to make the copying worth it.
 template<typename T>
 __global__ void mmul_shared_kernel(T * mem_left, T * mem_right, T * mem_out, dim3 sizes) {
     //product_size is the size of the scalar product, the amount of columns in left and the amount of rows in right
@@ -89,37 +92,90 @@ __global__ void mmul_shared_kernel(T * mem_left, T * mem_right, T * mem_out, dim
     uint32_t row = threadIdx.x + blockIdx.x * blockDim.x;
     uint32_t col = threadIdx.y + blockIdx.y * blockDim.y;
 
-    //If the matrix size is not divisible, just ignore too large indices
-    if (row >= stride_left || col >= stride_right) {
-        //printf("skipped %i %i\n", row,col);
-        return;
-    }
-
-    //fill shared mem
+    //range of rows in the left matrix and cols in the right matrix that we need in this block
     extern __shared__ float smem[];
-    size_t offset_to_right_mem = 0; //TODO
-    uint32_t row_max = 8 + blockIdx.x * blockDim.x;
-    uint32_t row_min = 0 + blockIdx.x * blockDim.x;
-    uint32_t col_max = 8 + blockIdx.y * blockDim.y;
-    uint32_t col_min = 0 + blockIdx.y * blockDim.y;
+    uint32_t row_left_max  = blockDim.x + blockIdx.x * blockDim.x;
+    uint32_t row_left_min  = 0          + blockIdx.x * blockDim.x;
+    uint32_t col_right_max = blockDim.y + blockIdx.y * blockDim.y;
+    uint32_t col_right_min = 0 + blockIdx.y * blockDim.y;
 
-    // every row in the thread block should fetch a row from left matrix and divide it so that the columns do equal work
+    // Row,Col coordinates to memory location
+    auto left_idx = [=](size_t row, size_t col)
     {
-        uint32_t left_row = row;
+        return stride_left*row + col;
+    };
+    auto right_idx = [=](size_t row, size_t col)
+    {
+        return stride_right*row + col;
+    };
+
+    // Helpers to convert row,col coordinates on original matrix to shared memory location
+    auto left2shared = [=] (size_t row, size_t col) -> size_t
+    {
+        assert(row >= row_left_min && row <= row_left_max && col <= col_right_max && col >= col_right_max);
+        auto memory_location = (row - row_left_min) * row_left_max + (col - col_right_min);
+        return memory_location;
+    };
+
+    auto right2shared = [=] (size_t row, size_t col) -> size_t
+    {
+        auto offset_to_right_mem = sizes.x * sizes.y * sizeof(T); //amount of elements in left matrix
+        return offset_to_right_mem + left2shared(row, col);
+    };
+
+    // every row in the thread block should fetch the corresponding row
+    // from left matrix and divide it so that the threadblock columns do equal work
+    {
         uint32_t n_left_cols = sizes.x;
         uint32_t step_size = ceildiv(n_left_cols, blockDim.y);
+
         uint32_t start_col = threadIdx.y * step_size;
         uint32_t end_col = threadIdx.y * step_size + step_size;
-        for (size_t col_to_copy = start_col; col_to_copy != end_col && col_to_copy != n_left_cols; ++col_to_copy){
-            smem[row*blockDim.y+col_to_copy] = mem_left[stride_left*left_row+col_to_copy];
+
+        for (size_t col_to_copy = start_col;
+            (col_to_copy != end_col) && (col_to_copy != n_left_cols);
+             ++col_to_copy)
+        {
+            smem[left2shared(row,col_to_copy)] = mem_left[left_idx(row, col_to_copy)];
         }
     }
 
+    // every row in the thread block should fetch the corresponding column
+    // from right matrix and divide it so that the threadblock columns do equal work
+    {
+        uint32_t n_right_rows = sizes.z;
+        uint32_t step_size = ceildiv(n_right_rows, blockDim.y);
 
+        uint32_t start_row = threadIdx.y * step_size;
+        uint32_t end_row = threadIdx.y * step_size + step_size;
 
-    //wee need
+        // The ceildiv operation could overshoot. In that case just end loop if we reach n_right_rows
+        // TODO right now the same element can be copied multiple times. include check to avoid that?
+        // TODO Should not be a functional problem, as it's writing the same thing and does not care about the original
+        // memory value. Also adapt in above block
+        for (size_t row_to_copy = start_row;
+             (row_to_copy != end_row) && (row_to_copy != n_right_rows);
+             ++row_to_copy)
+        {
+            smem[right2shared(row_to_copy,col)] = mem_right[right_idx(row_to_copy, col)];
+        }
+    }
+    //make sure all the shared memory is available
+    __syncthreads();
 
-    //do the accessing
+    //If the matrix size is not cleanly tileable, just ignore too large indices
+    if (row >= stride_left || col >= stride_right) {
+        return;
+    }
+
+    T elem;
+    for (size_t i = 0; i < product_size; ++i) {
+        //elem += left(row, i)*right(i, col) -> _mem[N*row+col];
+        elem += smem[left2shared(row,i)] * smem[right2shared(i,col)];
+    }
+
+    mem_out[stride_left * row + col] = elem;
+
 }
 
 
