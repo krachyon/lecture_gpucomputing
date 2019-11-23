@@ -78,6 +78,51 @@ Matrix<T> mmul_cuda_naive(Matrix<T> const& left, Matrix<T> const& right) {
     return ret;
 }
 
+
+
+template<typename T>
+__global__ void mmul_shared_kernel(T * mem_left, T * mem_right, T * mem_out, dim3 sizes) {
+    //product_size is the size of the scalar product, the amount of columns in left and the amount of rows in right
+    uint32_t stride_left = sizes.x;
+    uint32_t product_size = sizes.y;
+    uint32_t stride_right = sizes.z;
+    uint32_t row = threadIdx.x + blockIdx.x * blockDim.x;
+    uint32_t col = threadIdx.y + blockIdx.y * blockDim.y;
+
+    //If the matrix size is not divisible, just ignore too large indices
+    if (row >= stride_left || col >= stride_right) {
+        //printf("skipped %i %i\n", row,col);
+        return;
+    }
+
+    //fill shared mem
+    extern __shared__ float smem[];
+    size_t offset_to_right_mem = 0; //TODO
+    uint32_t row_max = 8 + blockIdx.x * blockDim.x;
+    uint32_t row_min = 0 + blockIdx.x * blockDim.x;
+    uint32_t col_max = 8 + blockIdx.y * blockDim.y;
+    uint32_t col_min = 0 + blockIdx.y * blockDim.y;
+
+    // every row in the thread block should fetch a row from left matrix and divide it so that the columns do equal work
+    {
+        uint32_t left_row = row;
+        uint32_t n_left_cols = sizes.x;
+        uint32_t step_size = ceildiv(n_left_cols, blockDim.y);
+        uint32_t start_col = threadIdx.y * step_size;
+        uint32_t end_col = threadIdx.y * step_size + step_size;
+        for (size_t col_to_copy = start_col; col_to_copy != end_col && col_to_copy != n_left_cols; ++col_to_copy){
+            smem[row*blockDim.y+col_to_copy] = mem_left[stride_left*left_row+col_to_copy];
+        }
+    }
+
+
+
+    //wee need
+
+    //do the accessing
+}
+
+
 // fill out overloads
 Matrix<float> mmul_cuda_naive(Matrix<float> const& left, Matrix<float> const& right) {
     return mmul_cuda_naive<float>(left, right);
