@@ -2,6 +2,7 @@
 #include "memoryWrapper.cuh"
 #include <cuda_runtime.h>
 
+
 //#include <type_traits>
 //template<typename T>
 //inline typename std::enable_if<std::is_unsigned<T>::value, T>::type  ceildiv (T x, T y)
@@ -13,7 +14,6 @@ inline __device__ __host__ uint32_t ceildiv(uint32_t x, uint32_t y) {
     // division instruction gives you a free modulo. So add one if not cleanly divisible. not that should matter...
     return x / y + (x % y != 0);
 }
-
 
 template<typename T>
 __global__ void mmul_naive_kernel(T * mem_left, T * mem_right, T * mem_out, dim3 sizes) {
@@ -47,16 +47,19 @@ __global__ void mmul_naive_kernel(T * mem_left, T * mem_right, T * mem_out, dim3
 
 // generic implementation
 template<typename T>
-Matrix<T> mmul_cuda_naive(Matrix<T> const& left, Matrix<T> const& right) {
+Matrix<T> mmul_cuda_naive(Matrix<T> const& left, Matrix<T> const& right, uint32_t n_threads) {
     uint32_t rrows = left.M;
     uint32_t rcols = right.N;
     Matrix<T> ret(rrows, rcols);
 
+    auto mem_start = std::chrono::high_resolution_clock::now();
     //initialize and copy
     DeviceMemory<T> left_mem(left.data(), left.size());
     DeviceMemory<T> right_mem(right.data(), right.size());
     //just initialize
     DeviceMemory<T> out_mem(ret.size());
+    auto mem_stop = std::chrono::high_resolution_clock::now();
+    auto mem_duration = mem_stop - mem_start;
 
     dim3 sizes = {uint32_t(left.M), uint32_t(left.N), uint32_t(right.N)};
 
@@ -64,8 +67,8 @@ Matrix<T> mmul_cuda_naive(Matrix<T> const& left, Matrix<T> const& right) {
     //ATTENTION putting 0 in any dimension is invalid and does not signify "nonexistent"
     //let's try using thread blocks of 8x8=2 warps. This sucks a bit for very small matrices but then wtf use cuda...
 
-    dim3 blocks{ceildiv(rrows, 8), ceildiv(rcols, 8), 1};
-    dim3 threads{8, 8, 1};
+    dim3 blocks{ceildiv(rrows, n_threads), ceildiv(rcols, n_threads), 1};
+    dim3 threads{n_threads, n_threads, 1};
 
     assert(blocks.x * blocks.y * threads.x * threads.y >= ret.size());
     // there should be at most one nearly empty set of blocks
@@ -75,7 +78,12 @@ Matrix<T> mmul_cuda_naive(Matrix<T> const& left, Matrix<T> const& right) {
     //cudaDeviceSynchronize(); // todo needed?
     quitOnCudaError();
 
+    mem_start = std::chrono::high_resolution_clock::now();
     cudaMemcpy(ret.data(), out_mem);
+    mem_stop = std::chrono::high_resolution_clock::now();
+
+    mem_duration += mem_stop - mem_start;
+    lastMemoryOp = mem_duration;
     return ret;
 }
 
@@ -242,21 +250,25 @@ __global__ void mmul_shared_kernel_NN(T* mem_left, T* mem_right, T* mem_out, uin
 
 
 template<typename T>
-Matrix<T> mmul_cuda_shared(Matrix<T> const& left, Matrix<T> const& right){
+Matrix<T> mmul_cuda_shared(Matrix<T> const& left, Matrix<T> const& right, uint32_t n_threads) {
     assert(left.M == right.M && left.N == right.N);
+
 
     uint32_t N = left.M;
 
     Matrix<T> ret(N, N);
 
+    auto mem_start = std::chrono::high_resolution_clock::now();
     //initialize and copy
     DeviceMemory<T> left_mem(left.data(), left.size());
     DeviceMemory<T> right_mem(right.data(), right.size());
     //just initialize
     DeviceMemory<T> out_mem(ret.size());
+    auto mem_stop = std::chrono::high_resolution_clock::now();
+    auto mem_duration = mem_stop - mem_start;
 
-    dim3 blocks{ceildiv(N, 8), ceildiv(N, 8), 1};
-    dim3 threads{8, 8, 1};
+    dim3 blocks{ceildiv(N, n_threads), ceildiv(N, n_threads), 1};
+    dim3 threads{n_threads, n_threads, 1};
 
     assert(blocks.x * blocks.y * threads.x * threads.y >= ret.size());
     // there should be at most one nearly empty set of blocks
@@ -266,33 +278,37 @@ Matrix<T> mmul_cuda_shared(Matrix<T> const& left, Matrix<T> const& right){
     mmul_shared_kernel_NN<T> << < blocks, threads, shared_mem_size>> > (left_mem.mem(), right_mem.mem(), out_mem.mem(), N);
     //cudaDeviceSynchronize(); // todo needed?
     quitOnCudaError();
-
+    mem_start = std::chrono::high_resolution_clock::now();
     cudaMemcpy(ret.data(), out_mem);
+    mem_stop = std::chrono::high_resolution_clock::now();
+
+    mem_duration += mem_stop - mem_start;
+    lastMemoryOp = mem_duration;
     return ret;
 
 }
 
 
 // fill out overloads
-Matrix<float> mmul_cuda_naive(Matrix<float> const& left, Matrix<float> const& right) {
-    return mmul_cuda_naive<float>(left, right);
+Matrix<float> mmul_cuda_naive(Matrix<float> const& left, Matrix<float> const& right, uint32_t n_threads) {
+    return mmul_cuda_naive<float>(left, right,n_threads);
 }
 
-Matrix<double> mmul_cuda_naive(Matrix<double> const& left, Matrix<double> const& right) {
-    return mmul_cuda_naive<double>(left, right);
+Matrix<double> mmul_cuda_naive(Matrix<double> const& left, Matrix<double> const& right, uint32_t n_threads) {
+    return mmul_cuda_naive<double>(left, right,n_threads);
 }
 
-Matrix<int16_t> mmul_cuda_naive(Matrix<int16_t> const& left, Matrix<int16_t> const& right) {
-    return mmul_cuda_naive<int16_t>(left, right);
+Matrix<int16_t> mmul_cuda_naive(Matrix<int16_t> const& left, Matrix<int16_t> const& right, uint32_t n_threads) {
+    return mmul_cuda_naive<int16_t>(left, right,n_threads);
 }
 
 
-Matrix<float> mmul_cuda_shared(Matrix<float> const& left, Matrix<float> const& right) {
-    return mmul_cuda_shared<float>(left, right);
+Matrix<float> mmul_cuda_shared(Matrix<float> const& left, Matrix<float> const& right, uint32_t n_threads) {
+    return mmul_cuda_shared<float>(left, right,n_threads);
 }
 
-Matrix<double> mmul_cuda_shared(Matrix<double> const& left, Matrix<double> const& right) {
-    return mmul_cuda_shared<double>(left, right);
+Matrix<double> mmul_cuda_shared(Matrix<double> const& left, Matrix<double> const& right, uint32_t n_threads) {
+    return mmul_cuda_shared<double>(left, right,n_threads);
 }
 
 

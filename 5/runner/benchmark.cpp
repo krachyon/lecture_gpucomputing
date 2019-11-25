@@ -11,8 +11,8 @@
 void usage()
 {
     std::cout << "***naive matrix multiplication benchmark***" << std::endl
-              << "need 5 args: ./<name> 'method' size_from size_to size_step iters" << std::endl
-              << "method:= {'cpu', 'eigen', 'cuda', 'cuda_shared'}" << std::endl;
+              << "need 5 args: ./<name> 'method' size_from size_to size_step iters thread_size" << std::endl
+              << "method:= {'cpu', 'eigen', 'cuda_naive', 'cuda_shared'}" << std::endl;
 
     exit(0);
 }
@@ -47,60 +47,55 @@ int main(int argc, char** argv)
     Eigen::initParallel();
 
     size_t iters = 1;
-    using func_T =  std::function<Matrix<float>(Matrix<float> const&, Matrix<float> const&)>;
-    func_T selected_mmul;
+    uint32_t thread_size = 8;
     std::vector<size_t> N;
     std::string method;
 
-
-    if (argc==6) {
+    if (argc==7) {
         try {
             method = boost::lexical_cast<std::string>(argv[1]);
             size_t start = boost::lexical_cast<size_t>(argv[2]);
             size_t stop = boost::lexical_cast<size_t>(argv[3]);
             size_t step = boost::lexical_cast<size_t>(argv[4]);
             iters = boost::lexical_cast<size_t>(argv[5]);
+            thread_size = boost::lexical_cast<size_t>(argv[6]);
             auto r = boost::irange(start, stop, step);
             std::copy(r.begin(), r.end(), std::back_inserter(N));
 
-            //fucking function pointers...
-            typedef Matrix<float>(* fp_T)(Matrix<float> const&, Matrix<float> const&);
-
-            if (method == "cpu")
-                selected_mmul = func_T(mmul<float>);
-            else if (method == "eigen")
-                selected_mmul = func_T(mmul_eigen<float>);
-            else if (method == "cuda")
-                selected_mmul = func_T(static_cast<fp_T>(&mmul_cuda_naive));
-            else if (method == "cuda_shared") {
-                //selected_mmul = func_T(static_cast<fp_T>(&mmul_cuda_shared));
-                std::cout << "not implemented" << std::endl;
-                exit(-1);
             }
-            else
+            catch (...) {
                 usage();
-
+            }
         }
-        catch (...) {
-            usage();
-        }
-    }
     else {
         usage();
     }
-    std::cout << "#method, iters, size, time(ns)" << std::endl;
+
+    std::cout << "#method, iters, size, thread_size, memtime(ns), time(ns)" << std::endl;
     std::cout << "#Threads for eigen: " << Eigen::nbThreads( ) << std::endl;
     for (auto n: N) {
         auto a = make_ij_sum(n);
         auto b = make_ij_product(n);
         auto start = std::chrono::high_resolution_clock::now();
         for (size_t _ = 0; _!=iters; ++_) {
-            selected_mmul(a, b);
+            if (method == "cpu")
+                mmul(a,b);
+            else if(method == "eigen")
+                mmul_eigen(a,b);
+            else if(method == "cuda_naive")
+                mmul_cuda_naive(a,b,thread_size);
+            else if(method == "cuda_shared")
+                mmul_cuda_shared(a,b,thread_size);
+            else
+                usage();
         }
+
         auto stop = std::chrono::high_resolution_clock::now();
         std::cout << method << ", "
                   << iters << ", "
                   << n << ", "
+                  << thread_size << ", "
+                  << std::chrono::duration_cast<std::chrono::nanoseconds>(lastMemoryOp).count() << ", "
                   << std::chrono::duration_cast<std::chrono::nanoseconds>(stop-start).count() << std::endl;
 
     }
