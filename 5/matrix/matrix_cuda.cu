@@ -183,20 +183,16 @@ __global__ void mmul_shared_kernel(T* mem_left, T* mem_right, T* mem_out, dim3 s
 //easier version that only understands NxN matrices
 template<typename T>
 __global__ void mmul_shared_kernel_NN(T* mem_left, T* mem_right, T* mem_out, uint32_t N) {
-    uint32_t row = threadIdx.x + blockIdx.x * blockDim.x;
-    uint32_t col = threadIdx.y + blockIdx.y * blockDim.y;
+    uint32_t const row = threadIdx.x + blockIdx.x * blockDim.x;
+    uint32_t const col = threadIdx.y + blockIdx.y * blockDim.y;
     //If the matrix size is not divisible, just ignore too large indices
     if (row >= N || col >= N) {
         //printf("skipped %i %i\n", row,col);
         return;
     }
 
-    uint32_t min_row = 0          + blockIdx.x * blockDim.x;
-//    uint32_t max_row = blockDim.x + blockIdx.x * blockDim.x;
-    uint32_t min_col = 0          + blockIdx.y * blockDim.y;
-//    uint32_t max_col = blockDim.x + blockIdx.x * blockDim.x;
 
-    uint32_t elements_in_block = blockDim.x * blockDim.y;
+    uint32_t const elements_in_block = blockDim.x * blockDim.y;
 
     // works for both matrices, both are NxN and N=stride
     auto matrix_idx = [=](uint32_t row, uint32_t col) -> uint32_t {
@@ -204,35 +200,31 @@ __global__ void mmul_shared_kernel_NN(T* mem_left, T* mem_right, T* mem_out, uin
     };
     __shared__ extern float smem[];
 
-    //for a given iteration (each iteration moves the block window by one step) compute indices in original matrices
-    auto sliding_idx_left = [=](uint32_t i){
-        return matrix_idx(row, i*blockDim.y+threadIdx.y);
-    };
-
-    auto sliding_idx_right = [=](uint32_t i){
-        return matrix_idx(i*blockDim.x+threadIdx.x, col);
-    };
-
-    //TODO this should be different between rows and cols of scalar product
-    auto scalar_prod_index = [=](uint32_t j)
-    {
-        return threadIdx.x * blockDim.x + j;
-    };
-
-
     //always write to these locations
-    uint32_t left_element = (row-min_row) * blockDim.y + (col-min_col);
-    uint32_t right_element = elements_in_block + left_element;
+    uint32_t const left_element = blockDim.x * threadIdx.x + threadIdx.y;
+    uint32_t const right_element = elements_in_block + left_element;
+    uint32_t const shared_row = threadIdx.x;
+    uint32_t const shared_col = threadIdx.y;
 
     T output_elem = 0;
+    size_t window_size = blockDim.x; //==blockDim.y
 
-    for(size_t i=0;i<ceildiv(N,blockDim.y);++i) {
+    auto shared_idx_left = [=](uint32_t row, uint32_t col) -> uint32_t {
+        return window_size * row + col;
+    };
+    auto shared_idx_right = [=](uint32_t row, uint32_t col) -> uint32_t {
+        return shared_idx_left(row,col) + elements_in_block;
+    };
+
+    for(size_t window=0;window<N;window+=window_size) {
         __syncthreads();
-        smem[left_element] = mem_left[sliding_idx_left(i)];
-        smem[right_element] = mem_right[sliding_idx_right(i)];
+        // row in left matrix is always same. window slides over columns
+        smem[left_element] = mem_left[matrix_idx(threadIdx.x, window+threadIdx.y)];
+        smem[right_element] = mem_right[matrix_idx(window+threadIdx.x, threadIdx.y)];
         __syncthreads();
-        for(size_t j=0;j!=blockDim.y;++j) {
-            output_elem += smem[scalar_prod_index(j)] * smem[scalar_prod_index(j)+elements_in_block];
+        //perform all operations available in window. TODO: stop when window goes outside of matrix dims
+        for(size_t i=0;i!=window_size;++i) {
+            output_elem += smem[shared_idx_left(shared_row,i)] * smem[shared_idx_right(i,shared_col)];
         }
     }
 

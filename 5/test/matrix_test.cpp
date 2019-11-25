@@ -294,8 +294,8 @@ TEST(mmul_cuda, int16_t)
 
 TEST(mmul_cuda_shared, smoke)
 {
-    auto A = make_ij_sum(5);
-    auto B = make_ij_product(5);
+    auto A = make_ij_sum(8);
+    auto B = make_ij_product(8);
 
     auto C_exp = mmul(A,B);
     auto C = mmul_cuda_shared(A,B);
