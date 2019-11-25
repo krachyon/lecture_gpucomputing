@@ -83,8 +83,9 @@ TEST(mmul, generators)
     //A = np.outer(x,x)
     //B = np.add.outer(x,x)
     //C = A@B
+    auto C = mmul(A,B);
     std::cout <<std::endl << A << std::endl;
-    std::cout <<std::endl << A << std::endl;
+    std::cout <<std::endl << B << std::endl;
     std::cout <<std::endl << mmul(A,B) << std::endl;
 }
 
@@ -290,12 +291,32 @@ TEST(mmul_cuda, int16_t)
         EXPECT_EQ(0,*it);
     }
 }
-//
-//TEST(mmul_cuda_shared, smoke)
+
+TEST(mmul_cuda_shared, smoke)
+{
+    auto A = make_ij_sum(5);
+    auto B = make_ij_product(5);
+
+    auto C_exp = mmul(A,B);
+    auto C = mmul_cuda_shared(A,B);
+
+
+    std::cout << C_exp << std::endl;
+    std::cout << C << std::endl;
+}
+
+//TEST(mmul_cuda_shared, simple_equality)
 //{
-//    Matrix<float> A(5,5);
-//    Matrix<float> B(5,5);
-//    mmul_cuda_shared(A,B);
+//    auto A = make_ij_sum(5);
+//    auto B = make_ij_product(5);
+//
+//    auto C = mmul_cuda_shared(A,B);
+//    auto C_ref = mmul(A,B);
+//
+//    for(auto it = C.begin(), rit = C_ref.begin(); it != C.end(); ++it,++rit)
+//    {
+//        EXPECT_FLOAT_EQ(*it,*rit);
+//    }
 //}
 
 

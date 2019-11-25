@@ -9,7 +9,7 @@
 //    return x / y + (x % y != 0);
 //}
 
-inline uint32_t ceildiv(uint32_t x, uint32_t y) {
+inline __device__ __host__ uint32_t ceildiv(uint32_t x, uint32_t y) {
     // division instruction gives you a free modulo. So add one if not cleanly divisible. not that should matter...
     return x / y + (x % y != 0);
 }
@@ -192,9 +192,9 @@ __global__ void mmul_shared_kernel_NN(T* mem_left, T* mem_right, T* mem_out, uin
     }
 
     uint32_t min_row = 0          + blockIdx.x * blockDim.x;
-    uint32_t max_row = blockDim.x + blockIdx.x * blockDim.x;
+//    uint32_t max_row = blockDim.x + blockIdx.x * blockDim.x;
     uint32_t min_col = 0          + blockIdx.y * blockDim.y;
-    uint32_t max_col = blockDim.x + blockIdx.x * blockDim.x;
+//    uint32_t max_col = blockDim.x + blockIdx.x * blockDim.x;
 
     uint32_t elements_in_block = blockDim.x * blockDim.y;
 
@@ -213,6 +213,7 @@ __global__ void mmul_shared_kernel_NN(T* mem_left, T* mem_right, T* mem_out, uin
         return matrix_idx(i*blockDim.x+threadIdx.x, col);
     };
 
+    //TODO this should be different between rows and cols of scalar product
     auto scalar_prod_index = [=](uint32_t j)
     {
         return threadIdx.x * blockDim.x + j;
@@ -231,12 +232,12 @@ __global__ void mmul_shared_kernel_NN(T* mem_left, T* mem_right, T* mem_out, uin
         smem[right_element] = mem_right[sliding_idx_right(i)];
         __syncthreads();
         for(size_t j=0;j!=blockDim.y;++j) {
-            output_elem += smem[scalar_prod_index(j)];
-                         * smem[scalar_prod_index(j)+elements_in_block];
+            output_elem += smem[scalar_prod_index(j)] * smem[scalar_prod_index(j)+elements_in_block];
         }
     }
 
     mem_out[matrix_idx(row,col)] = output_elem;
+    //mem_out[matrix_idx(row,col)] = threadIdx.x*threadIdx.y;
 }
 
 
@@ -261,7 +262,8 @@ Matrix<T> mmul_cuda_shared(Matrix<T> const& left, Matrix<T> const& right){
     // there should be at most one nearly empty set of blocks
     assert(blocks.x * blocks.y * threads.x * threads.y < (blocks.x + 1) * (blocks.y + 1) * threads.x * threads.y);
 
-    mmul_naive_kernel<T> << < blocks, threads, 0 >> > (left_mem.mem(), right_mem.mem(), out_mem.mem(), N);
+    size_t shared_mem_size = sizeof(T) * 2 * 8 * 8;
+    mmul_shared_kernel_NN<T> << < blocks, threads, shared_mem_size>> > (left_mem.mem(), right_mem.mem(), out_mem.mem(), N);
     //cudaDeviceSynchronize(); // todo needed?
     quitOnCudaError();
 
