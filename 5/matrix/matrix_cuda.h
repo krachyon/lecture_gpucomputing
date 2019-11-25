@@ -12,9 +12,9 @@
 //evil global variable hack for memory copy times
 std::chrono::nanoseconds lastMemoryOp(0);
 
-Matrix<float> mmul_cuda_naive(Matrix<float> const& left, Matrix<float> const& right, uint32_t n_threads);
-Matrix<double> mmul_cuda_naive (Matrix<double> const& left, Matrix<double> const& right, uint32_t n_threads);
-Matrix<int16_t> mmul_cuda_naive (Matrix<int16_t> const& left, Matrix<int16_t> const& right, uint32_t n_threads);
+Matrix<float> mmul_cuda_naive(Matrix<float> const& left, Matrix<float> const& right, uint32_t n_threads = 8);
+Matrix<double> mmul_cuda_naive (Matrix<double> const& left, Matrix<double> const& right, uint32_t n_threads=8);
+Matrix<int16_t> mmul_cuda_naive (Matrix<int16_t> const& left, Matrix<int16_t> const& right, uint32_t n_threads=8);
 
-Matrix<float> mmul_cuda_shared(Matrix<float> const& left, Matrix<float> const& right, uint32_t n_threads);
-Matrix<double> mmul_cuda_shared (Matrix<double> const& left, Matrix<double> const& right, uint32_t n_threads);
+Matrix<float> mmul_cuda_shared(Matrix<float> const& left, Matrix<float> const& right, uint32_t n_threads=8);
+Matrix<double> mmul_cuda_shared (Matrix<double> const& left, Matrix<double> const& right, uint32_t n_threads=8);

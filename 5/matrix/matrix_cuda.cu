@@ -75,7 +75,7 @@ Matrix<T> mmul_cuda_naive(Matrix<T> const& left, Matrix<T> const& right, uint32_
     assert(blocks.x * blocks.y * threads.x * threads.y < (blocks.x + 1) * (blocks.y + 1) * threads.x * threads.y);
 
     mmul_naive_kernel<T> << < blocks, threads, 0 >> > (left_mem.mem(), right_mem.mem(), out_mem.mem(), sizes);
-    //cudaDeviceSynchronize(); // todo needed?
+    cudaDeviceSynchronize(); // todo needed?
     quitOnCudaError();
 
     mem_start = std::chrono::high_resolution_clock::now();
@@ -276,7 +276,7 @@ Matrix<T> mmul_cuda_shared(Matrix<T> const& left, Matrix<T> const& right, uint32
 
     size_t shared_mem_size = sizeof(T) * 2 * 8 * 8;
     mmul_shared_kernel_NN<T> << < blocks, threads, shared_mem_size>> > (left_mem.mem(), right_mem.mem(), out_mem.mem(), N);
-    //cudaDeviceSynchronize(); // todo needed?
+    cudaDeviceSynchronize(); // todo needed?
     quitOnCudaError();
     mem_start = std::chrono::high_resolution_clock::now();
     cudaMemcpy(ret.data(), out_mem);
