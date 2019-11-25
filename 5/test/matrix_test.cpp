@@ -158,6 +158,27 @@ TEST(mmul_cuda, square_compare_with_Eigen)
 
 TEST(mmul_cuda, non_square)
 {
+    size_t m=20, n=40, o=30;
+    Eigen::MatrixXd mat_eigen_left = Eigen::MatrixXd::Random(m,n);
+    Eigen::MatrixXd mat_eigen_right = Eigen::MatrixXd::Random(n,o);
+
+    Matrix<double> mat_left(m,n);
+    Matrix<double> mat_right(n,o);
+
+    for (size_t i = 0; i!=m;++i)
+        for(size_t j = 0;j!= n;++j)
+            mat_left(i,j)=mat_eigen_left(i,j);
+    for (size_t i = 0; i!=n;++i)
+        for(size_t j = 0;j!= o;++j)
+            mat_right(i,j)=mat_eigen_right(i,j);
+
+    //multiply both and check if they're the same
+    auto m2 = mmul_cuda_naive(mat_left,mat_right);
+    auto m2_eigen = mat_eigen_left*mat_eigen_right;
+
+    for (size_t i = 0; i!= m2.M ;++i)
+        for(size_t j = 0; j!=m2.N; ++j)
+            EXPECT_FLOAT_EQ(m2(i,j), m2_eigen(i,j));
 }
 TEST(mmul_cuda, tiny)
 {
@@ -269,6 +290,13 @@ TEST(mmul_cuda, int16_t)
         EXPECT_EQ(0,*it);
     }
 }
+//
+//TEST(mmul_cuda_shared, smoke)
+//{
+//    Matrix<float> A(5,5);
+//    Matrix<float> B(5,5);
+//    mmul_cuda_shared(A,B);
+//}
 
 
 

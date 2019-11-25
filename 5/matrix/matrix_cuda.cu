@@ -22,12 +22,13 @@ __global__ void mmul_naive_kernel(T * mem_left, T * mem_right, T * mem_out, dim3
     uint32_t row = threadIdx.x + blockIdx.x * blockDim.x;
     uint32_t col = threadIdx.y + blockIdx.y * blockDim.y;
     //product_size is the size of the scalar product, the amount of columns in left and the amount of rows in right
-    uint32_t stride_left = sizes.x;
+    uint32_t stride_left = sizes.y;
     uint32_t product_size = sizes.y;
     uint32_t stride_right = sizes.z;
+    uint32_t stride_out = stride_right;
 
     //If the matrix size is not divisible, just ignore too large indices
-    if (row >= stride_left || col >= stride_right) {
+    if (row >= sizes.x || col >= sizes.z) {
         //printf("skipped %i %i\n", row,col);
         return;
     }
@@ -40,8 +41,8 @@ __global__ void mmul_naive_kernel(T * mem_left, T * mem_right, T * mem_out, dim3
         elem += mem_left[stride_left * row + i] * mem_right[stride_right * i + col];
     }
 
-    // result has the same amount of rows == stride as left and columns as right
-    mem_out[stride_left * row + col] = elem;
+    // result has the same amount of colunmns == stride as right
+    mem_out[stride_out * row + col] = elem;
 }
 
 // generic implementation
@@ -57,7 +58,7 @@ Matrix<T> mmul_cuda_naive(Matrix<T> const& left, Matrix<T> const& right) {
     //just initialize
     DeviceMemory<T> out_mem(ret.size());
 
-    dim3 sizes = {uint32_t(left.M), uint32_t(left.N), uint32_t(right.M)};
+    dim3 sizes = {uint32_t(left.M), uint32_t(left.N), uint32_t(right.N)};
 
     //TODO check heuristic for these
     //ATTENTION putting 0 in any dimension is invalid and does not signify "nonexistent"
@@ -84,9 +85,9 @@ Matrix<T> mmul_cuda_naive(Matrix<T> const& left, Matrix<T> const& right) {
 // Not sure how efficient all the index mess is, but this should be started with as many threads as possible so that
 // a block uses the maximum possible amount of shared memory as to make the copying worth it.
 template<typename T>
-__global__ void mmul_shared_kernel(T * mem_left, T * mem_right, T * mem_out, dim3 sizes) {
+__global__ void mmul_shared_kernel(T* mem_left, T* mem_right, T* mem_out, dim3 sizes) {
     //product_size is the size of the scalar product, the amount of columns in left and the amount of rows in right
-    uint32_t stride_left = sizes.x;
+    uint32_t stride_left = sizes.y;
     uint32_t product_size = sizes.y;
     uint32_t stride_right = sizes.z;
     uint32_t row = threadIdx.x + blockIdx.x * blockDim.x;
@@ -97,7 +98,7 @@ __global__ void mmul_shared_kernel(T * mem_left, T * mem_right, T * mem_out, dim
     uint32_t row_left_max  = blockDim.x + blockIdx.x * blockDim.x;
     uint32_t row_left_min  = 0          + blockIdx.x * blockDim.x;
     uint32_t col_right_max = blockDim.y + blockIdx.y * blockDim.y;
-    uint32_t col_right_min = 0 + blockIdx.y * blockDim.y;
+    uint32_t col_right_min = 0          + blockIdx.y * blockDim.y;
 
     // Row,Col coordinates to memory location
     auto left_idx = [=](size_t row, size_t col)
@@ -179,6 +180,97 @@ __global__ void mmul_shared_kernel(T * mem_left, T * mem_right, T * mem_out, dim
 }
 
 
+//easier version that only understands NxN matrices
+template<typename T>
+__global__ void mmul_shared_kernel_NN(T* mem_left, T* mem_right, T* mem_out, uint32_t N) {
+    uint32_t row = threadIdx.x + blockIdx.x * blockDim.x;
+    uint32_t col = threadIdx.y + blockIdx.y * blockDim.y;
+    //If the matrix size is not divisible, just ignore too large indices
+    if (row >= N || col >= N) {
+        //printf("skipped %i %i\n", row,col);
+        return;
+    }
+
+    uint32_t min_row = 0          + blockIdx.x * blockDim.x;
+    uint32_t max_row = blockDim.x + blockIdx.x * blockDim.x;
+    uint32_t min_col = 0          + blockIdx.y * blockDim.y;
+    uint32_t max_col = blockDim.x + blockIdx.x * blockDim.x;
+
+    uint32_t elements_in_block = blockDim.x * blockDim.y;
+
+    // works for both matrices, both are NxN and N=stride
+    auto matrix_idx = [=](uint32_t row, uint32_t col) -> uint32_t {
+        return N * row + col;
+    };
+    __shared__ extern float smem[];
+
+    //for a given iteration (each iteration moves the block window by one step) compute indices in original matrices
+    auto sliding_idx_left = [=](uint32_t i){
+        return matrix_idx(row, i*blockDim.y+threadIdx.y);
+    };
+
+    auto sliding_idx_right = [=](uint32_t i){
+        return matrix_idx(i*blockDim.x+threadIdx.x, col);
+    };
+
+    auto scalar_prod_index = [=](uint32_t j)
+    {
+        return threadIdx.x * blockDim.x + j;
+    };
+
+
+    //always write to these locations
+    uint32_t left_element = (row-min_row) * blockDim.y + (col-min_col);
+    uint32_t right_element = elements_in_block + left_element;
+
+    T output_elem = 0;
+
+    for(size_t i=0;i<ceildiv(N,blockDim.y);++i) {
+        __syncthreads();
+        smem[left_element] = mem_left[sliding_idx_left(i)];
+        smem[right_element] = mem_right[sliding_idx_right(i)];
+        __syncthreads();
+        for(size_t j=0;j!=blockDim.y;++j) {
+            output_elem += smem[scalar_prod_index(j)];
+                         * smem[scalar_prod_index(j)+elements_in_block];
+        }
+    }
+
+    mem_out[matrix_idx(row,col)] = output_elem;
+}
+
+
+template<typename T>
+Matrix<T> mmul_cuda_shared(Matrix<T> const& left, Matrix<T> const& right){
+    assert(left.M == right.M && left.N == right.N);
+
+    uint32_t N = left.M;
+
+    Matrix<T> ret(N, N);
+
+    //initialize and copy
+    DeviceMemory<T> left_mem(left.data(), left.size());
+    DeviceMemory<T> right_mem(right.data(), right.size());
+    //just initialize
+    DeviceMemory<T> out_mem(ret.size());
+
+    dim3 blocks{ceildiv(N, 8), ceildiv(N, 8), 1};
+    dim3 threads{8, 8, 1};
+
+    assert(blocks.x * blocks.y * threads.x * threads.y >= ret.size());
+    // there should be at most one nearly empty set of blocks
+    assert(blocks.x * blocks.y * threads.x * threads.y < (blocks.x + 1) * (blocks.y + 1) * threads.x * threads.y);
+
+    mmul_naive_kernel<T> << < blocks, threads, 0 >> > (left_mem.mem(), right_mem.mem(), out_mem.mem(), N);
+    //cudaDeviceSynchronize(); // todo needed?
+    quitOnCudaError();
+
+    cudaMemcpy(ret.data(), out_mem);
+    return ret;
+
+}
+
+
 // fill out overloads
 Matrix<float> mmul_cuda_naive(Matrix<float> const& left, Matrix<float> const& right) {
     return mmul_cuda_naive<float>(left, right);
@@ -192,6 +284,14 @@ Matrix<int16_t> mmul_cuda_naive(Matrix<int16_t> const& left, Matrix<int16_t> con
     return mmul_cuda_naive<int16_t>(left, right);
 }
 
+
+Matrix<float> mmul_cuda_shared(Matrix<float> const& left, Matrix<float> const& right) {
+    return mmul_cuda_shared<float>(left, right);
+}
+
+Matrix<double> mmul_cuda_shared(Matrix<double> const& left, Matrix<double> const& right) {
+    return mmul_cuda_shared<double>(left, right);
+}
 
 
 //// or hand instantiate templates
