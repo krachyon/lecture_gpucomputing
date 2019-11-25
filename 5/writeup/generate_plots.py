@@ -11,13 +11,13 @@ plt.ioff()
 def plot_matrix(dataname):    
     caches = [np.sqrt(32*1024/4), np.sqrt(256 * 1024/4), np.sqrt(5*1024*1024/4)]
 
-    dat = pd.read_csv(dataname, comment='#', header=None)
-    dat.columns = ['method','iters', 'N', 'time']
+    dat_cpu = pd.read_csv(dataname, comment='#', header=None)
+    dat_cpu.columns = ['method','iters', 'N', 'time']
 
     fig = plt.figure(figsize=(11, 8))
 
-    for method in ['cpu', 'eigen', 'cuda']:
-        df = dat[dat.method == method]
+    for method in ['cpu', 'eigen']:
+        df = dat_cpu[dat_cpu.method == method]
 
         plt.plot(df.N, 2*df.N**3/(df.time/1e9), 'x', ms=6, alpha=0.6,
                 label=method)
