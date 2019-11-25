@@ -195,7 +195,7 @@ __global__ void mmul_shared_kernel_NN(T* mem_left, T* mem_right, T* mem_out, uin
     uint32_t const shared_row = threadIdx.x;
     uint32_t const shared_col = threadIdx.y;
     //size of the window where we copy/multiply
-    size_t const window_size = blockDim.x; //needs to be ==blockDim.y
+    uint32_t const window_size = blockDim.x; //needs to be ==blockDim.y
 
     //If the matrix size is not divisible, just ignore too large indices
     if (row >= N || col >= N) {
@@ -208,31 +208,44 @@ __global__ void mmul_shared_kernel_NN(T* mem_left, T* mem_right, T* mem_out, uin
         return N * row + col;
     };
 
-    auto shared_idx_left = [=](uint32_t row, uint32_t col) -> uint32_t {
-        return window_size * row + col;
+    auto shared_idx_left = [=](uint32_t _row, uint32_t _col) -> uint32_t {
+        assert(_row <= window_size);
+        assert(_col <= window_size);
+        return window_size * _row + _col;
     };
-    auto shared_idx_right = [=](uint32_t row, uint32_t col) -> uint32_t {
-        return shared_idx_left(row,col) + elements_in_block;
+    auto shared_idx_right = [=](uint32_t _row, uint32_t _col) -> uint32_t {
+        assert(_row <= window_size);
+        assert(_col <= window_size);
+        return shared_idx_left(_row,_col) + elements_in_block;
     };
 
     T output_elem = 0;
 
     for(size_t window=0;window<N;window+=window_size) {
         __syncthreads();
-        if(threadIdx.x == 0 && threadIdx.y == 0)
-            printf("leftidx %i,%i rightidx %i,%i\n", threadIdx.x, window + threadIdx.y,window + threadIdx.x, threadIdx.y);
+
         // row in left matrix is always same. window slides over columns
-        smem[left_element_to_write] = mem_left[matrix_idx(row, window + threadIdx.y)];
-        smem[right_element_to_write] = mem_right[matrix_idx(window + threadIdx.x, col)];
+        if (window+threadIdx.y < N) {
+            smem[left_element_to_write] = mem_left[matrix_idx(row, window + threadIdx.y)];
+//            if(smem[left_element_to_write]!=1.f)
+//                printf("arg!\n");
+        }
+        if (window+threadIdx.x < N){
+            smem[right_element_to_write] = mem_right[matrix_idx(window + threadIdx.x, col)];
+//            if(smem[left_element_to_write]!=1.f)
+//                printf("arg!\n");
+        }
+
         __syncthreads();
-        //perform all operations available in window. TODO: stop when window goes outside of matrix dims
-        for(size_t i=0;i!=window_size;++i) {
+
+        //perform all operations available in window.
+        for(size_t i=0; (i<window_size) && (i+window < N);++i) {
             output_elem += smem[shared_idx_left(shared_row,i)] * smem[shared_idx_right(i,shared_col)];
         }
+
     }
 
     mem_out[matrix_idx(row,col)] = output_elem;
-    //mem_out[matrix_idx(row,col)] = threadIdx.x*threadIdx.y;
 }
 
 

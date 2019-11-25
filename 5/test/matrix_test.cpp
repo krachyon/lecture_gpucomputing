@@ -327,6 +327,19 @@ TEST(mmul_cuda_shared, generator_multi_tile)
         EXPECT_FLOAT_EQ(*it,*rit);
     }
 }
+TEST(mmul_cuda_shared, generator_multi_tile_large)
+{
+    auto A = make_ij_sum(64);
+    auto B = make_ij_product(64);
+
+    auto C = mmul_cuda_shared(A,B);
+    auto C_ref = mmul(A,B);
+
+    for(auto it = C.begin(), rit = C_ref.begin(); it != C.end(); ++it,++rit)
+    {
+        EXPECT_FLOAT_EQ(*it,*rit);
+    }
+}
 
 TEST(mmul_cuda_shared, generator_smaller_than_tile)
 {
@@ -354,6 +367,38 @@ TEST(mmul_cuda_shared, generator_crooked_tiling)
     {
         EXPECT_FLOAT_EQ(*it,*rit);
     }
+}
+
+TEST(mmul_cuda_shared, generator_crooked_tiling_larger)
+{
+auto A = make_ij_sum(16+1);
+auto B = make_ij_product(16+1);
+
+auto C = mmul_cuda_shared(A,B);
+auto C_ref = mmul(A,B);
+
+for(auto it = C.begin(), rit = C_ref.begin(); it != C.end(); ++it,++rit)
+{
+EXPECT_FLOAT_EQ(*it,*rit);
+}
+}
+
+TEST(mmul_cuda_shared, ones_crooked)
+{
+auto A = Matrix<float>(12, 12);
+auto B = Matrix<float>(12, 12);
+for(auto it = A.begin();it!=A.end();++it)
+    *it = 1;
+for(auto it = B.begin();it!=B.end();++it)
+    *it = 1;
+
+auto C = mmul_cuda_shared(A,B);
+auto C_ref = mmul(A,B);
+
+for(auto it = C.begin(), rit = C_ref.begin(); it != C.end(); ++it,++rit)
+{
+//EXPECT_FLOAT_EQ(*it,*rit);
+}
 std::cout << C << std::endl;
 std::cout << C_ref <<std::endl;
 }
