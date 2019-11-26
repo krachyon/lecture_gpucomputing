@@ -83,6 +83,25 @@ def plot_matrix():
     plt.tight_layout()
     plt.savefig(f'naive_sizes.svg')
 
+    fig = plt.figure(figsize=(11, 8))
+    threadsize,method = 8,'cuda_shared'
+    df = dat_gpu[(dat_gpu.method == method) & (dat_gpu.threadsize==threadsize)]
+    df=df[(df.N > 2)]
+    df.dropna()
+
+    if len(df) > 0:
+        plt.plot(df.N,(df.memtime/df.time), 'x', ms=6, alpha=0.6,
+            label=f'memtime {method} threads ${threadsize}^2$')
+        plt.plot(df.N, ((df.time-df.memtime)/df.time), 'x', ms=6, alpha=0.6,
+            label=f'comptime {method} threads ${threadsize}^2$')
+    plt.xlabel('Matrix<float> size NxN')
+    plt.ylabel('fraction of the runtime')
+    plt.legend()
+    plt.xlim(0, 2500)
+    plt.yscale("log")
+    plt.tight_layout()
+    plt.savefig(f'mem_comp_splitting.svg')
+
 
 def clean_header(df):
     df.columns = [i.replace('#', '').strip() for i in df.columns]
