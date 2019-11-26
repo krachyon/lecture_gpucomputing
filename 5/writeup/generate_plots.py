@@ -100,7 +100,7 @@ def plot_matrix():
     plt.xlim(0, 2500)
     plt.yscale("log")
     plt.tight_layout()
-    plt.savefig(f'mem_comp_splitting.svg')
+    plt.savefig(f'mem_comp_splitting.pdf')
 
 
 def clean_header(df):
