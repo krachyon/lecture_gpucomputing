@@ -8,11 +8,16 @@ import numpy as np
 plt.ioff()
 
 
-def plot_matrix(dataname):    
+def plot_matrix():    
     caches = [np.sqrt(32*1024/4), np.sqrt(256 * 1024/4), np.sqrt(5*1024*1024/4)]
 
-    dat_cpu = pd.read_csv(dataname, comment='#', header=None)
+    dat_cpu = pd.read_csv('../results/mmul_cpu.csv', comment='#', header=None)
     dat_cpu.columns = ['method','iters', 'N', 'time']
+
+    dat_gpu = pd.read_csv('../results/mmul_cuda.csv', comment='#', header=None)
+    dat_gpu.columns = ['method', 'iters', 'N', 'threadsize', 'memtime', 'time']
+
+    
 
     fig = plt.figure(figsize=(11, 8))
 
@@ -21,6 +26,14 @@ def plot_matrix(dataname):
 
         plt.plot(df.N, 2*df.N**3/(df.time/1e9), 'x', ms=6, alpha=0.6,
                 label=method)
+    
+    for method in ['cuda_shared', 'cuda_naive']:
+    
+        df = dat_gpu[(dat_gpu.method == method) & (dat_gpu.threadsize==8)]
+
+        plt.plot(df.N, 2*df.N**3/(df.time/1e9), 'x', ms=6, alpha=0.6,
+                label=method)
+    
 
     plt.xlabel('Matrix<float> size NxN')
     plt.ylabel('Flops/s')
@@ -32,6 +45,44 @@ def plot_matrix(dataname):
     plt.tight_layout()
     plt.savefig(f'cudavcpu_matrix_flops.svg')
 
+    fig = plt.figure(figsize=(11, 8))
+
+
+    for threadsize in dat_gpu.threadsize.unique():
+        cindex = threadsize/40
+
+        method,color = 'cuda_shared', cm.hot(cindex)
+        df = dat_gpu[(dat_gpu.method == method) & (dat_gpu.threadsize==threadsize)]
+        df.dropna()
+
+        if len(df) > 0:
+            plt.plot(df.N, 2*df.N**3/(df.time/1e9), 'x', ms=6, alpha=0.6,
+                label=f'{method} threads ${threadsize}^2$', color=color)
+    plt.xlabel('Matrix<float> size NxN')
+    plt.ylabel('Flops/s')
+    plt.legend()
+    plt.xlim(0, 2500)
+    plt.tight_layout()
+    plt.savefig(f'shared_sizes.svg')
+    
+    fig = plt.figure(figsize=(11, 8))
+    for threadsize in dat_gpu.threadsize.unique():
+        cindex = threadsize/40
+        method,color = 'cuda_naive', cm.cool(cindex)
+        df = dat_gpu[(dat_gpu.method == method) & (dat_gpu.threadsize==threadsize)]
+        df.dropna()
+
+        if len(df) > 0:
+            plt.plot(df.N, 2*df.N**3/(df.time/1e9), 'x', ms=6, alpha=0.6,
+                label=f'{method} threads ${threadsize}^2$', color=color)
+    
+    plt.xlabel('Matrix<float> size NxN')
+    plt.ylabel('Flops/s')
+    plt.legend()
+    plt.xlim(0, 2500)
+    plt.tight_layout()
+    plt.savefig(f'naive_sizes.svg')
+
 
 def clean_header(df):
     df.columns = [i.replace('#', '').strip() for i in df.columns]
@@ -39,5 +90,5 @@ def clean_header(df):
 
 
 if __name__ == '__main__':
-    plot_matrix('../results/mmul.csv')
+    plot_matrix()
     plt.show()

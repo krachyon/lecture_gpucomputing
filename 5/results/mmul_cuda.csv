@@ -1905,7 +1905,6 @@ cuda_naive, 1, 1902, 1, 17163712, 16797312131
 cuda_naive, 1, 1903, 1, 17452225, 17109956390
 cuda_naive, 1, 1904, 1, 17413125, 16900938797
 cuda_naive, 1, 1905, 1, 17745569, 17089439930
-slurmstepd: error: *** JOB 45616 ON creek01 CANCELLED AT 2019-11-26T01:20:08 DUE TO TIME LIMIT ***
 #method, iters, size, thread_size, memtime(ns), time(ns)
 #Threads for eigen: 8
 cuda_naive, 1, 1, 1, 493865730, 494106825
@@ -3813,7 +3812,6 @@ cuda_naive, 1, 1902, 1, 17395822, 16800736834
 cuda_naive, 1, 1903, 1, 17469157, 17111373562
 cuda_naive, 1, 1904, 1, 17579443, 16908536933
 cuda_naive, 1, 1905, 1, 17495569, 17089834348
-slurmstepd: error: *** JOB 45602 ON creek02 CANCELLED AT 2019-11-26T01:19:17 DUE TO TIME LIMIT ***
 #method, iters, size, thread_size, memtime(ns), time(ns)
 #Threads for eigen: 8
 cuda_naive, 1, 1, 2, 480378824, 480586253
@@ -6264,7 +6262,6 @@ cuda_naive, 1, 2445, 2, 27559580, 12088735377
 cuda_naive, 1, 2446, 2, 26865078, 12070412934
 cuda_naive, 1, 2447, 2, 26545345, 12115420614
 cuda_naive, 1, 2448, 2, 26928703, 12123734101
-slurmstepd: error: *** JOB 45617 ON creek04 CANCELLED AT 2019-11-26T01:18:05 DUE TO TIME LIMIT ***
 #method, iters, size, thread_size, memtime(ns), time(ns)
 #Threads for eigen: 8
 cuda_naive, 1, 1, 2, 483489577, 483721103
@@ -8715,7 +8712,6 @@ cuda_naive, 1, 2445, 2, 26786541, 12099674878
 cuda_naive, 1, 2446, 2, 26934177, 12079602724
 cuda_naive, 1, 2447, 2, 26681585, 12122285631
 cuda_naive, 1, 2448, 2, 26696751, 12128448382
-slurmstepd: error: *** JOB 45603 ON creek05 CANCELLED AT 2019-11-26T01:19:17 DUE TO TIME LIMIT ***
 #method, iters, size, thread_size, memtime(ns), time(ns)
 #Threads for eigen: 8
 cuda_naive, 1, 1, 4, 472018490, 472223551
@@ -24400,7 +24396,6 @@ cuda_naive, 1, 667, 32, 2292610, 36519379
 cuda_naive, 1, 668, 32, 2380611, 41502974
 cuda_naive, 1, 669, 32, 2377956, 43418510
 cuda_naive, 1, 670, 32, 2345970, 47835482
-slurmstepd: error: *** JOB 45623 ON creek04 CANCELLED AT 2019-11-26T03:18:35 DUE TO TIME LIMIT ***
 #method, iters, size, thread_size, memtime(ns), time(ns)
 #Threads for eigen: 8
 cuda_naive, 1, 1, 32, 496347348, 496574963
@@ -26905,10 +26900,8 @@ cuda_naive, 1, 2499, 32, 28116470, 1940641405
 cuda_naive, 1, 2500, 32, 28303848, 2053409171
 #method, iters, size, thread_size, memtime(ns), time(ns)
 #Threads for eigen: 8
-CUDA Runtime Error: invalid configuration argument
 #method, iters, size, thread_size, memtime(ns), time(ns)
 #Threads for eigen: 8
-CUDA Runtime Error: invalid configuration argument
 #method, iters, size, thread_size, memtime(ns), time(ns)
 #Threads for eigen: 8
 cuda_shared, 1, 1, 1, 473781544, 474019917
@@ -28450,7 +28443,6 @@ cuda_shared, 1, 1536, 1, 12677640, 18559426251
 cuda_shared, 1, 1537, 1, 12809638, 18525001006
 cuda_shared, 1, 1538, 1, 12654929, 18581012887
 cuda_shared, 1, 1539, 1, 12649411, 18621572244
-slurmstepd: error: *** JOB 45625 ON creek02 CANCELLED AT 2019-11-26T03:19:47 DUE TO TIME LIMIT ***
 #method, iters, size, thread_size, memtime(ns), time(ns)
 #Threads for eigen: 8
 cuda_shared, 1, 1, 1, 491115840, 491364689
@@ -29992,7 +29984,6 @@ cuda_shared, 1, 1536, 1, 11951435, 18570602013
 cuda_shared, 1, 1537, 1, 11984341, 18534662587
 cuda_shared, 1, 1538, 1, 12011089, 18583885025
 cuda_shared, 1, 1539, 1, 12026940, 18610239121
-slurmstepd: error: *** JOB 45609 ON creek01 CANCELLED AT 2019-11-26T03:20:38 DUE TO TIME LIMIT ***
 #method, iters, size, thread_size, memtime(ns), time(ns)
 #Threads for eigen: 8
 cuda_shared, 1, 1, 2, 481215775, 481394155
@@ -32371,7 +32362,6 @@ cuda_shared, 1, 2373, 2, 25764521, 12212045207
 cuda_shared, 1, 2374, 2, 25774788, 12191831084
 cuda_shared, 1, 2375, 2, 25451761, 12242356963
 cuda_shared, 1, 2376, 2, 25482075, 12242519979
-slurmstepd: error: *** JOB 45626 ON creek06 CANCELLED AT 2019-11-26T03:38:47 DUE TO TIME LIMIT ***
 #method, iters, size, thread_size, memtime(ns), time(ns)
 #Threads for eigen: 8
 cuda_shared, 1, 1, 2, 506901216, 507134279
@@ -34749,7 +34739,6 @@ cuda_shared, 1, 2372, 2, 25869592, 12181751169
 cuda_shared, 1, 2373, 2, 25354297, 12218914791
 cuda_shared, 1, 2374, 2, 25403676, 12194541288
 cuda_shared, 1, 2375, 2, 25923649, 12248055298
-slurmstepd: error: *** JOB 45610 ON creek05 CANCELLED AT 2019-11-26T03:39:47 DUE TO TIME LIMIT ***
 #method, iters, size, thread_size, memtime(ns), time(ns)
 #Threads for eigen: 8
 cuda_shared, 1, 1, 4, 553399906, 553649033
@@ -44758,21 +44747,3 @@ cuda_shared, 1, 2497, 8, 28091072, 545686641
 cuda_shared, 1, 2498, 8, 28121524, 543853237
 cuda_shared, 1, 2499, 8, 28128436, 548866095
 cuda_shared, 1, 2500, 8, 28156164, 539223319
-#method, iters, size, thread_size, memtime(ns), time(ns)
-#Threads for eigen: 8
-CUDA Runtime Error: an illegal memory access was encountered
-#method, iters, size, thread_size, memtime(ns), time(ns)
-#Threads for eigen: 8
-CUDA Runtime Error: an illegal memory access was encountered
-#method, iters, size, thread_size, memtime(ns), time(ns)
-#Threads for eigen: 8
-CUDA Runtime Error: an illegal memory access was encountered
-#method, iters, size, thread_size, memtime(ns), time(ns)
-#Threads for eigen: 8
-CUDA Runtime Error: an illegal memory access was encountered
-#method, iters, size, thread_size, memtime(ns), time(ns)
-#Threads for eigen: 8
-CUDA Runtime Error: invalid configuration argument
-#method, iters, size, thread_size, memtime(ns), time(ns)
-#Threads for eigen: 8
-CUDA Runtime Error: invalid configuration argument
