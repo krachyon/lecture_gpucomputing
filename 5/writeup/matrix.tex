@@ -1,0 +1,15 @@
+\section{Matrix multiplication, shared and naive}
+One observes a steep rise of the achived flops which hits a plateu at about 30 Gflops/s, presumably when the copy time is no longer relevant compared to the execution time of the kernel.
+
+The dips are partially due to warmup effects due to sweeping the x-axis in multiple runs (sharp dips around 2000) but some of them seem to be genuine effects where the problem size causes dips (and around 1000 gains) in performance.
+
+The forumla $flops/s = 2*N^3$ was used to estimate throughput.
+
+Curiously the implementation provided by the Eigen3 library, run with 8 threads, again dominates the naive cuda version after about N=1000. 
+
+The naive single threaded CPU version is only considerable in the regime $N<100$
+
+\begin{figure}
+\includegraphics{generate_plots.py}
+\label{block size of 8x8}
+\end{figure}
