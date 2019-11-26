@@ -60,6 +60,10 @@ add_executable(matrix_benchmark
         runner/benchmark.cpp)
 target_link_libraries(matrix_benchmark PUBLIC matrix matrix_cuda OpenMP::OpenMP_CXX)
 
+add_executable(matrix_double
+        runner/benchmark_double.cpp)
+target_link_libraries(matrix_double PUBLIC matrix matrix_cuda OpenMP::OpenMP_CXX)
+
 
 # todo adapt this for every machine if it needs to be specified by hand
 target_include_directories(matrix PUBLIC inc /opt/cuda/include)
