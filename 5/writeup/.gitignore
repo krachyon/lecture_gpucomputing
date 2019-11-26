@@ -1,1 +1,8 @@
 *.svg
+*.pdf
+*.gz
+*.log
+*.gz
+*.aux
+*.fls
+*.fdb*

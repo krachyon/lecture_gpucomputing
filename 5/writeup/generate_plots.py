@@ -43,15 +43,15 @@ def plot_matrix():
     plt.legend()
     plt.xlim(0, 2500)
     plt.tight_layout()
-    plt.savefig(f'cudavcpu_matrix_flops.svg')
+    plt.savefig(f'cudavcpu_matrix_flops.pdf')
 
     fig = plt.figure(figsize=(11, 8))
 
 
     for threadsize in dat_gpu.threadsize.unique():
-        cindex = threadsize/40
+        cindex = np.log2(threadsize)/np.log2(32)
 
-        method,color = 'cuda_shared', cm.hot(cindex)
+        method,color = 'cuda_shared', cm.rainbow(cindex)
         df = dat_gpu[(dat_gpu.method == method) & (dat_gpu.threadsize==threadsize)]
         df.dropna()
 
@@ -63,12 +63,12 @@ def plot_matrix():
     plt.legend()
     plt.xlim(0, 2500)
     plt.tight_layout()
-    plt.savefig(f'shared_sizes.svg')
+    plt.savefig(f'shared_sizes.pdf')
     
     fig = plt.figure(figsize=(11, 8))
     for threadsize in dat_gpu.threadsize.unique():
-        cindex = threadsize/40
-        method,color = 'cuda_naive', cm.cool(cindex)
+        cindex = np.log2(threadsize)/np.log2(32)
+        method,color = 'cuda_naive', cm.rainbow(cindex)
         df = dat_gpu[(dat_gpu.method == method) & (dat_gpu.threadsize==threadsize)]
         df.dropna()
 
@@ -81,7 +81,7 @@ def plot_matrix():
     plt.legend()
     plt.xlim(0, 2500)
     plt.tight_layout()
-    plt.savefig(f'naive_sizes.svg')
+    plt.savefig(f'naive_sizes.pdf')
 
 
 def clean_header(df):

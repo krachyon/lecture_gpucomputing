@@ -1,15 +1,34 @@
 \section{Matrix multiplication, shared and naive}
-One observes a steep rise of the achived flops which hits a plateu at about 30 Gflops/s, presumably when the copy time is no longer relevant compared to the execution time of the kernel.
+\subsection{optimal block size}
+The block size was varried between $N=o2$ and $N=64^2$ in powers of 2 to ensure square blocks. For both versions of the algorithm a block size of $8^2=64$ turns out to be optimal. At this size exactly two warps fit into the thread block.
+The shared memory version does not work with larger blocks due to constraints in how the fetch-multiply cycle was implemented. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{naive_sizes.pdf}
+    \caption{varried block size for naive algorithm}
+    \end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{shared_sizes.pdf}
+    \caption{varried block size for shared mem algorithm}
+    \end{figure}
+
+The formula $flops/s = 2*N^3$ was used to estimate throughput. It should be noted that our version of the shared algorithm still contains a bug where sizes where the "window" that each thread block uses for the fetch-multiply cycle does not fit the matrix cleanly there are errors in the elements computed by the partially overlapping window. We assume this is a problem with index calculation and will not have a significant effect on runtimes.
+
+One observes a steep rise of the achieved flops on the GPU which hits a plateau at about 30 Gflops/s and 55 Gflops/s respectively, presumably when the copy time is no longer relevant compared to the execution time of the kernel.
+
+Our implementation lags behind the theoretical maximum of $~1300\mathrm{Gflops/s}$ for a GTX 480 by about two orders of magnitudes, but as memory copy times and index calculations are included in the runtime and index calculations make up the bulk of code in the kernel this is not completely unexpected.
 
 The dips are partially due to warmup effects due to sweeping the x-axis in multiple runs (sharp dips around 2000) but some of them seem to be genuine effects where the problem size causes dips (and around 1000 gains) in performance.
 
-The forumla $flops/s = 2*N^3$ was used to estimate throughput.
+The implementation provided by the Eigen3 library, run with 8 threads, again dominates the naive cuda version after about N=1000. The broad spread in the run times can be attributed to the allocation scheme 
 
-Curiously the implementation provided by the Eigen3 library, run with 8 threads, again dominates the naive cuda version after about N=1000. 
+The naive single threaded CPU version is only considerable in the regime $N<100$. 
+Overall, the speedup over the single threaded version is more than 10x, but a more realistic comparison to the multi-threaded cpu code only shows a difference of $~30-50 Gflops$ and a speedup of about $1.5$.
 
-The naive single threaded CPU version is only considerable in the regime $N<100$
-
-\begin{figure}
-\includegraphics{generate_plots.py}
-\label{block size of 8x8}
+\begin{figure}[h!]
+\includegraphics[width=\textwidth]{cudavcpu_matrix_flops.pdf}
+\caption{block size of 8x8}
 \end{figure}
