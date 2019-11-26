@@ -3,6 +3,7 @@
 The block size was varried between $N=1^2$ and $N=64^2$ in powers of 2 to ensure square blocks. For both versions of the algorithm a block size of $8^2=64$ turns out to be optimal. At this size exactly two warps fit into the thread block.
 The shared memory version does not work with larger blocks due to constraints in how the fetch-multiply cycle was implemented. 
 
+\subsection{performance comparison}
 \begin{figure}[h!]
     \centering
     \includegraphics[width=\textwidth]{naive_sizes.pdf}
@@ -33,7 +34,8 @@ Overall, the speedup over the single threaded version is more than 10x, but a mo
 \caption{block size of 8x8}
 \end{figure}
 
-We can see that the time taken to copy data to and from the GPU is negligible for large sizes, but still a factor of about $10\%$ for sizes about $N=1000$. 
+\subsection{influence of data movements}
+We can see that the time taken to copy data to and from the GPU is negligible for very large sizes, but still a factor of about $10\%$ for sizes about $N=1000$. 
 
 \begin{figure}[h!]
     \includegraphics[width=\textwidth]{mem_comp_splitting.pdf}
