@@ -3,7 +3,7 @@
 
 
 void cudaMemcpy(Memory const& dest, Memory const& src) {
-    assert(dest.size >= src.size);
+    assert(dest.bytes >= src.bytes);
 
     cudaMemcpyKind kind = cudaMemcpyDefault;
 
@@ -22,6 +22,6 @@ void cudaMemcpy(Memory const& dest, Memory const& src) {
         else
             throw (std::logic_error{"unknown memory type encountered"});
     }
-    checkCuda(cudaMemcpy(dest._mem, src._mem, dest.size, kind));
+    checkCuda(cudaMemcpy(dest._mem, src._mem, dest.bytes, kind));
 }
 

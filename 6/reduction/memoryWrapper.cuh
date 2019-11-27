@@ -6,6 +6,7 @@
 #include <cstring>
 #include <cmath>
 #include "errorHandling.cuh"
+#include <vector>
 
 enum class memKind {
     device,
@@ -26,7 +27,7 @@ void cudaMemcpy(Memory const& dest, Memory const& src);
 //TODO could be also for all kinds of memory...
 template<typename T>
 void cudaMemcpy(T * dest, DeviceMemory<T> const& src) {
-    checkCuda(cudaMemcpy(dest, src._mem, src.size, cudaMemcpyDeviceToHost));
+    checkCuda(cudaMemcpy(dest, src._mem, src.bytes, cudaMemcpyDeviceToHost));
 }
 
 // Quick and dirty RAII wrappers to avoid memleaks and boilerplate
@@ -43,8 +44,9 @@ struct Memory {
 
     virtual ~Memory() {};
 
-    void * _mem;
-    size_t size;
+    void* _mem;
+    size_t bytes;
+    size_t n;
     memKind kind;
 };
 
@@ -52,22 +54,30 @@ template<typename T>
 struct DeviceMemory : public Memory {
     DeviceMemory(size_t count) {
         kind = memKind::device;
-        size = count * sizeof(T);
-        checkCuda(cudaMalloc(&_mem, size));
+        n = count;
+        bytes = count * sizeof(T);
+        checkCuda(cudaMalloc(&_mem, bytes));
         // TODO in cuda-gdb memset does not do anything...
-        // memset wants size in bytes. Set memory to some recognizable pattern for debugging help
-        checkCuda(cudaMemset(_mem, 0x0f, size / 8));
+        // memset wants bytes in bytes. Set memory to some recognizable pattern for debugging help
+        checkCuda(cudaMemset(_mem, 0x0f, bytes / 8));
     }
 
     DeviceMemory(T const * data, size_t elem_count) {
         kind = memKind::device;
-        size = elem_count * sizeof(T);
-        checkCuda(cudaMalloc(&_mem, size));
-        checkCuda(cudaMemcpy(_mem, const_cast<T *>(data), size, cudaMemcpyHostToDevice));
+        bytes = elem_count * sizeof(T);
+        checkCuda(cudaMalloc(&_mem, bytes));
+        checkCuda(cudaMemcpy(_mem, const_cast<T *>(data), bytes, cudaMemcpyHostToDevice));
     }
 
     T * mem() {
         return static_cast<T *>(_mem);
+    }
+
+    std::vector<T> to_vector()
+    {
+        std::vector<T> ret(n);
+        cudaMemcpy(ret.data(),*this);
+        return ret;
     }
 
     virtual ~DeviceMemory() { cudaFree(_mem); }
@@ -77,8 +87,9 @@ template<typename T>
 struct HostMemory : public Memory {
     HostMemory(size_t count) {
         kind = memKind::host;
-        size = count * sizeof(T);
-        _mem = malloc(size);
+        n = count;
+        bytes = count * sizeof(T);
+        _mem = malloc(bytes);
         memset(_mem, 0, count);
     }
 
@@ -89,8 +100,9 @@ template<typename T>
 struct PinnedMemory : public Memory {
     PinnedMemory(size_t count) {
         kind = memKind::pinned;
-        size = count * sizeof(T);
-        checkCuda(cudaMallocHost(&_mem, size));
+        n = count;
+        bytes = count * sizeof(T);
+        checkCuda(cudaMallocHost(&_mem, bytes));
         checkCuda(cudaMemset(_mem, 0, count));
     }
 
