@@ -66,6 +66,7 @@ add_library(reduction_cuda SHARED
         reduction/memoryWrapper.cuh
         reduction/memoryWrapper.cu
         reduction/reduction_naive.cu
+        reduction/reduction_shared.cu
         reduction/reduction.cuh
         )
 target_include_directories(reduction_cuda PUBLIC reduction/include)

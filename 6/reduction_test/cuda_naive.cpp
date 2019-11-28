@@ -109,3 +109,10 @@ TYPED_TEST(Cuda_Naive_Integral, ones)
             EXPECT_EQ(s, reduce_cuda_naive(in, bs)) << "size: " << s << " block size: " << bs;;
         }
 }
+
+TEST(thrust,simple)
+{
+    std::vector<float> in(1024);
+    std::iota(in.begin(),in.end(),0.f);
+    EXPECT_EQ(thrust_reduce(in),std::accumulate(in.begin(),in.end(), 0.f));
+}

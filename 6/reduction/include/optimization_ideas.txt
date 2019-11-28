@@ -1,0 +1,8 @@
+- Let a thread handle multiple additions, e.g. aggregate 10 elements or something
+    * imagine data as n-dimensional array, collapse one dimension each step; optimize for array dimensions depending on problem size
+    * could be done with a bunch of meta-programming
+    * Basically this would be choosing the arity of the tree in every step towards the root
+-  #pragma unroll (https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#pragma-unroll)
+
+- Existing cuda libs (cublas)
+    * thrust::reduce lol...

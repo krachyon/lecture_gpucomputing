@@ -7,13 +7,6 @@
 
 #include "tracing.h"
 
-//TODO maybe replace log2/ceil with integer math
-
-template<typename T>
-__device__ __host__ bool is_power_of_2(T in)
-{
-    return log2((double)in) == floor(log2((double)in));
-};
 
 template<typename T>
 __global__ void reduce_kernel_naive(T* __restrict volatile in, T* __restrict out)
@@ -53,8 +46,8 @@ T reduce_cuda_naive(std::vector<T>& in, uint32_t const n_blocks)
         uint32_t new_size = pow(2,next_power);
         in.resize(new_size, 0);
     }
-    uint32_t threads_total = in.size()/2;
-    uint32_t threads_per_block = threads_total / n_blocks;
+    uint32_t const threads_total = in.size()/2;
+    uint32_t const threads_per_block = threads_total / n_blocks;
 
     assert(threads_per_block <= 1024);
     assert(is_power_of_2(threads_per_block));
