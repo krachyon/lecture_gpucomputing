@@ -45,11 +45,18 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 ### Targets and how they link
 
 # pure c++
+add_library(tracing STATIC
+        reduction/tracing.cpp
+        reduction/tracing.h
+        )
+
 add_library(reduction STATIC
             reduction/include/reduction.h
             reduction/reduction.cpp
-            reduction/reduction_cpp.h)
+            reduction/reduction_cpp.h )
 target_include_directories(reduction PUBLIC reduction/include)
+target_link_libraries(reduction PUBLIC tracing)
+
 
 
 # cuda contaminated part
@@ -58,12 +65,13 @@ add_library(reduction_cuda SHARED
         reduction/errorHandling.cuh
         reduction/memoryWrapper.cuh
         reduction/memoryWrapper.cu
-        reduction/reduction.cu
+        reduction/reduction_naive.cu
         reduction/reduction.cuh
         )
 target_include_directories(reduction_cuda PUBLIC reduction/include)
 target_include_directories(reduction_cuda PUBLIC include /opt/cuda/include)
 target_link_directories(reduction_cuda PUBLIC /opt/cuda/lib64)
+target_link_libraries(reduction_cuda PUBLIC tracing)
 
 
 add_executable(reduction_test

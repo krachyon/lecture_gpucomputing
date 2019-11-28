@@ -4,6 +4,8 @@
 #include <numeric>
 
 
+
+
 template <typename T>
 class Cuda_Naive : public testing::Test
 {
