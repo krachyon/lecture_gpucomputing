@@ -29,12 +29,19 @@ TEST(cuda_naive, zeros)
 
 TEST(cuda_naive, ones)
 {
-    std::vector<float> in(16);
+    std::vector<float> in(1024);
     std::fill(in.begin(), in.end(), 1);
 
-    //EXPECT_FLOAT_EQ(1024, reduce_cuda_naive(in, 1));
-    EXPECT_FLOAT_EQ(16, reduce_cuda_naive(in, 2));
-    //EXPECT_FLOAT_EQ(1024, reduce_cuda_naive(in, 4));
-    //EXPECT_FLOAT_EQ(1024, reduce_cuda_naive(in, 8));
-    //EXPECT_FLOAT_EQ(1024, reduce_cuda_naive(in, 16));
+    EXPECT_FLOAT_EQ(1024, reduce_cuda_naive(in, 2));
+    EXPECT_FLOAT_EQ(1024, reduce_cuda_naive(in, 4));
+    EXPECT_FLOAT_EQ(1024, reduce_cuda_naive(in, 8));
+    EXPECT_FLOAT_EQ(1024, reduce_cuda_naive(in, 16));
+}
+
+TEST(cuda_naive, single_block_ones)
+{
+std::vector<float> in(16);
+std::fill(in.begin(), in.end(), 1);
+
+EXPECT_FLOAT_EQ(1024, reduce_cuda_naive(in, 1));
 }

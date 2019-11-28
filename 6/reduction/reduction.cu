@@ -15,37 +15,55 @@ __device__ __host__ bool is_power_of_2(T in)
 };
 
 template<typename T>
-__global__ void reduce_kernel_naive(T* __restrict in, T* __restrict out)
+__global__ void reduce_kernel_naive(T* __restrict volatile in, T* __restrict out)
 //bytes(out) == gridDim.x
 {
     auto const tid = threadIdx.x + blockIdx.x * blockDim.x;
     auto const n_total_threads = blockDim.x * gridDim.x;
 
     //ensure that threadblock has a power of 2 as bytes
-    assert(is_power_of_2(blockDim.x));
+
+    if(tid==0)
+    {
+        for(auto i =0;i!=n_total_threads*2;++i)
+        printf("%f ", in[i]);
+        printf("\n");
+    }
+    printf("thread %i before loop\n",threadIdx.x);
 
     uint32_t threads_alive = blockDim.x;
 
-
-    //TODO rethink the access scheme
     // first computation: Fetch elements on right side of memory
-    in[tid] = in[tid] + in[tid+n_total_threads];
-    printf("summing %i and %i\n",tid,tid+n_total_threads);
+    in[tid] += in[tid+n_total_threads];
     threads_alive >>= 1;
     //now all we care about is the memory block that corresponds to our block size
 
-    while(threads_alive!=0 && threadIdx.x < threads_alive) 
+    __syncthreads();
+    printf("[%i] += [%i]\n",tid, tid+n_total_threads);
+
+    while(threads_alive!=0 && threadIdx.x < threads_alive)
     {
         __syncthreads();
-        in[tid] = in[tid] + in[tid+threads_alive];
-        printf("summing %i and %i\n",tid,tid+threads_alive);
-        threads_alive >>= 1;
-    }
+        printf("threads alive %i\n", threads_alive);
+        printf("%f [%i] += %f [%i]\n", in[tid], tid, in[tid+threads_alive], tid+threads_alive);
+        __syncthreads();
 
-    if(threadIdx.x == 0)
+        in[tid] += in[tid+threads_alive];
+        threads_alive >>= 1;
+
+        __syncthreads();
+    }
+    printf("thread %i after loop\n",threadIdx.x);
+
+    if(threadIdx.x != 0)
+        return;
+    else if (threadIdx.x == 0)
     {
+        __syncthreads();
+        printf("result %f\n",in[tid]);
         // We are the last thread in the block; "report" the result
         out[blockIdx.x] = in[tid];
+        return;
     }
 }
 
@@ -71,10 +89,12 @@ T reduce_cuda_naive(std::vector<T>& in, uint32_t const n_blocks)
     DeviceMemory<T> d_final_out(1);
 
     //output is a single value per block
-    reduce_kernel_naive<T><<<threads_per_block, n_blocks >> > (d_in.mem(), d_out.mem());
+    reduce_kernel_naive<T><<<n_blocks,threads_per_block>> > (d_in.mem(), d_out.mem());
     cudaDeviceSynchronize();
     //use a single block with n_blocks threads to do final summation
-    reduce_kernel_naive<T><< < n_blocks, 1 >> > (d_out.mem(),d_final_out.mem());
+    //TODO this does not currently work with a single block in the first iteration as the kernel will do a first summation
+    // regardless. See if this can be adapted
+    reduce_kernel_naive<T><< < 1, n_blocks/2 >> > (d_out.mem(),d_final_out.mem());
 
     auto result = d_final_out.to_vector();
     assert(result.size() == 1);
