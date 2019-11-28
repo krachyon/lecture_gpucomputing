@@ -5,14 +5,30 @@ project(ex5 LANGUAGES CXX CUDA)
 
 find_package(Boost REQUIRED)
 find_package(Eigen3)
-find_package(GTest)
+#find_package(GTest)
 find_package(OpenMP)
+
+include(FetchContent)
+
+FetchContent_Declare(
+        googletest
+        GIT_REPOSITORY https://github.com/google/googletest.git
+        GIT_TAG        release-1.10.0
+)
+
+FetchContent_GetProperties(googletest)
+if(NOT googletest_POPULATED)
+    FetchContent_Populate(googletest)
+    add_subdirectory(${googletest_SOURCE_DIR} ${googletest_BINARY_DIR})
+endif()
+
+include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
 include_directories(${Boost_INCLUDE_DIRS})
 
 ### define flags, compile options
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CUDA_STANDARD 14)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra ")#-fsanitize=address ")

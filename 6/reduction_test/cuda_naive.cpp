@@ -1,47 +1,109 @@
-#include <gtest/gtest.h>
+#include "gtest/gtest.h"
+#include "gtest/gtest-typed-test.h"
 #include "reduction.h"
 #include <numeric>
 
 
-TEST(cuda_naive, smoke)
+template <typename T>
+class Cuda_Naive : public testing::Test
 {
-    std::vector<float> in(1024);
-    std::iota(in.begin(), in.end(), 0);
+public:
+    Cuda_Naive(){}
+    ~Cuda_Naive() override{}
 
-    reduce_cuda_naive(in, 2);
+    std::vector<size_t> sizes = {1,2,4,8,16,32,512,1024};
+    std::vector<size_t> block_sizes = {1,2,4,8,16};
+
+    // maybe generalize this to all methods. But might be a bit too weird...
+    // std::function<T (std::vector<T>&, size_t)> reduce_func;
+};
+
+template<typename T>
+class Cuda_Naive_Float: public Cuda_Naive<T>{};
+
+template<typename T>
+class Cuda_Naive_Integral: public Cuda_Naive<T>{};
+
+typedef testing::Types<float,double,int32_t,uint32_t,int16_t,uint16_t> allTypes;
+typedef testing::Types<float,double> floats;
+typedef testing::Types<uint32_t,int16_t,uint16_t> integral;
+
+TYPED_TEST_SUITE(Cuda_Naive, allTypes);
+TYPED_TEST_SUITE(Cuda_Naive_Float, floats);
+TYPED_TEST_SUITE(Cuda_Naive_Integral, integral);
+
+TYPED_TEST(Cuda_Naive, smoke)
+{
+    for(auto s: this->sizes)
+        for(auto bs: this->block_sizes) {
+            std::vector<TypeParam> in(s);
+            std::iota(in.begin(), in.end(), 0);
+
+            reduce_cuda_naive(in, bs);
+        }
 }
 
-TEST(cuda_naive, resize)
+TYPED_TEST(Cuda_Naive, resize)
 {
-    std::vector<float> in(513);
+    std::vector<TypeParam> in(513);
     reduce_cuda_naive(in, 2);
     EXPECT_EQ(1024, in.size());
 }
 
 
-TEST(cuda_naive, zeros)
+TYPED_TEST(Cuda_Naive_Float, zeros)
 {
-    std::vector<float> in(1024);
-    std::fill(in.begin(), in.end(), 0);
+    for(auto s: this->sizes)
+        for(auto bs: this->block_sizes) {
+            if(bs >= s) {
+                continue;
+            }
+            std::vector<TypeParam> in(s);
+            std::fill(in.begin(), in.end(), 0);
 
-    EXPECT_FLOAT_EQ(0, reduce_cuda_naive(in, 2));
+            EXPECT_FLOAT_EQ(0, reduce_cuda_naive(in, bs)) << "size: " << s << " block size: " << bs;
+        }
 }
 
-TEST(cuda_naive, ones)
+TYPED_TEST(Cuda_Naive_Integral, zeros)
 {
-    std::vector<float> in(1024);
-    std::fill(in.begin(), in.end(), 1);
+    for(auto s: this->sizes)
+        for(auto bs: this->block_sizes) {
+            if(bs >= s) {
+                continue;
+            }
+            std::vector<TypeParam> in(s);
+            std::fill(in.begin(), in.end(), 0);
 
-    EXPECT_FLOAT_EQ(1024, reduce_cuda_naive(in, 2));
-    EXPECT_FLOAT_EQ(1024, reduce_cuda_naive(in, 4));
-    EXPECT_FLOAT_EQ(1024, reduce_cuda_naive(in, 8));
-    EXPECT_FLOAT_EQ(1024, reduce_cuda_naive(in, 16));
+            EXPECT_EQ(0, reduce_cuda_naive(in, bs)) << "size: " << s << " block size: " << bs;
+        }
 }
 
-TEST(cuda_naive, single_block_ones)
-{
-std::vector<float> in(16);
-std::fill(in.begin(), in.end(), 1);
 
-EXPECT_FLOAT_EQ(1024, reduce_cuda_naive(in, 1));
+TYPED_TEST(Cuda_Naive_Float, ones)
+{
+    for(auto s: this->sizes)
+        for(auto bs: this->block_sizes) {
+            if (bs >= s) {
+                continue;
+            }
+            std::vector<TypeParam> in(s);
+            std::fill(in.begin(), in.end(), 1);
+
+            EXPECT_FLOAT_EQ(s, reduce_cuda_naive(in, bs)) << "size: " << s << " block size: " << bs;;
+        }
+}
+
+TYPED_TEST(Cuda_Naive_Integral, ones)
+{
+    for(auto s: this->sizes)
+        for(auto bs: this->block_sizes) {
+            if (bs >= s) {
+                continue;
+            }
+            std::vector<TypeParam> in(s);
+            std::fill(in.begin(), in.end(), 1);
+
+            EXPECT_EQ(s, reduce_cuda_naive(in, bs)) << "size: " << s << " block size: " << bs;;
+        }
 }
