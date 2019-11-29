@@ -83,8 +83,35 @@ T reduce_cuda_shared(std::vector<T>& in, uint32_t const n_blocks)
     return result[0];
 }
 
-#include <thrust/device_vector.h>
+float reduce_cuda_shared(std::vector<float>& in, uint32_t const n_blocks)
+{
+    return reduce_cuda_shared<float>(in, n_blocks);
+}
+double reduce_cuda_shared(std::vector<double>& in, uint32_t const n_blocks)
+{
+    return reduce_cuda_shared<double>(in, n_blocks);
+}
+uint32_t reduce_cuda_shared(std::vector<uint32_t>& in, uint32_t const n_blocks)
+{
+    return reduce_cuda_shared<uint32_t>(in, n_blocks);
+}
+int32_t reduce_cuda_shared(std::vector<int32_t>& in, uint32_t const n_blocks)
+{
+    return reduce_cuda_shared<int32_t>(in, n_blocks);
+}
+int16_t reduce_cuda_shared(std::vector<int16_t>& in, uint32_t const n_blocks)
+{
+    return reduce_cuda_shared<int16_t>(in, n_blocks);
+}
+uint16_t reduce_cuda_shared(std::vector<uint16_t>& in, uint32_t const n_blocks)
+{
+    return reduce_cuda_shared<uint16_t>(in, n_blocks);
+}
 
+
+
+//TODO move me
+#include <thrust/device_vector.h>
 float thrust_reduce(std::vector<float>const& in)
 {
     thrust::device_vector<float>(in.begin(),in.end());

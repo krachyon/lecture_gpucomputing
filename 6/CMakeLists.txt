@@ -57,8 +57,6 @@ add_library(reduction STATIC
 target_include_directories(reduction PUBLIC reduction/include)
 target_link_libraries(reduction PUBLIC tracing)
 
-
-
 # cuda contaminated part
 add_library(reduction_cuda SHARED
         reduction/include/reduction.h
@@ -77,7 +75,7 @@ target_link_libraries(reduction_cuda PUBLIC tracing)
 
 add_executable(reduction_test
         reduction_test/main.cpp
-        reduction_test/cuda_naive.cpp)
+        reduction_test/test_cuda.cpp)
 target_include_directories(reduction_test PUBLIC ${EIGEN_INCLUDE_DIR})
 # we need pthread because of the cluster gtest_main does not work and pthread is not added automatically with gtest
 target_link_libraries(reduction_test PUBLIC reduction reduction_cuda gtest pthread)
