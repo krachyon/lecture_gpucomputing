@@ -8,27 +8,19 @@ Trace& Trace::instance() {
     return *_instance;
 }
 
-Trace::TimePoint Trace::get(std::string const& name)
+Trace::TimePoint Trace::get(tracepoint name)
 {
-    if(instance()._traces.count(name) != 0)
-        return instance()._traces[name];
-    else
-        throw(std::runtime_error("no trace point "+name));
+    return instance()._traces[size_t(name)];
 }
 
-uint64_t Trace::get(std::string const& name_start, std::string const& name_stop)
+// returns time delta between traces in nanoseconds
+uint64_t Trace::get(tracepoint name_start, tracepoint name_stop)
 {
-    if(instance()._traces.count(name_start) == 0)
-        throw(std::runtime_error("no trace point "+name_start));
-    if(instance()._traces.count(name_stop) == 0)
-        throw(std::runtime_error("no trace point "+name_stop));
-
     return std::chrono::duration_cast<std::chrono::nanoseconds>
-            (instance()._traces[name_stop]-instance()._traces[name_start]).count();
+            (instance()._traces[size_t(name_stop)]-instance()._traces[size_t(name_start)]).count();
 }
 
-
-void Trace::set(std::string const& name)
+void Trace::set(tracepoint name)
 {
-    instance()._traces[name] = std::chrono::high_resolution_clock::now();
+    instance()._traces[size_t(name)] = std::chrono::high_resolution_clock::now();
 }

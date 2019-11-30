@@ -37,7 +37,7 @@ __global__ void reduce_kernel_naive(T* __restrict volatile in, T* __restrict out
 
 template<typename T>
 T reduce_cuda_naive(std::vector<T>& in, uint32_t const n_blocks, size_t iters) {
-    Trace::set("cuda_naive_start");
+    Trace::set(tracepoint::start);
     //zero pad end of vector if it doesn't fit
     if (!is_power_of_2(in.size())) {
         uint32_t next_power = ceil(log2((double) in.size()));
@@ -51,9 +51,9 @@ T reduce_cuda_naive(std::vector<T>& in, uint32_t const n_blocks, size_t iters) {
     assert(is_power_of_2(threads_per_block));
     assert(is_power_of_2(n_blocks));
 
-    Trace::set("cuda_naive_copy_in");
+    Trace::set(tracepoint::copy_start);
     DeviceMemory<T> d_in(in.data(), in.size());
-    Trace::set("cuda_naive_copy_in_done");
+    Trace::set(tracepoint::copy_end);
     DeviceMemory<T> d_out(n_blocks);
     DeviceMemory<T> d_final_out(1);
 
@@ -69,9 +69,9 @@ T reduce_cuda_naive(std::vector<T>& in, uint32_t const n_blocks, size_t iters) {
     //use a single block with n_blocks threads to do final summation
     if(n_blocks>1) {
         reduce_kernel_naive<T> << < 1, n_blocks / 2 >> > (d_out.mem(), d_final_out.mem());
-        Trace::set("cuda_naive_copy_out");
+        Trace::set(tracepoint::backcopy_start);
         result = d_final_out.to_vector();
-        Trace::set("cuda_naive_copy_out_done");
+        Trace::set(tracepoint::backcopy_end);
     }
     //unless we're already done;
     else{
@@ -79,7 +79,7 @@ T reduce_cuda_naive(std::vector<T>& in, uint32_t const n_blocks, size_t iters) {
     }
 
     assert(result.size() == 1);
-    Trace::set("cuda_naive_end");
+    Trace::set(tracepoint::end);
     return result[0];
 }
 

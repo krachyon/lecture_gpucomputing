@@ -70,6 +70,7 @@ add_library(reduction_cuda SHARED
         reduction/reduction_naive.cu
         reduction/reduction_shared.cu
         reduction/reduction.cuh
+        reduction/reduction_optimized.cu
         )
 target_include_directories(reduction_cuda PUBLIC reduction/include)
 target_include_directories(reduction_cuda PUBLIC include /opt/cuda/include)

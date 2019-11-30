@@ -45,7 +45,7 @@ __global__ void reduce_kernel_shared(T* __restrict volatile in, T* __restrict ou
 template<typename T>
 T reduce_cuda_shared(std::vector<T>& in, uint32_t const n_blocks, size_t iters)
 {
-    Trace::set("cuda_shared_start");
+    Trace::set(tracepoint::start);
     //zero pad end of vector if it doesn't fit
     if(!is_power_of_2(in.size()))
     {
@@ -61,9 +61,9 @@ T reduce_cuda_shared(std::vector<T>& in, uint32_t const n_blocks, size_t iters)
     assert(is_power_of_2(threads_per_block));
     assert(is_power_of_2(n_blocks));
 
-    Trace::set("cuda_shared_copy_in");
+    Trace::set(tracepoint::copy_start);
     DeviceMemory<T> d_in(in.data(), in.size());
-    Trace::set("cuda_shared_copy_in_done");
+    Trace::set(tracepoint::copy_end);
     DeviceMemory<T> d_out(n_blocks);
     DeviceMemory<T> d_final_out(1);
 
@@ -82,9 +82,9 @@ T reduce_cuda_shared(std::vector<T>& in, uint32_t const n_blocks, size_t iters)
         auto const remaining_memsize = remaining_threads * sizeof(T);
 
         reduce_kernel_shared<T> << < 1, remaining_threads, remaining_memsize >> > (d_out.mem(), d_final_out.mem());
-        Trace::set("cuda_shared_copy_out");
+        Trace::set(tracepoint::backcopy_start);
         result = d_final_out.to_vector();
-        Trace::set("cuda_shared_copy_out_done");
+        Trace::set(tracepoint::backcopy_end);
     }
         //unless we're already done;
     else{
@@ -92,7 +92,7 @@ T reduce_cuda_shared(std::vector<T>& in, uint32_t const n_blocks, size_t iters)
     }
 
     assert(result.size() == 1);
-    Trace::set("cuda_shared_end");
+    Trace::set(tracepoint::end);
     return result[0];
 }
 
@@ -119,16 +119,5 @@ int16_t reduce_cuda_shared(std::vector<int16_t>& in, uint32_t const n_blocks, si
 uint16_t reduce_cuda_shared(std::vector<uint16_t>& in, uint32_t const n_blocks, size_t iters)
 {
     return reduce_cuda_shared<uint16_t>(in, n_blocks, iters);
-}
-
-
-
-//TODO move me
-#include <thrust/device_vector.h>
-float thrust_reduce(std::vector<float>const& in)
-{
-    thrust::device_vector<float>(in.begin(),in.end());
-    float sum = thrust::reduce(in.begin(), in.end());
-    return sum;
 }
 

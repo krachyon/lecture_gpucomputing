@@ -20,4 +20,4 @@ int32_t reduce_cuda_shared(std::vector<int32_t>& in, uint32_t const n_blocks, si
 int16_t reduce_cuda_shared(std::vector<int16_t>& in, uint32_t const n_blocks, size_t iter=1);
 uint16_t reduce_cuda_shared(std::vector<uint16_t>& in, uint32_t const n_blocks, size_t iter=1);
 
-float thrust_reduce(std::vector<float>const& in);
+float thrust_reduce(std::vector<float>const& in, size_t iter=1);
