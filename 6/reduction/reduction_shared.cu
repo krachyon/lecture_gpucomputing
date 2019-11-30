@@ -3,12 +3,18 @@
 #include "memoryWrapper.cuh"
 #include <device_launch_parameters.h>
 #include <cassert>
-
+#include <iostream>
 
 template<typename T>
 __global__ void reduce_kernel_shared(T* __restrict volatile in, T* __restrict out)
 {
+    // So just putting "T smem[]" here is too easy for cuda. Need to hand-cast it to the type we want.
+    //FML. https://stackoverflow.com/questions/27570552/templated-cuda-kernel-with-dynamic-shared-memory
+    // By the way, it first was just a float which of course doesn't really work for the other types.
+    //extern __shared__ unsigned char evil_smem[];
+    //T* smem = reinterpret_cast<T*>(evil_smem);
     extern __shared__ float smem[];
+
     auto const tid_glob = threadIdx.x + blockIdx.x * blockDim.x;
     auto const tid_loc = threadIdx.x;
     auto const n_total_threads = blockDim.x * gridDim.x;
@@ -63,12 +69,16 @@ T reduce_cuda_shared(std::vector<T>& in, uint32_t const n_blocks)
     //output is a single value per block
     reduce_kernel_shared<T><<<n_blocks,threads_per_block, shared_size>> > (d_in.mem(), d_out.mem());
     cudaDeviceSynchronize();
+    throwOnCudaError();
 
     std::vector<T> result(0);
 
     //use a single block with n_blocks threads to do final summation
     if(n_blocks>1) {
-        reduce_kernel_shared<T> << < 1, n_blocks / 2 >> > (d_out.mem(), d_final_out.mem());
+        auto const remaining_threads = n_blocks/2;
+        auto const remaining_memsize = remaining_threads * sizeof(T);
+
+        reduce_kernel_shared<T> << < 1, remaining_threads, remaining_memsize >> > (d_out.mem(), d_final_out.mem());
         Trace::set("cuda_shared_copy_out");
         result = d_final_out.to_vector();
         Trace::set("cuda_shared_copy_out_done");
@@ -85,7 +95,7 @@ T reduce_cuda_shared(std::vector<T>& in, uint32_t const n_blocks)
 
 float reduce_cuda_shared(std::vector<float>& in, uint32_t const n_blocks)
 {
-    return reduce_cuda_shared<float>(in, n_blocks);
+    return reduce_cuda_shared <float>(in, n_blocks);
 }
 double reduce_cuda_shared(std::vector<double>& in, uint32_t const n_blocks)
 {

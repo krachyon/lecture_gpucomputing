@@ -62,6 +62,7 @@ T reduce_cuda_naive(std::vector<T>& in, uint32_t const n_blocks)
     //output is a single value per block
     reduce_kernel_naive<T><<<n_blocks,threads_per_block>> > (d_in.mem(), d_out.mem());
     cudaDeviceSynchronize();
+    throwOnCudaError();
 
     std::vector<T> result(0);
 

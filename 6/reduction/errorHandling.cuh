@@ -29,3 +29,14 @@ inline void quitOnCudaError() {
         exit(-1);
     }
 }
+
+//Throw if any previous operation errored
+inline void throwOnCudaError() {
+    cudaError_t cudaError = cudaGetLastError();
+    if (cudaError != cudaSuccess){
+            std::stringstream message{""};
+            message << "cuda Error: " << cudaError << ": " << cudaGetErrorString(cudaError);
+            throw (std::runtime_error(message.str()));
+        }
+}
+

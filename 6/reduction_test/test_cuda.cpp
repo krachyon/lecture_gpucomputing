@@ -85,6 +85,9 @@ TYPED_TEST(CudaFixture, smoke)
 {
     for(auto s: this->sizes)
         for(auto bs: this->block_sizes) {
+            if(bs >= s) {
+                continue;
+            }
             std::vector<typename TypeParam::DataType> in(s);
             std::iota(in.begin(), in.end(), 0);
 
@@ -95,7 +98,7 @@ TYPED_TEST(CudaFixture, smoke)
 TYPED_TEST(CudaFixture, resize)
 {
     std::vector<typename TypeParam::DataType> in(513);
-    reduce_cuda_naive(in, 2);
+    typename TypeParam::ReduceFunc()(in, 2);
     EXPECT_EQ(1024, in.size());
 }
 
@@ -110,7 +113,8 @@ TYPED_TEST(CudaFixture_Float, zeros)
             std::vector<typename TypeParam::DataType> in(s);
             std::fill(in.begin(), in.end(), 0);
 
-            EXPECT_FLOAT_EQ(0, reduce_cuda_naive(in, bs)) << "size: " << s << " block size: " << bs;
+            auto result = typename TypeParam::ReduceFunc()(in, bs);
+            EXPECT_FLOAT_EQ(0, result) << "size: " << s << " block size: " << bs;
         }
 }
 
@@ -123,8 +127,8 @@ TYPED_TEST(CudaFixture_Integral, zeros)
             }
             std::vector<typename TypeParam::DataType> in(s);
             std::fill(in.begin(), in.end(), 0);
-
-            EXPECT_EQ(0, reduce_cuda_naive(in, bs)) << "size: " << s << " block size: " << bs;
+            auto result = typename TypeParam::ReduceFunc()(in, bs);
+            EXPECT_EQ(0, result) << "size: " << s << " block size: " << bs;
         }
 }
 
@@ -139,7 +143,8 @@ TYPED_TEST(CudaFixture_Float, ones)
             std::vector<typename TypeParam::DataType> in(s);
             std::fill(in.begin(), in.end(), 1);
 
-            EXPECT_FLOAT_EQ(s, reduce_cuda_naive(in, bs)) << "size: " << s << " block size: " << bs;;
+            auto result = typename TypeParam::ReduceFunc()(in, bs);
+            EXPECT_FLOAT_EQ(s, result) << "size: " << s << " block size: " << bs;;
         }
 }
 
@@ -152,21 +157,32 @@ TYPED_TEST(CudaFixture_Integral, ones)
             }
             std::vector<typename TypeParam::DataType> in(s);
             std::fill(in.begin(), in.end(), 1);
-
-            EXPECT_EQ(s, reduce_cuda_naive(in, bs)) << "size: " << s << " block size: " << bs;;
+            auto result = typename TypeParam::ReduceFunc()(in, bs);
+            EXPECT_EQ(s, result) << "size: " << s << " block size: " << bs;;
         }
 }
 
-TEST(debug,shared)
-{
-    std::vector<float> in(64);
-    std::fill(in.begin(), in.end(), 1);
-    EXPECT_EQ(64, reduce_cuda_shared(in, 2));
-}
+//TEST(debug,shared)
+//{
+//    std::vector<size_t> sizes = {512};
+//    std::vector<size_t> block_sizes = {2,4,8,16};
+//    for(auto s: sizes)
+//        for(auto bs: block_sizes) {
+//            if (bs >= s) {
+//                continue;
+//            }
+//            std::cout << "s: " <<s <<" bs: " << bs <<std::endl;
+//            std::vector<short> in(s);
+//            std::fill(in.begin(), in.end(), 1);
+//
+//            EXPECT_EQ(s, reduce_cuda_shared(in, bs)) << "size: " << s << " block size: " << bs;;
+//            //EXPECT_EQ(s, reduce_cuda_naive(in, bs)) << "size: " << s << " block size: " << bs;;
+//        }
+//}
 
 TEST(thrust,simple)
 {
     std::vector<float> in(1024);
     std::iota(in.begin(),in.end(),0.f);
-    EXPECT_EQ(thrust_reduce(in),std::accumulate(in.begin(),in.end(), 0.f));
+    EXPECT_FLOAT_EQ(thrust_reduce(in),std::accumulate(in.begin(),in.end(), 0.f));
 }
