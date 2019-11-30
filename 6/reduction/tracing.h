@@ -13,6 +13,7 @@ public:
     static Trace& instance();
 
     static TimePoint get(std::string const& name);
+    static uint64_t get(std::string const& name_start, std::string const& name_stop);
     static void set(std::string const& name);
 
 private:
