@@ -1,5 +1,5 @@
 #include "reduction.h"
-#include "../reduction/tracing.h"
+#include "tracing.h"
 #include <boost/lexical_cast.hpp>
 #include <boost/range/irange.hpp>
 #include <iostream>
@@ -51,6 +51,7 @@ int main(int argc, char** argv)
 
 auto pows = boost::irange(2,15);
 std::vector<size_t> n_blocks = {1,2,4,8,16,32};
+size_t n_iter = 2000;
 
 std::cout << "N_elem,N_block,dtype,method,t_tot" << std::endl;
 for(auto p: pows)
@@ -64,31 +65,31 @@ for(auto p: pows)
         std::vector<float> in32(n);
         std::vector<double> in64(n);
 
-        reduce_cuda_naive(ini16,n_block);
+        reduce_cuda_naive(ini16,n_block, n_iter);
         std::cout << n << "," << n_block << "," << "uint16_t," << "cuda_naive,"
             << Trace::get("cuda_naive_start","cuda_naive_end") << "," << std::endl;
-        reduce_cuda_shared(ini16,n_block);
+        reduce_cuda_shared(ini16,n_block,n_iter);
         std::cout << n << "," << n_block << "," << "uint16_t," << "cuda_shared,"
             << Trace::get("cuda_shared_start","cuda_shared_end") << "," << std::endl;
 
-        reduce_cuda_naive(ini32,n_block);
+        reduce_cuda_naive(ini32,n_block,n_iter);
         std::cout << n << "," << n_block << "," << "uint32_t," << "cuda_naive,"
                   << Trace::get("cuda_naive_start","cuda_naive_end") << "," << std::endl;
-        reduce_cuda_shared(ini32,n_block);
+        reduce_cuda_shared(ini32,n_block,n_iter);
         std::cout << n << "," << n_block << "," << "uint32_t," << "cuda_shared,"
                   << Trace::get("cuda_shared_start","cuda_shared_end") << "," << std::endl;
 
-        reduce_cuda_naive(in32,n_block);
+        reduce_cuda_naive(in32,n_block,n_iter);
         std::cout << n << "," << n_block << "," << "float," << "cuda_naive,"
                   << Trace::get("cuda_naive_start","cuda_naive_end") << "," << std::endl;
-        reduce_cuda_shared(in32,n_block);
+        reduce_cuda_shared(in32,n_block,n_iter);
         std::cout << n << "," << n_block << "," << "float," << "cuda_shared,"
                   << Trace::get("cuda_shared_start","cuda_shared_end") << "," << std::endl;
 
-        reduce_cuda_naive(in64,n_block);
+        reduce_cuda_naive(in64,n_block,n_iter);
         std::cout << n << "," << n_block << "," << "double," << "cuda_naive,"
                   << Trace::get("cuda_naive_start","cuda_naive_end") << "," << std::endl;
-        reduce_cuda_shared(in64,n_block);
+        reduce_cuda_shared(in64,n_block,n_iter);
         std::cout << n << "," << n_block << "," << "double," << "cuda_shared,"
                   << Trace::get("cuda_shared_start","cuda_shared_end") << "," << std::endl;
 

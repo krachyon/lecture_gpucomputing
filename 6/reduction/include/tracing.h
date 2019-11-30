@@ -2,6 +2,7 @@
 #include <chrono>
 #include <string>
 #include <map>
+#include <unordered_map>
 #include <stdexcept>
 
 
@@ -19,7 +20,7 @@ public:
 private:
     Trace()=default;
     static Trace* _instance;
-    std::map<std::string, TimePoint> _traces;
+    std::unordered_map<std::string, TimePoint> _traces;
 };
 
 //RAII tracer, i.e create a TraceParticle and there will be traces when it enters and leaves scope

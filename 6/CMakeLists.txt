@@ -51,7 +51,7 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 # pure c++
 add_library(tracing STATIC
         reduction/tracing.cpp
-        reduction/tracing.h
+        reduction/include/tracing.h
         )
 
 add_library(reduction STATIC
@@ -79,10 +79,10 @@ target_link_libraries(reduction_cuda PUBLIC tracing)
 
 add_executable(reduction_test
         reduction_test/main.cpp
-        reduction_test/test_cuda.cpp)
+        reduction_test/test_cuda.cpp reduction_test/test_trace.cpp)
 target_include_directories(reduction_test PUBLIC ${EIGEN_INCLUDE_DIR})
 # we need pthread because of the cluster gtest_main does not work and pthread is not added automatically with gtest
-target_link_libraries(reduction_test PUBLIC reduction reduction_cuda gtest pthread)
+target_link_libraries(reduction_test PUBLIC reduction reduction_cuda tracing gtest pthread)
 
 
 add_executable(reduction_benchmark
