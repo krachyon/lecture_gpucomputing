@@ -10,10 +10,11 @@ __global__ void reduce_kernel_shared(T* __restrict volatile in, T* __restrict ou
 {
     // So just putting "T smem[]" here is too easy for cuda. Need to hand-cast it to the type we want.
     //FML. https://stackoverflow.com/questions/27570552/templated-cuda-kernel-with-dynamic-shared-memory
-    // By the way, it first was just a float which of course doesn't really work for the other types.
-    //extern __shared__ unsigned char evil_smem[];
-    //T* smem = reinterpret_cast<T*>(evil_smem);
-    extern __shared__ float smem[];
+    // By the way, it first was just a float which of course doesn't really work for the other types and caused
+    // some kind of stack corruption where every subsequent kernel would just go bananas
+    extern __shared__ unsigned char evil_smem[];
+    T* smem = reinterpret_cast<T*>(evil_smem);
+
 
     auto const tid_glob = threadIdx.x + blockIdx.x * blockDim.x;
     auto const tid_loc = threadIdx.x;
