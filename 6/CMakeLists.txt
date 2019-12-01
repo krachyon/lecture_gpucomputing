@@ -90,6 +90,11 @@ add_executable(reduction_benchmark
         reduction_benchmark/benchmark.cpp)
 target_link_libraries(reduction_benchmark PUBLIC reduction reduction_cuda )
 
+add_executable(reduction_cpu
+        CPU/GSR.cpp)
+
+target_link_libraries(reduction_cpu PUBLIC)
+
 
 
 
