@@ -80,7 +80,7 @@ target_link_libraries(reduction_cuda PUBLIC tracing)
 
 add_executable(reduction_test
         reduction_test/main.cpp
-        reduction_test/test_cuda.cpp reduction_test/test_trace.cpp)
+        reduction_test/test_cuda.cpp reduction_test/test_trace.cpp reduction_test/test_cpu.cpp)
 target_include_directories(reduction_test PUBLIC ${EIGEN_INCLUDE_DIR})
 # we need pthread because of the cluster gtest_main does not work and pthread is not added automatically with gtest
 target_link_libraries(reduction_test PUBLIC reduction reduction_cuda tracing gtest pthread)
