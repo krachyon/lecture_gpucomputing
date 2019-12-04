@@ -13,6 +13,8 @@ float thrust_reduce(std::vector<float>const& in, size_t n_iter)
     for(size_t i=0; i!= n_iter;++i)
         sum = thrust::reduce(in.begin(), in.end());
 
+    Trace::set(tracepoint::backcopy_start);
+    Trace::set(tracepoint::backcopy_end);
     Trace::set(tracepoint::end);
     return sum;
 }
