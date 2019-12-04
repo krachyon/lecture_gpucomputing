@@ -80,7 +80,7 @@ int main(int argc, char** argv)
 auto pows = boost::irange(10,22);
 std::vector<size_t> n_blocks = {32,64,128,256,512,1024};
 size_t n_iter = 2000;
-std::cout << "N_elem,N_iter,N_block,dtype,method,t_tot,t_copy,t_exec,t_backcopy" << std::endl;
+std::cout << "#N_elem,N_iter,N_block,dtype,method,t_tot,t_copy,t_exec,t_backcopy" << std::endl;
 for(auto p: pows)
 {
     size_t n = 1 << p;
@@ -119,7 +119,7 @@ for(auto p: pows)
 
 
     thrust_reduce(in32);
-    csv_autotimings(n, 1, "float", "thrust");
+    csv_autotimings(n, n_iter, 1, "float", "thrust");
 
     //Attention: Disregard memory timings for this method, they don't actually exist
     Trace::set(tracepoint::start);
@@ -129,12 +129,12 @@ for(auto p: pows)
         res = std::accumulate(in32.begin(), in32.end(), 0.f);
     }
     Trace::set(tracepoint::end);
-    csv_autotimings(n, 1, "float", "std::accumulate");
+    csv_autotimings(n,n_iter, 1, "float", "std::accumulate");
 
     for(size_t i=0; i!= n_iter; ++i)
     {
         res = reduce_cpu(in32);
     }
-    csv_autotimings(n,1, "float", "cpu");
+    csv_autotimings(n, n_iter, 1, "float", "cpu");
 }
 }

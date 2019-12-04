@@ -1,4 +1,4 @@
-N_elem,N_iter,N_block,dtype,method,t_tot,t_copy,t_exec,t_backcopy
+#N_elem,N_iter,N_block,dtype,method,t_tot,t_copy,t_exec,t_backcopy
 1024,2000,32,uint16_t,cuda_naive,550123071,516547397,33492814,56403
 1024,2000,32,uint16_t,cuda_shared,28656699,230989,28389061,28970
 1024,2000,32,uint32_t,cuda_naive,26286772,206487,26032398,41256
