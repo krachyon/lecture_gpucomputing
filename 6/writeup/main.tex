@@ -10,8 +10,9 @@
 \usepackage{nicefrac}
 
 \setlength{\parskip}{0.5em plus0.2em minus0.2em}
+\setlength{\parindent}{1em}
 
-\title{GPU computing exercise 5}
+\title{GPU computing exercise 6}
 \date{\today}
 \author{Sebastian Meßlinger, Niklas Euler}
 
@@ -22,28 +23,29 @@
 
 \section{Reduction optimization}
 
-\begin{figure}
-    \includegraphics[width=\textwidth]{../result/full_bw.pdf}
-\end{figure}
-\begin{figure}
-    \includegraphics[width=\textwidth]{../result/exec_bw.pdf}
-\end{figure}
-\begin{figure}
-    \includegraphics[width=\textwidth]{../result/naive_bs.pdf}
-\end{figure}
-\begin{figure}
-    \includegraphics[width=\textwidth]{../result/shared_bs.pdf}
-\end{figure}
 Our three versions use global memory, shared memory and shared memory + loop unrolling respectively.
-The CPU version emulates pairwise summation. For comparison we used the implementations by the C++ standard library (std::accumulate) and a GPU version from the thrust library (thrust::reduce) which runs on the GPU.
+The CPU version emulates pairwise summation. For comparison we used the implementations by the C++ standard library \texttt{(std::accumulate)} and a GPU version from the thrust library \texttt{(thrust::reduce)} which runs on the GPU.
 
 We could see significant difference between the shared and global versions but the benefit of unrolling the loop in the last warp is not significant.
 
-The block size has a minor influence as adapting it to the problem size (see comparison graph) yields minor improvements.
+Block size has a minor influence as adapting it to the problem size (see comparison graph) yields minor improvements.
 
 The falling speed of the cpu version is expected as caches are no longer effective. Also using a pairwise summation on the CPU is a bad idea due to non sequential access destroying the effectiveness of caches. It might help with avoiding errors due to summing different magnitudes of floating point though.
 
-The thrust version's bandwidth is basically the hardware limit. As it is so close to the limit, there might be some optimizations due to interleaving of copy/computation or compiler optimizations that affected the result.
+As the thrust version's bandwidth is basically the hardware limit is so close to the limit, there might be some optimizations due to interleaving of copy/computation or compiler optimizations that affected the result.
 
+\begin{figure}
+    \centering
+    \includegraphics[width=1.1\textwidth]{../result/full_bw.pdf}
+\end{figure}
+\begin{figure}
+    \includegraphics[width=1.1\textwidth]{../result/exec_bw.pdf}
+\end{figure}
+\begin{figure}
+    \includegraphics[width=1.1\textwidth]{../result/naive_bs.pdf}
+\end{figure}
+\begin{figure}
+    \includegraphics[width=1.1\textwidth]{../result/shared_bs.pdf}
+\end{figure}
 
 \end{document}

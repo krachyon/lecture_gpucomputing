@@ -4,3 +4,8 @@ plots
 **/*.pdf
 **/.clion*
 **/.vscode
+**/*.aux
+**/*.fls
+**/*.fdb_latexmk
+**/*.synctex.gz
+**/*.log

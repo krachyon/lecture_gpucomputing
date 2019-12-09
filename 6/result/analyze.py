@@ -40,6 +40,7 @@ def full_bw():
     plt.xlabel("number of elements")
     plt.ylabel("bandwidth [GiB/s]")
     plt.legend()
+    plt.tight_layout()
     plt.savefig('full_bw.pdf')
 
 
@@ -54,10 +55,12 @@ def exec_bw():
     plt.loglog(cpu.N_elem, cpu.bw_full,'x', label='cpu own', alpha=0.7)
     plt.loglog(std.N_elem, std.bw_full,'x', label='std::accumulate', alpha=0.7)
 
+
     plt.title("throughput excluding copy time")
     plt.xlabel("number of elements")
     plt.ylabel("bandwidth [GiB/s]")
     plt.legend()
+    plt.tight_layout()
     plt.savefig('exec_bw.pdf')
 
 def blocksize():
@@ -71,6 +74,7 @@ def blocksize():
     plt.xlabel("number of elements")
     plt.ylabel("bandwidth [GiB/s]")
     plt.legend()
+    plt.tight_layout()
     plt.savefig('naive_bs.pdf')
 
     plt.figure(figsize=(10,8))
@@ -78,9 +82,11 @@ def blocksize():
         shared_n = dat[(dat.method == 'cuda_shared') & (dat.dtype == 'float') & (dat.N_block == bs)]
         plt.loglog(shared_n.N_elem, shared_n.bw_exec, 'x', label=f'shared bs={int(bs)}', alpha=0.7)
 
+
     plt.xlabel("blocksize dependent throughput, shared")
     plt.ylabel("bandwidth [GiB/s]")
     plt.legend()
+    plt.tight_layout()
     plt.savefig('shared_bs.pdf')
 
 
@@ -91,4 +97,4 @@ if __name__=='__main__':
     exec_bw()
     blocksize()
 
-    plt.show()
+    #plt.show()
