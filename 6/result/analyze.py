@@ -9,7 +9,7 @@ def calc_bandwidth(df):
     seconds_per_ns = 1e9
     GiB = 1024*1024*1024
 
-    df["bw_exec"] = df.N_iter * df.N_elem * elem_size / (df.t_tot - df.t_copy - df.t_backcopy) * seconds_per_ns / GiB
+    df["bw_exec"] = df.N_iter * df.N_elem * elem_size / df.t_exec * seconds_per_ns / GiB
     df["bw_full"] = df.N_iter * df.N_elem * elem_size / df.t_tot * seconds_per_ns / GiB
 
 
