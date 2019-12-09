@@ -12,6 +12,12 @@ TEST(cpu, ones)
     EXPECT_FLOAT_EQ(2000, reduce_cpu(in2));
 }
 
+TEST(cpu, debug)
+{
+    std::vector<float> in0(17,1);
+    EXPECT_FLOAT_EQ(16, reduce_cpu(in0));
+}
+
 TEST(cpu, zero)
 {
     std::vector<float> in0(1,0);

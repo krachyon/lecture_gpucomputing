@@ -35,7 +35,7 @@ set(CMAKE_CUDA_STANDARD 14)
 set(CMAKE_CUDA_FLAGS_DEBUG "${CMAKE_CUDA_FLAGS} -g -G")
 
 # Weffc++ can be helpful but has a bunch of false positives. -fsanitize=<x> is great to find memory/threading issues
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wfloat-equal ")#-Weffc++")#-fsanitize=address ")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wfloat-equal -ffast-math -march=native")#-Weffc++")#-fsanitize=address ")
 if (${CMAKE_CUDA_COMPILER_VERSION} GREATER_EQUAL "8.0.0")
     set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -arch=sm_30 --expt-relaxed-constexpr")
 else ()

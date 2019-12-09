@@ -3,10 +3,7 @@
 
 float reduce_cpu(std::vector<float>const& in_orig)
 {
-    Trace::set(tracepoint::start);
-    Trace::set(tracepoint::copy_start);
     auto in = in_orig;
-    Trace::set(tracepoint::copy_end);
 
     unsigned long long int gauss = in.size()*(in.size()+1)/2;
 
@@ -16,6 +13,15 @@ float reduce_cpu(std::vector<float>const& in_orig)
             in[j]+=in[j+stride/2];
         }
     }
-    Trace::set(tracepoint::end);
     return in[0];
+}
+
+float reduce_cpu_seq(std::vector<float>const& in)
+{
+
+    float res = 0;
+    for(auto const elem: in)
+        res+=elem;
+
+    return res;
 }

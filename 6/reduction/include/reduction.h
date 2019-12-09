@@ -5,6 +5,7 @@
 
 
 float reduce_cpu(std::vector<float>const& in);
+float reduce_cpu_seq(std::vector<float>const& in);
 
 float reduce_cuda_naive(std::vector<float>& in, uint32_t const n_blocks, size_t iter=1);
 double reduce_cuda_naive(std::vector<double>& in, uint32_t const n_blocks, size_t iter=1);

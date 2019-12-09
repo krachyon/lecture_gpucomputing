@@ -38,44 +38,8 @@ void csv_autotimings(Values... vals)
 }
 
 
-//template<typename T, typename F>
-//void benchmark(size_t n, F func, std::string const& trace_name_prefix)
-//{
-//    std::vector<T>(n);
-//    func();
-//
-//}
-//
-
 int main(int argc, char** argv)
 {
-
-//    std::string method="invalid";
-//    size_t dtype_size=32;
-//    size_t size_from=0;
-//    size_t size_to=0;
-//
-//    if(argc == 5) {
-//        try {
-//            method = boost::lexical_cast<std::string>(argv[1]);
-//            dtype_size = boost::lexical_cast<size_t>(argv[2]);
-//            size_from = boost::lexical_cast<size_t>(argv[3]);
-//            size_to = boost::lexical_cast<size_t>(argv[4]);
-//        }
-//        catch(...)
-//        {
-//            usage();
-//        }
-//    } else{
-//        usage();
-//    }
-//    auto r = boost::irange(size_from, size_to);
-//    for(auto n:r) {
-//        if (dtype_size == 16 && method) {
-//            benchmark<uint16_t>(n,)
-//        }
-//    }
-//    }
 
 auto pows = boost::irange(10,22);
 std::vector<size_t> n_blocks = {32,64,128,256,512,1024};
@@ -122,19 +86,30 @@ for(auto p: pows)
     csv_autotimings(n, n_iter, 1, "float", "thrust");
 
     //Attention: Disregard memory timings for this method, they don't actually exist
-    Trace::set(tracepoint::start);
     volatile float res;
+
+    Trace::set(tracepoint::start);
     for(size_t i=0; i!=n_iter; ++i)
     {
         res = std::accumulate(in32.begin(), in32.end(), 0.f);
     }
     Trace::set(tracepoint::end);
-    csv_autotimings(n,n_iter, 1, "float", "std::accumulate");
+    csv_autotimings(n, n_iter, 1, "float", "std::accumulate");
 
+    Trace::set(tracepoint::start);
     for(size_t i=0; i!= n_iter; ++i)
     {
         res = reduce_cpu(in32);
     }
+    Trace::set(tracepoint::end);
     csv_autotimings(n, n_iter, 1, "float", "cpu");
+
+    Trace::set(tracepoint::start);
+    for(size_t i=0; i!= n_iter; ++i)
+    {
+        res = reduce_cpu_seq(in32);
+    }
+    Trace::set(tracepoint::end);
+    csv_autotimings(n, n_iter, 1, "float", "cpu_seq");
 }
 }
