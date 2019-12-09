@@ -41,7 +41,7 @@ void csv_autotimings(Values... vals)
 int main(int argc, char** argv)
 {
 
-auto pows = boost::irange(10,22);
+auto pows = boost::irange(10,26);
 std::vector<size_t> n_blocks = {32,64,128,256,512,1024};
 size_t n_iter = 2000;
 std::cout << "#N_elem,N_iter,N_block,dtype,method,t_tot,t_copy,t_exec,t_backcopy" << std::endl;
@@ -73,6 +73,8 @@ for(auto p: pows)
         csv_autotimings(n,n_iter, n_block, "float", "cuda_naive");
         reduce_cuda_shared(in32,n_block,n_iter);
         csv_autotimings(n,n_iter, n_block, "float", "cuda_shared");
+        reduce_cuda_optim(in32,n_block,n_iter);
+        csv_autotimings(n,n_iter, n_block, "float", "cuda_optim");
 
 
         reduce_cuda_naive(in64,n_block,n_iter);

@@ -39,7 +39,6 @@ __global__ void mmul_naive_kernel(T * mem_left, T * mem_right, T * mem_out, dim3
     for (size_t i = 0; i < product_size; ++i) {
         //elem += left(row, i)*right(i, col) -> _mem[N*row+col];
         elem += mem_left[stride_left * row + i] * mem_right[stride_right * i + col];
-    }
 
     // result has the same amount of colunmns == stride as right
     mem_out[stride_out * row + col] = elem;
