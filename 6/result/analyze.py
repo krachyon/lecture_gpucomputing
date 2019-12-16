@@ -6,11 +6,11 @@ from cycler import cycler
 def calc_bandwidth(df):
     """given a data frame with expected format, add bandwidth in GiB/s to df"""
     elem_size = 4
-    seconds_per_ns = 1e9
+    nanoseconds_per_second = 1e9
     GiB = 1024*1024*1024
 
-    df["bw_exec"] = df.N_iter * df.N_elem * elem_size / df.t_exec * seconds_per_ns / GiB
-    df["bw_full"] = df.N_iter * df.N_elem * elem_size / df.t_tot * seconds_per_ns / GiB
+    df["bw_exec"] = df.N_iter * df.N_elem * elem_size / GiB / df.t_exec * nanoseconds_per_second 
+    df["bw_full"] = df.N_iter * df.N_elem * elem_size / GiB / df.t_tot * nanoseconds_per_second 
 
 
 dat=pd.read_csv('result_final.csv',comment='#', header=None)
@@ -97,4 +97,4 @@ if __name__=='__main__':
     exec_bw()
     blocksize()
 
-    #plt.show()
+    plt.show()
