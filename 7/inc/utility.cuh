@@ -2,48 +2,48 @@
 
 #include <vector_types.h>
 
-__device__ inline bool operator==(float3 const& lhs, float3 const& rhs)
+__host__ __device__ inline bool operator==(float3 const& lhs, float3 const& rhs)
 {
     return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z;
 }
 
-__device__ inline float3 operator+(float3 const& lhs, float3 const& rhs)
+__host__ __device__ inline float3 operator+(float3 const& lhs, float3 const& rhs)
 {
 return float3{lhs.x+rhs.x, lhs.y+rhs.y, lhs.z+rhs.z};
 }
 
-__device__ inline float3 operator-(float3 const& lhs, float3 const& rhs)
+__host__ __device__ inline float3 operator-(float3 const& lhs, float3 const& rhs)
 {
 return float3{lhs.x-rhs.x, lhs.y-rhs.y, lhs.z-rhs.z};
 }
 
-__device__ inline float3 operator*(float lhs, float3 const& rhs)
+__host__ __device__ inline float3 operator*(float lhs, float3 const& rhs)
 {
     return float3{lhs*rhs.x, lhs*rhs.y, lhs*rhs.z};
 }
 
-__device__ inline float3 operator*(float3 const& lhs, float rhs)
+__host__ __device__ inline float3 operator*(float3 const& lhs, float rhs)
 {
     return float3{lhs.x*rhs, lhs.y*rhs, lhs.z*rhs};
 }
 
-__device__ inline float3 operator/(float lhs, float3 const& rhs)
+__host__ __device__ inline float3 operator/(float lhs, float3 const& rhs)
 {
     return (1.f/lhs)*rhs;
 }
 
-__device__ inline float3 operator/(float3 const& lhs, float rhs)
+__host__ __device__ inline float3 operator/(float3 const& lhs, float rhs)
 {
     return lhs*(1.f/rhs);
 }
 
-__device__ inline float3& operator+=(float3& lhs , float3 const& rhs)
+__host__ __device__ inline float3& operator+=(float3& lhs, float3 const& rhs)
 {
     lhs = lhs + rhs;
     return lhs;
 }
 
-__device__ inline float norm_pow3(float3 const& vec)
+__host__ __device__ inline float norm_pow3(float3 const& vec)
 {
     return vec.x*vec.x*vec.x + vec.y*vec.y*vec.y + vec.z*vec.z*vec.z;
 }
