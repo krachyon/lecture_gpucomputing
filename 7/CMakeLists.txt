@@ -54,6 +54,7 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 add_library(nbody_cuda SHARED
         src/nbody_naive.cu
         #src/nbody_thrust.cu
+        src/nbody_shared.cu
         )
 
 target_include_directories(nbody_cuda PUBLIC inc /opt/cuda/include)

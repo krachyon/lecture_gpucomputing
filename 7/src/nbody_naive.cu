@@ -33,6 +33,9 @@ __global__ void leapfrog_aos(Body_t* bodies, size_t N, size_t iters)
     if(tid>=N)
         return;
 
+    //there should probably be a second Kernel that is called only once to do the initial half step in velocity
+    // and then we can do a full velocity and position step here once. But if we do the same thing in all versions
+    // it's still apples to apples...
     float3 vel_half = bodies[tid].vel + accel(bodies,tid,N) * dt/2;
     bodies[tid].pos += vel_half * dt;
     vel_half += accel(bodies,tid,N) * dt/2;
@@ -40,7 +43,7 @@ __global__ void leapfrog_aos(Body_t* bodies, size_t N, size_t iters)
 }
 
 template<typename Body_t>
-timed<thrust::host_vector<Body_t>>  run_leapfrog_aos(size_t N, size_t threads_per_block, size_t iters)
+timed<thrust::host_vector<Body_t>> run_leapfrog_aos(size_t N, size_t threads_per_block, size_t iters)
 {
     thrust::device_vector<Body_t> bodies = make_random_bodies<Body_t>(N);
     size_t n_blocks = ceildiv(bodies.size(),threads_per_block);
