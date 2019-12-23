@@ -52,7 +52,8 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 # cuda contaminated part
 add_library(nbody_cuda SHARED
-        src/nbody.cu
+        src/nbody_naive.cu
+        #src/nbody_thrust.cu
         )
 
 target_include_directories(nbody_cuda PUBLIC inc /opt/cuda/include)
