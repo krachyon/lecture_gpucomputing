@@ -12,12 +12,8 @@ __global__ void velocity_halfstep(float3* positions, float3* velocities, float c
     if(tid>=N)
         return;
 
-    auto spos = [](size_t idx)->float3&{
-        return *reinterpret_cast<float3*>(smem+sizeof(float3)*idx);
-    };
-    auto sm = [N](size_t idx)->float&{
-        return *reinterpret_cast<float*>(smem + N*sizeof(float3) + sizeof(float)*idx);
-    };
+    float3* spos = (float3*)(smem);
+    float* sm = (float*)&spos[N];
 
     uint32_t tiles = ceildiv(N, blockDim.x);
     uint32_t last_tile_size = N % blockDim.x;
@@ -30,12 +26,12 @@ __global__ void velocity_halfstep(float3* positions, float3* velocities, float c
     for (uint32_t tile = 0; tile != tiles - 1; ++tile) {
         size_t to_fetch = blockDim.x * tile + threadIdx.x;
 
-        spos(threadIdx.x) = positions[to_fetch];
-        sm(threadIdx.x) = masses[to_fetch];
+        spos[threadIdx.x] = positions[to_fetch];
+        sm[threadIdx.x] = masses[to_fetch];
         __syncthreads();
         for (uint32_t tile_idx = 0; tile_idx != blockDim.x; ++tile_idx) {
-            auto diff = spos(tile_idx) - ref_pos;
-            accel += G * sm(tile_idx) * diff / (norm_pow3(diff) + eps);
+            auto diff = spos[tile_idx] - ref_pos;
+            accel += G * sm[tile_idx] * diff / (norm_pow3(diff) + eps);
         }
     }
     //now tile == tiles-1
@@ -43,13 +39,13 @@ __global__ void velocity_halfstep(float3* positions, float3* velocities, float c
     // we only have work to do if our part of the tile is overlapping the data
     if (to_fetch < N) {
         __syncthreads();
-        spos(threadIdx.x) = positions[to_fetch];
-        sm(threadIdx.x) = masses[to_fetch];
+        spos[threadIdx.x] = positions[to_fetch];
+        sm[threadIdx.x] = masses[to_fetch];
         __syncthreads();
     }
     for (uint32_t tile_idx = 0; tile_idx != last_tile_size; ++tile_idx) {
-        auto diff = spos(tile_idx) - ref_pos;
-        accel += G * sm(tile_idx) * diff / (norm_pow3(diff) + eps);
+        auto diff = spos[tile_idx] - ref_pos;
+        accel += G * sm[tile_idx] * diff / (norm_pow3(diff) + eps);
     }
 
     //finally, update main storage
@@ -63,12 +59,8 @@ __global__ void position_step(float3* positions, float3* velocities, float const
     if(tid>=N)
         return;
 
-    auto spos = [](size_t idx)->float3&{
-        return *reinterpret_cast<float3*>(smem+sizeof(float3)*idx);
-    };
-    auto sv = [N](size_t idx)->float3&{
-        return *reinterpret_cast<float3*>(smem + N*sizeof(float3) + sizeof(float3)*idx);
-    };
+    float3* spos = (float3*)(smem);
+    float3* sv = (float3*)&spos[N];
 
     uint32_t tiles = ceildiv(N, blockDim.x);
     uint32_t last_tile_size = N % blockDim.x;
@@ -77,29 +69,29 @@ __global__ void position_step(float3* positions, float3* velocities, float const
     for (uint32_t tile = 0; tile != tiles - 1; ++tile) {
         size_t to_fetch = blockDim.x * tile + threadIdx.x;
 
-        spos(threadIdx.x) = positions[to_fetch];
-        sv(threadIdx.x) = velocities[to_fetch];
+        spos[threadIdx.x] = positions[to_fetch];
+        sv[threadIdx.x] = velocities[to_fetch];
         __syncthreads();
         for (uint32_t tile_idx = 0; tile_idx != blockDim.x; ++tile_idx) {
-            dv += sv(tile_idx);
+            dv += sv[tile_idx];
         }
     }
     size_t to_fetch = blockDim.x * (tiles - 1) + threadIdx.x;
     // we only have work to do if our part of the tile is overlapping the data
     if (to_fetch < N) {
         __syncthreads();
-        spos(threadIdx.x) = positions[to_fetch];
-        sv(threadIdx.x) = velocities[to_fetch];
+        spos[threadIdx.x] = positions[to_fetch];
+        sv[threadIdx.x] = velocities[to_fetch];
         __syncthreads();
     }
     for (uint32_t tile_idx = 0; tile_idx != last_tile_size; ++tile_idx) {
-        dv += sv(tile_idx);
+        dv += sv[tile_idx];
     }
     positions[tid] += dv * dt;
 }
 
 
-timed<thrust::device_vector<float3>> run_leapfrog_soa(size_t N, size_t threads_per_block, size_t iters)
+timed<thrust::host_vector<float3>> run_leapfrog_soa(size_t N, size_t threads_per_block, size_t iters)
 {
     thrust::device_vector<float3> positions;
     thrust::device_vector<float3> velocities;
@@ -124,16 +116,19 @@ timed<thrust::device_vector<float3>> run_leapfrog_soa(size_t N, size_t threads_p
         velocity_halfstep<<<n_blocks,threads_per_block,N * sizeof(float3) + N * sizeof(float)>>>
         (thrust::raw_pointer_cast(positions.data()),thrust::raw_pointer_cast(velocities.data()),thrust::raw_pointer_cast(masses.data()),N);
         cudaDeviceSynchronize();
+        quitOnCudaError();
 
         position_step<<<n_blocks,threads_per_block,N *2*sizeof(float3)>>>
         (thrust::raw_pointer_cast(positions.data()),thrust::raw_pointer_cast(velocities.data()),thrust::raw_pointer_cast(masses.data()),N);
         cudaDeviceSynchronize();
+        quitOnCudaError();
 
         velocity_halfstep<<<n_blocks,threads_per_block,N * sizeof(float3) + N * sizeof(float)>>>
         (thrust::raw_pointer_cast(positions.data()),thrust::raw_pointer_cast(velocities.data()),thrust::raw_pointer_cast(masses.data()),N);
         cudaDeviceSynchronize();
+        quitOnCudaError();
     }
-    quitOnCudaError();
+
     auto end = std::chrono::high_resolution_clock::now();
 
     return {std::chrono::duration_cast<seconds>(end-start), thrust::host_vector<float3>(positions)};

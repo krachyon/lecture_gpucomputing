@@ -28,6 +28,7 @@ using timed = std::pair<seconds,T>;
 
 timed<thrust::host_vector<Body>> run_leapfrog_aos(size_t N, size_t threads_per_block, size_t iters);
 timed<thrust::host_vector<UnalignedBody>> run_leapfrog_aos_unaligned(size_t N, size_t threads_per_block, size_t iters);
+timed<thrust::host_vector<float3>> run_leapfrog_soa(size_t N, size_t threads_per_block, size_t iters);
 
 template<typename Body_t>
 thrust::device_vector<Body_t> make_random_bodies(size_t N);

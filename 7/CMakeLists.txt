@@ -36,6 +36,7 @@ set(CMAKE_CUDA_FLAGS_DEBUG "${CMAKE_CUDA_FLAGS} -g -G")
 
 # Weffc++ can be helpful but has a bunch of false positives. -fsanitize=<x> is great to find memory/threading issues
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wfloat-equal -ffast-math -march=native")#-Weffc++")#-fsanitize=address ")
+
 if (${CMAKE_CUDA_COMPILER_VERSION} GREATER_EQUAL "8.0.0")
     set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -arch=sm_30 --expt-relaxed-constexpr")
 else ()
@@ -73,7 +74,7 @@ target_link_libraries(testrunner PUBLIC nbody_cuda)
 # we need pthread because of the cluster gtest_main does not work and pthread is not added automatically with gtest
 # target_link_libraries(reduction_test PUBLIC reduction reduction_cuda tracing gtest pthread)
 
-
+set(CMAKE_CUDA_FLAGS_DEBUG "${CMAKE_CUDA_FLAGS_DEBUG} -O0 ")
 
 
 

@@ -3,10 +3,13 @@
 
 int main()
 {
-    std::cout << "time: "<< run_leapfrog_aos(100,32,100).first.count() << std::endl;
-    std::cout << "time: "<< run_leapfrog_aos(200,32,100).first.count() << std::endl;
-    std::cout << "time: "<< run_leapfrog_aos(400,32,100).first.count() << std::endl;
-    std::cout << "time: "<< run_leapfrog_aos(1000,32,100).first.count() << std::endl;
+    //std::cout << "time: "<< run_leapfrog_aos(100,32,100).first.count() << std::endl;
+    //std::cout << "time: "<< run_leapfrog_aos(200,32,100).first.count() << std::endl;
+    //std::cout << "time: "<< run_leapfrog_aos(400,32,100).first.count() << std::endl;
+    //std::cout << "time: "<< run_leapfrog_aos(1000,32,100).first.count() << std::endl;
+
+    std::cout << "time: " << run_leapfrog_soa(100,32,100).first.count() << std::endl;
+    std::cout << "time: " << run_leapfrog_soa(500,512,100).first.count() << std::endl;
 
 
     //std::cout << "vec: " << res.second. << std::endl;
