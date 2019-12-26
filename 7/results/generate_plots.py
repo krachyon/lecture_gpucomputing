@@ -20,6 +20,7 @@ def threadcount(df, name):
     plt.title(name)
     plt.legend()
     plt.tight_layout()
+    plt.savefig(f'threadcount_{name}.pdf')
 
 def heatmap(df, name):
     plt.figure(figsize=(10,8))
@@ -28,7 +29,7 @@ def heatmap(df, name):
     piv /=1000  # milliseconds to seconds
     piv = 1./ piv.divide(piv.index**2, axis='rows')
     
-    plt.pcolormesh(log(piv))
+    plt.pcolormesh(log(piv), cmap=cm.terrain, vmin=16, vmax=21)
     plt.yticks(range(len(piv.index)),piv.index)
     plt.xticks(piv.columns[::50])
     plt.xlabel('threads per block')
@@ -36,6 +37,8 @@ def heatmap(df, name):
     plt.title(f'$\\log_{{10}}$(Flops) {name}')
     colorbar()
     plt.tight_layout()
+    plt.savefig(f'heatmap_{name}.pdf')
+
 
 
 def alignment(full_data):
@@ -50,6 +53,8 @@ def alignment(full_data):
     plt.ylabel('Flops')
     plt.legend()
     plt.tight_layout()
+    plt.savefig('alignment.pdf')
+
 
 
 def nvsflops(naive_orig, shared_orig):
@@ -63,6 +68,7 @@ def nvsflops(naive_orig, shared_orig):
     plt.ylabel('Flops for optimum kernel configuration')
     plt.legend()
     plt.tight_layout()
+    plt.savefig('nvsflops1.pdf')
 
 
     naive = naive_orig.copy().groupby('N').mean()
@@ -75,15 +81,16 @@ def nvsflops(naive_orig, shared_orig):
     plt.ylabel('Flops for average kernel configuration')
     plt.legend()
     plt.tight_layout()
+    plt.savefig('nvsflops2.pdf')
 
 
 
-#threadcount(shared, 'shared')
-#treadcount(naive, 'naive')
-#heatmap(shared, 'shared')
+threadcount(shared, 'shared')
+threadcount(naive, 'naive')
+heatmap(shared, 'shared')
 heatmap(naive, 'naive')
 #heatmap(unaligned, 'unaligned')
-#alignment(dat)
-#nvsflops(naive, shared)
+alignment(dat)
+nvsflops(naive, shared)
 
 plt.show()

@@ -22444,21 +22444,21 @@ name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,l
 "BM_nbody_shared/2048/698/manual_time",19,36.8955,102.687,ms,,,,,,2048,698
 "BM_nbody_shared/2048/699/manual_time",19,36.8742,102.64,ms,,,,,,2048,699
 "BM_nbody_shared/2048/700/manual_time",19,36.8646,102.662,ms,,,,,,2048,700
-The number of inputs is very large. BM_nbody_naive will be repeated at least 700 times.
-The number of inputs is very large. BM_nbody_unaligned will be repeated at least 700 times.
-The number of inputs is very large. BM_nbody_shared will be repeated at least 700 times.
-2019-12-26 18:40:41
-Running ./nbody_benchmark
-Run on (8 X 3800 MHz CPU s)
-CPU Caches:
-  L1 Data 32 KiB (x4)
-  L1 Instruction 32 KiB (x4)
-  L2 Unified 256 KiB (x4)
-  L3 Unified 10240 KiB (x1)
-Load Average: 2.03, 1.62, 1.29
-***WARNING*** CPU scaling is enabled, the benchmark real time measurements may be noisy and will incur extra overhead.
-***WARNING*** Library was built as DEBUG. Timings may be affected.
-name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message,"N","threads_per_block"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 "BM_nbody_naive/384/1/manual_time",178,3.93163,8.768,ms,,,,,,384,1
 "BM_nbody_naive/384/2/manual_time",178,3.93833,8.77578,ms,,,,,,384,2
 "BM_nbody_naive/384/3/manual_time",178,3.93903,8.77066,ms,,,,,,384,3
@@ -23159,21 +23159,21 @@ name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,l
 "BM_nbody_naive/384/698/manual_time",158,4.4238,9.24724,ms,,,,,,384,698
 "BM_nbody_naive/384/699/manual_time",158,4.42401,9.24221,ms,,,,,,384,699
 "BM_nbody_naive/384/700/manual_time",158,4.4236,9.24804,ms,,,,,,384,700
-The number of inputs is very large. BM_nbody_naive will be repeated at least 700 times.
-The number of inputs is very large. BM_nbody_unaligned will be repeated at least 700 times.
-The number of inputs is very large. BM_nbody_shared will be repeated at least 700 times.
-2019-12-26 18:41:06
-Running ./nbody_benchmark
-Run on (8 X 3800 MHz CPU s)
-CPU Caches:
-  L1 Data 32 KiB (x4)
-  L1 Instruction 32 KiB (x4)
-  L2 Unified 256 KiB (x4)
-  L3 Unified 10240 KiB (x1)
-Load Average: 0.00, 0.02, 0.16
-***WARNING*** CPU scaling is enabled, the benchmark real time measurements may be noisy and will incur extra overhead.
-***WARNING*** Library was built as DEBUG. Timings may be affected.
-name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message,"N","threads_per_block"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 "BM_nbody_shared/384/1/manual_time",95,7.35436,20.7924,ms,,,,,,384,1
 "BM_nbody_shared/384/2/manual_time",133,5.25866,18.4394,ms,,,,,,384,2
 "BM_nbody_shared/384/3/manual_time",153,4.56025,17.5976,ms,,,,,,384,3
@@ -23874,21 +23874,21 @@ name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,l
 "BM_nbody_shared/384/698/manual_time",185,3.79297,16.8948,ms,,,,,,384,698
 "BM_nbody_shared/384/699/manual_time",185,3.79322,16.8542,ms,,,,,,384,699
 "BM_nbody_shared/384/700/manual_time",185,3.79365,16.835,ms,,,,,,384,700
-The number of inputs is very large. BM_nbody_naive will be repeated at least 700 times.
-The number of inputs is very large. BM_nbody_unaligned will be repeated at least 700 times.
-The number of inputs is very large. BM_nbody_shared will be repeated at least 700 times.
-2019-12-26 18:40:35
-Running ./nbody_benchmark
-Run on (8 X 3800 MHz CPU s)
-CPU Caches:
-  L1 Data 32 KiB (x4)
-  L1 Instruction 32 KiB (x4)
-  L2 Unified 256 KiB (x4)
-  L3 Unified 10240 KiB (x1)
-Load Average: 0.08, 0.03, 0.05
-***WARNING*** CPU scaling is enabled, the benchmark real time measurements may be noisy and will incur extra overhead.
-***WARNING*** Library was built as DEBUG. Timings may be affected.
-name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message,"N","threads_per_block"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 "BM_nbody_naive/512/1/manual_time",134,5.22333,12.1346,ms,,,,,,512,1
 "BM_nbody_naive/512/2/manual_time",134,5.22445,11.567,ms,,,,,,512,2
 "BM_nbody_naive/512/3/manual_time",132,5.32499,12.0405,ms,,,,,,512,3
@@ -24589,21 +24589,21 @@ name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,l
 "BM_nbody_naive/512/698/manual_time",105,6.66934,12.8678,ms,,,,,,512,698
 "BM_nbody_naive/512/699/manual_time",105,6.66892,12.854,ms,,,,,,512,699
 "BM_nbody_naive/512/700/manual_time",105,6.66916,12.8587,ms,,,,,,512,700
-The number of inputs is very large. BM_nbody_naive will be repeated at least 700 times.
-The number of inputs is very large. BM_nbody_unaligned will be repeated at least 700 times.
-The number of inputs is very large. BM_nbody_shared will be repeated at least 700 times.
-2019-12-26 18:41:23
-Running ./nbody_benchmark
-Run on (8 X 3800 MHz CPU s)
-CPU Caches:
-  L1 Data 32 KiB (x4)
-  L1 Instruction 32 KiB (x4)
-  L2 Unified 256 KiB (x4)
-  L3 Unified 10240 KiB (x1)
-Load Average: 0.00, 0.01, 0.05
-***WARNING*** CPU scaling is enabled, the benchmark real time measurements may be noisy and will incur extra overhead.
-***WARNING*** Library was built as DEBUG. Timings may be affected.
-name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message,"N","threads_per_block"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 "BM_nbody_shared/512/1/manual_time",72,9.7183,27.1192,ms,,,,,,512,1
 "BM_nbody_shared/512/2/manual_time",101,6.92418,24.1501,ms,,,,,,512,2
 "BM_nbody_shared/512/3/manual_time",117,6.00921,23.1107,ms,,,,,,512,3
@@ -25304,21 +25304,21 @@ name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,l
 "BM_nbody_shared/512/698/manual_time",111,6.332,23.4945,ms,,,,,,512,698
 "BM_nbody_shared/512/699/manual_time",111,6.32967,23.4202,ms,,,,,,512,699
 "BM_nbody_shared/512/700/manual_time",111,6.33002,23.4619,ms,,,,,,512,700
-The number of inputs is very large. BM_nbody_naive will be repeated at least 700 times.
-The number of inputs is very large. BM_nbody_unaligned will be repeated at least 700 times.
-The number of inputs is very large. BM_nbody_shared will be repeated at least 700 times.
-2019-12-26 18:41:42
-Running ./nbody_benchmark
-Run on (8 X 3800 MHz CPU s)
-CPU Caches:
-  L1 Data 32 KiB (x4)
-  L1 Instruction 32 KiB (x4)
-  L2 Unified 256 KiB (x4)
-  L3 Unified 10240 KiB (x1)
-Load Average: 0.00, 0.01, 0.10
-***WARNING*** CPU scaling is enabled, the benchmark real time measurements may be noisy and will incur extra overhead.
-***WARNING*** Library was built as DEBUG. Timings may be affected.
-name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message,"N","threads_per_block"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 "BM_nbody_naive/640/1/manual_time",104,6.74876,14.7165,ms,,,,,,640,1
 "BM_nbody_naive/640/2/manual_time",103,6.75998,14.6546,ms,,,,,,640,2
 "BM_nbody_naive/640/3/manual_time",102,6.86672,14.6056,ms,,,,,,640,3
@@ -26019,21 +26019,21 @@ name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,l
 "BM_nbody_naive/640/698/manual_time",65,10.736,18.4531,ms,,,,,,640,698
 "BM_nbody_naive/640/699/manual_time",65,10.7392,18.4604,ms,,,,,,640,699
 "BM_nbody_naive/640/700/manual_time",65,10.7418,18.696,ms,,,,,,640,700
-The number of inputs is very large. BM_nbody_naive will be repeated at least 700 times.
-The number of inputs is very large. BM_nbody_unaligned will be repeated at least 700 times.
-The number of inputs is very large. BM_nbody_shared will be repeated at least 700 times.
-2019-12-26 18:58:46
-Running ./nbody_benchmark
-Run on (8 X 3800 MHz CPU s)
-CPU Caches:
-  L1 Data 32 KiB (x4)
-  L1 Instruction 32 KiB (x4)
-  L2 Unified 256 KiB (x4)
-  L3 Unified 10240 KiB (x1)
-Load Average: 1.92, 1.60, 1.01
-***WARNING*** CPU scaling is enabled, the benchmark real time measurements may be noisy and will incur extra overhead.
-***WARNING*** Library was built as DEBUG. Timings may be affected.
-name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message,"N","threads_per_block"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 "BM_nbody_shared/640/1/manual_time",58,12.0729,33.5499,ms,,,,,,640,1
 "BM_nbody_shared/640/2/manual_time",81,8.59126,29.8764,ms,,,,,,640,2
 "BM_nbody_shared/640/3/manual_time",94,7.43645,28.6173,ms,,,,,,640,3
@@ -26734,21 +26734,21 @@ name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,l
 "BM_nbody_shared/640/698/manual_time",74,9.49059,30.6542,ms,,,,,,640,698
 "BM_nbody_shared/640/699/manual_time",74,9.49121,30.6452,ms,,,,,,640,699
 "BM_nbody_shared/640/700/manual_time",74,9.49114,30.6595,ms,,,,,,640,700
-The number of inputs is very large. BM_nbody_naive will be repeated at least 700 times.
-The number of inputs is very large. BM_nbody_unaligned will be repeated at least 700 times.
-The number of inputs is very large. BM_nbody_shared will be repeated at least 700 times.
-2019-12-26 19:07:13
-Running ./nbody_benchmark
-Run on (8 X 3800 MHz CPU s)
-CPU Caches:
-  L1 Data 32 KiB (x4)
-  L1 Instruction 32 KiB (x4)
-  L2 Unified 256 KiB (x4)
-  L3 Unified 10240 KiB (x1)
-Load Average: 0.00, 0.23, 0.45
-***WARNING*** CPU scaling is enabled, the benchmark real time measurements may be noisy and will incur extra overhead.
-***WARNING*** Library was built as DEBUG. Timings may be affected.
-name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message,"N","threads_per_block"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 "BM_nbody_naive/896/1/manual_time",74,9.50753,20.2948,ms,,,,,,896,1
 "BM_nbody_naive/896/2/manual_time",73,9.52437,20.0207,ms,,,,,,896,2
 "BM_nbody_naive/896/3/manual_time",72,9.67434,20.1764,ms,,,,,,896,3
@@ -27449,21 +27449,21 @@ name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,l
 "BM_nbody_naive/896/698/manual_time",37,18.7409,29.2401,ms,,,,,,896,698
 "BM_nbody_naive/896/699/manual_time",37,18.7154,29.2202,ms,,,,,,896,699
 "BM_nbody_naive/896/700/manual_time",37,18.715,29.2217,ms,,,,,,896,700
-The number of inputs is very large. BM_nbody_naive will be repeated at least 700 times.
-The number of inputs is very large. BM_nbody_unaligned will be repeated at least 700 times.
-The number of inputs is very large. BM_nbody_shared will be repeated at least 700 times.
-2019-12-26 19:09:52
-Running ./nbody_benchmark
-Run on (8 X 3800 MHz CPU s)
-CPU Caches:
-  L1 Data 32 KiB (x4)
-  L1 Instruction 32 KiB (x4)
-  L2 Unified 256 KiB (x4)
-  L3 Unified 10240 KiB (x1)
-Load Average: 2.00, 2.01, 1.90
-***WARNING*** CPU scaling is enabled, the benchmark real time measurements may be noisy and will incur extra overhead.
-***WARNING*** Library was built as DEBUG. Timings may be affected.
-name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message,"N","threads_per_block"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 "BM_nbody_shared/896/1/manual_time",42,16.7864,46.2972,ms,,,,,,896,1
 "BM_nbody_shared/896/2/manual_time",59,11.9157,41.0768,ms,,,,,,896,2
 "BM_nbody_shared/896/3/manual_time",68,10.2894,39.4608,ms,,,,,,896,3
@@ -28164,21 +28164,21 @@ name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,l
 "BM_nbody_shared/896/698/manual_time",46,15.0856,44.3525,ms,,,,,,896,698
 "BM_nbody_shared/896/699/manual_time",46,15.0811,44.2205,ms,,,,,,896,699
 "BM_nbody_shared/896/700/manual_time",46,15.0789,44.2126,ms,,,,,,896,700
-The number of inputs is very large. BM_nbody_naive will be repeated at least 700 times.
-The number of inputs is very large. BM_nbody_unaligned will be repeated at least 700 times.
-The number of inputs is very large. BM_nbody_shared will be repeated at least 700 times.
-2019-12-26 19:25:48
-Running ./nbody_benchmark
-Run on (8 X 3800 MHz CPU s)
-CPU Caches:
-  L1 Data 32 KiB (x4)
-  L1 Instruction 32 KiB (x4)
-  L2 Unified 256 KiB (x4)
-  L3 Unified 10240 KiB (x1)
-Load Average: 1.00, 0.98, 0.83
-***WARNING*** CPU scaling is enabled, the benchmark real time measurements may be noisy and will incur extra overhead.
-***WARNING*** Library was built as DEBUG. Timings may be affected.
-name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message,"N","threads_per_block"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 "BM_nbody_naive/1024/1/manual_time",64,10.8622,23.1743,ms,,,,,,1024,1
 "BM_nbody_naive/1024/2/manual_time",64,10.8755,22.9395,ms,,,,,,1024,2
 "BM_nbody_naive/1024/3/manual_time",63,11.0639,24.3666,ms,,,,,,1024,3
@@ -28879,21 +28879,21 @@ name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,l
 "BM_nbody_naive/1024/698/manual_time",32,21.5908,33.6075,ms,,,,,,1024,698
 "BM_nbody_naive/1024/699/manual_time",32,21.573,33.4211,ms,,,,,,1024,699
 "BM_nbody_naive/1024/700/manual_time",32,21.5724,33.4184,ms,,,,,,1024,700
-The number of inputs is very large. BM_nbody_naive will be repeated at least 700 times.
-The number of inputs is very large. BM_nbody_unaligned will be repeated at least 700 times.
-The number of inputs is very large. BM_nbody_shared will be repeated at least 700 times.
-2019-12-26 19:27:31
-Running ./nbody_benchmark
-Run on (8 X 3800 MHz CPU s)
-CPU Caches:
-  L1 Data 32 KiB (x4)
-  L1 Instruction 32 KiB (x4)
-  L2 Unified 256 KiB (x4)
-  L3 Unified 10240 KiB (x1)
-Load Average: 1.00, 1.01, 0.95
-***WARNING*** CPU scaling is enabled, the benchmark real time measurements may be noisy and will incur extra overhead.
-***WARNING*** Library was built as DEBUG. Timings may be affected.
-name,iterations,real_time,cpu_time,time_unit,bytes_per_second,items_per_second,label,error_occurred,error_message,"N","threads_per_block"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 "BM_nbody_shared/1024/1/manual_time",37,19.138,52.4745,ms,,,,,,1024,1
 "BM_nbody_shared/1024/2/manual_time",51,13.567,46.7609,ms,,,,,,1024,2
 "BM_nbody_shared/1024/3/manual_time",60,11.7212,44.9381,ms,,,,,,1024,3

@@ -3,7 +3,7 @@
 
 
 static void CustomArguments(benchmark::internal::Benchmark* b) {
-    int n = 128*16;
+    int n = 1024;
         for (int thread = 1; thread <= 700; thread += 1) {
             b->Args({n, thread});
         }
