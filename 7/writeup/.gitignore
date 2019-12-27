@@ -1,0 +1,4 @@
+*.out
+_minted-main/
+*.pyg
+*.snippets
