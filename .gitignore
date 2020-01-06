@@ -9,3 +9,4 @@ plots
 **/*.fdb_latexmk
 **/*.synctex.gz
 **/*.log
+**/*.png

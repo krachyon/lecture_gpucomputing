@@ -31,13 +31,13 @@ def heatmap(df, name):
     
     plt.pcolormesh(log(piv), cmap=cm.terrain, vmin=16, vmax=21)
     plt.yticks(range(len(piv.index)),piv.index)
-    plt.xticks(piv.columns[::50])
+    plt.xticks(sorted([1,32,64,128,512,700]+list(arange(50,700,50))),rotation=60)
     plt.xlabel('threads per block')
     plt.ylabel('problem size')
     plt.title(f'$\\log_{{10}}$(Flops) {name}')
     colorbar()
     plt.tight_layout()
-    plt.savefig(f'heatmap_{name}.pdf')
+    plt.savefig(f'heatmap_{name}.png', dpi=300, quality=100)
 
 
 
